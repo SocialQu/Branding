@@ -12,7 +12,7 @@ Twitter is a unique platform in that most of its content is text format.
 Leveraging BERT and other advances in NLP creates a unique opportunity for brands to understand who their audience is, and what content resonates with them.
 
 
-## Product Definition
+## Product
 
 - [ ] A KPI homepage.
 
@@ -30,7 +30,7 @@ Leveraging BERT and other advances in NLP creates a unique opportunity for brand
 By running small experiments on Twitter, marketers can learn what type of content works for their brand and migrate to other platforms.
 
 
-## Technological Stack
+## Technology
 
 The App is developed in React backed with a Mongo Atlas DB and Netflify functions to make secure Twitter requests.
 
