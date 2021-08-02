@@ -23,8 +23,8 @@ export const EngagementRate = ({ data }: iChart) => {
     return <Card title='Engagement Rate'>
         <nav className='level'>
             <Chart data={data}/>
-            <Kpi label={'Avg'} value={avg || 0} />
-            <Kpi label={'High'} value={high > 0 ? high : 0} />
+            <Kpi label={'Avg'} value={avg || 0} isPercent/>
+            <Kpi label={'High'} value={high > 0 ? high : 0} isPercent/>
         </nav>
     </Card>
 }
