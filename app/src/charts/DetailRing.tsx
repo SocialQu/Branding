@@ -3,7 +3,6 @@ import { Card } from '../molecules/Card'
 import { CSSProperties } from 'react'
 
 
-
 const COLORS = ['#d15637', '#0fd447', 'deepskyblue', '#8884d8']
 const Square = ({ color }: { color: string}) => <svg width={20} height={15} style={{marginRight:5}}>
     <rect width={15} height={15} style={{fill: color}}/>
@@ -26,30 +25,22 @@ const engagementStyle:CSSProperties = {
     marginRight:8 
 }
 
-
-export const EngagementRing = ({ data }: iRing) => <nav className="level" style={{marginBottom: 0, padding: 0}}>
-    <div className="level-item">
-        <Ring data={data}/>
-    </div>
-    <div className="level-item">
-        <p style={{color:'white', textAlign: 'left'}}> 
-            <Square color={COLORS[0]}/> 
-                <strong style={engagementStyle}> { data.find(({ name }) => name === 'Likes')?.value } </strong> 
-                Likes <br/>
-            <Square color={COLORS[1]}/> 
-            <strong style={engagementStyle}> { data.find(({ name }) => name === 'Retweets')?.value } </strong> 
-                Retweets <br/>
-            <Square color={COLORS[2]}/> 
-            <strong style={engagementStyle}> { data.find(({ name }) => name === 'Replies')?.value } </strong> 
-                Replies <br/>
-            <Square color={COLORS[3]}/> 
-            <strong style={engagementStyle}> { data.find(({ name }) => name === 'Visits')?.value } </strong> 
-                Profile Visits
-        </p>
-    </div>
-</nav>
-
+const Detail = ({ name, value, idx }:{ name:string, value:number, idx:number}) => <> 
+    <Square color={COLORS[idx]}/> 
+    <strong style={engagementStyle}> { value } </strong> 
+    { name } <br/>
+</>
 
 export const DetailRing = ({ data }: iRing) => <Card title="Engagement Detail">
-    <EngagementRing data={data} />
+    <nav className="level" style={{marginBottom: 0, padding: 0}}>
+        <div className="level-item">
+            <Ring data={data}/>
+        </div>
+
+        <div className="level-item">
+            <p style={{color:'white', textAlign: 'left'}}> 
+                { data.map(({ name, value }, idx) => <Detail name={name} value={value} idx={idx} /> )}
+            </p>
+        </div>
+    </nav>
 </Card>
