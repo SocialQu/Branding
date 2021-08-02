@@ -1,8 +1,8 @@
 # UI Atoms
 
 ## Atoms
-- [ ] Engagement Rate Chart.
-- [ ] Engagement Detail Chart.
+- [X] Engagement Rate Chart.
+- [X] Engagement Detail Chart.
 - [ ] KPI Counter.
 - [ ] KPI Column Title.
 - [ ] Card collapsable body.
