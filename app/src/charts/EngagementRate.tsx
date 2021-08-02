@@ -11,7 +11,7 @@ interface iChart { data: { name:string, Engagement:number}[] }
 const Chart = ({ data }: iChart) => <div className='level-item' style={divChartStyle}>
     <LineChart width={210} height={50} data={data}>
         <Tooltip formatter={(d:string) => `${d}%`} />
-        <XAxis dataKey='text' hide />
+        <XAxis dataKey='name' hide />
         <Line type='monotone' dataKey='Engagement' stroke='#8884d8' strokeWidth={2} dot={false}/>
     </LineChart>
 </div>
