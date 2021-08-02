@@ -1,19 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import { useState } from "react"
+import '../styles/NavBar.css'
 
 export type Tab = 'HOME' | 'KPIs' | 'Growth' | 'Monetization' | 'Composer' | 'Heat Maps'
 
-
-
-
-
-
 interface iNavTab {tab:Tab, isActive:boolean, clickTab(tab:Tab):void}
 const NavTab = ({ tab, isActive, clickTab }:iNavTab) => <a 
-    className={`navbar-item ${isActive ? 'navbar-item-active': ''}`} 
     onClick={() => clickTab(tab)}
-> { `${tab.slice(0,1)}${tab.slice(1).toLowerCase()}` } </a>
+    style={{marginLeft:24, fontWeight:500}}
+    className={`navbar-item ${isActive ? 'navbar-item-active': ''}`} 
+> { tab } </a>
 
 
 interface iNavBar { click(tab:Tab):void }
@@ -50,7 +47,10 @@ export const NavBar = ({ click }: iNavBar) => {
                 style={{ maxWidth:1200, marginRight:'auto' }}
                 className={`navbar-menu ${isActive ? 'is-active navbar-menu-active': ''}`} 
             >
-                <div className={`navbar-start ${isActive ? 'is-active navbar-start-active': ''}`}>
+                <div 
+                    style={{marginRight:0}}
+                    className={`navbar-start ${isActive ? 'is-active navbar-start-active': ''}`}
+                >
                     {
                         ['KPIs', 'Growth', 'Monetization', 'Composer', 'Heat Maps'].map((tab) => 
                             <NavTab isActive={isActive} tab={tab as Tab} clickTab={clickTab}/>                        
@@ -58,6 +58,8 @@ export const NavBar = ({ click }: iNavBar) => {
                     }
                 </div>
             </div>
+
+            <div className={`navbar-end ${isActive ? 'navbar-end-active': ''}`} style={{fontSize: '1.2em'}} />
         </div>
     </nav>
 }
