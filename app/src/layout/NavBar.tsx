@@ -2,12 +2,24 @@
 
 import { useState } from "react"
 
-export type TAB = 'HOME' | 'KPI' | 'GROWTH' | 'HEATMAP' | 'MONETIZATION' | 'COMPOSER'
+export type Tab = 'HOME' | 'KPIs' | 'Growth' | 'Monetization' | 'Composer' | 'Heat Maps'
 
-interface iNavBar { click(tab:TAB):void }
+
+
+
+
+
+interface iNavTab {tab:Tab, isActive:boolean, clickTab(tab:Tab):void}
+const NavTab = ({ tab, isActive, clickTab }:iNavTab) => <a 
+    className={`navbar-item ${isActive ? 'navbar-item-active': ''}`} 
+    onClick={() => clickTab(tab)}
+> { `${tab.slice(0,1)}${tab.slice(1).toLowerCase()}` } </a>
+
+
+interface iNavBar { click(tab:Tab):void }
 export const NavBar = ({ click }: iNavBar) => {
     const [ isActive, setActive ] = useState(false)
-    const clickTab = (tab: TAB) => {
+    const clickTab = (tab: Tab) => {
         isActive ? setActive(false) : setActive(isActive)
         return click(tab)
     }
@@ -34,32 +46,16 @@ export const NavBar = ({ click }: iNavBar) => {
                 </a>
             </div>
 
-            <div className={`navbar-menu ${isActive ? 'is-active navbar-menu-active': ''}`} style={{ maxWidth:1200, marginRight:'auto' }}>
+            <div 
+                style={{ maxWidth:1200, marginRight:'auto' }}
+                className={`navbar-menu ${isActive ? 'is-active navbar-menu-active': ''}`} 
+            >
                 <div className={`navbar-start ${isActive ? 'is-active navbar-start-active': ''}`}>
-                    <a 
-                        className={`navbar-item ${isActive ? 'navbar-item-active': ''}`} 
-                        onClick={() => clickTab('KPI')}
-                    > KPIs </a>
-
-                    <a 
-                        className={`navbar-item ${isActive ? 'navbar-item-active': ''}`} 
-                        onClick={() => clickTab('GROWTH')}
-                    > Growth </a>
-
-                    <a 
-                        className={`navbar-item ${isActive ? 'navbar-item-active': ''}`}
-                        onClick={() => clickTab('MONETIZATION')}
-                    > Monetization </a>
-
-                    <a 
-                        className={`navbar-item ${isActive ? 'navbar-item-active': ''}`} 
-                        onClick={() => clickTab('COMPOSER')}
-                    > Composer </a>
-
-                    <a 
-                        className={`navbar-item ${isActive ? 'navbar-item-active': ''}`} 
-                        onClick={() => clickTab('HEATMAP')}
-                    > Heat Maps </a>
+                    {
+                        ['KPIs', 'Growth', 'Monetization', 'Composer', 'Heat Maps'].map((tab) => 
+                            <NavTab isActive={isActive} tab={tab as Tab} clickTab={clickTab}/>                        
+                        )
+                    }
                 </div>
             </div>
         </div>
