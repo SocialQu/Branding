@@ -3,7 +3,17 @@ import { Activity, Reach } from '../molecules/KpiCards'
 import { DetailRing } from '../charts/DetailRing'
 
 
-const data = [{Engagement:10, name:'Monday'}, {Engagement:5, name:'Tuesday'}]
+const data = [
+    { Engagement:0, name:'Monday' }, 
+    { Engagement:0, name:'Tuesday' },
+    { Engagement:0, name:'Wednesday' }, 
+    { Engagement:0, name:'Thursday' },
+    { Engagement:1.5, name:'Friday' }, 
+    { Engagement:0, name:'Saturday' },
+    { Engagement:0, name:'Sunday' }
+]
+
+
 const detailData = [
     { name:'Likes', value: 10 },
     { name:'Retweets', value: 10 },
