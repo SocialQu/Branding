@@ -11,8 +11,8 @@ const detailData = [
     { name:'Profile Visits', value: 10 }
 ]
 
-export const LastDay = () => <div className="column" style={{textAlign:'center'}} >
-    <p className="subtitle is-4" style={{color: 'white'}}> Yesterday's KPIs </p>
+export const LastDay = () => <div className='column' style={{textAlign:'center'}} >
+    <p className='subtitle is-4' style={{color: 'white'}}> Yesterday's KPIs </p>
     <EngagementRate data={data}/>
     <Activity tweets={10} replies={5}/>
     <Reach impressions={1200} followers={12}/>
