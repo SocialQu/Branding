@@ -19,7 +19,7 @@ export interface iLastWeek {
         replies:{ niche:string, kpis:iKpis }[]
     },
     reach:{
-        impressions:{ niche:string, impressions:number, tweets:number }[],
+        impressions:iMention[],
         follows:{ audience:string, newFollowers:number }[]
     }
 }
