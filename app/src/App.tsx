@@ -1,7 +1,9 @@
 import { NavBar } from './layout/NavBar'
+import { kpiData } from './data/kpis'
 import { Kpis } from './views/Kpis'
-import { ReactNode } from 'react'
 
+
+import { ReactNode } from 'react'
 import 'bulma/css/bulma.css'
 import './App.css'
 
@@ -15,6 +17,6 @@ const Section = ({ children }:iSection) => <div className="section" style={{padd
 export const App = () => <>
     <NavBar click={() => {}}/>
     <Section>
-        <Kpis />
+        <Kpis data={kpiData}/>
     </Section>
 </>
