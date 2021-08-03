@@ -10,7 +10,7 @@ export interface iKpis {
 
 
 interface newFollower {
-    name:string
+    user:string
     url:string
     followers:number
     following:number
@@ -20,16 +20,17 @@ interface newFollower {
 
 export interface iLastDay {
     engagement:{
-        tweets:{ text:string, rate:number }[],
-        topics:{ topic:string, tweets:number, rate:number },
+        tweets:{ text:string, rate:number }[]
+        topics:{ topic:string, tweets:number, rate:number }[]
         kpis:iKpis
     },
     activity:{
-        tweets:{ text:string, topic:string, kpis:iKpis }[],
+        tweets:{ text:string, topic:string, kpis:iKpis }[]
         replies:{ text:string, niche:string, kpis:iKpis }[]
     },
     reach:{
-        impressions:{ niche:string, tweets:number, impressions:number }[],
+        impressions:number
+        niches:{ niche:string, tweets:number, impressions:number }[]
         follows:newFollower[]
     }
 }
