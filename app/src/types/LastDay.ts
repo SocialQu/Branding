@@ -20,7 +20,7 @@ interface newFollower {
 
 export interface iLastDay {
     engagement:{
-        tweets:{ text:string, rate:number }[]
+        tweets:{ text:string, engagement:number }[]
         topics:{ topic:string, tweets:number, rate:number }[]
         kpis:iKpis
     },
