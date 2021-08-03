@@ -43,7 +43,7 @@ const lastWeek:iLastWeek = {
         replies:[{ niche:'Niche', kpis }]
     },
     reach:{
-        impressions:[{ niche:'Niche', impressions:3, tweets:2 }],
+        impressions:[{ user:'User', link:'', tweets:2, impressions:30, niche:'Niche' }],
         follows:[{ audience:'Audience', newFollowers:4 }]
     }
 }
