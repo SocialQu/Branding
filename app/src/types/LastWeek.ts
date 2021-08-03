@@ -10,7 +10,7 @@ interface iMention {
 
 export interface iLastWeek {
     engagement:{
-        days:{ day:string, rate:number }[],
+        days:{ day:string, engagement:number }[],
         topics:{ topic:string, tweets:number, rate:number }[],
         kpis:iKpis
     },
@@ -19,7 +19,8 @@ export interface iLastWeek {
         replies:{ niche:string, kpis:iKpis }[]
     },
     reach:{
-        impressions:iMention[],
+        impressions:number
+        mentions:iMention[],
         follows:{ audience:string, newFollowers:number }[]
     }
 }
