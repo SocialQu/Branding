@@ -1,5 +1,4 @@
-import { iLastWeek } from '../types/LastWeek'
-import { iLastDay } from '../types/LastDay'
+import { iKpis, iLastDay, iLastWeek } from '../types'
 
 
 const kpis = { tweets:1, likes:3, replies:2, retweets:1, quotes:1, visits:2, clicks:2 }
@@ -8,7 +7,7 @@ const topics = [{ topic:'Topic', tweets:1, rate:1.5 }]
 
 const lastDay:iLastDay = {
     engagement: {
-        tweets:[{ text:'Sample Tweet', rate:1.5 }],
+        tweets:[{ text:'Sample Tweet', engagement:1.5 }],
         topics,
         kpis
     },
@@ -27,13 +26,13 @@ const lastDay:iLastDay = {
 
 
 const days = [
-    { rate:0, day:'Monday' }, 
-    { rate:0, day:'Tuesday' },
-    { rate:0, day:'Wednesday' }, 
-    { rate:0, day:'Thursday' },
-    { rate:1.5, day:'Friday' }, 
-    { rate:0, day:'Saturday' },
-    { rate:0, day:'Sunday' }
+    { engagement:0, day:'Monday' }, 
+    { engagement:0, day:'Tuesday' },
+    { engagement:0, day:'Wednesday' }, 
+    { engagement:0, day:'Thursday' },
+    { engagement:1.5, day:'Friday' }, 
+    { engagement:0, day:'Saturday' },
+    { engagement:0, day:'Sunday' }
 ]
 
 const lastWeek:iLastWeek = {
@@ -43,12 +42,10 @@ const lastWeek:iLastWeek = {
         replies:[{ niche:'Niche', kpis }]
     },
     reach:{
-        impressions:[{ user:'User', link:'', tweets:2, impressions:30, niche:'Niche' }],
+        impressions:7400,
+        mentions:[{ user:'User', link:'', tweets:2, impressions:30, niche:'Niche' }],
         follows:[{ audience:'Audience', newFollowers:4 }]
     }
 }
 
-export const kpiData = { 
-    lastDay, 
-    lastWeek 
-}
+export const kpiData:iKpis = { lastDay, lastWeek }
