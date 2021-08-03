@@ -18,7 +18,7 @@ const lastDay:iLastDay = {
     },
 
     reach: {
-        impressions:1200,
+        impressions:2200,
         niches:[{ niche:'Niche', impressions:1200, tweets:1 }],
         follows
     }
@@ -42,7 +42,7 @@ const lastWeek:iLastWeek = {
         replies:[{ niche:'Niche', kpis }]
     },
     reach:{
-        impressions:7400,
+        impressions:17400,
         mentions:[{ user:'User', link:'', tweets:2, impressions:30, niche:'Niche' }],
         follows:[{ audience:'Audience', newFollowers:4 }]
     }
