@@ -17,7 +17,7 @@ const Chart = ({ data }: iChart) => <div className='level-item' style={divChartS
 </div>
 
 export const EngagementRate = ({ data }: iChart) => {
-    const avg = Math.round((data.reduce((d, { Engagement }) => d+=Engagement, 0)/data.length)*10)/10
+    const avg = Math.round((data.reduce((d, { Engagement }) => d+= Engagement, 0)/data.length)*10)/10
     const high = Math.round(Math.max(...data.map(({ Engagement }) => Engagement))*10)/10
 
     return <Card title='Engagement Rate'>

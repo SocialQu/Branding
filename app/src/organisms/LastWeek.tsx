@@ -1,21 +1,21 @@
 import { EngagementRate } from '../charts/EngagementRate'
 import { Activity, Reach } from '../molecules/KpiCards'
 import { DetailRing } from '../charts/DetailRing'
-import { iLastDay } from '../types'
+import { iLastWeek } from '../types'
 
 
-export const LastDay = ({data}: {data: iLastDay}) => <div className='column' style={{textAlign:'center'}} >
-    <p className='subtitle is-4' style={{color: 'white'}}> Yesterday's KPIs </p>
+export const LastWeek = ({data}: {data:iLastWeek}) => <div className='column' style={{textAlign:'center'}} >
+    <p className='subtitle is-4' style={{color: 'white'}}> Last Week KPIs </p>
     <EngagementRate 
         data={
-            data.engagement.map(({ tweet, impressions, engagements }) => ({ 
-                name:tweet,
+            data.engagement.map(({ day, impressions, engagements }) => ({
+                name:day,
                 Engagement: Math.round(engagements*1000/impressions)/10
             }))
         }
     />
     <Activity tweets={data.activity.tweets.length} replies={data.activity.replies.length}/>
-    <Reach impressions={data.reach.impressions} followers={data.reach.follows.length}/>
+    <Reach impressions={data.reach.impressions} followers={data.reach.follows}/>
     <DetailRing 
         data={[
             { name:'Likes', value: data.detail.kpis.likes},

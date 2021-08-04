@@ -3,15 +3,15 @@
 ## Atoms
 - [X] Engagement Rate Chart.
 - [X] Engagement Detail Chart.
-- [ ] KPI Counter.
-- [ ] KPI Column Title.
+- [X] KPI Counter.
+- [X] KPI Column Title.
 - [ ] Card collapsable body.
 - [ ] Data Row
     * [ ] For Label with value.
     * [ ] For Tweet & Users with KPIs.
 
 ## Molecules
-- [ ] Collabsable KPI Card to hold charts.
+- [X] Collabsable KPI Card to hold charts.
 
 ## Organisms
-- [ ] KPI Column to hold title and cards.
+- [X] KPI Column to hold title and cards.
