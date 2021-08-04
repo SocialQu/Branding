@@ -4,7 +4,7 @@
 - [X] Engagement Rate Chart.
 - [X] Engagement Detail Chart.
 - [X] KPI Counter.
-- [ ] KPI Column Title.
+- [X] KPI Column Title.
 - [ ] Card collapsable body.
 - [ ] Data Row
     * [ ] For Label with value.
@@ -14,4 +14,4 @@
 - [X] Collabsable KPI Card to hold charts.
 
 ## Organisms
-- [ ] KPI Column to hold title and cards.
+- [X] KPI Column to hold title and cards.
