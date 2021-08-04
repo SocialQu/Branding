@@ -1,8 +1,8 @@
 # Tasks
 
-* [ ] Import code & style.
-* [ ] Feed data.
-* [ ] Refactor Code.
+* [X] Import code & style.
+* [X] Feed data.
+* [X] Refactor Code.
 * [ ] Add missing components.
 * [ ] Test & Ops
 * [ ] Add extra features.
