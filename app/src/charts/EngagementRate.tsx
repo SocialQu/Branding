@@ -7,18 +7,18 @@ import { Kpi } from '../atoms/Kpi'
 
 const divChartStyle:CSSProperties = { maxWidth:210, minWidth:210, margin:'auto' }
 
-interface iChart { data: { name:string, engagement:number}[] }
+interface iChart { data: { name:string, Engagement:number}[] }
 const Chart = ({ data }: iChart) => <div className='level-item' style={divChartStyle}>
     <LineChart width={210} height={50} data={data}>
         <Tooltip formatter={(d:string) => `${d}%`} />
         <XAxis dataKey='name' hide />
-        <Line type='monotone' dataKey='engagement' stroke='#8884d8' strokeWidth={2} dot={false}/>
+        <Line type='monotone' dataKey='Engagement' stroke='#8884d8' strokeWidth={2} dot={false}/>
     </LineChart>
 </div>
 
 export const EngagementRate = ({ data }: iChart) => {
-    const avg = Math.round((data.reduce((d, { engagement }) => d+= engagement, 0)/data.length)*10)/10
-    const high = Math.round(Math.max(...data.map(({ engagement }) => engagement))*10)/10
+    const avg = Math.round((data.reduce((d, { Engagement }) => d+= Engagement, 0)/data.length)*10)/10
+    const high = Math.round(Math.max(...data.map(({ Engagement }) => Engagement))*10)/10
 
     return <Card title='Engagement Rate'>
         <nav className='level'>
