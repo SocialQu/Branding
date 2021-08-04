@@ -9,6 +9,16 @@ export interface iKpis {
 }
 
 
+export interface iStats { tweets:number, engagements:number, impressions:number }
+
+interface iEngagement extends iStats { tweet:string, topic:string }
+interface iTopic extends iStats { topic:string }
+interface iNiche extends iStats { niche:string }
+export interface iActivity { tweets:iTopic[], replies:iNiche[] }
+
+export interface iMention extends iStats { user:string, url:string }
+
+
 interface newFollower {
     user:string
     url:string
@@ -18,19 +28,12 @@ interface newFollower {
     audience:string
 }
 
+interface iTweet { text:string, kpis:iKpis }
+export interface iDetail { kpis:iKpis, tweets:iTweet }
+
 export interface iLastDay {
-    engagement:{
-        tweets:{ text:string, engagement:number }[]
-        topics:{ topic:string, tweets:number, rate:number }[]
-        kpis:iKpis
-    },
-    activity:{
-        tweets:{ text:string, topic:string, kpis:iKpis }[]
-        replies:{ text:string, niche:string, kpis:iKpis }[]
-    },
-    reach:{
-        impressions:number
-        niches:{ niche:string, tweets:number, impressions:number }[]
-        follows:newFollower[]
-    }
+    engagement: iEngagement[]
+    activity: iActivity
+    reach:{ impressions:number, mentions:iMention[], follows:newFollower[] }
+    detail:iDetail
 }
