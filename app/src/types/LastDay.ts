@@ -29,7 +29,7 @@ interface newFollower {
 }
 
 interface iTweet { text:string, kpis:iKpis }
-export interface iDetail { kpis:iKpis, tweets:iTweet }
+export interface iDetail { kpis:iKpis, tweets:iTweet[] }
 
 export interface iLastDay {
     engagement: iEngagement[]
