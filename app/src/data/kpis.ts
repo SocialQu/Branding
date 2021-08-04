@@ -10,7 +10,7 @@ const mentions = [{ user:'User', url:'url', impressions:1200, tweets:1, engageme
 const follows = [{ url:'', user:'', followers:1000, following:100, audience:'Audience', tweets:10 }]
 const detail = { kpis, tweets:[{ text:'Text', kpis}] }
 const lastDay:iLastDay = {
-    engagement: [{ tweet:'Tweet', topic:'topic', tweets:1, impressions:1200, engagements:3 }],
+    engagement: [{ tweet:'Tweet', topic:'topic', tweets:1, impressions:120, engagements:3 }],
     activity: { tweets, replies },
     reach: { impressions:2200, mentions, follows },
     detail
@@ -22,7 +22,7 @@ const days:iDayEngagement[] = [
     { day:'Tuesday', engagements:0, impressions:3, tweets:3, followers:2 },
     { day:'Wednesday', engagements:0, impressions:3, tweets:3, followers:2 }, 
     { day:'Thursday', engagements:0, impressions:3, tweets:3, followers:2 },
-    { day:'Friday', engagements:15, impressions:3, tweets:3, followers:2 }, 
+    { day:'Friday', engagements:15, impressions:730, tweets:3, followers:2 }, 
     { day:'Saturday', engagements:0, impressions:3, tweets:3, followers:2 },
     { day:'Sunday', engagements:0, impressions:3, tweets:3, followers:2 }
 ]
