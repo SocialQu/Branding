@@ -1,26 +1,12 @@
-import { iKpis } from './LastDay'
+import { iStats, iMention, iActivity, iDetail } from './LastDay'
 
-interface iMention {
-    user:string
-    link:string
-    niche:string
-    tweets:number
-    impressions:number
-}
+interface iDayEngagement extends iStats { day:string, followers:number }
+interface iAudience { audience:string, followers:number, following:number }
+
 
 export interface iLastWeek {
-    engagement:{
-        days:{ day:string, engagement:number }[],
-        topics:{ topic:string, tweets:number, rate:number }[],
-        kpis:iKpis
-    },
-    activity:{
-        tweets:{ topic:string, kpis:iKpis }[],
-        replies:{ niche:string, kpis:iKpis }[]
-    },
-    reach:{
-        impressions:number
-        mentions:iMention[],
-        follows:{ audience:string, newFollowers:number }[]
-    }
+    engagement:iDayEngagement[],
+    activity:iActivity,
+    reach:{ impressions:number, mentions:iMention[], follows:iAudience[] }
+    detail:iDetail
 }
