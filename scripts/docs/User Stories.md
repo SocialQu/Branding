@@ -26,3 +26,25 @@
 - [ ] Table can be sorted by row.
 - [ ] Data can be filtered by day, week, 15 days or month.
 - [ ] On click details of the topic and audience composition are shown. On double click it is an external link.
+
+
+## Top Latest Tweets
+- [ ] Carrousel to nicely display tweets.
+- [ ] Table with the topic composition of displayed tweet.
+- [ ] CTA to create personalized topic.
+
+
+## Link Sharing Correlations
+- [ ] Spider chart for top 3 to 5 links with colors for each stat:
+    - [ ] Tweets
+    - [ ] Engagement
+    - [ ] Impressions
+    - [ ] Links
+- [ ] Table with the cuadratic correlation in clicks:
+    - [ ] By link shared.
+    - [ ] Tweet & sentence length.
+    - [ ] Unique & rare words.
+    - [ ] Emojis usage.
+    - [ ] Relative position of the link.
+    - [ ] Time and day of tweet. 
+- [ ] Ideal value for each correlated dimension.
