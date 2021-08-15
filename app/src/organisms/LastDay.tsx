@@ -2,6 +2,7 @@ import { EngagementRate } from '../charts/EngagementRate'
 import { Activity, Reach } from '../molecules/KpiCards'
 import { DetailRing } from '../charts/DetailRing'
 import { iLastDay } from '../types'
+import { Tweet } from '../cards/Engagement'
 
 
 export const LastDay = ({data}: {data: iLastDay}) => <div className='column' style={{textAlign:'center'}} >
@@ -13,6 +14,7 @@ export const LastDay = ({data}: {data: iLastDay}) => <div className='column' sty
                 Engagement: Math.round(engagements*1000/impressions)/10
             }))
         }
+        extra={<Tweet/>}
     />
     <Activity tweets={data.activity.tweets.length} replies={data.activity.replies.length}/>
     <Reach impressions={data.reach.impressions} followers={data.reach.follows.length}/>
