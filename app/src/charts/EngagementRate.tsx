@@ -1,5 +1,5 @@
 import { LineChart, Line, Tooltip, XAxis } from 'recharts'
-import { CSSProperties } from 'react'
+import { CSSProperties, ReactNode } from 'react'
 
 import { Card } from '../molecules/Card'
 import { Kpi } from '../atoms/Kpi'
@@ -16,11 +16,11 @@ const Chart = ({ data }: iChart) => <div className='level-item' style={divChartS
     </LineChart>
 </div>
 
-export const EngagementRate = ({ data }: iChart) => {
+export const EngagementRate = (extra?:JSX.Element) => {
     const avg = Math.round((data.reduce((d, { Engagement }) => d+= Engagement, 0)/data.length)*10)/10
     const high = Math.round(Math.max(...data.map(({ Engagement }) => Engagement))*10)/10
 
-    return <Card title='Engagement Rate'>
+    return <Card title='Engagement Rate' extra={extra}>
         <nav className='level'>
             <Chart data={data}/>
             <Kpi label={'Avg'} value={avg || 0} isPercent/>
