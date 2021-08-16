@@ -48,3 +48,10 @@
     - [ ] Relative position of the link.
     - [ ] Time and day of tweet. 
 - [ ] Ideal value for each correlated dimension.
+
+
+## Topic Suggestions
+- [ ] Two tables, one by column: tweet more about, and tweet less.
+- [ ] Include new topics with an icon.
+- [ ] Order suggestions.
+- [ ] Quantify the magnitude of the suggestion.
