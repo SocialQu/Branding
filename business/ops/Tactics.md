@@ -20,5 +20,34 @@
     - [ ] Share one NLP paper and discuss it.
     - [ ] 3 comments on the week.
 
+- [ ] YouTube:
+    - [ ] Publish one new video.
+    - [ ] Document brand for the channel.
+
 - [ ] Prepare for Product Hunt immersion.
     - [ ] Visit website everyday.
+
+- [ ] Instagram:
+    - [ ] Create SocialQ brand.
+
+
+## Business Plan & Product
+- [ ] Marketing Research
+    - [ ] Analyisis Excersice the SaaS industry.
+    - [ ] Shallow analysis on AI and Marketing industries.
+    - [ ] Document barries to entry & defensability.
+    - [ ] Threats & opportunities.
+    - [ ] Product features & services.
+    - [ ] Define target customers.
+
+- [ ] Learn Figma
+    - [ ] Define goals.
+    - [ ] 2 to 5 hours of videos and podcasts.
+    - [ ] Tweet about it.
+    - [ ] Experimentation with the tool.
+    - [ ] Contact prospective designers.
+    - [ ] Wireframe expected UI.
+
+
+## Launch Preparations
+
