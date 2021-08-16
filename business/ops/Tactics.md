@@ -50,4 +50,25 @@
 
 
 ## Launch Preparations
+- [ ] CRM Setup
+    - [ ] Research options
+        - [ ] Hubspot.
+        - [ ] Notion.
+        - [ ] Other.
+    - [ ] Plan configuration
+        - [ ] Learn 5 use cases.
+        - [ ] Document how it will be used.
 
+- [ ] Daily contact
+    - [ ] Plan how to reach out to potential customers.
+    - [ ] Validate 3 to 5 different forms.
+    - [ ] 20 total reach outs.
+
+- [ ] Landing Site Planning
+    - [ ] Copywrite
+    - [ ] Structure
+    - [ ] Design Features
+    - [ ] Footer & Extra Content
+    - [ ] Next Setup
+    - [ ] Create Project
+    - [ ] Risk Analysis
