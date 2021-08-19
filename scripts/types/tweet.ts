@@ -2,7 +2,12 @@ interface iEntity {
     hashtags:any[]
     symbols:any[]
     user_mentions:any[]
-    urls:any[]
+    urls:{
+        url: string
+        expanded_url: string
+        display_url: string
+        indices: number[]
+    }[]
 }
 
 
@@ -84,7 +89,7 @@ interface iRetweet {
 }
 
 
-export interface iTweet {
+export interface iRawTweet {
     created_at:string
     id:number
     id_str:string
