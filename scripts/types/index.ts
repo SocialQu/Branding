@@ -1,2 +1,3 @@
 export { iMetrics } from './metrics'
-export { iTweet } from './tweet'
+export { iRawTweet } from './tweet'
+export { iRawFollower } from './followers'
