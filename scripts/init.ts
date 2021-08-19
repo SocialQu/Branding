@@ -1,7 +1,7 @@
 // npx ts-node init
 
 import Twitter, { TwitterOptions } from 'twitter-lite'
-import { iTweet, iMetrics } from './types'
+import { iRawTweet, iMetrics } from './types'
 import { promises as fs } from 'fs'
 
 require('dotenv').config()
@@ -23,7 +23,7 @@ const metricsClient = new Twitter({ ...options, version:'2', extension:false })
 
 
 const getTimeline = async() => {
-    const tweets:iTweet[] = await client.get('/statuses/user_timeline.json?count=10')
+    const tweets:iRawTweet[] = await client.get('/statuses/user_timeline.json?count=10')
     console.log('Timeline fetched.')
 
     const ids:string = tweets.filter(({ retweeted }) => !retweeted).map(({ id_str }) => id_str).join(',')
