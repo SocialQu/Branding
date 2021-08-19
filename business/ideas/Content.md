@@ -1,4 +1,4 @@
-# Ideas
+# Content Ideas
 
 - [ ] Analysis by industy for the landing site.
     - [ ] Use the 10 industries already identified.

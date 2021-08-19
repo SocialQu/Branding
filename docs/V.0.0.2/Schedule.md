@@ -2,8 +2,8 @@
 
 *Target Launch:* Monday 30th
 
-* [ ] **Monday 16:** Document Scripts & Charts.
-* [ ] **Tuesday 17:** Design DB models & UI.
+* [X] **Monday 16:** Document Scripts & Charts.
+* [X] **Tuesday 17:** Design DB models & UI.
 * [ ] **Wednesday 18:** Develop Scripts I
 * [ ] **Thursday 19:** Develop Scripts II
 * [ ] **Friday 20:** Document React Components.
