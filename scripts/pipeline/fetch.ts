@@ -1,6 +1,6 @@
 // npx ts-node fetch
 import Twitter, { TwitterOptions } from 'twitter-lite'
-import { iRawTweet, iMetrics } from '../types'
+import { iRawTweet, iMetrics, iRawFollower } from '../types'
 import { promises as fs } from 'fs'
 
 require('dotenv').config()
@@ -79,4 +79,29 @@ const getTweets = async():Promise<iTweet[]> => {
 }
 
 
-getTweets().catch(console.log)
+
+interface iFollower {
+    id: number
+    name: string
+    bio: string
+    tweets: number
+    followers: number
+    following: number
+}
+
+const getFollowers = async():Promise<iFollower[]> => {
+    const { users }:{ users:iRawFollower[] } = await client.get('/followers/list.json?')
+    const followers:iFollower[] = users.map(user => ({
+        id: user.id,
+        name: user.name,
+        bio: user.description,
+        tweets: user.statuses_count,
+        followers: user.followers_count,
+        following: user.friends_count
+    }))
+
+    console.log('Followers', followers)
+    return followers
+}
+
+getFollowers().catch(console.log)
