@@ -1,6 +1,8 @@
 // npx ts-node fetch
+
+import { iRawTweet, iMetrics, iRawFollower, iAuth } from '../types'
 import Twitter, { TwitterOptions } from 'twitter-lite'
-import { iRawTweet, iMetrics, iRawFollower } from '../types'
+import { MongoClient } from 'mongodb'
 import { promises as fs } from 'fs'
 
 require('dotenv').config()
@@ -11,7 +13,6 @@ const version = '1.1'
 
 const consumer_key = process.env.consumer_key as string
 const consumer_secret = process.env.consumer_secret as string
-console.log(consumer_key)
 
 const access_token_key = process.env.access_token_key as string
 const access_token_secret = process.env.access_token_secret as string
@@ -22,7 +23,7 @@ const client = new Twitter({...options, subdomain, version })
 const metricsClient = new Twitter({ ...options, version:'2', extension:false })
 
 
-interface iTweet {
+export interface iTweet {
     id: number
     text: string
     link?: string
@@ -42,6 +43,7 @@ const getLink = ({ entities }:iRawTweet) => !entities.urls[0]?.expanded_url.incl
 
 const getTweets = async():Promise<iTweet[]> => {
     const rawTweets:iRawTweet[] = await client.get('/statuses/user_timeline.json?count=10')
+
     const filteredTweets = rawTweets.filter(({ retweeted }) => !retweeted)
     console.log('Timeline fetched.')
 
@@ -75,10 +77,10 @@ const getTweets = async():Promise<iTweet[]> => {
     }))
 
     await fs.writeFile('../data/training/tweets.json', JSON.stringify(tweets))
-    return tweets as iTweet[]
+    return tweets
 }
 
-
+// getTweets().catch(console.log)
 
 interface iFollower {
     id: number
@@ -101,7 +103,49 @@ const getFollowers = async():Promise<iFollower[]> => {
     }))
 
     console.log('Followers', followers)
+
+    await fs.writeFile('../data/training/followers.json', JSON.stringify(followers))
     return followers
 }
 
-getFollowers().catch(console.log)
+
+// getFollowers().catch(console.log)
+
+
+interface iTopic {
+    _id: string
+    topic: string
+    embeddings: number[]
+    center: [number, number]
+}
+
+const uri = `mongodb+srv://${process.env.mongo_admin}/${process.env.cortazar_db}`
+
+const fetchTopics = async():Promise<iTopic[]> => {
+    const client = new MongoClient(uri)
+    await client.connect()
+
+    const Topics = client.db('Cortazar').collection('topics')
+    const topics:iTopic[] = await Topics.find().toArray()
+
+    console.log('topics', topics.length)
+    console.log('Topic:', topics[0])
+
+    await fs.writeFile('../data/training/topics.json', JSON.stringify(topics))
+    await client.close()
+
+    return topics
+}
+
+// fetchTopics().catch(console.log)
+
+
+const getFollowerCount = async():Promise<number> => {
+    const { followers_count }:iAuth = await client.get('/account/verify_credentials')
+    console.log('Followers count:', followers_count)
+
+    return followers_count
+}
+
+
+// getFollowerCount().catch(console.log)
