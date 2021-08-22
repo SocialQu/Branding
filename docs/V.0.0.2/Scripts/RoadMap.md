@@ -5,3 +5,4 @@
 - [X] Connect to DB and fetch topics.
 - [X] Install TF dependencies and embed tweets.
 - [X] Find topics for each tweet (test manually).
+- [X] Reduce dimensionality of tweets.
