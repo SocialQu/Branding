@@ -1,4 +1,4 @@
-// npx ts-node analysis
+// npx ts-node 2.Analysis
 
 import * as use from '@tensorflow-models/universal-sentence-encoder'
 import tweets from '../data/training/tweets.json'

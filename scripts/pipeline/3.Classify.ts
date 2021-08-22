@@ -1,4 +1,4 @@
-// npx ts-node classify
+// npx ts-node 3.Classify
 
 import tweets from '../data/training/embeddedTweets.json'
 import topics from '../data/training/topics.json'
