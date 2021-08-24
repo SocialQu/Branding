@@ -37,20 +37,21 @@ interface iTweetBubbles {
     engagements: number
 }
 
+interface iTopic {
+    topic: string
+    color: string
+    tweets: number
+    engagements: number
+    impressions: number
+    avgEngagements: number
+}
+
 
 interface iBuildData {
     user: iUser
     tweetDays: iTweetDays
-    tweetBubbles: iTweetBubbles[]
-    
-    topics: {
-        topic: string
-        color: string
-        tweets: number
-        engagements: number
-        impressions: number
-        avgEngagements: number
-    }[]
+    tweetBubbles: iTweetBubbles[]    
+    topics: iTopic[]
     
     audiences: {
         topic: string
