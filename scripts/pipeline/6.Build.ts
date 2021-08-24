@@ -4,10 +4,6 @@ import tweets from '../data/training/reducedTweets.json'
 import { iTweet, iUser, iMetrics } from './1.Fetch'
 import user from '../data/training/user.json' 
 
-interface iKPI {
-    average:number
-    trend:number
-}
 
 interface iCorrelation {
     coefficient: number
@@ -37,9 +33,9 @@ interface iTweetBubbles {
     engagements: number
 }
 
-interface iTopic {
+interface iTweetTopic {
     topic: string
-    color: string
+    color?: string
     tweets: number
     engagements: number
     impressions: number
@@ -51,7 +47,7 @@ interface iBuildData {
     user: iUser
     tweetDays: iTweetDays
     tweetBubbles: iTweetBubbles[]    
-    topics: iTopic[]
+    tweetTopics: iTweetTopic[]
     
     audiences: {
         topic: string
@@ -95,7 +91,7 @@ interface iBuildData {
 }
 
 
-const getEngagements = (m: iMetrics) => m.likes + m.clicks + m.impressions + m.visits + m.replies + m.retweets
+const getEngagements = (m: iMetrics) => m.likes + m.clicks + m.visits + m.replies + m.retweets
 
 const build = () => {
     const daysDictionary = tweets.reduce((d, i) => {
@@ -111,10 +107,25 @@ const build = () => {
         coordinates:{ x: location.x, y: location.y }
     }))
 
+    const uniqueTopics = new Set(tweets.map(({ topic }) => topic))
+    const topicsDict = [...uniqueTopics].map(topic => ({
+        topic,
+        tweets: tweets.filter(({ topic:t }) => topic === t)
+    }))
+
+    const tweetTopics:iTweetTopic[] = topicsDict.map(({ topic, tweets }) => ({ 
+        topic,
+        tweets:tweets.length,
+        impressions: tweets.reduce((d, { metrics }) => d+= metrics.impressions, 0),
+        engagements: tweets.reduce((d, { metrics }) => d+= getEngagements(metrics), 0)
+    })).map(t => ({...t, avgEngagements:t.engagements/t.tweets }))
+
+
     const buildData = {
         user,
         tweetDays,
-        tweetBubbles
+        tweetBubbles,
+        tweetTopics
     }
 
     console.log(buildData)
