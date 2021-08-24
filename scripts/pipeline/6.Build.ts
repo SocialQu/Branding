@@ -69,6 +69,18 @@ interface iLinks {
     clicks: number
 }
 
+interface iCorrelation {
+    link: iCorrelation
+    frequency: iCorrelation
+    lenght: iCorrelation
+    emojis: iCorrelation
+    position: iCorrelation
+    time: iCorrelation
+    weekday: iCorrelation
+}
+
+
+
 interface iBuildData {
     user: iUser
     tweetDays: iTweetDays
@@ -76,17 +88,8 @@ interface iBuildData {
     tweetTopics: iTweetTopic[]
     audiences: iAudience[]
     topTweets: iTopTweets[]
-    links: iLinks[]
-    
-    correlations: {
-        link: iCorrelation
-        frequency: iCorrelation
-        lenght: iCorrelation
-        emojis: iCorrelation
-        position: iCorrelation
-        time: iCorrelation
-        weekday: iCorrelation
-    }
+    links: iLinks[]    
+    correlations: iCorrelation[]
     
     suggestions: {
         positive: iSuggestion
