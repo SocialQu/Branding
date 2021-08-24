@@ -1,4 +1,4 @@
-// npx ts-node analysis
+// npx ts-node 2.Analysis
 
 import * as use from '@tensorflow-models/universal-sentence-encoder'
 import tweets from '../data/training/tweets.json'
@@ -17,7 +17,7 @@ const embedTweets = async():Promise<iEmbeddedTweet[]> => {
     const tensors = await model.embed(texts)
     const embeddings = tensors.arraySync()
 
-    embeddings.map(([i]) => console.log('First dim:', i))
+    // embeddings.map(([i]) => console.log('First dim:', i))
     const embeddedTweets = tweets.map((t,i) => ({...t, embeddings:embeddings[i] }))
 
     await fs.writeFile('../data/training/embeddedTweets.json', JSON.stringify(embeddedTweets))

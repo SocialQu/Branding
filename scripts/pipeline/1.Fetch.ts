@@ -1,4 +1,4 @@
-// npx ts-node fetch
+// npx ts-node 1.Fetch
 
 import { iRawTweet, iMetrics, iRawFollower, iAuth } from '../types'
 import Twitter, { TwitterOptions } from 'twitter-lite'
@@ -67,6 +67,7 @@ const getTweets = async():Promise<iTweet[]> => {
         id: t.id,
         text: t.metrics.text,
         link: getLink(t),
+        datetime: t.created_at,
         metrics:{
             likes: t.metrics.organic_metrics.like_count,
             replies: t.metrics.organic_metrics.reply_count,
@@ -82,7 +83,7 @@ const getTweets = async():Promise<iTweet[]> => {
     return tweets
 }
 
-getTweets().catch(console.log)
+// getTweets().catch(console.log)
 
 interface iFollower {
     id: number
@@ -142,12 +143,22 @@ const fetchTopics = async():Promise<iTopic[]> => {
 // fetchTopics().catch(console.log)
 
 
-const getFollowerCount = async():Promise<number> => {
-    const { followers_count }:iAuth = await client.get('/account/verify_credentials')
-    console.log('Followers count:', followers_count)
+export interface iUser {
+    id: number
+    name: string
+    screen_name: string
+    followers_count: number
+}
 
-    return followers_count
+const getUser = async():Promise<iUser> => {
+    const { id, name, screen_name, followers_count }:iAuth = await client.get('/account/verify_credentials')
+
+    const user:iUser = { id, name, screen_name, followers_count }
+    console.log('User:', user)
+
+    await fs.writeFile('../data/training/user.json', JSON.stringify(user))
+    return user
 }
 
 
-// getFollowerCount().catch(console.log)
+// getUser().catch(console.log)
