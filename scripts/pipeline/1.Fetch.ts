@@ -1,6 +1,6 @@
 // npx ts-node 1.Fetch
 
-import { iRawTweet, iMetrics, iRawFollower, iAuth } from '../types'
+import { iRawTweet, iRawMetrics, iRawFollower, iAuth } from '../types'
 import Twitter, { TwitterOptions } from 'twitter-lite'
 import { MongoClient } from 'mongodb'
 import { promises as fs } from 'fs'
@@ -23,17 +23,21 @@ const client = new Twitter({...options, subdomain, version })
 const metricsClient = new Twitter({ ...options, version:'2', extension:false })
 
 
+export interface iMetrics {
+    likes: number
+    clicks: number
+    visits: number
+    replies: number
+    retweets: number
+    impressions: number
+}
+
 export interface iTweet {
     id: number
     text: string
     link?: string
-    metrics:{
-        likes: number
-        replies: number
-        retweets: number
-        clicks: number
-        visits: number
-    }
+    datetime: string
+    metrics: iMetrics
     isReply:boolean
 }
 
@@ -55,12 +59,12 @@ const getTweets = async():Promise<iTweet[]> => {
     const metricsUrl = `tweets?ids=${ids}&tweet.${fields}`
     // console.log('metricsUrl', metricsUrl)
 
-    const { data:metrics }:{ data: iMetrics[]} = await metricsClient.get(metricsUrl)
+    const { data:metrics }:{ data: iRawMetrics[]} = await metricsClient.get(metricsUrl)
     console.log('Metrics fetched.')
 
     const tweetsWithMetrics = filteredTweets.map((t) => ({
         ...t, 
-        metrics: metrics.find(({ id }) => t.id_str === id) as iMetrics
+        metrics: metrics.find(({ id }) => t.id_str === id) as iRawMetrics
     }))
 
     const tweets:iTweet[] = tweetsWithMetrics.filter(({ metrics }) => metrics).map(t => ({
