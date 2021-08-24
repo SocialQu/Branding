@@ -67,6 +67,7 @@ const getTweets = async():Promise<iTweet[]> => {
         id: t.id,
         text: t.metrics.text,
         link: getLink(t),
+        datetime: t.created_at,
         metrics:{
             likes: t.metrics.organic_metrics.like_count,
             replies: t.metrics.organic_metrics.reply_count,
@@ -142,7 +143,7 @@ const fetchTopics = async():Promise<iTopic[]> => {
 // fetchTopics().catch(console.log)
 
 
-interface iUser {
+export interface iUser {
     id: number
     name: string
     screen_name: string
@@ -160,4 +161,4 @@ const getUser = async():Promise<iUser> => {
 }
 
 
-getUser().catch(console.log)
+// getUser().catch(console.log)
