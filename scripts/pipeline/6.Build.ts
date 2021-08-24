@@ -1,6 +1,6 @@
 // npx ts-node 6.Build
 
-import { iTweetBubbles, iTweetTopic } from '../types/build'
+import { iTweetBubbles, iTweetDays, iTweetTopic } from '../types/build'
 import { iTweet, iMetrics } from '../pipeline/1.Fetch'
 
 import tweets from '../data/training/reducedTweets.json' 
@@ -11,11 +11,14 @@ const getEngagements = (m: iMetrics) => m.likes + m.clicks + m.visits + m.replie
 
 const build = () => {
     const daysDictionary = tweets.reduce((d, i) => {
-        const date = new Date(i.datetime).getDate()
-        return d[date] ? {...d, [date]:[...d[date], i]} : {...d, [date]:[i]}
-    }, {} as {[date:number]:iTweet[]})
+        const day = new Date(i.datetime).getDate()
+        return d[day] ? {...d, [day]:[...d[day], i]} : {...d, [day]:[i]}
+    }, {} as {[day:number]:iTweet[]})
 
-    const tweetDays = Object.entries(daysDictionary).map(([day, tweets]) => ({ day, tweets}))
+    const daysArray = Object.entries(daysDictionary)
+    const tweetDays:iTweetDays[] = daysArray.map(([day, tweets]) => ({ day:Number(day), tweets}))
+
+
     const tweetBubbles:iTweetBubbles[] = tweets.map(({ text, topic, location, metrics }) => ({
         topic,
         tweet:text,
@@ -46,5 +49,6 @@ const build = () => {
 
     console.log(buildData)
 }
+
 
 build()
