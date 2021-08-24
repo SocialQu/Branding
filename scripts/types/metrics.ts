@@ -7,7 +7,7 @@ interface iOrganicMetrics {
     url_link_clicks?: 0
 }
 
-export interface iMetrics {
+export interface iRawMetrics {
     organic_metrics: iOrganicMetrics
     id: string
     text: string

@@ -1,8 +1,8 @@
 // npx ts-node 6.Build
 
 import tweets from '../data/training/reducedTweets.json' 
+import { iTweet, iUser, iMetrics } from './1.Fetch'
 import user from '../data/training/user.json' 
-import { iTweet, iUser } from './1.Fetch'
 
 interface iKPI {
     average:number
@@ -21,23 +21,27 @@ interface iSuggestion {
     engagements: number
 }
 
+interface iTweetDays {
+    day: number
+    tweets: iTweet[]
+}
+
+interface iTweetBubbles {
+    tweet: string
+    topic: string 
+    color?: string
+    coordinates: { 
+        x: number
+        y: number
+    }
+    engagements: number
+}
+
+
 interface iBuildData {
     user: iUser
-    tweetDays: {
-        day: number
-        tweets: iTweet[]
-    }
-    
-    bubbles: {
-        tweet: string
-        topic: string 
-        color: string
-        coordinates: { 
-            x: number
-            y: number
-        }
-        engagements: number
-    }[]
+    tweetDays: iTweetDays
+    tweetBubbles: iTweetBubbles[]
     
     topics: {
         topic: string
@@ -90,6 +94,8 @@ interface iBuildData {
 }
 
 
+const getEngagements = (m: iMetrics) => m.likes + m.clicks + m.impressions + m.visits + m.replies + m.retweets
+
 const build = () => {
     const daysDictionary = tweets.reduce((d, i) => {
         const date = new Date(i.datetime).getDate()
@@ -97,10 +103,17 @@ const build = () => {
     }, {} as {[date:number]:iTweet[]})
 
     const tweetDays = Object.entries(daysDictionary).map(([day, tweets]) => ({ day, tweets}))
+    const tweetBubbles:iTweetBubbles[] = tweets.map(({ text, topic, location, metrics }) => ({
+        topic,
+        tweet:text,
+        engagements: getEngagements(metrics),
+        coordinates:{ x: location.x, y: location.y }
+    }))
 
     const buildData = {
         user,
-        tweetDays
+        tweetDays,
+        tweetBubbles
     }
 
     console.log(buildData)
