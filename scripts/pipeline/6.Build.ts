@@ -62,6 +62,13 @@ interface iTopTweets {
     }[]
 }
 
+interface iLinks {
+    tweets: number
+    engagements: number
+    impressions: number
+    clicks: number
+}
+
 interface iBuildData {
     user: iUser
     tweetDays: iTweetDays
@@ -69,13 +76,7 @@ interface iBuildData {
     tweetTopics: iTweetTopic[]
     audiences: iAudience[]
     topTweets: iTopTweets[]
-    
-    links: {
-        tweets: number
-        engagements: number
-        impressions: number
-        clicks: number
-    }[]
+    links: iLinks[]
     
     correlations: {
         link: iCorrelation
