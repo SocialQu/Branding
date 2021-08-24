@@ -1,5 +1,9 @@
 // npx ts-node 6.Build
 
+import tweets from '../data/training/reducedTweets.json' 
+import user from '../data/training/user.json' 
+import { iTweet, iUser } from './1.Fetch'
+
 interface iKPI {
     average:number
     trend:number
@@ -17,13 +21,11 @@ interface iSuggestion {
     engagements: number
 }
 
-interface iRawData {
-    user: string
-    kpis: {
-        tweets: iKPI
-        engagements: iKPI
-        impressions: iKPI
-        newFollowers: iKPI
+interface iBuildData {
+    user: iUser
+    tweetDays: {
+        day: number
+        tweets: iTweet[]
     }
     
     bubbles: {
@@ -87,4 +89,21 @@ interface iRawData {
     }    
 }
 
-const build = () => {}
+
+const build = () => {
+    const daysDictionary = tweets.reduce((d, i) => {
+        const date = new Date(i.datetime).getDate()
+        return d[date] ? {...d, [date]:[...d[date], i]} : {...d, [date]:[i]}
+    }, {} as {[date:number]:iTweet[]})
+
+    const tweetDays = Object.entries(daysDictionary).map(([day, tweets]) => ({ day, tweets}))
+
+    const buildData = {
+        user,
+        tweetDays
+    }
+
+    console.log(buildData)
+}
+
+build()
