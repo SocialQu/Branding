@@ -17,7 +17,7 @@ const embedTweets = async():Promise<iEmbeddedTweet[]> => {
     const tensors = await model.embed(texts)
     const embeddings = tensors.arraySync()
 
-    embeddings.map(([i]) => console.log('First dim:', i))
+    // embeddings.map(([i]) => console.log('First dim:', i))
     const embeddedTweets = tweets.map((t,i) => ({...t, embeddings:embeddings[i] }))
 
     await fs.writeFile('../data/training/embeddedTweets.json', JSON.stringify(embeddedTweets))
