@@ -79,6 +79,11 @@ interface iCorrelation {
     weekday: iCorrelation
 }
 
+interface iSuggestions {
+    positive: iSuggestion
+    negative: iSuggestion
+}
+
 
 
 interface iBuildData {
@@ -89,12 +94,8 @@ interface iBuildData {
     audiences: iAudience[]
     topTweets: iTopTweets[]
     links: iLinks[]    
-    correlations: iCorrelation[]
-    
-    suggestions: {
-        positive: iSuggestion
-        negative: iSuggestion
-    }    
+    correlations: iCorrelation[]    
+    suggestions: iSuggestions
 }
 
 
