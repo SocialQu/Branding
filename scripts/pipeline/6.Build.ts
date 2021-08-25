@@ -1,8 +1,8 @@
 // npx ts-node 6.Build
 
 import { iAudience, iBuildData, iTweetBubbles, iTweetDays, iTweetTopic } from '../types/build'
+import { iTopTweet, iLink, iCorrelations } from '../types/build'
 import { iTweet, iMetrics } from '../pipeline/1.Fetch'
-import { iTopTweet, iLink } from '../types/build'
 
 import followers from '../data/training/labeledFollowers.json' 
 import tweets from '../data/training/reducedTweets.json' 
@@ -97,6 +97,20 @@ const getLinks = ():iLink[] => {
     return links
 }
 
+const getCorrelations = ():iCorrelations => {
+    const tempCorrelation = { ideal:0, coefficient: 0}
+
+    return {
+        link:tempCorrelation,
+        frequency: tempCorrelation,
+        lenght: tempCorrelation,
+        emojis: tempCorrelation,
+        position: tempCorrelation,
+        time: tempCorrelation,
+        weekday: tempCorrelation
+    }
+}
+
 
 const build = ():iBuildData => ({
     user,
@@ -105,7 +119,8 @@ const build = ():iBuildData => ({
     tweetTopics:getTweetTopics(),
     audiences:getAudiences(),
     topTweets:getTopTweets(),
-    links: getLinks()
+    links: getLinks(),
+    correlations:getCorrelations()
 })
 
 build()
