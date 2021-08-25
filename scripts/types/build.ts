@@ -1,18 +1,6 @@
 import { iTweet, iUser } from '../pipeline/1.Fetch'
 
 
-interface iCorrelation {
-    coefficient: number
-    ideal: number
-}
-
-interface iSuggestion {
-    topic: string
-    isNew: boolean
-    tweets: number
-    engagements: number
-}
-
 export interface iTweetDays {
     day: number
     tweets: iTweet[]
@@ -58,14 +46,21 @@ export interface iTopTweet {
     }[]
 }
 
-interface iLinks {
+export interface iLink {
+    link:string
     tweets: number
     engagements: number
     impressions: number
     clicks: number
 }
 
-interface iCorrelations {
+
+interface iCorrelation {
+    coefficient: number
+    ideal: number
+}
+
+export interface iCorrelations {
     link: iCorrelation
     frequency: iCorrelation
     lenght: iCorrelation
@@ -75,11 +70,18 @@ interface iCorrelations {
     weekday: iCorrelation
 }
 
-interface iSuggestions {
-    positive: iSuggestion
-    negative: iSuggestion
+
+export interface iSuggestion {
+    topic: string
+    isNew: boolean
+    tweets: number
+    engagements: number
 }
 
+export interface iSuggestions {
+    positive: iSuggestion[]
+    negative: iSuggestion[]
+}
 
 
 export interface iBuildData {
@@ -89,7 +91,7 @@ export interface iBuildData {
     tweetTopics: iTweetTopic[]
     audiences: iAudience[]
     topTweets: iTopTweet[]
-    links?: iLinks[]    
-    correlations?: iCorrelations[]    
-    suggestions?: iSuggestions
+    links: iLink[]    
+    correlations: iCorrelations 
+    suggestions: iSuggestions
 }

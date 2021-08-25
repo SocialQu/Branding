@@ -1,8 +1,8 @@
 // npx ts-node 6.Build
 
 import { iAudience, iBuildData, iTweetBubbles, iTweetDays, iTweetTopic } from '../types/build'
+import { iTopTweet, iLink, iCorrelations, iSuggestions, iSuggestion } from '../types/build'
 import { iTweet, iMetrics } from '../pipeline/1.Fetch'
-import { iTopTweet } from '../types/build'
 
 import followers from '../data/training/labeledFollowers.json' 
 import tweets from '../data/training/reducedTweets.json' 
@@ -77,14 +77,70 @@ const getTopTweets = ():iTopTweet[] => {
     return topTweets
 }
 
-const build = ():iBuildData => ({
-    user,
-    tweetDays:getTweetDays(),
-    tweetBubbles:getTweetBubbles(),
-    tweetTopics:getTweetTopics(),
-    audiences:getAudiences(),
-    topTweets:getTopTweets()
-})
+const getLinks = ():iLink[] => {
+    const tweetsWithLink = tweets.filter(({ link }) => link)
+    const uniqueLinks = new Set(tweetsWithLink.map(({ link }) => link))
 
+    const linksDict = [...uniqueLinks].map(link => ({
+        link: link,
+        tweets: tweets.filter(({ link:l }) => link === l)
+    }))
+
+    const links = linksDict.map(({ tweets, link }) => ({ 
+        link: link as string,
+        tweets: tweets.length,
+        clicks: tweets.reduce((d, { metrics }) => d += metrics.clicks, 0),
+        impressions: tweets.reduce((d, { metrics }) => d += metrics.impressions, 0),
+        engagements: tweets.reduce((d, { metrics }) => d += getEngagements(metrics), 0)
+    }))
+
+    return links
+}
+
+const getCorrelations = ():iCorrelations => {
+    const tempCorrelation = { ideal:0, coefficient: 0}
+
+    return {
+        link:tempCorrelation,
+        frequency: tempCorrelation,
+        lenght: tempCorrelation,
+        emojis: tempCorrelation,
+        position: tempCorrelation,
+        time: tempCorrelation,
+        weekday: tempCorrelation
+    }
+}
+
+const getSuggestions = (topics:iTweetTopic[]):iSuggestions => {
+    const sortedTopics = topics.sort(({ avgEngagements:a }, { avgEngagements:b }) => a > b ? 1 : -1)
+    const topTopics = sortedTopics.filter((_, i, l) => i < l.length/2)
+    const bottomTopics = sortedTopics.filter((_, i, l) => l.length/2 < i)
+
+    const formatSuggestions = (topics: iTweetTopic[]):iSuggestion[] => topics.map(topic => ({
+        isNew: false, topic: topic.topic, tweets: topic.tweets, engagements: topic.engagements
+    }))
+
+    return {
+        positive: formatSuggestions(topTopics),
+        negative: formatSuggestions(bottomTopics)
+    }
+}
+
+
+const build = ():iBuildData => {
+    const tweetTopics = getTweetTopics()
+
+    return {
+        user,
+        tweetDays:getTweetDays(),
+        tweetBubbles:getTweetBubbles(),
+        tweetTopics:tweetTopics,
+        audiences:getAudiences(),
+        topTweets:getTopTweets(),
+        links: getLinks(),
+        correlations:getCorrelations(),
+        suggestions:getSuggestions(tweetTopics)
+    }
+}
 
 build()
