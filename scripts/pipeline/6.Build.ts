@@ -10,7 +10,7 @@ import user from '../data/training/user.json'
 
 const getEngagements = (m: iMetrics) => m.likes + m.clicks + m.visits + m.replies + m.retweets
 
-const build = () => {
+const getTweetDays = () => {
     const daysDictionary = tweets.reduce((d, i) => {
         const day = new Date(i.datetime).getDate()
         return d[day] ? {...d, [day]:[...d[day], i]} : {...d, [day]:[i]}
@@ -18,6 +18,11 @@ const build = () => {
 
     const daysArray = Object.entries(daysDictionary)
     const tweetDays:iTweetDays[] = daysArray.map(([day, tweets]) => ({ day:Number(day), tweets}))
+    return tweetDays
+}
+
+
+const build = () => {
 
 
     const tweetBubbles:iTweetBubbles[] = tweets.map(({ text, topic, location, metrics }) => ({
@@ -58,7 +63,7 @@ const build = () => {
 
     const buildData = {
         user,
-        tweetDays,
+        tweetDays:getTweetDays(),
         tweetBubbles,
         tweetTopics,
         audiences
