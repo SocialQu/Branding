@@ -49,11 +49,11 @@ export interface iAudience {
 }
 
 
-interface iTopTweets {
+export interface iTopTweet {
     id:number
     topics:{
         topic: string
-        color: string
+        color?: string
         percentage: number
     }[]
 }
@@ -88,7 +88,7 @@ export interface iBuildData {
     tweetBubbles: iTweetBubbles[]    
     tweetTopics: iTweetTopic[]
     audiences: iAudience[]
-    topTweets?: iTopTweets[]
+    topTweets?: iTopTweet[]
     links?: iLinks[]    
     correlations?: iCorrelations[]    
     suggestions?: iSuggestions
