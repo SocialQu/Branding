@@ -21,17 +21,15 @@ const getTweetDays = () => {
     return tweetDays
 }
 
+const getTweetBubbles = ():iTweetBubbles[] => tweets.map(({ text, topic, location, metrics }) => ({
+    topic,
+    tweet:text,
+    engagements: getEngagements(metrics),
+    coordinates:{ x: location.x, y: location.y }
+}))
+
 
 const build = () => {
-
-
-    const tweetBubbles:iTweetBubbles[] = tweets.map(({ text, topic, location, metrics }) => ({
-        topic,
-        tweet:text,
-        engagements: getEngagements(metrics),
-        coordinates:{ x: location.x, y: location.y }
-    }))
-
     const uniqueTopics = new Set(tweets.map(({ topic }) => topic))
     const topicsDict = [...uniqueTopics].map(topic => ({
         topic,
@@ -64,7 +62,7 @@ const build = () => {
     const buildData = {
         user,
         tweetDays:getTweetDays(),
-        tweetBubbles,
+        tweetBubbles:getTweetBubbles(),
         tweetTopics,
         audiences
     }
