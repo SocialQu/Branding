@@ -71,7 +71,7 @@ export interface iCorrelations {
 }
 
 
-interface iSuggestion {
+export interface iSuggestion {
     topic: string
     isNew: boolean
     tweets: number
