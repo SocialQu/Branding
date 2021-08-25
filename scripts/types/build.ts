@@ -88,8 +88,8 @@ export interface iBuildData {
     tweetBubbles: iTweetBubbles[]    
     tweetTopics: iTweetTopic[]
     audiences: iAudience[]
-    topTweets: iTopTweets[]
-    links: iLinks[]    
-    correlations: iCorrelations[]    
-    suggestions: iSuggestions
+    topTweets?: iTopTweets[]
+    links?: iLinks[]    
+    correlations?: iCorrelations[]    
+    suggestions?: iSuggestions
 }
