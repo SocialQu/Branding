@@ -1,7 +1,7 @@
 // npx ts-node 6.Build
 
 import { iAudience, iBuildData, iTweetBubbles, iTweetDays, iTweetTopic } from '../types/build'
-import { iTopTweet, iLink, iCorrelations } from '../types/build'
+import { iTopTweet, iLink, iCorrelations, iSuggestions, iSuggestion } from '../types/build'
 import { iTweet, iMetrics } from '../pipeline/1.Fetch'
 
 import followers from '../data/training/labeledFollowers.json' 
@@ -111,16 +111,36 @@ const getCorrelations = ():iCorrelations => {
     }
 }
 
+const getSuggestions = (topics:iTweetTopic[]):iSuggestions => {
+    const sortedTopics = topics.sort(({ avgEngagements:a }, { avgEngagements:b }) => a > b ? 1 : -1)
+    const topTopics = sortedTopics.filter((_, i, l) => i < l.length/2)
+    const bottomTopics = sortedTopics.filter((_, i, l) => l.length/2 < i)
 
-const build = ():iBuildData => ({
-    user,
-    tweetDays:getTweetDays(),
-    tweetBubbles:getTweetBubbles(),
-    tweetTopics:getTweetTopics(),
-    audiences:getAudiences(),
-    topTweets:getTopTweets(),
-    links: getLinks(),
-    correlations:getCorrelations()
-})
+    const formatSuggestions = (topics: iTweetTopic[]):iSuggestion[] => topics.map(topic => ({
+        isNew: false, topic: topic.topic, tweets: topic.tweets, engagements: topic.engagements
+    }))
+
+    return {
+        positive: formatSuggestions(topTopics),
+        negative: formatSuggestions(bottomTopics)
+    }
+}
+
+
+const build = ():iBuildData => {
+    const tweetTopics = getTweetTopics()
+
+    return {
+        user,
+        tweetDays:getTweetDays(),
+        tweetBubbles:getTweetBubbles(),
+        tweetTopics:tweetTopics,
+        audiences:getAudiences(),
+        topTweets:getTopTweets(),
+        links: getLinks(),
+        correlations:getCorrelations(),
+        suggestions:getSuggestions(tweetTopics)
+    }
+}
 
 build()
