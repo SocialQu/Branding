@@ -82,9 +82,9 @@ interface iSuggestions {
 
 
 
-interface iBuildData {
+export interface iBuildData {
     user: iUser
-    tweetDays: iTweetDays
+    tweetDays: iTweetDays[]
     tweetBubbles: iTweetBubbles[]    
     tweetTopics: iTweetTopic[]
     audiences: iAudience[]
