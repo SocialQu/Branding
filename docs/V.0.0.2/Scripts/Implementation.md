@@ -23,22 +23,22 @@
 6. [ ] Store on DB.
 
 ## Top Tweets Break Down
-1. [ ] Get top 10 tweets by engagement.
+1. [X] Get top 10 tweets by engagement.
 2. [ ] Compute the distance from the tweet embeddings to each topic.
 3. [ ] Normalize the total distance to each topic.
 4. [ ] Select top 5 topics and store.
 
 ## Link Clicks Analysis
 1. [X] Get original URL of the link.
-2. [ ] Filter out links from tweets.
-3. [ ] Aggregate stats by link.
+2. [X] Filter out links from tweets.
+3. [X] Aggregate stats by link.
 4. [ ] Compute correlation coefficient. 
 5. [ ] Get the maximum or ideal value for each correlation.
 6. [ ] Store values on DB.
 
 ## Topic Suggestions
-1. [ ] Splits the tweets in 2 categories: above average engament, and below engament.
-2. [ ] Sort the tweets and arrange them in both tables.
-3. [ ] Compute the center of engament with clustering.
+2. [X] Sort tweets by average engagement.
+1. [X] Splits the topics in 2 categories: above average engament, and below average.
+3. [ ] Compute the center of engagement with clustering.
 4. [ ] Find the 2 or 3 topics that does not contain tweets and suggest them.
 5. [ ] Store results on DB.
