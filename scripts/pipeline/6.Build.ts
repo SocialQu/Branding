@@ -1,6 +1,6 @@
 // npx ts-node 6.Build
 
-import { iAudience, iTweetBubbles, iTweetDays, iTweetTopic } from '../types/build'
+import { iAudience, iBuildData, iTweetBubbles, iTweetDays, iTweetTopic } from '../types/build'
 import { iTweet, iMetrics } from '../pipeline/1.Fetch'
 
 import followers from '../data/training/labeledFollowers.json' 
@@ -64,17 +64,13 @@ const getAudiences = ():iAudience[] => {
 }
 
 
-const build = () => {
-    const buildData = {
-        user,
-        tweetDays:getTweetDays(),
-        tweetBubbles:getTweetBubbles(),
-        tweetTopics:getTweetTopics(),
-        audiences:getAudiences()
-    }
-
-    console.log(buildData)
-}
+const build = ():iBuildData => ({
+    user,
+    tweetDays:getTweetDays(),
+    tweetBubbles:getTweetBubbles(),
+    tweetTopics:getTweetTopics(),
+    audiences:getAudiences()
+})
 
 
 build()
