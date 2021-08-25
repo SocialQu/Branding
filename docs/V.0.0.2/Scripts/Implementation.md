@@ -2,7 +2,7 @@
 
 ## KPIs
 1. [X] Fetch the data from Twitter.
-2. [ ] Arrange the data in seven day interval arrays.
+2. [X] Arrange the data in seven day interval arrays.
 3. [ ] Develop linear correlation helper function.
 4. [ ] Compute the trend for each KPI.
 5. [ ] Overwrite the kpi to the DB.
@@ -16,10 +16,11 @@
 
 ## Topic & Audience Bars
 1. [X] Get the tweets, stats and topics.
-2. [ ] Group tweets by topics and store on DB.
-3. [ ] Fetch recent followers, their stats, and bios.
+2. [X] Group tweets by topics.
+3. [X] Fetch recent followers, their stats, and bios.
 4. [ ] Embed and classify bios by topic.
 5. [ ] Aggregate data by topic and audience.
+6. [ ] Store on DB.
 
 ## Top Tweets Break Down
 1. [ ] Get top 10 tweets by engagement.
@@ -28,8 +29,8 @@
 4. [ ] Select top 5 topics and store.
 
 ## Link Clicks Analysis
-1. [ ] Filter out links from tweets.
-2. [X] Get original URL of the link.
+1. [X] Get original URL of the link.
+2. [ ] Filter out links from tweets.
 3. [ ] Aggregate stats by link.
 4. [ ] Compute correlation coefficient. 
 5. [ ] Get the maximum or ideal value for each correlation.

@@ -89,7 +89,8 @@ const getTweets = async():Promise<iTweet[]> => {
 
 // getTweets().catch(console.log)
 
-interface iFollower {
+
+export interface iFollower {
     id: number
     name: string
     bio: string
