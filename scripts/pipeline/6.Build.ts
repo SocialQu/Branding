@@ -2,6 +2,7 @@
 
 import { iAudience, iBuildData, iTweetBubbles, iTweetDays, iTweetTopic } from '../types/build'
 import { iTweet, iMetrics } from '../pipeline/1.Fetch'
+import { iTopTweet } from '../types/build'
 
 import followers from '../data/training/labeledFollowers.json' 
 import tweets from '../data/training/reducedTweets.json' 
@@ -63,6 +64,18 @@ const getAudiences = ():iAudience[] => {
     return audiences
 }
 
+const getTopTweets = ():iTopTweet[] => {
+    const sortedTweets = [...tweets].sort(({metrics:a}, {metrics:b}) => 
+        getEngagements(a) > getEngagements(b) ? 1 : -1
+    ).filter((_, i) => i < 10)
+
+    const topTweets:iTopTweet[] = sortedTweets.map(({ id, topic }) => ({
+        id,
+        topics:[ { topic, percentage: 1}]
+    }))
+
+    return topTweets
+}
 
 const build = ():iBuildData => ({
     user,
