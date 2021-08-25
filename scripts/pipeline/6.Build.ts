@@ -35,7 +35,7 @@ const getTweetTopics = ():iTweetTopic[] => {
         tweets: tweets.filter(({ topic:t }) => topic === t)
     }))
 
-    const tweetTopics:iTweetTopic[] = topicsDict.map(({ topic, tweets }) => ({ 
+    const tweetTopics = topicsDict.map(({ topic, tweets }) => ({ 
         topic,
         tweets:tweets.length,
         impressions: tweets.reduce((d, { metrics }) => d+= metrics.impressions, 0)/tweets.length,
@@ -45,17 +45,14 @@ const getTweetTopics = ():iTweetTopic[] => {
     return tweetTopics    
 }
 
-
-const build = () => {
-
-
+const getAudiences = ():iAudience[] => {
     const uniqueAudiences = new Set(followers.map(({ topic }) => topic))
     const audienceDict = [...uniqueAudiences].map(topic => ({
         topic,
         followers: followers.filter(({ topic:t }) => topic === t)
     }))
 
-    const audiences:iAudience[] = audienceDict.map(({ topic, followers }) => ({
+    const audiences = audienceDict.map(({ topic, followers }) => ({
         topic,
         newFollowers: followers.length,
         avgTweets: followers.reduce((d, { tweets }) => d+=tweets, 0)/followers.length,
@@ -63,13 +60,17 @@ const build = () => {
         avgFollowing: followers.reduce((d, { following }) => d+=following, 0)/followers.length
     }))
 
+    return audiences
+}
 
+
+const build = () => {
     const buildData = {
         user,
         tweetDays:getTweetDays(),
         tweetBubbles:getTweetBubbles(),
         tweetTopics:getTweetTopics(),
-        audiences
+        audiences:getAudiences()
     }
 
     console.log(buildData)
