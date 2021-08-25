@@ -1,8 +1,9 @@
 // npx ts-node 6.Build
 
-import { iTweetBubbles, iTweetDays, iTweetTopic } from '../types/build'
+import { iAudience, iTweetBubbles, iTweetDays, iTweetTopic } from '../types/build'
 import { iTweet, iMetrics } from '../pipeline/1.Fetch'
 
+import followers from '../data/training/labeledFollowers.json' 
 import tweets from '../data/training/reducedTweets.json' 
 import user from '../data/training/user.json' 
 
@@ -35,16 +36,32 @@ const build = () => {
     const tweetTopics:iTweetTopic[] = topicsDict.map(({ topic, tweets }) => ({ 
         topic,
         tweets:tweets.length,
-        impressions: tweets.reduce((d, { metrics }) => d+= metrics.impressions, 0),
-        engagements: tweets.reduce((d, { metrics }) => d+= getEngagements(metrics), 0)
+        impressions: tweets.reduce((d, { metrics }) => d+= metrics.impressions, 0)/tweets.length,
+        engagements: tweets.reduce((d, { metrics }) => d+= getEngagements(metrics), 0)/tweets.length
     })).map(t => ({...t, avgEngagements:t.engagements/t.tweets }))
+
+
+    const uniqueAudiences = new Set(followers.map(({ topic }) => topic))
+    const audienceDict = [...uniqueAudiences].map(topic => ({
+        topic,
+        followers: followers.filter(({ topic:t }) => topic === t)
+    }))
+
+    const audiences:iAudience[] = audienceDict.map(({ topic, followers }) => ({
+        topic,
+        newFollowers: followers.length,
+        avgTweets: followers.reduce((d, { tweets }) => d+=tweets, 0)/followers.length,
+        avgFollowers: followers.reduce((d, { followers }) => d+=followers, 0)/followers.length,
+        avgFollowing: followers.reduce((d, { following }) => d+=following, 0)/followers.length
+    }))
 
 
     const buildData = {
         user,
         tweetDays,
         tweetBubbles,
-        tweetTopics
+        tweetTopics,
+        audiences
     }
 
     console.log(buildData)
