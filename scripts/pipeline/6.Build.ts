@@ -10,14 +10,14 @@ import user from '../data/training/user.json'
 
 const getEngagements = (m: iMetrics) => m.likes + m.clicks + m.visits + m.replies + m.retweets
 
-const getTweetDays = () => {
+const getTweetDays = ():iTweetDays[] => {
     const daysDictionary = tweets.reduce((d, i) => {
         const day = new Date(i.datetime).getDate()
         return d[day] ? {...d, [day]:[...d[day], i]} : {...d, [day]:[i]}
     }, {} as {[day:number]:iTweet[]})
 
     const daysArray = Object.entries(daysDictionary)
-    const tweetDays:iTweetDays[] = daysArray.map(([day, tweets]) => ({ day:Number(day), tweets}))
+    const tweetDays = daysArray.map(([day, tweets]) => ({ day:Number(day), tweets}))
     return tweetDays
 }
 
@@ -28,8 +28,7 @@ const getTweetBubbles = ():iTweetBubbles[] => tweets.map(({ text, topic, locatio
     coordinates:{ x: location.x, y: location.y }
 }))
 
-
-const build = () => {
+const getTweetTopics = ():iTweetTopic[] => {
     const uniqueTopics = new Set(tweets.map(({ topic }) => topic))
     const topicsDict = [...uniqueTopics].map(topic => ({
         topic,
@@ -42,6 +41,12 @@ const build = () => {
         impressions: tweets.reduce((d, { metrics }) => d+= metrics.impressions, 0)/tweets.length,
         engagements: tweets.reduce((d, { metrics }) => d+= getEngagements(metrics), 0)/tweets.length
     })).map(t => ({...t, avgEngagements:t.engagements/t.tweets }))
+
+    return tweetTopics    
+}
+
+
+const build = () => {
 
 
     const uniqueAudiences = new Set(followers.map(({ topic }) => topic))
@@ -63,7 +68,7 @@ const build = () => {
         user,
         tweetDays:getTweetDays(),
         tweetBubbles:getTweetBubbles(),
-        tweetTopics,
+        tweetTopics:getTweetTopics(),
         audiences
     }
 
