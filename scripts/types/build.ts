@@ -58,7 +58,8 @@ export interface iTopTweet {
     }[]
 }
 
-interface iLinks {
+export interface iLink {
+    link:string
     tweets: number
     engagements: number
     impressions: number
@@ -89,7 +90,7 @@ export interface iBuildData {
     tweetTopics: iTweetTopic[]
     audiences: iAudience[]
     topTweets: iTopTweet[]
-    links?: iLinks[]    
+    links?: iLink[]    
     correlations?: iCorrelations[]    
     suggestions?: iSuggestions
 }
