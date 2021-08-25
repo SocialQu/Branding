@@ -18,8 +18,8 @@
 1. [X] Get the tweets, stats and topics.
 2. [X] Group tweets by topics.
 3. [X] Fetch recent followers, their stats, and bios.
-4. [ ] Embed and classify bios by topic.
-5. [ ] Aggregate data by topic and audience.
+4. [X] Embed and classify bios by topic.
+5. [X] Aggregate data by topic and audience.
 6. [ ] Store on DB.
 
 ## Top Tweets Break Down

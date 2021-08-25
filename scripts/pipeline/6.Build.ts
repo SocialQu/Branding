@@ -1,7 +1,8 @@
 // npx ts-node 6.Build
 
-import { iAudience, iTweetBubbles, iTweetDays, iTweetTopic } from '../types/build'
+import { iAudience, iBuildData, iTweetBubbles, iTweetDays, iTweetTopic } from '../types/build'
 import { iTweet, iMetrics } from '../pipeline/1.Fetch'
+import { iTopTweet } from '../types/build'
 
 import followers from '../data/training/labeledFollowers.json' 
 import tweets from '../data/training/reducedTweets.json' 
@@ -10,44 +11,49 @@ import user from '../data/training/user.json'
 
 const getEngagements = (m: iMetrics) => m.likes + m.clicks + m.visits + m.replies + m.retweets
 
-const build = () => {
+const getTweetDays = ():iTweetDays[] => {
     const daysDictionary = tweets.reduce((d, i) => {
         const day = new Date(i.datetime).getDate()
         return d[day] ? {...d, [day]:[...d[day], i]} : {...d, [day]:[i]}
     }, {} as {[day:number]:iTweet[]})
 
     const daysArray = Object.entries(daysDictionary)
-    const tweetDays:iTweetDays[] = daysArray.map(([day, tweets]) => ({ day:Number(day), tweets}))
+    const tweetDays = daysArray.map(([day, tweets]) => ({ day:Number(day), tweets}))
+    return tweetDays
+}
 
+const getTweetBubbles = ():iTweetBubbles[] => tweets.map(({ text, topic, location, metrics }) => ({
+    topic,
+    tweet:text,
+    engagements: getEngagements(metrics),
+    coordinates:{ x: location.x, y: location.y }
+}))
 
-    const tweetBubbles:iTweetBubbles[] = tweets.map(({ text, topic, location, metrics }) => ({
-        topic,
-        tweet:text,
-        engagements: getEngagements(metrics),
-        coordinates:{ x: location.x, y: location.y }
-    }))
-
+const getTweetTopics = ():iTweetTopic[] => {
     const uniqueTopics = new Set(tweets.map(({ topic }) => topic))
     const topicsDict = [...uniqueTopics].map(topic => ({
         topic,
         tweets: tweets.filter(({ topic:t }) => topic === t)
     }))
 
-    const tweetTopics:iTweetTopic[] = topicsDict.map(({ topic, tweets }) => ({ 
+    const tweetTopics = topicsDict.map(({ topic, tweets }) => ({ 
         topic,
         tweets:tweets.length,
         impressions: tweets.reduce((d, { metrics }) => d+= metrics.impressions, 0)/tweets.length,
         engagements: tweets.reduce((d, { metrics }) => d+= getEngagements(metrics), 0)/tweets.length
     })).map(t => ({...t, avgEngagements:t.engagements/t.tweets }))
 
+    return tweetTopics    
+}
 
+const getAudiences = ():iAudience[] => {
     const uniqueAudiences = new Set(followers.map(({ topic }) => topic))
     const audienceDict = [...uniqueAudiences].map(topic => ({
         topic,
         followers: followers.filter(({ topic:t }) => topic === t)
     }))
 
-    const audiences:iAudience[] = audienceDict.map(({ topic, followers }) => ({
+    const audiences = audienceDict.map(({ topic, followers }) => ({
         topic,
         newFollowers: followers.length,
         avgTweets: followers.reduce((d, { tweets }) => d+=tweets, 0)/followers.length,
@@ -55,17 +61,30 @@ const build = () => {
         avgFollowing: followers.reduce((d, { following }) => d+=following, 0)/followers.length
     }))
 
-
-    const buildData = {
-        user,
-        tweetDays,
-        tweetBubbles,
-        tweetTopics,
-        audiences
-    }
-
-    console.log(buildData)
+    return audiences
 }
+
+const getTopTweets = ():iTopTweet[] => {
+    const sortedTweets = [...tweets].sort(({metrics:a}, {metrics:b}) => 
+        getEngagements(a) > getEngagements(b) ? 1 : -1
+    ).filter((_, i) => i < 10)
+
+    const topTweets:iTopTweet[] = sortedTweets.map(({ id, topic }) => ({
+        id,
+        topics:[ { topic, percentage: 1}]
+    }))
+
+    return topTweets
+}
+
+const build = ():iBuildData => ({
+    user,
+    tweetDays:getTweetDays(),
+    tweetBubbles:getTweetBubbles(),
+    tweetTopics:getTweetTopics(),
+    audiences:getAudiences(),
+    topTweets:getTopTweets()
+})
 
 
 build()
