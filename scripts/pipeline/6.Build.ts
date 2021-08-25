@@ -2,7 +2,7 @@
 
 import { iAudience, iBuildData, iTweetBubbles, iTweetDays, iTweetTopic } from '../types/build'
 import { iTweet, iMetrics } from '../pipeline/1.Fetch'
-import { iTopTweet } from '../types/build'
+import { iTopTweet, iLink } from '../types/build'
 
 import followers from '../data/training/labeledFollowers.json' 
 import tweets from '../data/training/reducedTweets.json' 
@@ -77,14 +77,35 @@ const getTopTweets = ():iTopTweet[] => {
     return topTweets
 }
 
+const getLinks = ():iLink[] => {
+    const tweetsWithLink = tweets.filter(({ link }) => link)
+    const uniqueLinks = new Set(tweetsWithLink.map(({ link }) => link))
+
+    const linksDict = [...uniqueLinks].map(link => ({
+        link: link,
+        tweets: tweets.filter(({ link:l }) => link === l)
+    }))
+
+    const links = linksDict.map(({ tweets, link }) => ({ 
+        link: link as string,
+        tweets: tweets.length,
+        clicks: tweets.reduce((d, { metrics }) => d += metrics.clicks, 0),
+        impressions: tweets.reduce((d, { metrics }) => d += metrics.impressions, 0),
+        engagements: tweets.reduce((d, { metrics }) => d += getEngagements(metrics), 0)
+    }))
+
+    return links
+}
+
+
 const build = ():iBuildData => ({
     user,
     tweetDays:getTweetDays(),
     tweetBubbles:getTweetBubbles(),
     tweetTopics:getTweetTopics(),
     audiences:getAudiences(),
-    topTweets:getTopTweets()
+    topTweets:getTopTweets(),
+    links: getLinks()
 })
-
 
 build()
