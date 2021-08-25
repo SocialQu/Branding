@@ -39,9 +39,9 @@ export interface iTweetTopic {
 }
 
 
-interface iAudience {
+export interface iAudience {
     topic: string
-    color: string
+    color?: string
     avgTweets: number
     avgFollowers: number
     avgFollowing: number
