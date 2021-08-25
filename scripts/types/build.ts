@@ -1,11 +1,6 @@
 import { iTweet, iUser } from '../pipeline/1.Fetch'
 
 
-interface iCorrelation {
-    coefficient: number
-    ideal: number
-}
-
 interface iSuggestion {
     topic: string
     isNew: boolean
@@ -66,7 +61,13 @@ export interface iLink {
     clicks: number
 }
 
-interface iCorrelations {
+
+interface iCorrelation {
+    coefficient: number
+    ideal: number
+}
+
+export interface iCorrelations {
     link: iCorrelation
     frequency: iCorrelation
     lenght: iCorrelation
@@ -91,6 +92,6 @@ export interface iBuildData {
     audiences: iAudience[]
     topTweets: iTopTweet[]
     links?: iLink[]    
-    correlations?: iCorrelations[]    
+    correlations: iCorrelations 
     suggestions?: iSuggestions
 }
