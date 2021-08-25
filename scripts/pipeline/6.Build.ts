@@ -82,7 +82,8 @@ const build = ():iBuildData => ({
     tweetDays:getTweetDays(),
     tweetBubbles:getTweetBubbles(),
     tweetTopics:getTweetTopics(),
-    audiences:getAudiences()
+    audiences:getAudiences(),
+    topTweets:getTopTweets()
 })
 
 
