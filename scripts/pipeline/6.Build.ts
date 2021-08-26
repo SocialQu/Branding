@@ -9,6 +9,8 @@ import tweets from '../data/training/reducedTweets.json'
 import topics from '../data/training/topics.json' 
 import user from '../data/training/user.json' 
 
+import { promises as fs } from 'fs'
+
 
 const getEngagements = (m: iMetrics) => m.likes + m.clicks + m.visits + m.replies + m.retweets
 const getTopicColor = (topic:string) => topics.find(({ topic:t }) => t === t)?.color as string
@@ -134,10 +136,10 @@ const getSuggestions = (topics:iTweetTopic[]):iSuggestions => {
 }
 
 
-const build = ():iBuildData => {
+const build = async():Promise<iBuildData> => {
     const tweetTopics = getTweetTopics()
 
-    return {
+    const buildData = {
         user,
         tweetDays:getTweetDays(),
         tweetBubbles:getTweetBubbles(),
@@ -148,6 +150,11 @@ const build = ():iBuildData => {
         correlations:getCorrelations(),
         suggestions:getSuggestions(tweetTopics)
     }
+
+    console.log('buildData', buildData)
+    await fs.writeFile('../data/training/buildData.json', JSON.stringify(buildData))
+
+    return buildData
 }
 
 build()
