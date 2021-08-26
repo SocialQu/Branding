@@ -9,7 +9,7 @@ export interface iTweetDays {
 export interface iTweetBubbles {
     tweet: string
     topic: string 
-    color?: string
+    color: string
     coordinates: { 
         x: number
         y: number
@@ -19,7 +19,7 @@ export interface iTweetBubbles {
 
 export interface iTweetTopic {
     topic: string
-    color?: string
+    color: string
     tweets: number
     engagements: number
     impressions: number
@@ -29,7 +29,7 @@ export interface iTweetTopic {
 
 export interface iAudience {
     topic: string
-    color?: string
+    color: string
     avgTweets: number
     avgFollowers: number
     avgFollowing: number
@@ -41,7 +41,7 @@ export interface iTopTweet {
     id:number
     topics:{
         topic: string
-        color?: string
+        color: string
         percentage: number
     }[]
 }
