@@ -1,7 +1,7 @@
 import { iTweet, iUser } from '../pipeline/1.Fetch'
 
 
-export interface iTweetDays {
+export interface iTweetDay {
     day: number
     tweets: iTweet[]
 }
@@ -96,4 +96,4 @@ export interface iBaseData {
     suggestions: iSuggestions
 }
 
-export interface iBuildData extends iBaseData { tweetDays: iTweetDays[] }
+export interface iBuildData extends iBaseData { tweetDays: iTweetDay[] }
