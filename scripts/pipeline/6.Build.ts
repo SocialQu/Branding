@@ -6,10 +6,13 @@ import { iTweet, iMetrics } from '../pipeline/1.Fetch'
 
 import followers from '../data/training/labeledFollowers.json' 
 import tweets from '../data/training/reducedTweets.json' 
+import topics from '../data/training/topics.json' 
 import user from '../data/training/user.json' 
 
 
 const getEngagements = (m: iMetrics) => m.likes + m.clicks + m.visits + m.replies + m.retweets
+const getTopicColor = (topic:string) => topics.find(({ topic:t }) => t === t)?.color as string
+
 
 const getTweetDays = ():iTweetDays[] => {
     const daysDictionary = tweets.reduce((d, i) => {
@@ -24,7 +27,8 @@ const getTweetDays = ():iTweetDays[] => {
 
 const getTweetBubbles = ():iTweetBubbles[] => tweets.map(({ text, topic, location, metrics }) => ({
     topic,
-    tweet:text,
+    tweet: text,
+    color: getTopicColor(topic),
     engagements: getEngagements(metrics),
     coordinates:{ x: location.x, y: location.y }
 }))
@@ -39,6 +43,7 @@ const getTweetTopics = ():iTweetTopic[] => {
     const tweetTopics = topicsDict.map(({ topic, tweets }) => ({ 
         topic,
         tweets:tweets.length,
+        color: getTopicColor(topic),
         impressions: tweets.reduce((d, { metrics }) => d+= metrics.impressions, 0)/tweets.length,
         engagements: tweets.reduce((d, { metrics }) => d+= getEngagements(metrics), 0)/tweets.length
     })).map(t => ({...t, avgEngagements:t.engagements/t.tweets }))
@@ -55,6 +60,7 @@ const getAudiences = ():iAudience[] => {
 
     const audiences = audienceDict.map(({ topic, followers }) => ({
         topic,
+        color: getTopicColor(topic),
         newFollowers: followers.length,
         avgTweets: followers.reduce((d, { tweets }) => d+=tweets, 0)/followers.length,
         avgFollowers: followers.reduce((d, { followers }) => d+=followers, 0)/followers.length,
@@ -71,7 +77,7 @@ const getTopTweets = ():iTopTweet[] => {
 
     const topTweets:iTopTweet[] = sortedTweets.map(({ id, topic }) => ({
         id,
-        topics:[ { topic, percentage: 1}]
+        topics:[ { topic, color:getTopicColor(topic), percentage: 1}]
     }))
 
     return topTweets
