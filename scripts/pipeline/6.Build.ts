@@ -1,6 +1,6 @@
 // npx ts-node 6.Build
 
-import { iAudience, iBuildData, iTweetBubble, iTweetDays, iTweetTopic } from '../types/build'
+import { iAudience, iBuildData, iTweetBubble, iTweetDay, iTweetTopic } from '../types/build'
 import { iTopTweet, iLink, iCorrelations, iSuggestions, iSuggestion } from '../types/build'
 import { iTweet, iMetrics } from '../pipeline/1.Fetch'
 
@@ -16,7 +16,7 @@ const getEngagements = (m: iMetrics) => m.likes + m.clicks + m.visits + m.replie
 const getTopicColor = (topic:string) => topics.find(({ topic:t }) => t === t)?.color as string
 
 
-const getTweetDays = ():iTweetDays[] => {
+const getTweetDays = ():iTweetDay[] => {
     const daysDictionary = tweets.reduce((d, i) => {
         const day = new Date(i.datetime).getDate()
         return d[day] ? {...d, [day]:[...d[day], i]} : {...d, [day]:[i]}
