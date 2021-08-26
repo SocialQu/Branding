@@ -1,6 +1,6 @@
 // npx ts-node 6.Build
 
-import { iAudience, iBuildData, iTweetBubbles, iTweetDays, iTweetTopic } from '../types/build'
+import { iAudience, iBuildData, iTweetBubble, iTweetDays, iTweetTopic } from '../types/build'
 import { iTopTweet, iLink, iCorrelations, iSuggestions, iSuggestion } from '../types/build'
 import { iTweet, iMetrics } from '../pipeline/1.Fetch'
 
@@ -25,7 +25,7 @@ const getTweetDays = ():iTweetDays[] => {
     return tweetDays
 }
 
-const getTweetBubbles = ():iTweetBubbles[] => tweets.map(({ text, topic, location, metrics }) => ({
+const getTweetBubbles = ():iTweetBubble[] => tweets.map(({ text, topic, location, metrics }) => ({
     topic,
     tweet: text,
     color: getTopicColor(topic),
