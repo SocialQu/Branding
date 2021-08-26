@@ -1,5 +1,5 @@
+import { iTweetBubble, iTweetTopic, iAudience } from './build'
 import { iUser } from '../pipeline/1.Fetch'
-import { iTweetBubble } from './build'
 
 
 interface kpi {
@@ -30,24 +30,8 @@ export interface iAnalysis {
     }
 
     bubbles:iTweetBubble[]
-
-    topics: {
-        topic: string
-        color: string
-        tweets: number
-        engagements: number
-        impressions: number
-        avgEngagements: number
-    }[]
-
-    audiences: {
-        topic: string
-        color: string
-        avgTweets: number
-        avgFollowers: number
-        avgFollowing: number
-        newFollowers: number
-    }[]
+    topics: iTweetTopic[]
+    audiences:iAudience[]
 
     topTweets: {
         id:number
