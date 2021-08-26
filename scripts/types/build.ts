@@ -62,6 +62,7 @@ interface iCorrelation {
 
 export interface iCorrelations {
     link: iCorrelation
+    topic: iCorrelation
     frequency: iCorrelation
     lenght: iCorrelation
     emojis: iCorrelation
