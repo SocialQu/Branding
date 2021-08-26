@@ -108,12 +108,13 @@ const getCorrelations = ():iCorrelations => {
 
     return {
         link:tempCorrelation,
-        frequency: tempCorrelation,
+        time: tempCorrelation,
+        topic: tempCorrelation,
         lenght: tempCorrelation,
         emojis: tempCorrelation,
+        weekday: tempCorrelation,
         position: tempCorrelation,
-        time: tempCorrelation,
-        weekday: tempCorrelation
+        frequency: tempCorrelation
     }
 }
 
