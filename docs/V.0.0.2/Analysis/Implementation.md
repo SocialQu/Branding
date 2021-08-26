@@ -3,8 +3,8 @@
 ## KPIs
 1. [X] Fetch the data from Twitter.
 2. [X] Arrange the data in seven day interval arrays.
-3. [ ] Develop linear correlation helper function.
-4. [ ] Compute the trend for each KPI.
+3. [X] Develop linear correlation helper function.
+4. [X] Compute the trend for each KPI.
 5. [ ] Overwrite the kpi to the DB.
 
 ## Engagement Bubble

@@ -150,7 +150,7 @@ const fetchTopics = async():Promise<iTopic[]> => {
     return topics
 }
 
-fetchTopics().catch(console.log)
+// fetchTopics().catch(console.log)
 
 
 export interface iUser {

@@ -1,6 +1,6 @@
 // npx ts-node 6.Build
 
-import { iAudience, iBuildData, iTweetBubble, iTweetDays, iTweetTopic } from '../types/build'
+import { iAudience, iBuildData, iTweetBubble, iTweetDay, iTweetTopic } from '../types/build'
 import { iTopTweet, iLink, iCorrelations, iSuggestions, iSuggestion } from '../types/build'
 import { iTweet, iMetrics } from '../pipeline/1.Fetch'
 
@@ -9,19 +9,30 @@ import tweets from '../data/training/reducedTweets.json'
 import topics from '../data/training/topics.json' 
 import user from '../data/training/user.json' 
 
+import { promises as fs } from 'fs'
+
 
 const getEngagements = (m: iMetrics) => m.likes + m.clicks + m.visits + m.replies + m.retweets
-const getTopicColor = (topic:string) => topics.find(({ topic:t }) => t === t)?.color as string
+const getTopicColor = (topic:string) => topics.find(({ topic:t }) => t === topic)?.color as string
 
 
-const getTweetDays = ():iTweetDays[] => {
+const getTweetDays = ():iTweetDay[] => {
     const daysDictionary = tweets.reduce((d, i) => {
         const day = new Date(i.datetime).getDate()
         return d[day] ? {...d, [day]:[...d[day], i]} : {...d, [day]:[i]}
     }, {} as {[day:number]:iTweet[]})
 
     const daysArray = Object.entries(daysDictionary)
-    const tweetDays = daysArray.map(([day, tweets]) => ({ day:Number(day), tweets}))
+    const groupedTweets = daysArray.map(([day, tweets]) => ({ day:Number(day), tweets}))
+    
+    const tweetDays = groupedTweets.map(({ day, tweets }) => ({
+        day,
+        tweets: tweets.length,
+        impressions: tweets.reduce((d, { metrics }) => d += metrics.impressions, 0),
+        engagements: tweets.reduce((d, { metrics }) => d += getEngagements(metrics), 0),
+        newFollowers: 0
+    }))
+
     return tweetDays
 }
 
@@ -108,12 +119,13 @@ const getCorrelations = ():iCorrelations => {
 
     return {
         link:tempCorrelation,
-        frequency: tempCorrelation,
+        time: tempCorrelation,
+        topic: tempCorrelation,
         lenght: tempCorrelation,
         emojis: tempCorrelation,
+        weekday: tempCorrelation,
         position: tempCorrelation,
-        time: tempCorrelation,
-        weekday: tempCorrelation
+        frequency: tempCorrelation
     }
 }
 
@@ -133,10 +145,10 @@ const getSuggestions = (topics:iTweetTopic[]):iSuggestions => {
 }
 
 
-const build = ():iBuildData => {
+const build = async():Promise<iBuildData> => {
     const tweetTopics = getTweetTopics()
 
-    return {
+    const buildData = {
         user,
         tweetDays:getTweetDays(),
         tweetBubbles:getTweetBubbles(),
@@ -147,6 +159,11 @@ const build = ():iBuildData => {
         correlations:getCorrelations(),
         suggestions:getSuggestions(tweetTopics)
     }
+
+    console.log('buildData', buildData)
+    await fs.writeFile('../data/training/buildData.json', JSON.stringify(buildData))
+
+    return buildData
 }
 
 build()
