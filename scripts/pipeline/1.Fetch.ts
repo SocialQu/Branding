@@ -120,13 +120,16 @@ const getFollowers = async():Promise<iFollower[]> => {
 // getFollowers().catch(console.log)
 
 
-interface iTopic {
+interface iDbTopic {
     _id: string
     topic: string
     embeddings: number[]
     center: [number, number]
 }
 
+interface iTopic extends iDbTopic { color: string }
+
+const randomColor = () => `#${Math.floor(Math.random()*16777215).toString(16)}`
 const uri = `mongodb+srv://${process.env.mongo_admin}/${process.env.cortazar_db}`
 
 const fetchTopics = async():Promise<iTopic[]> => {
@@ -134,10 +137,12 @@ const fetchTopics = async():Promise<iTopic[]> => {
     await client.connect()
 
     const Topics = client.db('Cortazar').collection('topics')
-    const topics:iTopic[] = await Topics.find().toArray()
+    const dbTopics:iDbTopic[] = await Topics.find().toArray()
 
-    console.log('topics', topics.length)
-    console.log('Topic:', topics[0])
+    console.log('topics', dbTopics.length)
+
+    const topics:iTopic[] = dbTopics.map(topic => ({ ...topic, color:randomColor() }))
+    console.log('Topic:', dbTopics[0])
 
     await fs.writeFile('../data/training/topics.json', JSON.stringify(topics))
     await client.close()
@@ -145,7 +150,7 @@ const fetchTopics = async():Promise<iTopic[]> => {
     return topics
 }
 
-// fetchTopics().catch(console.log)
+fetchTopics().catch(console.log)
 
 
 export interface iUser {
