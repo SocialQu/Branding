@@ -13,7 +13,7 @@ import { promises as fs } from 'fs'
 
 
 const getEngagements = (m: iMetrics) => m.likes + m.clicks + m.visits + m.replies + m.retweets
-const getTopicColor = (topic:string) => topics.find(({ topic:t }) => t === t)?.color as string
+const getTopicColor = (topic:string) => topics.find(({ topic:t }) => t === topic)?.color as string
 
 
 const getTweetDays = ():iTweetDay[] => {
@@ -23,7 +23,16 @@ const getTweetDays = ():iTweetDay[] => {
     }, {} as {[day:number]:iTweet[]})
 
     const daysArray = Object.entries(daysDictionary)
-    const tweetDays = daysArray.map(([day, tweets]) => ({ day:Number(day), tweets}))
+    const groupedTweets = daysArray.map(([day, tweets]) => ({ day:Number(day), tweets}))
+    
+    const tweetDays = groupedTweets.map(({ day, tweets }) => ({
+        day,
+        tweets: tweets.length,
+        impressions: tweets.reduce((d, { metrics }) => d += metrics.impressions, 0),
+        engagements: tweets.reduce((d, { metrics }) => d += getEngagements(metrics), 0),
+        newFollowers: 0
+    }))
+
     return tweetDays
 }
 
