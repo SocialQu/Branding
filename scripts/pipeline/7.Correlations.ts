@@ -10,17 +10,26 @@ const getKpis = ():iKpis => {
     const { tweetDays }:iBuildData = data
 
     const tweets:iKpi = {
-        average: tweetDays.reduce((d, { tweets }) => d += tweets.length, 0)/tweetDays.length,
+        average: tweetDays.reduce((d, { tweets }) => d += tweets, 0)/tweetDays.length,
         trend: 0
     }
 
-    return {
-        tweets,
-        engagements: baseKpi,
-        impressions: baseKpi,
-        newFollowers: baseKpi
-        
+    const engagements:iKpi = {
+        average: tweetDays.reduce((d, { engagements }) => d += engagements, 0)/tweetDays.length,
+        trend: 0
     }
+
+    const impressions:iKpi = {
+        average: tweetDays.reduce((d, { impressions }) => d += impressions, 0)/tweetDays.length,
+        trend: 0
+    }
+
+    const newFollowers:iKpi = {
+        average: tweetDays.reduce((d, { newFollowers }) => d += newFollowers, 0)/tweetDays.length,
+        trend: 0
+    }
+
+    return { tweets, engagements, impressions, newFollowers }
 }
 
 const analyzeData = ():iAnalysis => ({ ...data, kpis:getKpis() })
