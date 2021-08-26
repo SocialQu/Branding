@@ -6,7 +6,7 @@
 - [X] Install TF dependencies and embed tweets.
 - [X] Find topics for each tweet (test manually).
 - [X] Reduce dimensionality of tweets.
-- [ ] Build object before correlation analysis.
+- [X] Build object before correlation analysis.
 - [ ] Color topics.
 - [ ] Compute correlation on KPIs & Links.
 - [ ] Compute advanced metrics based on embedding values.
