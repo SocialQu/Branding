@@ -3,7 +3,10 @@ import { iTweet, iUser } from '../pipeline/1.Fetch'
 
 export interface iTweetDay {
     day: number
-    tweets: iTweet[]
+    tweets: number
+    impressions: number
+    engagements: number
+    newFollowers: number
 }
 
 export interface iTweetBubble {
