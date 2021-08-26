@@ -6,7 +6,7 @@ export interface iTweetDays {
     tweets: iTweet[]
 }
 
-export interface iTweetBubbles {
+export interface iTweetBubble {
     tweet: string
     topic: string 
     color: string
@@ -84,10 +84,9 @@ export interface iSuggestions {
 }
 
 
-export interface iBuildData {
+export interface iBaseData {
     user: iUser
-    tweetDays: iTweetDays[]
-    tweetBubbles: iTweetBubbles[]    
+    tweetBubbles: iTweetBubble[]    
     tweetTopics: iTweetTopic[]
     audiences: iAudience[]
     topTweets: iTopTweet[]
@@ -95,3 +94,5 @@ export interface iBuildData {
     correlations: iCorrelations 
     suggestions: iSuggestions
 }
+
+export interface iBuildData extends iBaseData { tweetDays: iTweetDays[] }
