@@ -13,6 +13,7 @@ const Section = ({ children }: iApp) => <div className="section" style={{padding
 export const Layout = ({ children }: iApp) =>   <div>
     <Head>
         <link rel="shortcut icon" href="/SocialQ.ico" />
+        <title> SocialQ </title>
     </Head>
 
     <Section>
