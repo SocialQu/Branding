@@ -29,7 +29,7 @@ const classifyTweets = async():Promise<iLabeledTweet[]> => {
     const nonReplies = tweets.filter(({ isReply }) => !isReply)
     const labeledTweets = nonReplies.map(t => ({...t, topic:findTopic(t)}))
 
-    labeledTweets.map(({ text, topic}) => console.log(`${topic}: ${text}`))
+    labeledTweets.map(({ text, topic}) => console.log(`${topic}: ${text}\n`))
     await fs.writeFile('../data/training/labeledTweets.json', JSON.stringify(labeledTweets))
     return labeledTweets
 }
@@ -46,4 +46,4 @@ const classifyFollowers = async():Promise<iLabeledFollower[]> => {
     return labeledFollowers
 }
 
-classifyFollowers()
+// classifyFollowers()
