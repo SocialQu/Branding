@@ -1,9 +1,6 @@
 import type { ReactElement } from 'react'
 import Head from 'next/head'
 
-import 'bulma/css/bulma.css'
-
-
 interface iApp { children: ReactElement }
 const Section = ({ children }: iApp) => <div className="section" style={{padding:'2rem' }}>
     <div className='container'> { children } </div>
