@@ -4,11 +4,9 @@ import { ResponsiveContainer, BarChart, Bar, Cell } from 'recharts'
 
 const GrowthStyle:CSSProperties = { 
     maxWidth:460, 
-    maxHeight: 750,
     margin: 'auto', 
     marginTop:40,
     border:'2px solid white', 
-    height:'calc(100vh - 130px)',
     backgroundColor: 'rgb(48, 48, 48)'
 }
 
@@ -136,6 +134,42 @@ const data:iData[] = [
     {name:'Topic 10', engagements:1, impressions:23, tweets:2 },
 ]
 
+const NameStyle:CSSProperties = {color:'deepskyblue', paddingLeft:6, marginRight:'auto'}
+const ItemStyle:CSSProperties = { color: 'white', display: 'block', backgroundColor: 'rgb(48, 48, 48)' }
+const BarItem = ({ name, impressions, engagements, tweets }:iData) => <div className='panel-block' style={ItemStyle}>
+    <nav className='level' style={{marginTop:3, marginBottom:6}}>
+        <div className='level-item div-keyword' style={{width:'50%'}}>
+            <a className='subtitle is-5 keyword' style={NameStyle}> { name } </a>
+        </div>
+
+        <div className='level-item has-text-centered level-icon'>
+            <div>
+                <p className='subtitle is-5' style={{color:'white'}}> 
+                    { impressions } <span role='img' aria-label='eyes'> 👀 </span>
+                </p>
+            </div>
+        </div>
+
+        <div className='level-item has-text-centered level-icon'>
+            <div>
+                <p className='subtitle is-5' style={{color:'white'}}> 
+                    { engagements } <span role='img' aria-label='fire'> 🔥 </span>
+                </p>
+            </div>
+        </div>
+
+        <div className='level-item has-text-centered level-icon'>
+            <div>
+                <p className='subtitle is-5' style={{color:'white'}}> 
+                    { tweets } <span role='img' aria-label='bird'> 🐦 </span>
+                </p>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+
 interface iBarsPanel { title:Keyword }
 const BarsPanel = ({ title }: iBarsPanel) => {
     const [active, setActive] = useState<GrowthTab>('engagements')
@@ -149,6 +183,8 @@ const BarsPanel = ({ title }: iBarsPanel) => {
         <div className='panel-block' style={GrowthChartStyle}>
             <GrowthChart active={active} keyword={title} data={data}/>
         </div>
+
+        { data.map((d) => <BarItem {...d}/>) }
     </nav>
 }
 
