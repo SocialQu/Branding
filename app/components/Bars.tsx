@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+
 const GROWTH_STYLE = { 
     maxWidth:460, 
     maxHeight: 750,
@@ -16,6 +18,37 @@ const HEADING_STYLE = {
 }
 
 
+type GrowthTab = 'tweets' | 'impressions' | 'engagements'
+interface iTabs { active:GrowthTab, setActive(GrowthTab):void }
+const BarTabs = ({ active, setActive }:iTabs) => <p className='panel-tabs' style={{textAlign:'center'}}>
+    <a 
+        className={`${active === 'impressions' ? 'is-active' : '' }`}
+        style={{color:`${active === 'impressions' ? 'orange' : 'white' }`, width:150}} 
+        onClick={() => setActive('impressions')}
+    > 
+        Impressions <span role='img' aria-label='eyes'> 👀 </span>
+    </a>
+
+    <a 
+        className={`${active === 'engagements' ? 'is-active' : '' }`}
+        style={{color:`${active === 'engagements' ? 'orange' : 'white' }`, width:150}} 
+        onClick={() => setActive('engagements')}
+    > 
+        Engagements <span role='img' aria-label='fire'> 🔥 </span>
+    </a>
+
+    <a 
+        className={`${active === 'tweets' ? 'is-active' : '' }`}
+        style={{color:`${active === 'tweets' ? 'orange' : 'white' }`, width:150}} 
+        onClick={() => setActive('tweets')}
+    > 
+        Tweets <span role='img' aria-label='bird'> 🐦 </span>
+    </a>
+</p>
+
+
+
+const scrollbarStyle = {height: 'calc(100vh - 200px)', overflow: 'auto', maxHeight: 680}
 interface iBarsPanel { title:string }
 const BarsPanel = ({ title }: iBarsPanel) => {
     return <nav className='panel' style={GROWTH_STYLE}>
@@ -23,6 +56,9 @@ const BarsPanel = ({ title }: iBarsPanel) => {
             { title } 
         </div>
 
+        <div id='scrollbar' style={scrollbarStyle}>
+            <BarTabs active={'engagements'} setActive={() => {}}/>
+        </div>
     </nav>
 }
 
