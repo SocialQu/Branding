@@ -1,4 +1,6 @@
 import type { ReactElement } from 'react'
+import Head from 'next/head'
+
 import 'bulma/css/bulma.css'
 
 
@@ -8,6 +10,12 @@ const Section = ({ children }: iApp) => <div className="section" style={{padding
 </div>
 
 
-export const Layout = ({ children }: iApp) => <Section>
-    { children }
-</Section>
+export const Layout = ({ children }: iApp) =>   <div>
+    <Head>
+        <link rel="shortcut icon" href="/SocialQ.ico" />
+    </Head>
+
+    <Section>
+        { children }
+    </Section>
+</div>
