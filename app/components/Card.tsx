@@ -1,7 +1,7 @@
 import { CSSProperties, ReactNode } from 'react'
 
 
-const cardStyle:CSSProperties = {
+const CardStyle:CSSProperties = {
     backgroundColor: 'rgb(48, 48, 48)',
     borderRadius: 12,
     maxWidth:460,
@@ -17,8 +17,11 @@ const headerStyle:CSSProperties = {
 }
 
 
-interface iCard {title: string, children?: ReactNode }
-export const Card = ({ title, children }: iCard) => <div className='card' style={cardStyle}>
+interface iCard {title:string, children?:ReactNode, cardStyle?:CSSProperties }
+export const Card = ({ title, children, cardStyle={} }: iCard) => <div 
+    className='card' 
+    style={{...CardStyle, ...cardStyle }
+}>
     <header className='card-header' style={headerStyle}>
         <p className='card-header-title' style={{color:'white'}}> { title } </p>
     </header>
