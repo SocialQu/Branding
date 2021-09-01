@@ -43,7 +43,7 @@ const Reach = ({impressions, followers}:iReach) => <Card title={'Reach'}>
 </Card>
 
 
-export const Kpis = () => <div className={'columns'} style = {{ maxWidth:1200, margin:'auto' }}>
+export const Kpis = () => <div className={'columns'} style={{ maxWidth:1200, margin:'auto' }}>
     <div className={'column'}>
         <Activity tweets={34} replies={45}/>
     </div>

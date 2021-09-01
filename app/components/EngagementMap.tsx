@@ -10,7 +10,7 @@ const data = [
   { x: 140, y: 250, z: 280 },
   { x: 150, y: 400, z: 500 },
   { x: 110, y: 280, z: 200 },
-];
+]
 
 const margin = { top:20, right:20, bottom:20, left:20 }
 const BubbleChart = () => <ResponsiveContainer width="100%" height={400} >
@@ -26,6 +26,10 @@ const BubbleChart = () => <ResponsiveContainer width="100%" height={400} >
 
 
 
-export const EngagementMap = () => <Card title={'Engagement Map'} cardStyle={{maxWidth:1060}}>
-    <BubbleChart />
-</Card>
+export const EngagementMap = () => <div className={'columns'} style={{maxWidth:1200, margin:'40px auto 0px'}}>
+    <div className={'column'}>
+        <Card title={'Engagement Map'} cardStyle={{maxWidth:1060}}>
+            <BubbleChart />
+        </Card>
+    </div>
+</div>

@@ -1,6 +1,5 @@
 import type { ReactElement } from 'react'
-import 'bulma/css/bulma.css'
-
+import Head from 'next/head'
 
 interface iApp { children: ReactElement }
 const Section = ({ children }: iApp) => <div className="section" style={{padding:'2rem' }}>
@@ -8,6 +7,13 @@ const Section = ({ children }: iApp) => <div className="section" style={{padding
 </div>
 
 
-export const Layout = ({ children }: iApp) => <Section>
-    { children }
-</Section>
+export const Layout = ({ children }: iApp) =>   <div>
+    <Head>
+        <link rel="shortcut icon" href="/SocialQ.ico" />
+        <title> SocialQ </title>
+    </Head>
+
+    <Section>
+        { children }
+    </Section>
+</div>

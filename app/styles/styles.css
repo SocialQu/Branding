@@ -8,3 +8,6 @@ body {
     background-color: hsl(0, 0%, 8%);
     min-height: 100vh;
 }
+
+.panel-tabs a.is-active { border-bottom: 2px solid deepskyblue }
+.panel-tabs a { border-bottom: 2px solid #dbdbdb }
