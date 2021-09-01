@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { CSSProperties, useState, ReactNode } from 'react'
+
+import { CSSProperties, ReactNode } from 'react'
 import { Property } from 'csstype'
+
 
 const numberFormatter = (num:number):string => {
     if(num < 1000) return `${num}`
@@ -39,40 +41,23 @@ const headerStyle:CSSProperties = {
     borderTopRightRadius: 12,
 }
 
-interface iCard {title: string, children?: ReactNode, extra?: ReactNode}
-export const Card = ({ title, children, extra }:iCard) => {
-    const [isHidden, setHidden] = useState(true)
+interface iCard {title: string, children?: ReactNode }
+const Card = ({ title, children }: iCard) => <div className='card' style={cardStyle}>
+    <header className='card-header' style={headerStyle}>
+        <p className='card-header-title' style={{color:'white'}}> { title } </p>
+    </header>
 
-    return <div className='card' style={cardStyle}>
-        <header className='card-header' style={headerStyle}>
-            <p className='card-header-title' style={{color:'white'}}> { title } </p>
-            {
-                extra && 
-                <a data-action="collapse" className="card-header-icon" onClick={() => setHidden(!isHidden)}>
-                    <span className="icon" style={{color:'white'}}>
-                        <i className={`fas fa-angle-${isHidden ? 'down' : 'up'}`} aria-hidden="true"/>
-                    </span>
-                </a>        
-            }
-        </header>
-
-        <div className='card-content' style={{padding: '0.5rem 1rem'}}>
-            <div className='content'>
-                { children }
-            </div>
-        </div>
-
-        <div id="collapsible-card" className="is-collapsible" style={{height:isHidden ? 0 : 'auto'}}>
-            <div className="card-content">
-                { extra }
-            </div>
+    <div className='card-content' style={{padding: '0.5rem 1rem'}}>
+        <div className='content'>
+            { children }
         </div>
     </div>
-}
+</div>
+
 
 
 interface iActivity {tweets:number, replies:number}
-export const Activity = ({tweets, replies}:iActivity) => <Card title={'Activity'}>
+const Activity = ({tweets, replies}:iActivity) => <Card title={'Activity'}>
     <nav className='level' style={{marginBottom: 0, padding: 0}}>
         <KpiValue label={'Tweets'} value={tweets} color={'deepskyblue'}/>
         <KpiValue label={'Replies'} value={replies} />
@@ -81,7 +66,7 @@ export const Activity = ({tweets, replies}:iActivity) => <Card title={'Activity'
 
 
 interface iReach { impressions:number, followers:number }
-export const Reach = ({impressions, followers}:iReach) => <Card title={'Reach'}>
+const Reach = ({impressions, followers}:iReach) => <Card title={'Reach'}>
     <nav className='level' style={{marginBottom: 0, padding: 0}}>
         <KpiValue label={'Impressions'} value={impressions} color={'goldenrod'}/>
         <KpiValue label={'New Followers'} value={followers}/>
