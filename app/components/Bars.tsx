@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState } from 'react'
+import { CSSProperties, useState } from 'react'
 import { ResponsiveContainer, BarChart, Bar, Cell } from 'recharts'
 
-const GrowthStyle = { 
+const GrowthStyle:CSSProperties = { 
     maxWidth:460, 
     maxHeight: 750,
     margin: 'auto', 
@@ -12,11 +12,18 @@ const GrowthStyle = {
     backgroundColor: 'rgb(48, 48, 48)'
 }
 
-const HeadingStyle = { 
+const HeadingStyle:CSSProperties = { 
     color: 'white', 
     textAlign: 'center' as const,
     borderBottom: '1px solid white',
     backgroundColor: 'rgb(72, 72, 72)'
+}
+
+const GrowthChartStyle:CSSProperties = {
+    color: 'white', 
+    display: 'block', 
+    padding:'12px 0px 1px 0px', 
+    backgroundColor: 'rgb(16, 16, 16)'
 }
 
 
@@ -74,8 +81,10 @@ const getPath = (data: iGetPath) => data.height > 10 ? pathN(data, 10) : data.he
 interface iCurvedBar extends iGetPath { fill: string }
 const CurvedBar = ({ fill, x, y, width, height }: iCurvedBar) => <path d={getPath({x, y, width, height})} stroke='none' fill={fill} />
 
+
+interface iData { name:string, tweets:number, impressions:number, engagements:number}
 interface iGrowthChart { 
-    data:{ name:string, tweets:number, impressions:number, engagements:number}[]
+    data:iData[]
     active: GrowthTab
     keyword: Keyword
 }
@@ -99,8 +108,8 @@ export const GrowthChart = ({ data, active, keyword }: iGrowthChart) => {
         >
             <defs>
                 <linearGradient id={`color${keyword}`} x1='0' y1='0' x2='0' y2='100%' spreadMethod='reflect' >
-                <stop offset='0' stopColor={color.bottom} />
-                <stop offset='1' stopColor={color.top} />
+                    <stop offset='0' stopColor={color.bottom} />
+                    <stop offset='1' stopColor={color.top} />
                 </linearGradient>
             </defs>
 
@@ -114,6 +123,19 @@ export const GrowthChart = ({ data, active, keyword }: iGrowthChart) => {
 }
 
 
+const data:iData[] = [
+    {name:'Topic 1', engagements:13, impressions:231, tweets:2 },
+    {name:'Topic 2', engagements:9, impressions:223, tweets:2 },
+    {name:'Topic 3', engagements:8, impressions:213, tweets:2 },
+    {name:'Topic 4', engagements:7, impressions:163, tweets:2 },
+    {name:'Topic 5', engagements:6, impressions:133, tweets:2 },
+    {name:'Topic 6', engagements:5, impressions:123, tweets:2 },
+    {name:'Topic 7', engagements:4, impressions:23, tweets:2 },
+    {name:'Topic 8', engagements:3, impressions:133, tweets:2 },
+    {name:'Topic 9', engagements:2, impressions:123, tweets:2 },
+    {name:'Topic 10', engagements:1, impressions:23, tweets:2 },
+]
+
 interface iBarsPanel { title:Keyword }
 const BarsPanel = ({ title }: iBarsPanel) => {
     const [active, setActive] = useState<GrowthTab>('engagements')
@@ -123,10 +145,9 @@ const BarsPanel = ({ title }: iBarsPanel) => {
             { title } 
         </div>
 
-        <GrowthChart active={active} keyword={title} data={[]}/>
-
-        <div>
-            <BarTabs active={active} setActive={setActive}/>
+        <BarTabs active={active} setActive={setActive}/>
+        <div className='panel-block' style={GrowthChartStyle}>
+            <GrowthChart active={active} keyword={title} data={data}/>
         </div>
     </nav>
 }
