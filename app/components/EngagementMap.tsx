@@ -1,5 +1,5 @@
-import { CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import { ScatterChart, Scatter, XAxis, YAxis, ZAxis } from 'recharts'
+import { Tooltip, ResponsiveContainer } from 'recharts'
 import { Card } from './Card'
 
 
@@ -15,20 +15,17 @@ const data = [
 const margin = { top:20, right:20, bottom:20, left:20 }
 const BubbleChart = () => <ResponsiveContainer width="100%" height={400} >
     <ScatterChart width={400} margin={margin} >
-        <CartesianGrid />
+        <XAxis type="number" dataKey="x" />
+        <YAxis type="number" dataKey="y" />
+        <ZAxis type="number" dataKey="z" range={[60, 400]}/>
 
-        <XAxis type="number" dataKey="x" name="stature" unit="cm" />
-        <YAxis type="number" dataKey="y" name="weight" unit="kg" />
-        <ZAxis type="number" dataKey="z" range={[60, 400]} name="score" unit="km" />
-        <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-        <Legend />
-
+        <Tooltip/>
         <Scatter name="A school" data={data} fill="#8884d8" />
     </ScatterChart>
 </ResponsiveContainer>
 
 
 
-export const EngagementMap = () => <Card title={'Engagement Map'}>
+export const EngagementMap = () => <Card title={'Engagement Map'} cardStyle={{maxWidth:1060}}>
     <BubbleChart />
 </Card>
