@@ -26,6 +26,10 @@ const BubbleChart = () => <ResponsiveContainer width="100%" height={400} >
 
 
 
-export const EngagementMap = () => <Card title={'Engagement Map'} cardStyle={{maxWidth:1060}}>
-    <BubbleChart />
-</Card>
+export const EngagementMap = () => <div className={'columns'} style={{maxWidth:1200, margin:'40px auto 0px'}}>
+    <div className={'column'}>
+        <Card title={'Engagement Map'} cardStyle={{maxWidth:1060}}>
+            <BubbleChart />
+        </Card>
+    </div>
+</div>
