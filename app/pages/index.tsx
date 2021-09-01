@@ -1,9 +1,13 @@
-import { Kpis } from '../components/Kpi'
+import { EngagementMap } from '../components/EngagementMap'
 import { Layout } from '../components/layout'
+import { Kpis } from '../components/Kpi'
 
 
 const Home = () => <Layout>
-    <Kpis />
+    <>
+        <Kpis />
+        <EngagementMap />
+    </>
 </Layout>
 
 
