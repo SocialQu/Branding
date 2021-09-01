@@ -11,7 +11,7 @@ const numberFormatter = (num:number):string => {
 }
 
 interface iKpi { label:string, value:number, color?:Property.Color, isPercent?:boolean }
-const Kpi = ({ label, value, color, isPercent }:iKpi) => <div className='level-item level-kpi'>
+const KpiValue = ({ label, value, color, isPercent }:iKpi) => <div className='level-item level-kpi'>
     <p style={{color:'white', textAlign:'center'}}> 
         <small style={{fontSize: '1rem'}}>{label}</small> <br/>
         <span 
@@ -74,8 +74,8 @@ export const Card = ({ title, children, extra }:iCard) => {
 interface iActivity {tweets:number, replies:number}
 export const Activity = ({tweets, replies}:iActivity) => <Card title={'Activity'}>
     <nav className='level' style={{marginBottom: 0, padding: 0}}>
-        <Kpi label={'Tweets'} value={tweets} color={'deepskyblue'}/>
-        <Kpi label={'Replies'} value={replies} />
+        <KpiValue label={'Tweets'} value={tweets} color={'deepskyblue'}/>
+        <KpiValue label={'Replies'} value={replies} />
     </nav>
 </Card>
 
@@ -83,7 +83,18 @@ export const Activity = ({tweets, replies}:iActivity) => <Card title={'Activity'
 interface iReach { impressions:number, followers:number }
 export const Reach = ({impressions, followers}:iReach) => <Card title={'Reach'}>
     <nav className='level' style={{marginBottom: 0, padding: 0}}>
-        <Kpi label={'Impressions'} value={impressions} color={'goldenrod'}/>
-        <Kpi label={'New Followers'} value={followers}/>
+        <KpiValue label={'Impressions'} value={impressions} color={'goldenrod'}/>
+        <KpiValue label={'New Followers'} value={followers}/>
     </nav>
 </Card>
+
+
+export const Kpis = () => <div className={'columns'} style = {{ maxWidth:1200, margin:'auto' }}>
+    <div className={'column'}>
+        <Activity tweets={34} replies={45}/>
+    </div>
+
+    <div className={'column'}>
+        <Reach impressions={34} followers={45}/>
+    </div>
+</div>
