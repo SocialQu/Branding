@@ -54,7 +54,7 @@ const BarTabs = ({ active, setActive }:iTabs) => <p className='panel-tabs' style
 </p>
 
 
-type Keyword = 'Content' | 'Audience'
+type Keyword = 'Content' | 'Followers'
 const getGradient = (key:Keyword, active:GrowthTab) => {
     if(key === 'Content'){
         if(active === 'impressions') return { top:'#CAC531', bottom:'#F3F9A7' } // Sulphur
@@ -176,7 +176,7 @@ const BarsPanel = ({ title }: iBarsPanel) => {
 
     return <nav className='panel' style={GrowthStyle}>
         <div className='panel-heading' style={HeadingStyle}> 
-            { title } 
+            { title === 'Content' ? 'Content Topics' : 'Audience Composition' } 
         </div>
 
         <BarTabs active={active} setActive={setActive}/>
@@ -194,6 +194,6 @@ export const Bars = () => <div className={'columns'} style={{ maxWidth:1200, mar
     </div>
 
     <div className={'column'}>
-        <BarsPanel title={'Audience'}/>
+        <BarsPanel title={'Followers'}/>
     </div>
 </div>
