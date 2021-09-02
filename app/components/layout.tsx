@@ -45,16 +45,16 @@ export const NavBar = ({ click }: iNavBar) => {
             </div>
 
             <div 
-                style={{ maxWidth:1200, marginRight:'auto' }}
+                style={{ maxWidth:1200 }}
                 className={`navbar-menu ${isActive ? 'is-active navbar-menu-active': ''}`} 
             >
                 <div 
-                    style={{marginRight:0}}
+                    style={{marginRight:'auto'}}
                     className={`navbar-start ${isActive ? 'is-active navbar-start-active': ''}`}
                 >
                     {
-                        ['KPIs', 'Engagement Map', 'Niche Analysis', 'Topic Suggestions'].map((tab) => 
-                            <NavTab isActive={isActive} tab={tab as Tab} clickTab={clickTab}/>                        
+                        ['KPIs', 'Topics', 'Engagement', 'Suggestions'].map((tab, i) => 
+                            <NavTab isActive={isActive} tab={tab as Tab} clickTab={clickTab} key={i}/> 
                         )
                     }
                 </div>
