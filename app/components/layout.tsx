@@ -53,8 +53,8 @@ export const NavBar = ({ click }: iNavBar) => {
                     className={`navbar-start ${isActive ? 'is-active navbar-start-active': ''}`}
                 >
                     {
-                        ['KPIs', 'Engagement Map', 'Niche Analysis', 'Topic Suggestions'].map((tab) => 
-                            <NavTab isActive={isActive} tab={tab as Tab} clickTab={clickTab}/>                        
+                        ['KPIs', 'Engagement Map', 'Niche Analysis', 'Topic Suggestions'].map((tab, i) => 
+                            <NavTab isActive={isActive} tab={tab as Tab} clickTab={clickTab} key={i}/> 
                         )
                     }
                 </div>
