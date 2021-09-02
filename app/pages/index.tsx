@@ -6,8 +6,8 @@ import { Kpis } from '../components/Kpi'
 
 const Home = () => <Layout>
     <Kpis />
-    <EngagementMap />
     <Bars />
+    <EngagementMap />
 </Layout>
 
 
