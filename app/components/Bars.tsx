@@ -5,7 +5,6 @@ import { ResponsiveContainer, BarChart, Bar, Cell } from 'recharts'
 const GrowthStyle:CSSProperties = { 
     maxWidth:460, 
     margin: 'auto', 
-    marginTop:40,
     border:'2px solid white', 
     backgroundColor: 'rgb(48, 48, 48)'
 }
@@ -189,11 +188,11 @@ const BarsPanel = ({ title }: iBarsPanel) => {
 }
 
 export const Bars = () => <div className={'columns'} style={{ maxWidth:1200, margin:'auto' }}>
-    <div className={'column'}>
+    <div className={'column'} style={{margin:'24px auto 48px'}}>
         <BarsPanel title={'Content'}/>
     </div>
 
-    <div className={'column'}>
+    <div className={'column'}  style={{margin:'24px auto 48px'}}>
         <BarsPanel title={'Followers'}/>
     </div>
 </div>
