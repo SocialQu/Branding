@@ -1,5 +1,5 @@
 import { Property } from 'csstype'
-import { Card } from './Card'
+import { Card } from './molecules/Card'
 
 
 const numberFormatter = (num:number):string => {
@@ -23,8 +23,8 @@ const KpiValue = ({ label, value, color, isPercent }:iKpi) => <div className='le
 </div>
 
 
-export const Kpis = () => <div className={'columns'} style={{ maxWidth:1200, margin:'auto' }}>
-    <div className={'column'}>
+export const Kpis = () => <div className={'columns'} style={{ maxWidth:1200, margin:'auto'}}>
+    <div className={'column'} style={{margin:'24px auto 48px' }}>
         <Card title={'30-Day KPIs'} cardStyle={{maxWidth:1060}}>
             <nav className='level' style={{marginBottom: 0, padding: 0}}>
                 <KpiValue label={'Tweets'} value={12} color={'deepskyblue'}/>

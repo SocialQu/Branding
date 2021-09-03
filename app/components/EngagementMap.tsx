@@ -1,6 +1,6 @@
 import { ScatterChart, Scatter, XAxis, YAxis, ZAxis } from 'recharts'
 import { Tooltip, ResponsiveContainer } from 'recharts'
-import { Card } from './Card'
+import { Card } from './molecules/Card'
 
 
 const data = [
@@ -26,8 +26,8 @@ const BubbleChart = () => <ResponsiveContainer width="100%" height={400} >
 
 
 
-export const EngagementMap = () => <div className={'columns'} style={{maxWidth:1200, margin:'40px auto 0px'}}>
-    <div className={'column'}>
+export const EngagementMap = () => <div className={'columns'} style={{maxWidth:1200, margin:'auto'}}>
+    <div className={'column'} style={{margin:'24px auto 48px'}}>
         <Card title={'Engagement Map'} cardStyle={{maxWidth:1060}}>
             <BubbleChart />
         </Card>

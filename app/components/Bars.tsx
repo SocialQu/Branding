@@ -5,7 +5,6 @@ import { ResponsiveContainer, BarChart, Bar, Cell } from 'recharts'
 const GrowthStyle:CSSProperties = { 
     maxWidth:460, 
     margin: 'auto', 
-    marginTop:40,
     border:'2px solid white', 
     backgroundColor: 'rgb(48, 48, 48)'
 }
@@ -26,7 +25,7 @@ const GrowthChartStyle:CSSProperties = {
 
 
 type GrowthTab = 'tweets' | 'impressions' | 'engagements'
-interface iTabs { active:GrowthTab, setActive(GrowthTab):void }
+interface iTabs { active:GrowthTab, setActive(tab:GrowthTab):void }
 const BarTabs = ({ active, setActive }:iTabs) => <p className='panel-tabs' style={{textAlign:'center'}}>
     <a 
         className={`${active === 'impressions' ? 'is-active' : '' }`}
@@ -113,7 +112,7 @@ export const GrowthChart = ({ data, active, keyword }: iGrowthChart) => {
 
             <Bar 
                 dataKey={active} 
-                label={{ position: 'top', style:{fill:'white'}, formatter:(n) => round(n)}}
+                label={{ position: 'top', style:{fill:'white'}, formatter:(n:number) => round(n)}}
                 shape={<CurvedBar width={300} height={600} x={0} y={0} fill={`url(#color${keyword})`}/>} 
             > { data.map((_, i) => <Cell key={`cell-${i}`}  fill={`url(#color${keyword})`}/>) } </Bar>
         </BarChart>
@@ -184,16 +183,16 @@ const BarsPanel = ({ title }: iBarsPanel) => {
             <GrowthChart active={active} keyword={title} data={data}/>
         </div>
 
-        { data.map((d) => <BarItem {...d}/>) }
+        { data.map((d, i) => <BarItem {...d} key={i}/>) }
     </nav>
 }
 
 export const Bars = () => <div className={'columns'} style={{ maxWidth:1200, margin:'auto' }}>
-    <div className={'column'}>
+    <div className={'column'} style={{margin:'24px auto 48px'}}>
         <BarsPanel title={'Content'}/>
     </div>
 
-    <div className={'column'}>
+    <div className={'column'}  style={{margin:'24px auto 48px'}}>
         <BarsPanel title={'Followers'}/>
     </div>
 </div>

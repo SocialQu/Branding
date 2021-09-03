@@ -6,7 +6,6 @@ const CardStyle:CSSProperties = {
     borderRadius: 12,
     maxWidth:460,
     margin: 'auto',
-    marginBottom: '1.5em',
     border: '1px solid white'
 }
 
