@@ -1,4 +1,4 @@
-import { iData, iEngagementLocations, iKpis, iContent } from '../types/data'
+import { iData, iEngagementLocations, iKpis, iContent, iAudience } from '../types/data'
 import { iFetchedData, iMetrics } from '../types/fetch'
 import { analyzeData, iAnalysisData } from './analysis'
 import { fetchData } from './fetch'
@@ -45,14 +45,31 @@ const getContent = ({ tweets }:iAnalysisData):iContent[] => {
     return topics
 }
 
-const getData = async():Promise<iData> => {
-    const { user, tweets, followers, topics } = await fetchData()
-    const kpis = getKpis({ user, tweets, followers, topics })
+const getNiches = ({ followers }:iAnalysisData):iAudience[] => {
+    const uniqueAudiences = new Set(followers.map(({ niche }) => niche))
+    const audienceDict = [...uniqueAudiences].map(niche => ({
+        niche,
+        followers: followers.filter(({ niche:n }) => niche === n)
+    }))
 
-    const embededData = await analyzeData({ tweets, followers, topics })
+    const niches = audienceDict.map(({ niche, followers }) => ({
+        niche,
+        followers: followers.length
+    }))
+    
+    return niches
+}
+
+
+const getData = async():Promise<iData> => {
+    const fetchedData = await fetchData()
+    const kpis = getKpis(fetchedData)
+
+    const embededData = await analyzeData(fetchedData)
     const engagementMap = getLocations(embededData)
     const content = getContent(embededData)
+    const audience = getNiches(embededData)
 
     
-    return { kpis, engagementMap, content }
+    return { kpis, content, audience, engagementMap }
 }
