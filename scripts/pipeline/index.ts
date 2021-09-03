@@ -1,4 +1,4 @@
-import { iData, iEngagementLocations, iKpis } from '../types/data'
+import { iData, iEngagementLocations, iKpis, iContent } from '../types/data'
 import { iFetchedData, iMetrics } from '../types/fetch'
 import { analyzeData, iAnalysisData } from './analysis'
 import { fetchData } from './fetch'
@@ -28,13 +28,31 @@ const getLocations = ({ tweets }:iAnalysisData):iEngagementLocations[] => {
     return locations
 }
 
+const getContent = ({ tweets }:iAnalysisData):iContent[] => {
+    const uniqueTopics = new Set(tweets.map(({ topic }) => topic))
+    const topicsDict = [...uniqueTopics].map(topic => ({
+        topic,
+        tweets: tweets.filter(({ topic:t }) => topic === t)
+    }))
+
+    const topics = topicsDict.map(({ topic, tweets }) => ({
+        topic,
+        tweets:tweets.length,
+        impressions: tweets.reduce((d, { metrics }) => d+= metrics.impressions, 0)/tweets.length,
+        engagements: tweets.reduce((d, { metrics }) => d+= getEngagements(metrics), 0)/tweets.length
+    }))
+    
+    return topics
+}
+
 const getData = async():Promise<iData> => {
     const { user, tweets, followers, topics } = await fetchData()
     const kpis = getKpis({ user, tweets, followers, topics })
 
     const embededData = await analyzeData({ tweets, followers, topics })
-    const engagementMap = await getLocations(embededData)
+    const engagementMap = getLocations(embededData)
+    const content = getContent(embededData)
 
     
-    return { kpis, engagementMap }
+    return { kpis, engagementMap, content }
 }
