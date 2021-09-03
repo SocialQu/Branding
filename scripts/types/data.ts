@@ -20,8 +20,8 @@ export interface iSuggestion {
 
 export interface iData {
     kpis: iKpis
-    content: iContent
-    audience: iAudience
+    content: iContent[]
+    audience: iAudience[]
     engagementMap: iEngagementLocations[]
     suggestions: { positive:iSuggestion, negative:iSuggestion }
 }
