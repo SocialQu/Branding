@@ -1,6 +1,7 @@
 import { load, UniversalSentenceEncoder as iModel } from '@tensorflow-models/universal-sentence-encoder'
 import { iFollower, iTopic, iTweet } from '../types/fetch'
 import '@tensorflow/tfjs-node'
+import { PCA } from 'ml-pca'
 
 
 interface iEmbeddedTweet extends iTweet { embeddings:number[] }
@@ -56,9 +57,20 @@ const classifyFollowers = async(followers:iEmbeddedFollower[], topics:iTopic[]):
     return labeledFollowers
 }
 
+interface iReducedTweet extends iLabeledTweet { location:{ x:number, y:number } }
+const reduceTweets = (tweets:iLabeledTweet[]):iReducedTweet[] => {
+    const embeddings = tweets.map(({ embeddings }) => embeddings)
+    const pca = new PCA(embeddings)
 
-interface iAnalysisData { tweets:iLabeledTweet[], followers:iLabeledFollower[] }
+    const locations = pca.predict(embeddings, {nComponents: 2}).to2DArray()
+    const reducedTweets = tweets.map((t, i) => ({...t, location:{ x:locations[i][0], y:locations[i][1] }}))
+
+    return reducedTweets
+}
+
+
 interface iAnalyzeData { tweets:iTweet[], followers:iFollower[], topics:iTopic[] } 
+export interface iAnalysisData { tweets:iReducedTweet[], followers:iLabeledFollower[] }
 export const analyzeData = async({ tweets, followers, topics }:iAnalyzeData):Promise<iAnalysisData>  => {
     const model = await load()
 
@@ -68,6 +80,7 @@ export const analyzeData = async({ tweets, followers, topics }:iAnalyzeData):Pro
     const labeledTweets = await classifyTweets(embededTweets, topics)
     const labeledFollowers = await classifyFollowers(embededFollowers, topics)
 
-    return { tweets: labeledTweets, followers: labeledFollowers }
+    const reducedTweets = reduceTweets(labeledTweets)
+    return { tweets:reducedTweets, followers:labeledFollowers }
 }
 
