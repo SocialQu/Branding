@@ -51,9 +51,9 @@ const classifyTweets = async(tweets:iEmbeddedTweet[], topics:iTopic[]):Promise<i
 }
 
 
-export interface iLabeledFollower extends iEmbeddedFollower { topic:string }
+export interface iLabeledFollower extends iEmbeddedFollower { niche:string }
 const classifyFollowers = async(followers:iEmbeddedFollower[], topics:iTopic[]):Promise<iLabeledFollower[]> => {
-    const labeledFollowers = followers.map(t => ({...t, topic:findTopic(t, topics)}))
+    const labeledFollowers = followers.map(t => ({...t, niche:findTopic(t, topics)}))
     return labeledFollowers
 }
 
