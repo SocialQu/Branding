@@ -10,8 +10,10 @@ export interface iEngagementLocations {
     engagements: number
 }
 
+
+export interface iWordCloud { text:string, value:number }
 export interface iSuggestion {
-    words: { text:string, value:number }[],
+    words: iWordCloud[],
     topics: { topic:string, avgEngagement:number }[]
 }
 

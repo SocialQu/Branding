@@ -7,6 +7,7 @@
 - [ ] Validate topics selected (increase positive number?).
 - [ ] Save fetched data.
 - [ ] Clean uneeded files.
+- [ ] Remap links.
 
 
 ## Front
