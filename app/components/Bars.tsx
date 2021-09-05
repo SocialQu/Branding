@@ -1,20 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { CSSProperties, useState } from 'react'
 import { ResponsiveContainer, BarChart, Bar, Cell } from 'recharts'
+import { iAudience, iContent } from '../types/data'
+import { CSSProperties, useState } from 'react'
+import { Panel } from './molecules/Panel'
 
-const GrowthStyle:CSSProperties = { 
-    maxWidth:460, 
-    margin: 'auto', 
-    border:'2px solid white', 
-    backgroundColor: 'rgb(48, 48, 48)'
-}
-
-const HeadingStyle:CSSProperties = { 
-    color: 'white', 
-    textAlign: 'center' as const,
-    borderBottom: '1px solid white',
-    backgroundColor: 'rgb(72, 72, 72)'
-}
 
 const GrowthChartStyle:CSSProperties = {
     color: 'white', 
@@ -23,10 +12,12 @@ const GrowthChartStyle:CSSProperties = {
     backgroundColor: 'rgb(16, 16, 16)'
 }
 
-
-type GrowthTab = 'tweets' | 'impressions' | 'engagements'
-interface iTabs { active:GrowthTab, setActive(tab:GrowthTab):void }
-const BarTabs = ({ active, setActive }:iTabs) => <p className='panel-tabs' style={{textAlign:'center'}}>
+type GrowthTab = 'tweets' | 'impressions' | 'engagements' | 'followers'
+interface iContentTabs { active:GrowthTab, setActive(tab:GrowthTab):void }
+const ContentTabs = ({ active, setActive }:iContentTabs) => <p 
+    className='panel-tabs' 
+    style={{textAlign:'center'}}
+>
     <a 
         className={`${active === 'impressions' ? 'is-active' : '' }`}
         style={{color:`${active === 'impressions' ? 'orange' : 'white' }`, width:150}} 
@@ -53,17 +44,22 @@ const BarTabs = ({ active, setActive }:iTabs) => <p className='panel-tabs' style
 </p>
 
 
+
 type Keyword = 'Content' | 'Followers'
 const getGradient = (key:Keyword, active:GrowthTab) => {
+    const sulphur = { top:'#CAC531', bottom:'#F3F9A7' }
+    const ohhappiness = { top:'#00b09b', bottom:'#96c93d' }
+    const summer = { top:'#22c1c3', bottom:'#fdbb2d' }
+    const rainbowBlue = { top:'#e1eec3', bottom:'#f05053' }
+    
+
     if(key === 'Content'){
-        if(active === 'impressions') return { top:'#CAC531', bottom:'#F3F9A7' } // Sulphur
-        if(active === 'engagements') return { top:'#00b09b', bottom:'#96c93d' } // Ohhappiness
-        return { top:'#22c1c3', bottom:'#fdbb2d' } //  Summer
+        if(active === 'impressions') return  sulphur
+        if(active === 'engagements') return  ohhappiness
+        return  summer
     }
 
-    if(active === 'impressions') return { top:'#00F260', bottom:'#0575E6' } // RainbowBlue
-    if(active === 'engagements') return { top:'#e1eec3', bottom:'#f05053' } // VelvetSun
-    return { top:'#fc4a1a', bottom:'#f7b733' } // OrangeFun
+    return rainbowBlue
 }
 
 interface iGetPath { x: number, y: number, width: number, height: number }
@@ -79,14 +75,8 @@ interface iCurvedBar extends iGetPath { fill: string }
 const CurvedBar = ({ fill, x, y, width, height }: iCurvedBar) => <path d={getPath({x, y, width, height})} stroke='none' fill={fill} />
 
 
-interface iData { name:string, tweets:number, impressions:number, engagements:number}
-interface iGrowthChart { 
-    data:iData[]
-    active: GrowthTab
-    keyword: Keyword
-}
 
-export const round = (n:string | number) => {
+const round = (n:string | number) => {
     if(typeof(n) === 'string') return n
     if(n>=1000000) return `${Math.round(n/100000)/10}M`
     if(n>=10000) return `${Math.round(n/1000)}K`
@@ -94,10 +84,13 @@ export const round = (n:string | number) => {
     return n
 }
 
+
+interface iBarData { name:string, tweets?:number, impressions?:number, engagements?:number, followers?:number }
+interface iGrowthChart { data:iBarData[], active: GrowthTab, keyword: Keyword }
 export const GrowthChart = ({ data, active, keyword }: iGrowthChart) => {
     const color = getGradient(keyword, active)
 
-    return <ResponsiveContainer width="100%" height={200}>
+    return <ResponsiveContainer width='100%' height={200}>
         <BarChart
             style={{margin:'auto'}}
             data={data.filter((_, i) => i < 12)}
@@ -120,22 +113,13 @@ export const GrowthChart = ({ data, active, keyword }: iGrowthChart) => {
 }
 
 
-const data:iData[] = [
-    {name:'Topic 1', engagements:13, impressions:231, tweets:2 },
-    {name:'Topic 2', engagements:9, impressions:223, tweets:2 },
-    {name:'Topic 3', engagements:8, impressions:213, tweets:2 },
-    {name:'Topic 4', engagements:7, impressions:163, tweets:2 },
-    {name:'Topic 5', engagements:6, impressions:133, tweets:2 },
-    {name:'Topic 6', engagements:5, impressions:123, tweets:2 },
-    {name:'Topic 7', engagements:4, impressions:23, tweets:2 },
-    {name:'Topic 8', engagements:3, impressions:133, tweets:2 },
-    {name:'Topic 9', engagements:2, impressions:123, tweets:2 },
-    {name:'Topic 10', engagements:1, impressions:23, tweets:2 },
-]
-
 const NameStyle:CSSProperties = {color:'deepskyblue', paddingLeft:6, marginRight:'auto'}
 const ItemStyle:CSSProperties = { color: 'white', display: 'block', backgroundColor: 'rgb(48, 48, 48)' }
-const BarItem = ({ name, impressions, engagements, tweets }:iData) => <div className='panel-block' style={ItemStyle}>
+interface iContentItem extends iBarData { impressions:number, engagements:number, tweets:number }
+const ContentItem = ({ name, impressions, engagements, tweets }:iContentItem) => <div 
+    className='panel-block' 
+    style={ItemStyle}
+>
     <nav className='level' style={{marginTop:3, marginBottom:6}}>
         <div className='level-item div-keyword' style={{width:'50%'}}>
             <a className='subtitle is-5 keyword' style={NameStyle}> { name } </a>
@@ -144,7 +128,7 @@ const BarItem = ({ name, impressions, engagements, tweets }:iData) => <div class
         <div className='level-item has-text-centered level-icon'>
             <div>
                 <p className='subtitle is-5' style={{color:'white'}}> 
-                    { impressions } <span role='img' aria-label='eyes'> 👀 </span>
+                    { round(impressions) } <span role='img' aria-label='eyes'> 👀 </span>
                 </p>
             </div>
         </div>
@@ -152,7 +136,7 @@ const BarItem = ({ name, impressions, engagements, tweets }:iData) => <div class
         <div className='level-item has-text-centered level-icon'>
             <div>
                 <p className='subtitle is-5' style={{color:'white'}}> 
-                    { engagements } <span role='img' aria-label='fire'> 🔥 </span>
+                    { round(engagements) } <span role='img' aria-label='fire'> 🔥 </span>
                 </p>
             </div>
         </div>
@@ -160,7 +144,7 @@ const BarItem = ({ name, impressions, engagements, tweets }:iData) => <div class
         <div className='level-item has-text-centered level-icon'>
             <div>
                 <p className='subtitle is-5' style={{color:'white'}}> 
-                    { tweets } <span role='img' aria-label='bird'> 🐦 </span>
+                    { round(tweets) } <span role='img' aria-label='bird'> 🐦 </span>
                 </p>
             </div>
         </div>
@@ -168,31 +152,71 @@ const BarItem = ({ name, impressions, engagements, tweets }:iData) => <div class
 </div>
 
 
-
-interface iBarsPanel { title:Keyword }
-const BarsPanel = ({ title }: iBarsPanel) => {
+interface iContentPanel { data:iContentItem[] }
+const ContentPanel = ({ data }:iContentPanel) => {
     const [active, setActive] = useState<GrowthTab>('engagements')
 
-    return <nav className='panel' style={GrowthStyle}>
-        <div className='panel-heading' style={HeadingStyle}> 
-            { title === 'Content' ? 'Content Topics' : 'Audience Composition' } 
-        </div>
+    return <Panel title='Content Topics'>
+            <ContentTabs active={active} setActive={setActive}/>
 
-        <BarTabs active={active} setActive={setActive}/>
-        <div className='panel-block' style={GrowthChartStyle}>
-            <GrowthChart active={active} keyword={title} data={data}/>
-        </div>
+            <div className='panel-block' style={GrowthChartStyle}>
+                <GrowthChart active={active} keyword={'Content'} data={data}/>
+            </div>
 
-        { data.map((d, i) => <BarItem {...d} key={i}/>) }
-    </nav>
+            <> { data.map((d, i) => <ContentItem {...d} key={i}/>) } </>
+    </Panel>
 }
 
-export const Bars = () => <div className={'columns'} style={{ maxWidth:1200, margin:'auto' }}>
-    <div className={'column'} style={{margin:'24px auto 48px'}}>
-        <BarsPanel title={'Content'}/>
+
+const AudienceTabs = () => <p className='panel-tabs' style={{textAlign:'center'}}>
+    <a style={{color:'white', width:'50%'}}> 
+        Niche <span role='img' aria-label='eyes'> ❤️ </span>
+    </a>
+
+    <a style={{color:'white', width:'50%'}}> 
+        Followers <span role='img' aria-label='eyes'> 👣 </span>
+    </a>
+</p>
+
+
+interface iAudienceItem extends iBarData { followers:number }
+const AudienceItem = ({ name, followers }:iAudienceItem) => <div 
+    className='panel-block' 
+    style={ItemStyle}
+>
+    <nav className='level' style={{marginTop:3, marginBottom:6}}>
+        <div className='level-item div-keyword' style={{width:'50%'}}>
+            <a className='subtitle is-5 keyword' style={NameStyle}> { name } </a>
+        </div>
+
+        <div className='level-item has-text-centered level-icon'>
+            <div>
+                <p className='subtitle is-5' style={{color:'white'}}> 
+                    { round(followers) } <span role='img' aria-label='eyes'> 👣 </span>
+                </p>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+interface iAudiencePanel { data:iAudienceItem[] }
+const AudiencePanel = ({ data }:iAudiencePanel) => <Panel title='Audience Composition'>
+    <AudienceTabs />
+
+    <div className='panel-block' style={GrowthChartStyle}>
+        <GrowthChart active={'followers'} keyword={'Followers'} data={data}/>
     </div>
 
-    <div className={'column'}  style={{margin:'24px auto 48px'}}>
-        <BarsPanel title={'Followers'}/>
-    </div>
+    <> { data.map((d, i) => <AudienceItem {...d} key={i}/>) } </>
+</Panel>
+
+
+interface iBars { content:iContent[], audience:iAudience[] }
+export const Bars = ({ content, audience }:iBars) => <div 
+    className={'columns'} 
+    style={{ maxWidth:1200, margin:'auto' }}
+>
+    <ContentPanel data={content.map((c) => ({...c, name:c.topic }))}/>
+    <AudiencePanel data={audience.map((c) => ({...c, name:c.niche }))}/>
 </div>
