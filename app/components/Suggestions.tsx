@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import { ItemStyle, NameStyle, GrowthChartStyle } from './styles/Panel'
+import { iSuggestions, iWordCloud } from '../types/data'
 import ReactWordcloud from 'react-wordcloud'
 import { Panel } from './molecules/Panel'
-import { iSuggestions } from '../types/data'
 
 
 interface iSuggestion { topic:string, avgEngagement:number, positive?:boolean } 
@@ -36,6 +36,13 @@ const Tabs = ({ positive }:{ positive?:boolean }) => <p className='panel-tabs' s
 </p>
 
 
+const filterWords = (words:iWordCloud[]) => words
+    .filter((w) => w.text.length > 4)
+    .filter((w) => !w.text.includes('https'))
+    .filter((w) => !w.text.includes(`'`))
+    .filter((w) => !w.text.includes('\n'))
+    .map((w) => ({...w, text:w.text.replace(/[^\w\s]/gi, '')}))
+
 export const Suggestions = ({positive, negative}:iSuggestions) => <div 
     className={'columns'} 
     style={{maxWidth:1200, margin:'auto'}}
@@ -43,7 +50,7 @@ export const Suggestions = ({positive, negative}:iSuggestions) => <div
     <Panel title={'Tweet More'}> 
         <Tabs positive/>
         <div className='panel-block' style={{...GrowthChartStyle, height:200}}>
-            { process.browser && <ReactWordcloud words={[{ text:'Marketing', value:5 }]}/> }
+            { process.browser && <ReactWordcloud words={filterWords(positive.words)}/> }
         </div>
 
         <> { positive.topics.map((s,i) => <Suggestion {...s} key={i} positive/> )} </>
@@ -52,9 +59,9 @@ export const Suggestions = ({positive, negative}:iSuggestions) => <div
     <Panel title={'Tweet Less'}> 
         <Tabs />
         <div className='panel-block' style={{...GrowthChartStyle, height:200}}>
-            { process.browser && <ReactWordcloud words={[{ text:'Marketing', value:5 }]}/> }
+            { process.browser && <ReactWordcloud words={filterWords(negative.words)}/> }
         </div>
         
-        <> { negative.topics.map((s,i) => <Suggestion {...s} key={i}/> )} </>
+        <> { negative.topics.sort(() => -1).map((s,i) => <Suggestion {...s} key={i}/> )} </>
     </Panel>
 </div>
