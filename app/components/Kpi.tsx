@@ -16,7 +16,7 @@ const KpiValue = ({ label, value, color, isPercent }:iKpi) => <div className='le
     <p style={{color:'white', textAlign:'center'}}> 
         <small style={{fontSize: '1rem'}}>{label}</small> <br/>
         <span 
-            className="subtitle is-2" 
+            className='subtitle is-2' 
             style={{color: color || 'white', fontSize:!isPercent ? '2.5rem' : '2.25rem'}}
         > { numberFormatter(value) } </span>
         <small style={{fontSize:'1.5em'}}>{isPercent && '%'}</small>
