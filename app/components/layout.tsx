@@ -22,25 +22,25 @@ export const NavBar = ({ click }: iNavBar) => {
         return click(tab)
     }
 
-    return <nav className="navbar is-black" role="navigation" aria-label="main navigation">
-        <div className="container">
-            <div className="navbar-brand">
-                <a className="navbar-item" onClick={() => click('Home')}>
-                    <img src="SocialQ.png" style={{ height:36, maxHeight: 'none' }} alt={'SocialQ logo'}/>
-                    <p className="navbar-item" style={{ fontSize: '2em', color:'white' }} > SocialQ </p>
+    return <nav className='navbar is-black' role='navigation' aria-label='main navigation'>
+        <div className='container'>
+            <div className='navbar-brand'>
+                <a className='navbar-item' onClick={() => click('Home')}>
+                    <img src='SocialQ.png' style={{ height:36, maxHeight: 'none' }} alt={'SocialQ logo'}/>
+                    <p className='navbar-item' style={{ fontSize: '2em', color:'white' }} > SocialQ </p>
                 </a>
 
                 <a 
-                    role="button" 
+                    role='button' 
                     className={`navbar-burger ${isActive ? 'is-active': ''}`}
-                    aria-label="menu" 
-                    aria-expanded="false" 
-                    data-target="navbarBasicExample"
+                    aria-label='menu' 
+                    aria-expanded='false' 
+                    data-target='navbarBasicExample'
                     onClick={()=> setActive(!isActive)}
                 >
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
+                    <span aria-hidden='true'></span>
+                    <span aria-hidden='true'></span>
+                    <span aria-hidden='true'></span>
                 </a>
             </div>
 
@@ -68,14 +68,14 @@ export const NavBar = ({ click }: iNavBar) => {
 
 
 interface iApp { children: ReactElement[] }
-const Section = ({ children }: iApp) => <div className="section" style={{padding:'2rem' }}>
+const Section = ({ children }: iApp) => <div className='section' style={{padding:'2rem' }}>
     <div className='container'> { children } </div>
 </div>
 
 
 export const Layout = ({ children }: iApp) =>   <div>
     <Head>
-        <link rel="shortcut icon" href="/SocialQ.ico" />
+        <link rel='shortcut icon' href='/SocialQ.ico' />
         <title> SocialQ </title>
     </Head>
 

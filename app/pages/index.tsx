@@ -7,11 +7,11 @@ import { Kpis } from '../components/Kpi'
 import data from '../data/data.json'
 
 
-const { kpis, content, audience } = data
+const { kpis, content, audience, engagementMap } = data
 const Home = () => <Layout>
     <Kpis {...kpis} />
     <Bars content={content} audience={audience} />
-    <EngagementMap />
+    <EngagementMap data={engagementMap} />
     <Suggestions />
 </Layout>
 
