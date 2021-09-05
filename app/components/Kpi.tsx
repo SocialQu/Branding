@@ -1,5 +1,6 @@
-import { Property } from 'csstype'
 import { Card } from './molecules/Card'
+import { iKpis } from '../types/data'
+import { Property } from 'csstype'
 
 
 const numberFormatter = (num:number):string => {
@@ -23,14 +24,17 @@ const KpiValue = ({ label, value, color, isPercent }:iKpi) => <div className='le
 </div>
 
 
-export const Kpis = () => <div className={'columns'} style={{ maxWidth:1200, margin:'auto'}}>
+export const Kpis = ({ tweets, engagements, impressions, followers }: iKpis) => <div 
+    className={'columns'} 
+    style={{ maxWidth:1200, margin:'auto'}}
+>
     <div className={'column'} style={{margin:'24px auto 48px' }}>
         <Card title={'30-Day KPIs'} cardStyle={{maxWidth:1060}}>
             <nav className='level' style={{marginBottom: 0, padding: 0}}>
-                <KpiValue label={'Tweets'} value={12} color={'deepskyblue'}/>
-                <KpiValue label={'Engagements'} value={23} color={'indianred'}/>
-                <KpiValue label={'Impressions'} value={34} color={'goldenrod'}/>
-                <KpiValue label={'Followers'} value={54} color={'mediumseagreen'}/>
+                <KpiValue label={'Tweets'} value={tweets} color={'deepskyblue'}/>
+                <KpiValue label={'Engagements'} value={engagements} color={'indianred'}/>
+                <KpiValue label={'Impressions'} value={impressions} color={'goldenrod'}/>
+                <KpiValue label={'Followers'} value={followers} color={'mediumseagreen'}/>
             </nav>
         </Card>    
     </div>
