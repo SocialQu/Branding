@@ -1,8 +1,6 @@
-import { iTweetBubble } from './build'
-
 export interface iKpis { tweets:number, engagements:number, impressions:number, followers:number }
 export interface iContent { topic:string, tweets:number, engagements:number, impressions:number }
-export interface iAudience { topic:string, followers:number }
+export interface iAudience { niche:string, followers:number }
 
 interface iLocation { x: number, y: number }
 export interface iEngagementLocations {
@@ -17,11 +15,12 @@ export interface iSuggestion {
     topics: { topic:string, avgEngagement:number }[]
 }
 
+export interface iSuggestions { positive:iSuggestion, negative:iSuggestion }
 
 export interface iData {
     kpis: iKpis
-    content: iContent
-    audience: iAudience
+    content: iContent[]
+    audience: iAudience[]
     engagementMap: iEngagementLocations[]
-    suggestions: { positive:iSuggestion, negative:iSuggestion }
+    suggestions: iSuggestions
 }
