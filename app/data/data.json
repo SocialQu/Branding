@@ -1,0 +1,2225 @@
+{
+    "kpis": {
+      "tweets": 2,
+      "engagements": 5.9,
+      "impressions": 460,
+      "followers": 1425
+    },
+    "content": [
+      {
+        "topic": "Javascript",
+        "tweets": 12,
+        "impressions": 1665,
+        "engagements": 22
+      },
+      {
+        "topic": "Books",
+        "tweets": 1,
+        "impressions": 270,
+        "engagements": 17
+      },
+      {
+        "topic": "Future",
+        "tweets": 3,
+        "impressions": 820,
+        "engagements": 17
+      },
+      {
+        "topic": "Software Engineering",
+        "tweets": 2,
+        "impressions": 1625,
+        "engagements": 14
+      },
+      {
+        "topic": "Product Management",
+        "tweets": 5,
+        "impressions": 988,
+        "engagements": 13
+      },
+      {
+        "topic": "Venture Capital",
+        "tweets": 4,
+        "impressions": 806,
+        "engagements": 12
+      },
+      {
+        "topic": "Fiction",
+        "tweets": 1,
+        "impressions": 711,
+        "engagements": 11
+      },
+      {
+        "topic": "Artificial Intelligence",
+        "tweets": 3,
+        "impressions": 907,
+        "engagements": 9
+      },
+      {
+        "topic": "Freelancing",
+        "tweets": 1,
+        "impressions": 628,
+        "engagements": 8
+      },
+      {
+        "topic": "Creativity",
+        "tweets": 2,
+        "impressions": 464,
+        "engagements": 7
+      }
+    ],
+    "audience": [
+      {
+        "niche": "Product Management",
+        "followers": 4
+      },
+      {
+        "niche": "Humor",
+        "followers": 3
+      },
+      {
+        "niche": "Programming",
+        "followers": 2
+      },
+      {
+        "niche": "Software Engineering",
+        "followers": 2
+      },
+      {
+        "niche": "Venture Capital",
+        "followers": 2
+      },
+      {
+        "niche": "Technology",
+        "followers": 1
+      },
+      {
+        "niche": "Productivity",
+        "followers": 1
+      },
+      {
+        "niche": "San Francisco",
+        "followers": 1
+      },
+      {
+        "niche": "Marketing",
+        "followers": 1
+      },
+      {
+        "niche": "Food",
+        "followers": 1
+      }
+    ],
+    "engagementMap": [
+      {
+        "topic": "Books",
+        "tweet": "What are you reading this weekend?",
+        "location": {
+          "x": -0.4589002936516025,
+          "y": 0.524355391887084
+        },
+        "engagements": 17
+      },
+      {
+        "topic": "Future",
+        "tweet": "What are your expectations for the last months of the year?",
+        "location": {
+          "x": -0.42737673239516455,
+          "y": 0.46310061149540294
+        },
+        "engagements": 12
+      },
+      {
+        "topic": "Fiction",
+        "tweet": "Who else is part of the 4am club?",
+        "location": {
+          "x": -0.38385163843238485,
+          "y": 0.5514560016709676
+        },
+        "engagements": 11
+      },
+      {
+        "topic": "Venture Capital",
+        "tweet": "It's amazing what building in public can get you 🏆\n\nThis week I was asked if I would like to give investors advice about #AI at @Entrepreneur",
+        "location": {
+          "x": -0.023931049826449752,
+          "y": -0.13543312033669322
+        },
+        "engagements": 8
+      },
+      {
+        "topic": "Freelancing",
+        "tweet": "Share a professional interest of yours, that's outside of your career:\n\nMine is medicine, more broadly biology 🧫",
+        "location": {
+          "x": -0.27600728922086903,
+          "y": -0.12927679206080367
+        },
+        "engagements": 8
+      },
+      {
+        "topic": "Software Engineering",
+        "tweet": "This week I randomly entered a coding boot camp info session ℹ️\n\nThe expected workload is 70-80 hours for 3 months.\n\nIs there a similarly demanding program but for founders?",
+        "location": {
+          "x": -0.07218191559896232,
+          "y": 0.03880246411029853
+        },
+        "engagements": 7
+      },
+      {
+        "topic": "Software Engineering",
+        "tweet": "I'm writing about the impressive engineering behind the human body. \n\nAnd how software developers can draw inspiration from it.\n\nPlease share your favorite fact about the human body. #journorequest",
+        "location": {
+          "x": -0.1448723485981375,
+          "y": -0.06079940413019973
+        },
+        "engagements": 7
+      },
+      {
+        "topic": "Artificial Intelligence",
+        "tweet": "Today I feel inspired.\n\nAnd is understanding developments in AI that fire that motivation. 🔥",
+        "location": {
+          "x": -0.024552190377053418,
+          "y": 0.10040291489064049
+        },
+        "engagements": 6
+      },
+      {
+        "topic": "Product Management",
+        "tweet": "What a terrific idea 💡\n\nOnboarding new hires with a newsletter 🚒\n\nThey can learn:\n\n1️⃣ The history of the company.\n2️⃣ Mission &amp; vision.\n3️⃣ Values &amp; culture.\n4️⃣ The value proposition.\n5️⃣ The industry landscape 🌆",
+        "location": {
+          "x": 0.091048608107573,
+          "y": -0.25211513251066353
+        },
+        "engagements": 5
+      },
+      {
+        "topic": "Marketing",
+        "tweet": "⚡Describe your Marketing strategy in one reply:",
+        "location": {
+          "x": -0.23139291318293764,
+          "y": -0.20574699523272882
+        },
+        "engagements": 5
+      },
+      {
+        "topic": "Blockchain",
+        "tweet": "The four trends I most bullish about 🐂\n\n1️⃣ Community driven customer acquisition.\n2️⃣ Crypto based business models.\n3️⃣ Applications of NLP-AI technology.\n4️⃣ Outstanding content creation.",
+        "location": {
+          "x": 0.1087436005609562,
+          "y": -0.36307941670285265
+        },
+        "engagements": 5
+      },
+      {
+        "topic": "Javascript",
+        "tweet": "Public accountability checkpoint for the week:\n\n✅ Developed fetch and analysis scripts for V2.\n✅ Studied BERT for future features.\n☑️ Documented the Go to Market strategy.\n❌ Talked to potential users.",
+        "location": {
+          "x": 0.2514726762932565,
+          "y": -0.0565153451587231
+        },
+        "engagements": 5
+      },
+      {
+        "topic": "Social Media",
+        "tweet": "I wonder, how could any of this advice be incorporated to https://t.co/i7XMSpeK8s? https://t.co/8RwJpvKpn4",
+        "location": {
+          "x": 0.32006747471931396,
+          "y": 0.29780297990806043
+        },
+        "engagements": 4
+      },
+      {
+        "topic": "Creativity",
+        "tweet": "You are given an extra week to build something new.\n\nWhat would you make?",
+        "location": {
+          "x": -0.4155423066242338,
+          "y": 0.27383972005575435
+        },
+        "engagements": 4
+      },
+      {
+        "topic": "Javascript",
+        "tweet": "Version 2 of https://t.co/i7XMSoX9gU will start as a newsletter.\n\nLike to know more ❤️",
+        "location": {
+          "x": 0.43984716696111015,
+          "y": 0.26027473174140786
+        },
+        "engagements": 4
+      },
+      {
+        "topic": "Visual Design",
+        "tweet": "Technical roadmap for https://t.co/i7XMSoX9gU:\n\n1⃣ Create a dazzling dashboard that explains where your brand's engagement comes from. \n2⃣ Add a plethora of charts that you can select based on your goals.\n3⃣ Create a customizable UX similar to the one offered by @Amplitude_HQ",
+        "location": {
+          "x": 0.39804888532551874,
+          "y": -0.13339334295527094
+        },
+        "engagements": 4
+      },
+      {
+        "topic": "Data Science",
+        "tweet": "I'm writing my next with @Google Assistant and loving it!\n\nIt's truly like having your own personal researcher 👨🏻‍🔬",
+        "location": {
+          "x": 0.11149822787616612,
+          "y": -0.09178000419747008
+        },
+        "engagements": 4
+      },
+      {
+        "topic": "Artificial Intelligence",
+        "tweet": "I want to write a story about state of the art unsupervised learning methods 🎭\n\nAny AI startup that would like to sponsor it?\n\n#journorequest \nCC: @cord_tech",
+        "location": {
+          "x": -0.0069071329915843015,
+          "y": -0.071202268428148
+        },
+        "engagements": 3
+      },
+      {
+        "topic": "Product Management",
+        "tweet": "Finding product-market fit is a lazy endeavor.",
+        "location": {
+          "x": -0.3195780087726438,
+          "y": -0.25713600395503905
+        },
+        "engagements": 3
+      },
+      {
+        "topic": "Javascript",
+        "tweet": "Today, I just want to say thank you @awscloud for creating serverless technologies!",
+        "location": {
+          "x": 0.19260903565516926,
+          "y": -0.057146600354180115
+        },
+        "engagements": 3
+      },
+      {
+        "topic": "Language",
+        "tweet": "Who is learning Spanish? Why? and how are you doing it?",
+        "location": {
+          "x": -0.4992168745441195,
+          "y": 0.3004244708188013
+        },
+        "engagements": 3
+      },
+      {
+        "topic": "Future",
+        "tweet": "Is always interesting to see some ideas grow slowly stronger.",
+        "location": {
+          "x": -0.43514108718738154,
+          "y": 0.12663559162840235
+        },
+        "engagements": 3
+      },
+      {
+        "topic": "Product Management",
+        "tweet": "The golden founder's team:\n\nThe industry expert (COO), the business visionary (CEO) &amp; the tech guru (CTO).",
+        "location": {
+          "x": -0.0803926818988448,
+          "y": -0.3526275331869411
+        },
+        "engagements": 3
+      },
+      {
+        "topic": "Creativity",
+        "tweet": "Take this tweet as a chance to say something nice about an indie product:",
+        "location": {
+          "x": -0.07441546857790124,
+          "y": 0.013845233028255991
+        },
+        "engagements": 3
+      },
+      {
+        "topic": "Machine Learning",
+        "tweet": "Slack could be a good platform for teaching a new language.\n\nI'm thinking of 5 minute micro lessons. https://t.co/gvDanyqlKH",
+        "location": {
+          "x": 0.03248575477241066,
+          "y": 0.024753850115390132
+        },
+        "engagements": 3
+      },
+      {
+        "topic": "Javascript",
+        "tweet": "In V1 my strategy for https://t.co/i7XMSpeK8s was to be mobile first.\n\nIt was an error, because I was not focusing on real time data.\n\nToday my strategy is in give insights nowhere else you'll get 🧨",
+        "location": {
+          "x": 0.41114840055260504,
+          "y": 0.12203906944969534
+        },
+        "engagements": 3
+      },
+      {
+        "topic": "Venture Capital",
+        "tweet": "Okay I've identified 20 potential markets that could benefit from NLP analytics.\n\nNow, time to narrow down the list 📚",
+        "location": {
+          "x": 0.0625311581211561,
+          "y": -0.24472199624888966
+        },
+        "engagements": 2
+      },
+      {
+        "topic": "Javascript",
+        "tweet": "A preview of what's coming up for https://t.co/i7XMSoX9gU V2 🔥\n\nI would love to read your thoughts 💭\n\nhttps://t.co/9qYXpD8HIf",
+        "location": {
+          "x": 0.41407512263038776,
+          "y": 0.39704942901624096
+        },
+        "engagements": 2
+      },
+      {
+        "topic": "Productivity",
+        "tweet": "What gives you energy?\n\nFor me:\n👩🏼‍🌾 Nice people\n💡 Interesting ideas\n🌞 A happy day\n🏁 Success\n📖 A good book.",
+        "location": {
+          "x": -0.36418584877932053,
+          "y": 0.0585992065577068
+        },
+        "engagements": 2
+      },
+      {
+        "topic": "Visual Design",
+        "tweet": "💡Startup Framework:\n\n1️⃣ Identify a popular platform with a solid business model (e.g. @ProductHunt)\n\n2️⃣ Develop a framework to host the same business model for multiple niches (e.g. restaurants, tourism, hiring, etc.)\n\n3️⃣ Run the first 5 applications yourself.",
+        "location": {
+          "x": 0.06758799374780057,
+          "y": -0.4050211213243528
+        },
+        "engagements": 2
+      },
+      {
+        "topic": "Javascript",
+        "tweet": "Cool idea ❄️\n\nAn #AI bot that uses BERT to answer Twitter questions.",
+        "location": {
+          "x": 0.2485806540234249,
+          "y": 0.07566028319971349
+        },
+        "engagements": 2
+      },
+      {
+        "topic": "Future",
+        "tweet": "Can you imagine a new AI winter happening?",
+        "location": {
+          "x": -0.1064389474688646,
+          "y": 0.401458595103668
+        },
+        "engagements": 2
+      },
+      {
+        "topic": "Programming",
+        "tweet": "ECS makes it so easy to push dockerized APIs. \n\nThat is unfortunate, that SAM is the best framework to develop them.\n\n#AWS",
+        "location": {
+          "x": 0.23820812697212138,
+          "y": -0.13524033639670532
+        },
+        "engagements": 2
+      },
+      {
+        "topic": "Technology",
+        "tweet": "I have a vision for https://t.co/i7XMSoX9gU:\n\nThat just as bees go out to find flowers and pollinate to create honey 🍯\n\nI want to find and distribute the best products to build a business 🐝",
+        "location": {
+          "x": 0.16577475479476278,
+          "y": -0.0717936839219042
+        },
+        "engagements": 2
+      },
+      {
+        "topic": "Programming",
+        "tweet": "I want to go all in for https://t.co/i7XMSoX9gU for the rest of the year.\n\nBut I'm also considering to allocate one week to run an experiment 🧪\n\nWhat are your thoughts?",
+        "location": {
+          "x": 0.21337175601588534,
+          "y": 0.3453563460665672
+        },
+        "engagements": 2
+      },
+      {
+        "topic": "Product Management",
+        "tweet": "The disciplined entrepreneur is a 24-step framework to get started working on your idea.\n\nIt's worth it 👌",
+        "location": {
+          "x": -0.20265697742716993,
+          "y": -0.32031932641221833
+        },
+        "engagements": 2
+      },
+      {
+        "topic": "Machine Learning",
+        "tweet": "In this post, I will propose a new methodology to diagnose, debug and fix software systems based on the medical science of Pathology 💉\n\nHow does that sounds for an intro? #journorequest",
+        "location": {
+          "x": 0.04734408732116368,
+          "y": 0.0038070504799927697
+        },
+        "engagements": 2
+      },
+      {
+        "topic": "Philosophy",
+        "tweet": "Recently learned an interesting application of NLP. Understanding persuasion.",
+        "location": {
+          "x": -0.16197089590754565,
+          "y": -0.01907923967045955
+        },
+        "engagements": 1
+      },
+      {
+        "topic": "Javascript",
+        "tweet": "#AI Idea💡\n\nTrain BERT with tweets, and masking different words 🎭. \n\nBut add the number of engagements as a second parameter during the prediction step.",
+        "location": {
+          "x": 0.2843273256620127,
+          "y": -0.030721577856250057
+        },
+        "engagements": 1
+      },
+      {
+        "topic": "Machine Learning",
+        "tweet": "3 applications 🎶 of transformers in #AI\n\n🚡 Machine Translation: transform a text to fit the reader's background.\n\n🚟 Summarization: get a minute of your calls &amp; meetings.\n\n🚊 Story generation: get the entertainment you crave or the music you'll like yo hear.",
+        "location": {
+          "x": -0.036923744442665975,
+          "y": -0.11657516365623403
+        },
+        "engagements": 1
+      },
+      {
+        "topic": "Education",
+        "tweet": "What's the coolest application of unsupervised learning you've seen recently?",
+        "location": {
+          "x": -0.533869032533067,
+          "y": 0.22732720781039553
+        },
+        "engagements": 1
+      },
+      {
+        "topic": "Javascript",
+        "tweet": "New backlog task for https://t.co/i7XMSpeK8s:\n\n⚛️ Clustering\n\nShow your tweets grouped by similarity 🔥",
+        "location": {
+          "x": 0.4870471149192094,
+          "y": 0.06039338986284635
+        },
+        "engagements": 1
+      },
+      {
+        "topic": "Work",
+        "tweet": "I often see complaints of how difficult is to find talent.\n\nWhat I that is really missing are managerial skills.",
+        "location": {
+          "x": -0.4023616387694763,
+          "y": -0.04200660362805286
+        },
+        "engagements": 1
+      },
+      {
+        "topic": "Blockchain",
+        "tweet": "For those ideas that depend on a network to be useful (i.e. social networks).\n\nAre crypto tokens the best option to get them off the ground?",
+        "location": {
+          "x": -0.03445114527218402,
+          "y": -0.24301703986795015
+        },
+        "engagements": 1
+      },
+      {
+        "topic": "Javascript",
+        "tweet": "BHAG of the week:\n\nBeta launch https://t.co/i7XMSoX9gU V2",
+        "location": {
+          "x": 0.4765754667680164,
+          "y": 0.3481773254137489
+        },
+        "engagements": 1
+      },
+      {
+        "topic": "Technology",
+        "tweet": "Who is currently working in a partly VR ecosystem? What are your thoughts about it?",
+        "location": {
+          "x": -0.27978032994622754,
+          "y": 0.0670835202029947
+        },
+        "engagements": 1
+      },
+      {
+        "topic": "Programming",
+        "tweet": "👨‍💻 This week was not easy. I spent way more time dumping code than creating content.\n\nIt'll be worth it once I launch 🚀",
+        "location": {
+          "x": 0.1483222056723463,
+          "y": 0.04133743915490751
+        },
+        "engagements": 1
+      },
+      {
+        "topic": "Venture Capital",
+        "tweet": "3 things that never stop to amaze me:\n\n🤷‍♂️ How large inefficient companies can make a profit.\n🏭 The slow rate of adoption of tech innovations in the industry.\n🧨 That you can actually make friends via the internet.",
+        "location": {
+          "x": -0.2739914126187365,
+          "y": -0.3710176377081537
+        },
+        "engagements": 1
+      },
+      {
+        "topic": "Cybersecurity",
+        "tweet": "The moment of truth:\n\nCam tweets be classified by topic as documents?\n\nEssential for https://t.co/i7XMSpeK8s V2",
+        "location": {
+          "x": 0.460229980871482,
+          "y": 0.09707672209283985
+        },
+        "engagements": 1
+      },
+      {
+        "topic": "Venture Capital",
+        "tweet": "Spotify apps and Chrome extensions have proven to be valid marketplaces to develop niche, lucrative businesses.\n\nIn 2021 which marketplaces have the growth potential, plus the early adopter advantage to develop applications?",
+        "location": {
+          "x": -0.11718755033943452,
+          "y": -0.33595054698671106
+        },
+        "engagements": 1
+      },
+      {
+        "topic": "Marketing",
+        "tweet": "3 types of content strategy:\n\n🔍 Search: find the customers for your value proposition.\n🧘 Persuade: convince customer they need your product.\n👨‍🏫 Educate: teach them to benefit from your product. \n\nWhich one is yours?",
+        "location": {
+          "x": -0.16765172566830752,
+          "y": -0.425536807278565
+        },
+        "engagements": 0
+      },
+      {
+        "topic": "Javascript",
+        "tweet": "Second backlog feature of this week.\n\nAnomaly detection for analyzing viral tweets 🐦",
+        "location": {
+          "x": 0.33779322552096863,
+          "y": 0.08649960243203184
+        },
+        "engagements": 0
+      },
+      {
+        "topic": "Cybersecurity",
+        "tweet": "I imagine a world 🌍 where you have a dozen of personalized bots, each engaging with other peoples bots. Only to engage in the most interesting, profitable and fun interactions 🦉",
+        "location": {
+          "x": -0.03453202657228233,
+          "y": -0.014914035226806259
+        },
+        "engagements": 0
+      },
+      {
+        "topic": "Javascript",
+        "tweet": "Today I'll start working on the UI for V2 🚀",
+        "location": {
+          "x": 0.22329189683283873,
+          "y": 0.1751202282583579
+        },
+        "engagements": 0
+      },
+      {
+        "topic": "Product Management",
+        "tweet": "I may have identified a content niche:\n\nApplications of #AI to marketing 🧠 https://t.co/STAj1amXjs",
+        "location": {
+          "x": 0.28424661065718776,
+          "y": -0.17613791538385473
+        },
+        "engagements": 0
+      },
+      {
+        "topic": "Javascript",
+        "tweet": "This info goes into my pre-seed pitch deck 👇 https://t.co/WXrmMPaAqI",
+        "location": {
+          "x": 0.3273462129688085,
+          "y": 0.2708442605882234
+        },
+        "engagements": 0
+      },
+      {
+        "topic": "Marketing",
+        "tweet": "A successful brand creates a gut feeling in their customers.\n\nShare your brand and what you want to inspire:",
+        "location": {
+          "x": -0.23360789685005806,
+          "y": -0.3305626312482288
+        },
+        "engagements": 0
+      },
+      {
+        "topic": "Machine Learning",
+        "tweet": "BERT is a numerical representation of human language (and much more) it can:\n\n✅ Translate\n✅ Summarize\n✅ Answer Questions\n✅ Classify\n\nI think it can be useful to provide analytics for content creators.",
+        "location": {
+          "x": 0.028400698061355357,
+          "y": -0.1469653263508342
+        },
+        "engagements": 0
+      },
+      {
+        "topic": "Artificial Intelligence",
+        "tweet": "In medicine, AI has been used to teach students how to diagnose.\n\nWhat other areas is AI not ready at production level, but might be for training?\n\nSoftware Engineering ❓\nDesign ❓\nManagement ❓",
+        "location": {
+          "x": -0.12203956507312545,
+          "y": -0.06036998776152122
+        },
+        "engagements": 0
+      },
+      {
+        "topic": "Productivity",
+        "tweet": "Rule of life:\n\nFor every to do, make a not to do!",
+        "location": {
+          "x": -0.1405484685280479,
+          "y": 0.05969493013123771
+        },
+        "engagements": 0
+      },
+      {
+        "topic": "Marketing",
+        "tweet": "I feel important to reconnect with the mission of your product occasionally.\n\nAnd https://t.co/i7XMSpeK8s aims to help creators get distribution.\n\nThat's it, but I also like to think is about providing (economic) freedom. 🕊️",
+        "location": {
+          "x": 0.2144329156917769,
+          "y": -0.1570156310342287
+        },
+        "engagements": 0
+      }
+    ],
+    "suggestions": {
+      "positive": {
+        "topics": [
+          {
+            "topic": "Books",
+            "avgEngagement": 17
+          },
+          {
+            "topic": "Fiction",
+            "avgEngagement": 11
+          },
+          {
+            "topic": "Freelancing",
+            "avgEngagement": 8
+          },
+          {
+            "topic": "Social Media",
+            "avgEngagement": 4
+          },
+          {
+            "topic": "Data Science",
+            "avgEngagement": 4
+          }
+        ],
+        "words": [
+          {
+            "text": "What",
+            "value": 1
+          },
+          {
+            "text": "are",
+            "value": 1
+          },
+          {
+            "text": "you",
+            "value": 1
+          },
+          {
+            "text": "reading",
+            "value": 1
+          },
+          {
+            "text": "this",
+            "value": 2
+          },
+          {
+            "text": "weekend?",
+            "value": 1
+          },
+          {
+            "text": "Who",
+            "value": 1
+          },
+          {
+            "text": "else",
+            "value": 1
+          },
+          {
+            "text": "is",
+            "value": 2
+          },
+          {
+            "text": "part",
+            "value": 1
+          },
+          {
+            "text": "of",
+            "value": 4
+          },
+          {
+            "text": "the",
+            "value": 1
+          },
+          {
+            "text": "4am",
+            "value": 1
+          },
+          {
+            "text": "club?",
+            "value": 1
+          },
+          {
+            "text": "Share",
+            "value": 1
+          },
+          {
+            "text": "a",
+            "value": 1
+          },
+          {
+            "text": "professional",
+            "value": 1
+          },
+          {
+            "text": "interest",
+            "value": 1
+          },
+          {
+            "text": "yours,",
+            "value": 1
+          },
+          {
+            "text": "that's",
+            "value": 1
+          },
+          {
+            "text": "outside",
+            "value": 1
+          },
+          {
+            "text": "your",
+            "value": 2
+          },
+          {
+            "text": "career:\n\nMine",
+            "value": 1
+          },
+          {
+            "text": "medicine,",
+            "value": 1
+          },
+          {
+            "text": "more",
+            "value": 1
+          },
+          {
+            "text": "broadly",
+            "value": 1
+          },
+          {
+            "text": "biology",
+            "value": 1
+          },
+          {
+            "text": "🧫",
+            "value": 1
+          },
+          {
+            "text": "I",
+            "value": 1
+          },
+          {
+            "text": "wonder,",
+            "value": 1
+          },
+          {
+            "text": "how",
+            "value": 1
+          },
+          {
+            "text": "could",
+            "value": 1
+          },
+          {
+            "text": "any",
+            "value": 1
+          },
+          {
+            "text": "advice",
+            "value": 1
+          },
+          {
+            "text": "be",
+            "value": 1
+          },
+          {
+            "text": "incorporated",
+            "value": 1
+          },
+          {
+            "text": "to",
+            "value": 1
+          },
+          {
+            "text": "https://t.co/i7XMSpeK8s?",
+            "value": 1
+          },
+          {
+            "text": "https://t.co/8RwJpvKpn4",
+            "value": 1
+          },
+          {
+            "text": "I'm",
+            "value": 1
+          },
+          {
+            "text": "writing",
+            "value": 1
+          },
+          {
+            "text": "my",
+            "value": 1
+          },
+          {
+            "text": "next",
+            "value": 1
+          },
+          {
+            "text": "with",
+            "value": 1
+          },
+          {
+            "text": "@Google",
+            "value": 1
+          },
+          {
+            "text": "Assistant",
+            "value": 1
+          },
+          {
+            "text": "and",
+            "value": 1
+          },
+          {
+            "text": "loving",
+            "value": 1
+          },
+          {
+            "text": "it!\n\nIt's",
+            "value": 1
+          },
+          {
+            "text": "truly",
+            "value": 1
+          },
+          {
+            "text": "like",
+            "value": 1
+          },
+          {
+            "text": "having",
+            "value": 1
+          },
+          {
+            "text": "own",
+            "value": 1
+          },
+          {
+            "text": "personal",
+            "value": 1
+          },
+          {
+            "text": "researcher",
+            "value": 1
+          },
+          {
+            "text": "👨🏻‍🔬",
+            "value": 1
+          }
+        ]
+      },
+      "negative": {
+        "topics": [
+          {
+            "topic": "Productivity",
+            "avgEngagement": 0.5
+          },
+          {
+            "topic": "Machine Learning",
+            "avgEngagement": 0.375
+          },
+          {
+            "topic": "Marketing",
+            "avgEngagement": 0.3125
+          },
+          {
+            "topic": "Cybersecurity",
+            "avgEngagement": 0.25
+          },
+          {
+            "topic": "Javascript",
+            "avgEngagement": 0.15277777777777776
+          }
+        ],
+        "words": [
+          {
+            "text": "What",
+            "value": 1
+          },
+          {
+            "text": "gives",
+            "value": 1
+          },
+          {
+            "text": "you",
+            "value": 5
+          },
+          {
+            "text": "energy?\n\nFor",
+            "value": 1
+          },
+          {
+            "text": "me:\n👩🏼‍🌾",
+            "value": 1
+          },
+          {
+            "text": "Nice",
+            "value": 1
+          },
+          {
+            "text": "people\n💡",
+            "value": 1
+          },
+          {
+            "text": "Interesting",
+            "value": 1
+          },
+          {
+            "text": "ideas\n🌞",
+            "value": 1
+          },
+          {
+            "text": "A",
+            "value": 4
+          },
+          {
+            "text": "happy",
+            "value": 1
+          },
+          {
+            "text": "day\n🏁",
+            "value": 1
+          },
+          {
+            "text": "Success\n📖",
+            "value": 1
+          },
+          {
+            "text": "good",
+            "value": 2
+          },
+          {
+            "text": "book.",
+            "value": 1
+          },
+          {
+            "text": "Rule",
+            "value": 1
+          },
+          {
+            "text": "of",
+            "value": 15
+          },
+          {
+            "text": "life:\n\nFor",
+            "value": 1
+          },
+          {
+            "text": "every",
+            "value": 1
+          },
+          {
+            "text": "to",
+            "value": 18
+          },
+          {
+            "text": "do,",
+            "value": 1
+          },
+          {
+            "text": "make",
+            "value": 1
+          },
+          {
+            "text": "a",
+            "value": 12
+          },
+          {
+            "text": "not",
+            "value": 2
+          },
+          {
+            "text": "do!",
+            "value": 1
+          },
+          {
+            "text": "3",
+            "value": 2
+          },
+          {
+            "text": "applications",
+            "value": 1
+          },
+          {
+            "text": "🎶",
+            "value": 1
+          },
+          {
+            "text": "transformers",
+            "value": 1
+          },
+          {
+            "text": "in",
+            "value": 5
+          },
+          {
+            "text": "#AI\n\n🚡",
+            "value": 1
+          },
+          {
+            "text": "Machine",
+            "value": 1
+          },
+          {
+            "text": "Translation:",
+            "value": 1
+          },
+          {
+            "text": "transform",
+            "value": 1
+          },
+          {
+            "text": "text",
+            "value": 1
+          },
+          {
+            "text": "fit",
+            "value": 1
+          },
+          {
+            "text": "the",
+            "value": 13
+          },
+          {
+            "text": "reader's",
+            "value": 1
+          },
+          {
+            "text": "background.\n\n🚟",
+            "value": 1
+          },
+          {
+            "text": "Summarization:",
+            "value": 1
+          },
+          {
+            "text": "get",
+            "value": 4
+          },
+          {
+            "text": "minute",
+            "value": 2
+          },
+          {
+            "text": "your",
+            "value": 9
+          },
+          {
+            "text": "calls",
+            "value": 1
+          },
+          {
+            "text": "&amp;",
+            "value": 1
+          },
+          {
+            "text": "meetings.\n\n🚊",
+            "value": 1
+          },
+          {
+            "text": "Story",
+            "value": 1
+          },
+          {
+            "text": "generation:",
+            "value": 1
+          },
+          {
+            "text": "entertainment",
+            "value": 1
+          },
+          {
+            "text": "crave",
+            "value": 1
+          },
+          {
+            "text": "or",
+            "value": 1
+          },
+          {
+            "text": "music",
+            "value": 1
+          },
+          {
+            "text": "you'll",
+            "value": 2
+          },
+          {
+            "text": "like",
+            "value": 2
+          },
+          {
+            "text": "yo",
+            "value": 1
+          },
+          {
+            "text": "hear.",
+            "value": 1
+          },
+          {
+            "text": "BERT",
+            "value": 4
+          },
+          {
+            "text": "is",
+            "value": 4
+          },
+          {
+            "text": "numerical",
+            "value": 1
+          },
+          {
+            "text": "representation",
+            "value": 1
+          },
+          {
+            "text": "human",
+            "value": 1
+          },
+          {
+            "text": "language",
+            "value": 1
+          },
+          {
+            "text": "(and",
+            "value": 1
+          },
+          {
+            "text": "much",
+            "value": 1
+          },
+          {
+            "text": "more)",
+            "value": 1
+          },
+          {
+            "text": "it",
+            "value": 2
+          },
+          {
+            "text": "can:\n\n✅",
+            "value": 1
+          },
+          {
+            "text": "Translate\n✅",
+            "value": 1
+          },
+          {
+            "text": "Summarize\n✅",
+            "value": 1
+          },
+          {
+            "text": "Answer",
+            "value": 1
+          },
+          {
+            "text": "Questions\n✅",
+            "value": 1
+          },
+          {
+            "text": "Classify\n\nI",
+            "value": 1
+          },
+          {
+            "text": "think",
+            "value": 2
+          },
+          {
+            "text": "can",
+            "value": 1
+          },
+          {
+            "text": "be",
+            "value": 4
+          },
+          {
+            "text": "useful",
+            "value": 1
+          },
+          {
+            "text": "provide",
+            "value": 1
+          },
+          {
+            "text": "analytics",
+            "value": 1
+          },
+          {
+            "text": "for",
+            "value": 14
+          },
+          {
+            "text": "content",
+            "value": 2
+          },
+          {
+            "text": "creators.",
+            "value": 1
+          },
+          {
+            "text": "In",
+            "value": 2
+          },
+          {
+            "text": "this",
+            "value": 2
+          },
+          {
+            "text": "post,",
+            "value": 1
+          },
+          {
+            "text": "I",
+            "value": 6
+          },
+          {
+            "text": "will",
+            "value": 2
+          },
+          {
+            "text": "propose",
+            "value": 1
+          },
+          {
+            "text": "new",
+            "value": 2
+          },
+          {
+            "text": "methodology",
+            "value": 1
+          },
+          {
+            "text": "diagnose,",
+            "value": 1
+          },
+          {
+            "text": "debug",
+            "value": 1
+          },
+          {
+            "text": "and",
+            "value": 5
+          },
+          {
+            "text": "fix",
+            "value": 1
+          },
+          {
+            "text": "software",
+            "value": 1
+          },
+          {
+            "text": "systems",
+            "value": 1
+          },
+          {
+            "text": "based",
+            "value": 1
+          },
+          {
+            "text": "on",
+            "value": 3
+          },
+          {
+            "text": "medical",
+            "value": 1
+          },
+          {
+            "text": "science",
+            "value": 1
+          },
+          {
+            "text": "Pathology",
+            "value": 1
+          },
+          {
+            "text": "💉\n\nHow",
+            "value": 1
+          },
+          {
+            "text": "does",
+            "value": 1
+          },
+          {
+            "text": "that",
+            "value": 2
+          },
+          {
+            "text": "sounds",
+            "value": 1
+          },
+          {
+            "text": "an",
+            "value": 2
+          },
+          {
+            "text": "intro?",
+            "value": 1
+          },
+          {
+            "text": "#journorequest",
+            "value": 1
+          },
+          {
+            "text": "Slack",
+            "value": 1
+          },
+          {
+            "text": "could",
+            "value": 1
+          },
+          {
+            "text": "platform",
+            "value": 1
+          },
+          {
+            "text": "teaching",
+            "value": 1
+          },
+          {
+            "text": "language.\n\nI'm",
+            "value": 1
+          },
+          {
+            "text": "thinking",
+            "value": 1
+          },
+          {
+            "text": "5",
+            "value": 1
+          },
+          {
+            "text": "micro",
+            "value": 1
+          },
+          {
+            "text": "lessons.",
+            "value": 1
+          },
+          {
+            "text": "https://t.co/gvDanyqlKH",
+            "value": 1
+          },
+          {
+            "text": "types",
+            "value": 1
+          },
+          {
+            "text": "strategy:\n\n🔍",
+            "value": 1
+          },
+          {
+            "text": "Search:",
+            "value": 1
+          },
+          {
+            "text": "find",
+            "value": 1
+          },
+          {
+            "text": "customers",
+            "value": 1
+          },
+          {
+            "text": "value",
+            "value": 1
+          },
+          {
+            "text": "proposition.\n🧘",
+            "value": 1
+          },
+          {
+            "text": "Persuade:",
+            "value": 1
+          },
+          {
+            "text": "convince",
+            "value": 1
+          },
+          {
+            "text": "customer",
+            "value": 1
+          },
+          {
+            "text": "they",
+            "value": 1
+          },
+          {
+            "text": "need",
+            "value": 1
+          },
+          {
+            "text": "product.\n👨‍🏫",
+            "value": 1
+          },
+          {
+            "text": "Educate:",
+            "value": 1
+          },
+          {
+            "text": "teach",
+            "value": 1
+          },
+          {
+            "text": "them",
+            "value": 1
+          },
+          {
+            "text": "benefit",
+            "value": 1
+          },
+          {
+            "text": "from",
+            "value": 1
+          },
+          {
+            "text": "product.",
+            "value": 1
+          },
+          {
+            "text": "\n\nWhich",
+            "value": 1
+          },
+          {
+            "text": "one",
+            "value": 2
+          },
+          {
+            "text": "yours?",
+            "value": 1
+          },
+          {
+            "text": "⚡Describe",
+            "value": 1
+          },
+          {
+            "text": "Marketing",
+            "value": 1
+          },
+          {
+            "text": "strategy",
+            "value": 3
+          },
+          {
+            "text": "reply:",
+            "value": 1
+          },
+          {
+            "text": "successful",
+            "value": 1
+          },
+          {
+            "text": "brand",
+            "value": 2
+          },
+          {
+            "text": "creates",
+            "value": 1
+          },
+          {
+            "text": "gut",
+            "value": 1
+          },
+          {
+            "text": "feeling",
+            "value": 1
+          },
+          {
+            "text": "their",
+            "value": 1
+          },
+          {
+            "text": "customers.\n\nShare",
+            "value": 1
+          },
+          {
+            "text": "what",
+            "value": 1
+          },
+          {
+            "text": "want",
+            "value": 2
+          },
+          {
+            "text": "inspire:",
+            "value": 1
+          },
+          {
+            "text": "feel",
+            "value": 1
+          },
+          {
+            "text": "important",
+            "value": 1
+          },
+          {
+            "text": "reconnect",
+            "value": 1
+          },
+          {
+            "text": "with",
+            "value": 3
+          },
+          {
+            "text": "mission",
+            "value": 1
+          },
+          {
+            "text": "product",
+            "value": 1
+          },
+          {
+            "text": "occasionally.\n\nAnd",
+            "value": 1
+          },
+          {
+            "text": "https://t.co/i7XMSpeK8s",
+            "value": 3
+          },
+          {
+            "text": "aims",
+            "value": 1
+          },
+          {
+            "text": "help",
+            "value": 1
+          },
+          {
+            "text": "creators",
+            "value": 1
+          },
+          {
+            "text": "distribution.\n\nThat's",
+            "value": 1
+          },
+          {
+            "text": "it,",
+            "value": 1
+          },
+          {
+            "text": "but",
+            "value": 1
+          },
+          {
+            "text": "also",
+            "value": 1
+          },
+          {
+            "text": "about",
+            "value": 1
+          },
+          {
+            "text": "providing",
+            "value": 1
+          },
+          {
+            "text": "(economic)",
+            "value": 1
+          },
+          {
+            "text": "freedom.",
+            "value": 1
+          },
+          {
+            "text": "🕊️",
+            "value": 1
+          },
+          {
+            "text": "imagine",
+            "value": 1
+          },
+          {
+            "text": "world",
+            "value": 1
+          },
+          {
+            "text": "🌍",
+            "value": 1
+          },
+          {
+            "text": "where",
+            "value": 1
+          },
+          {
+            "text": "have",
+            "value": 1
+          },
+          {
+            "text": "dozen",
+            "value": 1
+          },
+          {
+            "text": "personalized",
+            "value": 1
+          },
+          {
+            "text": "bots,",
+            "value": 1
+          },
+          {
+            "text": "each",
+            "value": 1
+          },
+          {
+            "text": "engaging",
+            "value": 1
+          },
+          {
+            "text": "other",
+            "value": 1
+          },
+          {
+            "text": "peoples",
+            "value": 1
+          },
+          {
+            "text": "bots.",
+            "value": 1
+          },
+          {
+            "text": "Only",
+            "value": 1
+          },
+          {
+            "text": "engage",
+            "value": 1
+          },
+          {
+            "text": "most",
+            "value": 1
+          },
+          {
+            "text": "interesting,",
+            "value": 1
+          },
+          {
+            "text": "profitable",
+            "value": 1
+          },
+          {
+            "text": "fun",
+            "value": 1
+          },
+          {
+            "text": "interactions",
+            "value": 1
+          },
+          {
+            "text": "🦉",
+            "value": 1
+          },
+          {
+            "text": "The",
+            "value": 1
+          },
+          {
+            "text": "moment",
+            "value": 1
+          },
+          {
+            "text": "truth:\n\nCam",
+            "value": 1
+          },
+          {
+            "text": "tweets",
+            "value": 3
+          },
+          {
+            "text": "classified",
+            "value": 1
+          },
+          {
+            "text": "by",
+            "value": 2
+          },
+          {
+            "text": "topic",
+            "value": 1
+          },
+          {
+            "text": "as",
+            "value": 3
+          },
+          {
+            "text": "documents?\n\nEssential",
+            "value": 1
+          },
+          {
+            "text": "V2",
+            "value": 4
+          },
+          {
+            "text": "#AI",
+            "value": 2
+          },
+          {
+            "text": "Idea💡\n\nTrain",
+            "value": 1
+          },
+          {
+            "text": "tweets,",
+            "value": 1
+          },
+          {
+            "text": "masking",
+            "value": 1
+          },
+          {
+            "text": "different",
+            "value": 1
+          },
+          {
+            "text": "words",
+            "value": 1
+          },
+          {
+            "text": "🎭.",
+            "value": 1
+          },
+          {
+            "text": "\n\nBut",
+            "value": 1
+          },
+          {
+            "text": "add",
+            "value": 1
+          },
+          {
+            "text": "number",
+            "value": 1
+          },
+          {
+            "text": "engagements",
+            "value": 1
+          },
+          {
+            "text": "second",
+            "value": 1
+          },
+          {
+            "text": "parameter",
+            "value": 1
+          },
+          {
+            "text": "during",
+            "value": 1
+          },
+          {
+            "text": "prediction",
+            "value": 1
+          },
+          {
+            "text": "step.",
+            "value": 1
+          },
+          {
+            "text": "Second",
+            "value": 1
+          },
+          {
+            "text": "backlog",
+            "value": 2
+          },
+          {
+            "text": "feature",
+            "value": 1
+          },
+          {
+            "text": "week.\n\nAnomaly",
+            "value": 1
+          },
+          {
+            "text": "detection",
+            "value": 1
+          },
+          {
+            "text": "analyzing",
+            "value": 1
+          },
+          {
+            "text": "viral",
+            "value": 1
+          },
+          {
+            "text": "🐦",
+            "value": 1
+          },
+          {
+            "text": "Today",
+            "value": 1
+          },
+          {
+            "text": "I'll",
+            "value": 1
+          },
+          {
+            "text": "start",
+            "value": 2
+          },
+          {
+            "text": "working",
+            "value": 1
+          },
+          {
+            "text": "UI",
+            "value": 1
+          },
+          {
+            "text": "🚀",
+            "value": 1
+          },
+          {
+            "text": "preview",
+            "value": 1
+          },
+          {
+            "text": "what's",
+            "value": 1
+          },
+          {
+            "text": "coming",
+            "value": 1
+          },
+          {
+            "text": "up",
+            "value": 1
+          },
+          {
+            "text": "https://t.co/i7XMSoX9gU",
+            "value": 3
+          },
+          {
+            "text": "🔥\n\nI",
+            "value": 1
+          },
+          {
+            "text": "would",
+            "value": 1
+          },
+          {
+            "text": "love",
+            "value": 1
+          },
+          {
+            "text": "read",
+            "value": 1
+          },
+          {
+            "text": "thoughts",
+            "value": 1
+          },
+          {
+            "text": "💭\n\nhttps://t.co/9qYXpD8HIf",
+            "value": 1
+          },
+          {
+            "text": "This",
+            "value": 1
+          },
+          {
+            "text": "info",
+            "value": 1
+          },
+          {
+            "text": "goes",
+            "value": 1
+          },
+          {
+            "text": "into",
+            "value": 1
+          },
+          {
+            "text": "my",
+            "value": 3
+          },
+          {
+            "text": "pre-seed",
+            "value": 1
+          },
+          {
+            "text": "pitch",
+            "value": 1
+          },
+          {
+            "text": "deck",
+            "value": 1
+          },
+          {
+            "text": "👇",
+            "value": 1
+          },
+          {
+            "text": "https://t.co/WXrmMPaAqI",
+            "value": 1
+          },
+          {
+            "text": "Cool",
+            "value": 1
+          },
+          {
+            "text": "idea",
+            "value": 1
+          },
+          {
+            "text": "❄️\n\nAn",
+            "value": 1
+          },
+          {
+            "text": "bot",
+            "value": 1
+          },
+          {
+            "text": "uses",
+            "value": 1
+          },
+          {
+            "text": "answer",
+            "value": 1
+          },
+          {
+            "text": "Twitter",
+            "value": 1
+          },
+          {
+            "text": "questions.",
+            "value": 1
+          },
+          {
+            "text": "New",
+            "value": 1
+          },
+          {
+            "text": "task",
+            "value": 1
+          },
+          {
+            "text": "https://t.co/i7XMSpeK8s:\n\n⚛️",
+            "value": 1
+          },
+          {
+            "text": "Clustering\n\nShow",
+            "value": 1
+          },
+          {
+            "text": "grouped",
+            "value": 1
+          },
+          {
+            "text": "similarity",
+            "value": 1
+          },
+          {
+            "text": "🔥",
+            "value": 1
+          },
+          {
+            "text": "Version",
+            "value": 1
+          },
+          {
+            "text": "2",
+            "value": 1
+          },
+          {
+            "text": "newsletter.\n\nLike",
+            "value": 1
+          },
+          {
+            "text": "know",
+            "value": 1
+          },
+          {
+            "text": "more",
+            "value": 1
+          },
+          {
+            "text": "❤️",
+            "value": 1
+          },
+          {
+            "text": "Today,",
+            "value": 1
+          },
+          {
+            "text": "just",
+            "value": 1
+          },
+          {
+            "text": "say",
+            "value": 1
+          },
+          {
+            "text": "thank",
+            "value": 1
+          },
+          {
+            "text": "@awscloud",
+            "value": 1
+          },
+          {
+            "text": "creating",
+            "value": 1
+          },
+          {
+            "text": "serverless",
+            "value": 1
+          },
+          {
+            "text": "technologies!",
+            "value": 1
+          },
+          {
+            "text": "Public",
+            "value": 1
+          },
+          {
+            "text": "accountability",
+            "value": 1
+          },
+          {
+            "text": "checkpoint",
+            "value": 1
+          },
+          {
+            "text": "week:\n\n✅",
+            "value": 1
+          },
+          {
+            "text": "Developed",
+            "value": 1
+          },
+          {
+            "text": "fetch",
+            "value": 1
+          },
+          {
+            "text": "analysis",
+            "value": 1
+          },
+          {
+            "text": "scripts",
+            "value": 1
+          },
+          {
+            "text": "V2.\n✅",
+            "value": 1
+          },
+          {
+            "text": "Studied",
+            "value": 1
+          },
+          {
+            "text": "future",
+            "value": 1
+          },
+          {
+            "text": "features.\n☑️",
+            "value": 1
+          },
+          {
+            "text": "Documented",
+            "value": 1
+          },
+          {
+            "text": "Go",
+            "value": 1
+          },
+          {
+            "text": "Market",
+            "value": 1
+          },
+          {
+            "text": "strategy.\n❌",
+            "value": 1
+          },
+          {
+            "text": "Talked",
+            "value": 1
+          },
+          {
+            "text": "potential",
+            "value": 1
+          },
+          {
+            "text": "users.",
+            "value": 1
+          },
+          {
+            "text": "BHAG",
+            "value": 1
+          },
+          {
+            "text": "week:\n\nBeta",
+            "value": 1
+          },
+          {
+            "text": "launch",
+            "value": 1
+          },
+          {
+            "text": "V1",
+            "value": 1
+          },
+          {
+            "text": "was",
+            "value": 3
+          },
+          {
+            "text": "mobile",
+            "value": 1
+          },
+          {
+            "text": "first.\n\nIt",
+            "value": 1
+          },
+          {
+            "text": "error,",
+            "value": 1
+          },
+          {
+            "text": "because",
+            "value": 1
+          },
+          {
+            "text": "focusing",
+            "value": 1
+          },
+          {
+            "text": "real",
+            "value": 1
+          },
+          {
+            "text": "time",
+            "value": 1
+          },
+          {
+            "text": "data.\n\nToday",
+            "value": 1
+          },
+          {
+            "text": "give",
+            "value": 1
+          },
+          {
+            "text": "insights",
+            "value": 1
+          },
+          {
+            "text": "nowhere",
+            "value": 1
+          },
+          {
+            "text": "else",
+            "value": 1
+          },
+          {
+            "text": "🧨",
+            "value": 1
+          }
+        ]
+      }
+    }
+}
