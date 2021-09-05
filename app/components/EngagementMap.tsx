@@ -26,14 +26,14 @@ const BubbleTooltip = ({ active, payload }:TooltipProps<ValueType, NameType>) =>
 const margin = { top:20, right:0, bottom:0, left:0 }
 interface iBubbleData { x:number, y:number, engagements:number, tweet:string, topic:string }
 interface iBubbleChart { data: iBubbleData[] }
-const BubbleChart = ({ data }:iBubbleChart) => <ResponsiveContainer width="100%" height={400} >
+const BubbleChart = ({ data }:iBubbleChart) => <ResponsiveContainer width='100%' height={400} >
     <ScatterChart width={400} margin={margin} >
-        <XAxis type="number" dataKey="x" tick={false} hide/>
-        <YAxis type="number" dataKey="y" tick={false} hide/>
-        <ZAxis type="number" dataKey="engagements" range={[10, 1000]}/>
+        <XAxis type='number' dataKey='x' tick={false} hide/>
+        <YAxis type='number' dataKey='y' tick={false} hide/>
+        <ZAxis type='number' dataKey='engagements' range={[10, 1000]}/>
 
         <Tooltip content={ <BubbleTooltip /> }/>
-        <Scatter data={data} fill="#8884d8" />
+        <Scatter data={data} fill='#8884d8' />
     </ScatterChart>
 </ResponsiveContainer>
 
