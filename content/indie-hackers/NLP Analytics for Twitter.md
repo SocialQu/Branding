@@ -63,4 +63,11 @@ For example when asking a question about AI.
 
 ## Content Suggestions
 
+This last part is the one I need to work more prior to launch.
+But you get the idea, using a word cloud I want to know in detail what words are causing good 
+engagement and which not. I got it no more talking about the strategy!
 
+My plan is to launch during the middle of September, and I would like to hear what you think.
+Also, if you are interested in trying out the Beta next week, please send me a DM.
+
+Thanks for reading,
