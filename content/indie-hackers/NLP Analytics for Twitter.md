@@ -1,27 +1,37 @@
 # NLP Analytics for Twitter
 
-I've been blogging for the last two years.
-And it has always puzzled me what creates good copywrite.
+For the last two years, I've been blogging about tech, startups & AI.
+Some stories have made the front cover of Medium others had barely achieved 20+ views.
 
-I'm a very analytic person, I love looking at stats, dashboards and data to guide my decisions.
-But as a writer I've found that there is little information I can use to improve my writing.
+It has always puzzled me what creates good copywrite.
+Although correlated, the success of a story is largely independent to the hours invested in writing or distribution.
+
+In blogging, success largely depends on two factors: SEO & reader engagement.
+However, both are hard to predict, 
+
+***
+
+Last year, I started twitting.
+The short and casual nature of content cautivated.
+
+But the issue persisted: what creates a good Tweet?
+
+I'm a very analytic person, and I love looking at stats, dashboards and data to guide my decisions.
+But as a writer I've found that there is little information that I can use to improve my writing.
+Href, produces some clues but is not enough
+And I've never encountered a platform to A/B test headlines.
+So I set on goal to create a dashboard that goes further that the traditional engagement metrics.
 
 
-I've practicing AI & NLP for the last 10 years and it was amusing to me that despite 
-recent advances in the field, we were still limited to traditional metrics like replies and retweets
-that said nothing about the type of content that caused those engagements.
+### Topic Classification
 
-So I dustet out my skills, took some time off, and learned basic content creation strategies. 
-Now I have an MVP to show with only 3, but very useful metrics.
-
-
-## Content and Audience Analysis
 
 
 ## Engagement Map
 
 
-## Topic Suggestions
+
+## Content Suggestions
 
 
 ***
