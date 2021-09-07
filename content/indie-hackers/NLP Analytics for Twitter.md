@@ -38,14 +38,29 @@ On the other side, I might be tweeting too much about Javascript :joy:
 
 ## Engagement Map
 
+This is my favorite feature, it's based on a previous story I wrote: How to visualize human language.
+Using word embeddings and PCA, I was able to reduce the dimensionality of a tweet's meaning in a single chart.
+Each dot (or bubble) represents a tweet, the x & y dimensions are arbitary, 
+but the closer they are the closer its meaning. The size of the bubble represents it's engagement.
+
+Using the map I was able to discover "clusters" of my own tweets:
+1. The top left cluster contains questions it has the greatest engagement. 
+2. Also at the left, but slightly below are tweets that encourage replies, a few of them were succesful.
+3. The tweets at the center are related to personal news, I was surprised too learn people do care about them.
+4. There is an irregular cluster that goes from the bottom part of the chart to the right side. 
+This is what I call informational tweets, to the right they talk about soft topics as productivity and product
+and to the right about technical ones like Software & AI.
+This were the least successful of all. 
+My goal is now to find a format that allows me to share interesting things I learn in a daily basis.
+
+5. The final cluster at the top right is about promotion of my product. 
+I was glad to learn they are not terribly unproductive. 
+They are after all a good reason of why I tweet.
+
+You can also find a couple of outliers, but that are really about the failure for the compression algorithm 
+For example when asking a question about AI.
 
 
 ## Content Suggestions
 
-
-***
-
-I have many more ideas to follow this 3 metrics, but my goal at the moment is to hear your thoughts and find my beach head market. So please, if you read so far, take 3 minutes to share your thoughts and let me know if you would be interested in beta testing this product. You can also connect with via Twitter.
-
-Best,
 
