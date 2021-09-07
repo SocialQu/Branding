@@ -25,6 +25,15 @@ So I set on goal to create a dashboard that goes further that the traditional en
 
 ### Topic Classification
 
+The first feature you'll see are your tweets classified by topics. 
+In a single charts you can see what you are tweeting about, 
+and what type of engagement is creating.
+
+Interestingly, the same can be done with your follower's bios.
+By knowing who your audience is you can adapt your message.
+I was impressed by how many recent followers I have interested in Product Management.
+I've also never thought of tweeting with humor, is a vertical I might explore.
+On the other side, I might be tweeting too much about Javascript :joy:
 
 
 ## Engagement Map
