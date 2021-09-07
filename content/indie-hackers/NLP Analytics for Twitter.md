@@ -9,7 +9,6 @@ Although correlated, the success of a story is largely independent to the hours 
 In blogging, success largely depends on two factors: SEO & reader engagement.
 However, both are hard to predict, 
 
-***
 
 Last year, I started twitting.
 The short and casual nature of content cautivated.
@@ -25,6 +24,8 @@ So I set on goal to create a dashboard that goes further that the traditional en
 
 ### Topic Classification
 
+![Topic Classification](https://raw.githubusercontent.com/SocialQu/Branding/a20575618d0f9ede2d03b4e0eb96b8f1cb3bc1df/static/Topic%20Analysis.png)
+
 The first feature you'll see are your tweets classified by topics. 
 In a single charts you can see what you are tweeting about, 
 and what type of engagement is creating.
@@ -37,6 +38,8 @@ On the other side, I might be tweeting too much about Javascript :joy:
 
 
 ## Engagement Map
+
+![Engagement Map](https://raw.githubusercontent.com/SocialQu/Branding/a20575618d0f9ede2d03b4e0eb96b8f1cb3bc1df/static/Engagement%20Map.png)
 
 This is my favorite feature, it's based on a previous story I wrote: How to visualize human language.
 Using word embeddings and PCA, I was able to reduce the dimensionality of a tweet's meaning in a single chart.
@@ -62,6 +65,8 @@ For example when asking a question about AI.
 
 
 ## Content Suggestions
+
+![Content Suggestions](https://raw.githubusercontent.com/SocialQu/Branding/a20575618d0f9ede2d03b4e0eb96b8f1cb3bc1df/static/Content%20Suggestions.png)
 
 This last part is the one I need to work more prior to launch.
 But you get the idea, using a word cloud I want to know in detail what words are causing good 
