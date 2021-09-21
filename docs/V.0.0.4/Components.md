@@ -61,4 +61,9 @@
         - [ ] Clicks
         - [ ] Engaments
         - [ ] Impressions
-    - [ ] 
+    - [ ] CTA
+        - [ ] Third-party content
+        - [ ] Featured thread
+        - [ ] Personal news?
+        - [ ] Product updates
+        - [ ] Community engagement
