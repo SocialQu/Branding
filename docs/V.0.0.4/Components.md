@@ -34,4 +34,31 @@
         - [ ] Link
         - [ ] Impressions (colored bar)
         - [ ] Engagements?
+    - [ ] Curated Content
+        - [ ] Niche Analysis
+        - [ ] Growth tactic
+        - [ ] Chart of the Week
+        - [ ] Global Stat
+        - [ ] Featured Profile
 
+4. Audience
+    - [ ] Top Follower
+        - [ ] Bio
+        - [ ] Link
+        - [ ] Stats
+            - [ ] Tweets
+            - [ ] Followers
+            - [ ] Following
+    - [ ] Other Followers
+        - [ ] Profile
+        - [ ] Bio
+        - [ ] Niche
+        - [ ] Followers (emoji)
+
+5. Links
+    - [ ] Links
+        - [ ] URL
+        - [ ] Clicks
+        - [ ] Engaments
+        - [ ] Impressions
+    - [ ] 
