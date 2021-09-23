@@ -1,0 +1,26 @@
+{
+    "followers": "1,543",
+    "new_followers":"+ 3",
+    "follower_color":"007500",
+
+    "engagements":"34",
+    "engagements_trend":"-12%",
+    "engagements_color":"A31700",
+
+    "impressions":"12,345",
+    "impressions_trend":"-34%",
+    "impressions_color":"A31700",
+
+    "clicks":"9",
+    "clicks_trend":"41%",
+    "clicks_color":"007500",
+    
+    "tweets":"6",
+    "tweets_trend":"23%",
+    "tweets_color":"007500",
+    
+    "replies":"3",
+    "replies_trend":"-25%",
+    "replies_color":"A31700",
+
+}
