@@ -1,9 +1,11 @@
-import mail from '@sendgrid/mail'
+// npx ts-node send
+
+import mail, { MailDataRequired } from '@sendgrid/mail'
 import dotenv from 'dotenv'
 
 dotenv.config()
 
-const msg = {
+const msg:MailDataRequired = {
     to: 'santiago.aws@gmail.com',
     from: 'santiago@branding.gq',
     subject: 'Sending with SendGrid is Fun',
