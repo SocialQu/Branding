@@ -27,6 +27,7 @@
     "profile_handle":"SocialQui",
     "profile_link":"https://twitter.com/SocialQui",
     "profile_image":"https://pbs.twimg.com/profile_images/1312956785821724673/k-wK1l6g_400x400.jpg",
+
     "best_tweet_text":"The year is 2050. Describe the product you would build:",
     "best_tweet_impressions":"169",
     "best_tweet_retweets":"0",
@@ -36,6 +37,15 @@
     "best_tweet_date":"8:04 PM · Sep 24, 2021",
     "best_tweet_link":"https://twitter.com/SocialQui/status/1441569138200104965",
     
+    "best_tweet_text_2":"I'm starting a project to teach Spanish using AI. I need a name for the repo, ideas?",
+    "best_tweet_impressions_2":"376",
+    "best_tweet_retweets_2":"0",
+    "best_tweet_likes_2":"6",
+    "best_tweet_replies_2":"4",
+    "best_tweet_profile_visits_2":"0",
+    "best_tweet_date_2":"8:35 AM · Sep 8, 2021",
+    "best_tweet_link_2":"https://twitter.com/SocialQui/status/1435597539902955523",
+
     "top_follower_image":"https://pbs.twimg.com/profile_images/1312956785821724673/k-wK1l6g_400x400.jpg",
     "top_follower_link":"https://twitter.com/SocialQui",
     "top_follower_name":"Santiago M. Quintero",
@@ -127,7 +137,6 @@
     "fifth_reply_impressions":"400",
     "fifth_reply_engagements":"13",
 
-    
     "editorial_title":"A growth routine",
     "editorial":"includes all the activities that you do not necesarily like but with time buids an audience for you. This can include replying to a couple of tweets, meeting new people or writing ideas for future content. A particular song can help you get in the mood and keep it short. I usually use Sunset by Robin Schulz. Do you have a growth routine? How does it look like?",
 
