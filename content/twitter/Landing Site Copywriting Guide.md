@@ -98,3 +98,8 @@ Consider giving your visitors a gift that partially solves their problem.
 While in business is usually not about you. Consider sharing a small paragraph about you and what makes you passionate about what you are building. 
 
 It inspires trust, sympathy and may create unexpected, exciting business opportunities.
+
+
+## BONUS: Tell a story
+
+Inspire a vision in your customer of how their life would look with your product.
