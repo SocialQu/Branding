@@ -11,3 +11,8 @@ What impression do you want to give?
 
 In my case, I want the visitor to think: what an innovative solution for such a common problem. I should try it
 
+## 2. Choose what type of landing site it is.
+*Is it a homepage, persona landing page, or a product page?*
+
+For me, it is a product page. I may focus the copy on the features and the product's screenshots
+
