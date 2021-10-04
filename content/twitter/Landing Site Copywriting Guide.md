@@ -41,3 +41,13 @@ Alternate different types to maximize conversion.
 * Main CTA: be providential.
 * Alternative CTA: to give additional information.
 * Contact CTA.
+
+
+## 5. Content verticals
+
+Answer these 3 questions to pitch your product.
+* How will you increase desire?
+* How are you making it easy for the visitor?
+* How will you avoid confusion? 
+
+I suggest having at least 3 answers for each question and include all of them in your copy.
