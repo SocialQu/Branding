@@ -1,12 +1,18 @@
 # Twitter Analytics at your Inbox
 
+Before joining Twitter my only hope of acquiring new users for my products was thorugh a succesful launch in places like Product Hunt or 
+
+As a founder and a writer, I know how useful having a solid prescence is. It helps me connect with domain experts, validate product ideas, meet new customers and find exciting new business oportunities.
+
+In this first iteration of the Twitter Growth newsletter I want to deliver you all the information you need to 
+
 Every week receive your aggregated Twitter metrics, AI insights and curated tactics to grow your online presence.
 
 If Twitter is one of your main customer acquisition channels, is possible you are already thinking strategically about it. The newsletter aims to deliver you the information you need to create more engaging content and keep your strategy on course.
 
 
 ## How will this Newsletter help me grow?
-1. Track your weekly performance to make small changes to your day to day Twitter activity.
+1. Track your weekly performance to make small improvements in your day to day Twitter activities.
 2. 
 3. 
 
