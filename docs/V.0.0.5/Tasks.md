@@ -19,3 +19,8 @@
     - [ ] Send first email with my data.
     - [ ] Send next 3 emails to existing users.
 
+- [ ] Next Version: Landing Site 
+    - [ ] Sign up.
+    - [ ] Connect to Twitter.
+    - [ ] Hosted blog.
+    - [ ] Define Data Model
