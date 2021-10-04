@@ -11,3 +11,11 @@
     - [ ] Classify and aggregate tweets by topic.
     - [ ] Classify and sort most recent followers.
     - [ ] Aggregate and sort replies by user.
+
+- [ ] Other tasks
+    - [ ] Store JSON with email data.
+    - [ ] Upload email template via Netlify pipeline.
+    - [ ] Acquire & renew domains.
+    - [ ] Send first email with my data.
+    - [ ] Send next 3 emails to existing users.
+
