@@ -76,3 +76,11 @@ Brainstorm some ideas. For my newsletter, these are the top 3:
 * Write more engaging content.
 * Save time with better information.
 
+
+## 8. Talk about competition
+
+There are 2 levels of competition:
+* Alternative solutions to the problem
+* Competing products
+
+Focus on the first one and If you talk about the second ones, always do it in positive terms. Highlight their benefits as if it was your own product.
