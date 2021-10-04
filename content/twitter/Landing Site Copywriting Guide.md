@@ -16,3 +16,15 @@ In my case, I want the visitor to think: what an innovative solution for such a 
 
 For me, it is a product page. I may focus the copy on the features and the product's screenshots
 
+## 3. Think about the visitor
+
+To explain my product, I will follow this template:
+
+* What is the product?
+* Who is it for?
+* What it offers?
+* An overview of the features.
+* What makes it special?
+* How can you get started?
+* FAQ section
+
