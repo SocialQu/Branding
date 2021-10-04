@@ -64,3 +64,15 @@ What arguments would you use to persuade them?
 * Reinforce the importance of the problem you solve.
 * Compare your product against other solutions.
 * Share what you love about the product.
+
+
+## 7. The mystical value proposition
+
+*A value proposition is a quality (adjective) plus a benefit to your user.*
+
+Brainstorm some ideas. For my newsletter, these are the top 3:
+
+* Meet your ideal customers.
+* Write more engaging content.
+* Save time with better information.
+
