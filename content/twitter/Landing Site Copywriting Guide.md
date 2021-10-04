@@ -84,3 +84,11 @@ There are 2 levels of competition:
 * Competing products
 
 Focus on the first one and If you talk about the second ones, always do it in positive terms. Highlight their benefits as if it was your own product.
+
+
+## 9. Closure
+
+Think of a movie, and how important the end is. They usually offer you a happy ending.
+
+Consider giving your visitors a gift that partially solves their problem.
+
