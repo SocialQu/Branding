@@ -46,8 +46,21 @@ Alternate different types to maximize conversion.
 ## 5. Content verticals
 
 Answer these 3 questions to pitch your product.
+
 * How will you increase desire?
 * How are you making it easy for the visitor?
 * How will you avoid confusion? 
 
 I suggest having at least 3 answers for each question and include all of them in your copy.
+
+
+
+## 6. Identify the top-selling points
+
+Imagine yourself pitching to your ideal buyer.
+
+What arguments would you use to persuade them? 
+
+* Reinforce the importance of the problem you solve.
+* Compare your product against other solutions.
+* Share what you love about the product.
