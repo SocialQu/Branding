@@ -1,5 +1,5 @@
-import { iData, iEngagementLocations, iKpis } from '../../app/types/data'
-import { iContent, iAudience, iSuggestions } from '../../app/types/data'
+import { iData, iEngagementLocations, iKpis } from '../../../app/types/data'
+import { iContent, iAudience, iSuggestions } from '../../../app/types/data'
 import { iFetchedData, iMetrics } from '../types/fetch'
 
 import { analyzeData, iAnalysisData } from './analysis'

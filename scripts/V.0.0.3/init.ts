@@ -1,7 +1,7 @@
 // npx ts-node init
 
 import Twitter, { TwitterOptions } from 'twitter-lite'
-import { iRawTweet, iRawMetrics } from './types'
+import { iRawTweet, iRawMetrics } from './V.0.0.3/types'
 import { promises as fs } from 'fs'
 
 require('dotenv').config()
