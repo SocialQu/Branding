@@ -103,3 +103,6 @@ It inspires trust, sympathy and may create unexpected, exciting business opportu
 ## BONUS: Tell a story
 
 Inspire a vision in your customer of how their life would look with your product.
+
+
+Thanks to [@Volkan](https://twitter.com/volkan) who shared valuable resources to write effective copy including his [SaaS Pages templates](https://saaspages.xyz)
