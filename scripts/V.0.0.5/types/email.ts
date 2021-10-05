@@ -26,6 +26,11 @@ interface iEmailKpis {
 
 
 interface iEmailTweets {
+    profile_name: string
+    profile_handle: string
+    profile_link: string
+    profile_image: string
+    
     best_tweet_text: string
     best_tweet_impressions: string
     best_tweet_retweets: string
