@@ -211,3 +211,6 @@ interface iEmailFooter {
     Sender_Zip: string
     unsubscribe: string    
 }
+
+interface iEmailMetrics extends iEmailKpis, iEmailTweets, iEmailTopics, iEmailFollowers, iEmailReplies {}
+export interface iEmailData extends iEmailMetrics, iEmailContent, iEmailFooter {}
