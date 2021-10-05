@@ -72,3 +72,13 @@ interface iFollowers {
     topFollower: iTopFollower
     followers: iFollower[]
 }
+
+
+interface iReply {
+    image: string
+    name: string
+    link: string
+    percent: number
+    impressions: number
+    engagements: number    
+}
