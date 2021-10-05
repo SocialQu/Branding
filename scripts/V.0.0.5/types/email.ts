@@ -1,4 +1,4 @@
-interface iEmailKpis {
+export interface iEmailKpis {
     followers: string
     new_followers: string
     follower_color: string
@@ -25,7 +25,7 @@ interface iEmailKpis {
 }
 
 
-interface iEmailTweets {
+export interface iEmailTweets {
     profile_name: string
     profile_handle: string
     profile_link: string
@@ -60,7 +60,7 @@ interface iEmailTweets {
 }
 
 
-interface iEmailTopics {
+export interface iEmailTopics {
     topic_name: string
     topic_color: string
     topic_text: string
@@ -103,7 +103,7 @@ interface iEmailTopics {
 }
 
 
-interface iEmailFollowers {
+export interface iEmailFollowers {
     top_follower_image: string
     top_follower_link: string
     top_follower_name: string
@@ -151,7 +151,7 @@ interface iEmailFollowers {
 }
 
 
-interface iEmailReplies {
+export interface iEmailReplies {
     first_reply_image: string
     first_reply_name: string
     first_reply_link: string

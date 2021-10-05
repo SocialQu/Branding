@@ -41,11 +41,11 @@ interface iBestTweets {
 interface iTopic {
     name: string
     text: string
-    width: string
     color: string
-    tweets: string
-    impressions: string
-    engagements: string
+    width: number
+    tweets: number
+    impressions: number
+    engagements: number
 }
 
 
@@ -60,7 +60,7 @@ interface iFollower {
     name: string
     link: string
     image: string
-    color: number
+    color: string
     niche: number
     ratio: number
     followers: number
