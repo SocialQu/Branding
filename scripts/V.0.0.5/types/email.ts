@@ -144,3 +144,41 @@ interface iEmailFollowers {
     fourth_follower_niche_color: string
     fourth_follower_niche_text: string    
 }
+
+
+interface iEmailReplies {
+    first_reply_image: string
+    first_reply_name: string
+    first_reply_link: string
+    first_reply_percent: string
+    first_reply_impressions: string
+    first_reply_engagements: string
+
+    second_reply_image: string
+    second_reply_name: string
+    second_reply_link: string
+    second_reply_percent: string
+    second_reply_impressions: string
+    second_reply_engagements: string
+
+    third_reply_image: string
+    third_reply_name: string
+    third_reply_link: string
+    third_reply_percent: string
+    third_reply_impressions: string
+    third_reply_engagements: string
+
+    fourth_reply_image: string
+    fourth_reply_name: string
+    fourth_reply_link: string
+    fourth_reply_percent: string
+    fourth_reply_impressions: string
+    fourth_reply_engagements: string
+
+    fifth_reply_image: string
+    fifth_reply_name: string
+    fifth_reply_link: string
+    fifth_reply_percent: string
+    fifth_reply_impressions: string
+    fifth_reply_engagements: string    
+}
