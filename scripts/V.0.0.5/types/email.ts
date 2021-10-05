@@ -96,3 +96,51 @@ interface iEmailTopics {
     topic_engagements_5: string
     topic_width_5: string    
 }
+
+
+interface iEmailFollowers {
+    top_follower_image: string
+    top_follower_link: string
+    top_follower_name: string
+    top_follower_bio: string
+    
+    first_follower_image: string
+    first_follower_name: string
+    first_follower_link: string
+    first_follower_followers: string
+    first_follower_ratio: string
+    first_follower_color: string
+    first_follower_niche: string
+    first_follower_niche_color: string
+    first_follower_niche_text: string
+
+    second_follower_image: string
+    second_follower_name: string
+    second_follower_link: string
+    second_follower_followers: string
+    second_follower_ratio: string
+    second_follower_color: string
+    second_follower_niche: string
+    second_follower_niche_color: string
+    second_follower_niche_text: string
+
+    third_follower_image: string
+    third_follower_name: string
+    third_follower_link: string
+    third_follower_followers: string
+    third_follower_ratio: string
+    third_follower_color: string
+    third_follower_niche: string
+    third_follower_niche_color: string
+    third_follower_niche_text: string
+
+    fourth_follower_image: string
+    fourth_follower_name: string
+    fourth_follower_link: string
+    fourth_follower_followers: string
+    fourth_follower_ratio: string
+    fourth_follower_color: string
+    fourth_follower_niche: string
+    fourth_follower_niche_color: string
+    fourth_follower_niche_text: string    
+}
