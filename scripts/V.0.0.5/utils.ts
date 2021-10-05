@@ -165,9 +165,37 @@ export const buildEmailMetrics = ({ kpis, bestTweets, topics, followers, replies
         first_reply_image: reply1.image,
         first_reply_name: reply1.name,
         first_reply_link: reply1.link,
-        first_reply_percent: reply1.percent,
-        first_reply_impressions: reply1.impressions,
-        first_reply_engagements: reply1.engagements
+        first_reply_percent: formatNumber(reply1.percent),
+        first_reply_impressions: formatNumber(reply1.impressions),
+        first_reply_engagements: formatNumber(reply1.engagements),
+
+        second_reply_image: reply2.image,
+        second_reply_name: reply2.name,
+        second_reply_link: reply2.link,
+        second_reply_percent: formatNumber(reply2.percent),
+        second_reply_impressions: formatNumber(reply2.impressions),
+        second_reply_engagements: formatNumber(reply2.engagements),
+
+        third_reply_image: reply3.image,
+        third_reply_name: reply3.name,
+        third_reply_link: reply3.link,
+        third_reply_percent: formatNumber(reply3.percent),
+        third_reply_impressions: formatNumber(reply3.impressions),
+        third_reply_engagements: formatNumber(reply3.engagements),
+
+        fourth_reply_image: reply4.image,
+        fourth_reply_name: reply4.name,
+        fourth_reply_link: reply4.link,
+        fourth_reply_percent: formatNumber(reply4.percent),
+        fourth_reply_impressions: formatNumber(reply4.impressions),
+        fourth_reply_engagements: formatNumber(reply4.engagements),
+
+        fifth_reply_image: reply5.image,
+        fifth_reply_name: reply5.name,
+        fifth_reply_link: reply5.link,
+        fifth_reply_percent: formatNumber(reply5.percent),
+        fifth_reply_impressions: formatNumber(reply5.impressions),
+        fifth_reply_engagements: formatNumber(reply5.engagements)
     }
 }
 
