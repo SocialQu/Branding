@@ -99,7 +99,7 @@ interface iEmailTopics {
     topic_tweets_5: string
     topic_impressions_5: string
     topic_engagements_5: string
-    topic_width_5: string    
+    topic_width_5: string
 }
 
 
@@ -147,7 +147,7 @@ interface iEmailFollowers {
     fourth_follower_color: string
     fourth_follower_niche: string
     fourth_follower_niche_color: string
-    fourth_follower_niche_text: string    
+    fourth_follower_niche_text: string
 }
 
 
@@ -185,7 +185,7 @@ interface iEmailReplies {
     fifth_reply_link: string
     fifth_reply_percent: string
     fifth_reply_impressions: string
-    fifth_reply_engagements: string    
+    fifth_reply_engagements: string
 }
 
 
@@ -199,8 +199,8 @@ interface iEmailContent {
     content_title: string
     content: string
     content_CTA: string
-    content_link: string    
-    content_2: string    
+    content_link: string
+    content_2: string
 }
 
 
@@ -209,7 +209,7 @@ interface iEmailFooter {
     Sender_City: string
     Sender_State: string
     Sender_Zip: string
-    unsubscribe: string    
+    unsubscribe: string
 }
 
 interface iEmailMetrics extends iEmailKpis, iEmailTweets, iEmailTopics, iEmailFollowers, iEmailReplies {}
