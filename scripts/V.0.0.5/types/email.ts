@@ -151,7 +151,7 @@ export interface iEmailFollowers {
 }
 
 
-interface iEmailReplies {
+export interface iEmailReplies {
     first_reply_image: string
     first_reply_name: string
     first_reply_link: string
