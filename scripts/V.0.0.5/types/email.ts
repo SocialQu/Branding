@@ -53,3 +53,46 @@ interface iEmailTweets {
     best_tweet_date_3: string
     best_tweet_link_3: string
 }
+
+
+interface iEmailTopics {
+    topic_name: string
+    topic_color: string
+    topic_text: string
+    topic_tweets: string
+    topic_impressions: string
+    topic_engagements: string
+    topic_width: string
+
+    topic_name_2: string
+    topic_color_2: string
+    topic_text_2: string
+    topic_tweets_2: string
+    topic_impressions_2: string
+    topic_engagements_2: string
+    topic_width_2: string
+
+    topic_name_3: string
+    topic_color_3: string
+    topic_text_3: string
+    topic_tweets_3: string
+    topic_impressions_3: string
+    topic_engagements_3: string
+    topic_width_3: string
+
+    topic_name_4: string
+    topic_color_4: string
+    topic_text_4: string
+    topic_tweets_4: string
+    topic_impressions_4: string
+    topic_engagements_4: string
+    topic_width_4: string
+
+    topic_name_5: string
+    topic_color_5: string
+    topic_text_5: string
+    topic_tweets_5: string
+    topic_impressions_5: string
+    topic_engagements_5: string
+    topic_width_5: string    
+}
