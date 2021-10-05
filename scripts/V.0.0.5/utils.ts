@@ -197,6 +197,17 @@ export const buildEmailMetrics = ({ kpis, bestTweets, topics, followers, replies
         fifth_reply_impressions: formatNumber(reply5.impressions),
         fifth_reply_engagements: formatNumber(reply5.engagements)
     }
+
+
+    const emailMetrics = {
+        ...emailKpis,
+        ...emailTweets,
+        ...emailTopics,
+        ...emailFollowers,
+        ...emailReplies
+    }
+
+    return emailMetrics
 }
 
 export const writeJSON = () => {}
