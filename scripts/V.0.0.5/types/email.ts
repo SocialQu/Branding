@@ -1,4 +1,4 @@
-interface iEmailKpis {
+export interface iEmailKpis {
     followers: string
     new_followers: string
     follower_color: string
