@@ -48,3 +48,6 @@ You can cancel the access at any time :)
 Yes, as I search for the first 100 subscribers the product will be free.
 Later, I will start looking for the revenue model that provides the most value for you.
 Some options may include: freemium model with access to a web dashboard, personalized advertising and an enterprise version. I'm still very early in that process and I hope to actively involve you in that process.
+
+* **Do you use AI to give additional insights?**
+Absolutely, the topic classification uses AI and database of over 80 different topics to classify your tweets. With a similar process your followers are classified by *niche* based on their bios. To give you insights about your audience.
