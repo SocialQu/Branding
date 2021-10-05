@@ -47,3 +47,28 @@ interface iTopic {
     impressions: string
     engagements: string
 }
+
+
+interface iTopFollower {
+    bio: string
+    link: string
+    name: string
+    image: string
+}
+
+interface iFollower {
+    name: string
+    link: string
+    image: string
+    color: number
+    niche: number
+    ratio: number
+    followers: number
+    textColor: 'black' | 'white'
+    ratioColor: 'A31700' | '007500'
+}
+
+interface iFollowers {
+    topFollower: iTopFollower
+    followers: iFollower[]
+}
