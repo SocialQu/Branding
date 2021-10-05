@@ -12,3 +12,27 @@ interface iKpis {
     tweets: iKpi
     replies: iKpi
 }
+
+
+interface iProfile {
+    name: string
+    handle: string
+    link: string
+    image: string    
+}
+
+interface iTweet {
+    date: Date
+    text: string
+    link: string
+    likes: number
+    replies: number
+    retweets: number
+    impressions: number
+    profile_visits: number
+}
+
+interface iBestTweets {
+    profile: iProfile
+    tweets: iTweet[]
+}
