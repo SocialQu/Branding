@@ -60,7 +60,7 @@ export interface iEmailTweets {
 }
 
 
-interface iEmailTopics {
+export interface iEmailTopics {
     topic_name: string
     topic_color: string
     topic_text: string
