@@ -18,7 +18,7 @@ interface iProfile {
     name: string
     handle: string
     link: string
-    image: string    
+    image: string
 }
 
 interface iTweet {
@@ -35,4 +35,15 @@ interface iTweet {
 interface iBestTweets {
     profile: iProfile
     tweets: iTweet[]
+}
+
+
+interface iTopic {
+    name: string
+    text: string
+    width: string
+    color: string
+    tweets: string
+    impressions: string
+    engagements: string
 }
