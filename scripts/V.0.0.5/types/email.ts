@@ -187,3 +187,18 @@ interface iEmailReplies {
     fifth_reply_impressions: string
     fifth_reply_engagements: string    
 }
+
+
+interface iEmailContent {
+    editorial_title: string
+    editorial: string
+    editorial_CTA: string
+    editorial_link: string
+    editorial_2: string
+
+    content_title: string
+    content: string
+    content_CTA: string
+    content_link: string    
+    content_2: string    
+}
