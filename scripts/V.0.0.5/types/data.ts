@@ -41,11 +41,11 @@ interface iBestTweets {
 interface iTopic {
     name: string
     text: string
-    width: string
     color: string
-    tweets: string
-    impressions: string
-    engagements: string
+    width: number
+    tweets: number
+    impressions: number
+    engagements: number
 }
 
 
