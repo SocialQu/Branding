@@ -33,3 +33,9 @@ My goal with this product is to save you time and help you sustain audience-grow
 1. Click on the "I want this button" you will be asked for your email and twitter handle.
 2. You will be redirected to [branding.gq](https://branding.gq), please sign up with your Twitter account to grant read-access to your metrics (impressions, profile visits, url clicks).
 3. Wait for 24 - 72 hours to receive the first email, and let me know what you think :)
+
+
+## FAQ section
+
+* **Can I see a demo email?** 
+Sure, send me an email to santiago@branding.gq title SocialQ demo and I will forward you a Demo.
