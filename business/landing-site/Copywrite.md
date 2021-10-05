@@ -43,3 +43,8 @@ Sure, send me an email to santiago@branding.gq title SocialQ demo and I will for
 * **What access do I give by signing up with Twitter?**
 Read access to your Twitter metrics. I will not be able to post on your behalf or access your DMs.
 You can cancel the access at any time :)
+
+* **Is the product free?**
+Yes, as I search for the first 100 subscribers the product will be free.
+Later, I will start looking for the revenue model that provides the most value for you.
+Some options may include: freemium model with access to a web dashboard, personalized advertising and an enterprise version. I'm still very early in that process and I hope to actively involve you in that process.
