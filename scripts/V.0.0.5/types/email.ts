@@ -103,7 +103,7 @@ export interface iEmailTopics {
 }
 
 
-interface iEmailFollowers {
+export interface iEmailFollowers {
     top_follower_image: string
     top_follower_link: string
     top_follower_name: string
