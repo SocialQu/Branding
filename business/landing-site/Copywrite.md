@@ -51,3 +51,9 @@ Some options may include: freemium model with access to a web dashboard, persona
 
 * **Do you use AI to give additional insights?**
 Absolutely, the topic classification uses AI and database of over 80 different topics to classify your tweets. With a similar process your followers are classified by *niche* based on their bios. To give you insights about your audience.
+
+* **How the next 3 months look for SocialQ**
+I will start by searching for the first 100 users and get your feedback. Hopefully, I have a solid product vision after that.
+Then, I want to gain traction in 2 strategical startup niches to grow faster: journalists & investors.
+Finally, I will be thinking and searching for a business model that I feel confortable on the short and long term. Always prioritizing values avobe earnings.
+
