@@ -15,6 +15,13 @@ Every week, SocialQ delivers you valuable data to shape your content strategy:
 
 ## Who is it for?
 
+This product is ideal if you use Twitter for one of the following 3 activities:
+ 
+1. Customer acquisition for your business.
+2. Professional networking.
+3. Content creation.
+
+
 ## Value Proposition
 
 ## How to get started
