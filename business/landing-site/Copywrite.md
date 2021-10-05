@@ -9,6 +9,7 @@ Every week, SocialQ delivers you valuable data to shape your content strategy:
 
 * Weekly KPIs: including the number of tweets, impressions and engagements with weekly trends to track your perfomance.
 * Best Tweets: your 3 most viewed tweets from last week. You may want to repurpose these to create consistent engagement.
+* Content Analysis: your tweets are agregated by topic and sorted by engagement to let you know what content is performing the best. 
 * New Followers: try to engage with them and build synergic relationships or convert them to customers.
 * Most viewed replies: let people know about you by engaging with influencers in your niche. 
 
@@ -29,5 +30,6 @@ My goal with this product is to save you time and help you sustain audience-grow
 
 ## How to get started
 
-## FAQ section
-
+1. Click on the "I want this button" you will be asked for your email and twitter handle.
+2. You will be redirected to [branding.gq](https://branding.gq), please sign up with your Twitter account to grant read-access to your metrics (impressions, profile visits, url clicks).
+3. Wait for 24 - 72 hours to receive the first email, and let me know what you think :)
