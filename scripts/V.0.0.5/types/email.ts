@@ -202,3 +202,12 @@ interface iEmailContent {
     content_link: string    
     content_2: string    
 }
+
+
+interface iEmailFooter {
+    cta_link: string
+    Sender_City: string
+    Sender_State: string
+    Sender_Zip: string
+    unsubscribe: string    
+}
