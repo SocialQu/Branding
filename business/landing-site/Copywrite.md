@@ -39,3 +39,7 @@ My goal with this product is to save you time and help you sustain audience-grow
 
 * **Can I see a demo email?** 
 Sure, send me an email to santiago@branding.gq title SocialQ demo and I will forward you a Demo.
+
+* **What access do I give by signing up with Twitter?**
+Read access to your Twitter metrics. I will not be able to post on your behalf or access your DMs.
+You can cancel the access at any time :)
