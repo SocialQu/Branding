@@ -1,15 +1,16 @@
-import { iEmailKpis, iEmailTweets, iEmailTopics, iEmailFollowers, iEmailMetrics } from './types/email'
+import { iEmailKpis, iEmailTweets, iEmailTopics, iEmailFollowers, iEmailReplies, iEmailMetrics } from './types/email'
 import { iData } from './types/data'
 
 
 const formatNumber = (value:number):string => String(value)
 const formatDate = (date:Date):string => String(date)
 
-export const buildEmailMetrics = ({ kpis, bestTweets, topics, followers }:iData):iEmailMetrics => {
-    const { followers:followersKpi, engagements, impressions, clicks, tweets, replies } = kpis
+export const buildEmailMetrics = ({ kpis, bestTweets, topics, followers, replies }:iData):iEmailMetrics => {
+    const { followers:followersKpi, engagements, impressions, clicks, tweets, replies:repliesKpis } = kpis
     const { profile, tweets:[tweet1, tweet2, tweet3] } = bestTweets
     const [ topic1, topic2, topic3, topic4, topic5 ] = topics
     const { topFollower, followers:[ follower1, follower2, follower3, follower4 ] } = followers
+    const [ reply1, reply2, reply3, reply4, reply5 ] = replies
 
     const emailKpis: iEmailKpis = {
         followers: formatNumber(followersKpi.value),
@@ -32,9 +33,9 @@ export const buildEmailMetrics = ({ kpis, bestTweets, topics, followers }:iData)
         tweets_trend: formatNumber(tweets.trend),
         tweets_color: tweets.color,
 
-        replies: formatNumber(replies.value),
-        replies_trend: formatNumber(replies.trend),
-        replies_color: replies.color
+        replies: formatNumber(repliesKpis.value),
+        replies_trend: formatNumber(repliesKpis.trend),
+        replies_color: repliesKpis.color
     }
 
     const emailTweets:iEmailTweets = {
@@ -158,6 +159,15 @@ export const buildEmailMetrics = ({ kpis, bestTweets, topics, followers }:iData)
         fourth_follower_niche: formatNumber(follower4.niche),
         fourth_follower_niche_color: follower4.color,
         fourth_follower_niche_text: follower4.textColor,
+    }
+
+    const emailReplies:iEmailReplies = {
+        first_reply_image: reply1.image,
+        first_reply_name: reply1.name,
+        first_reply_link: reply1.link,
+        first_reply_percent: reply1.percent,
+        first_reply_impressions: reply1.impressions,
+        first_reply_engagements: reply1.engagements
     }
 }
 
