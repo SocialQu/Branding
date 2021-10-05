@@ -1,19 +1,20 @@
-import { iEmailKpis, iEmailTweets, iEmailTopics, iEmailMetrics } from './types/email'
+import { iEmailKpis, iEmailTweets, iEmailTopics, iEmailFollowers, iEmailMetrics } from './types/email'
 import { iData } from './types/data'
 
 
 const formatNumber = (value:number):string => String(value)
 const formatDate = (date:Date):string => String(date)
 
-export const buildEmailMetrics = ({ kpis, bestTweets, topics }:iData):iEmailMetrics => {
-    const { followers, engagements, impressions, clicks, tweets, replies } = kpis
+export const buildEmailMetrics = ({ kpis, bestTweets, topics, followers }:iData):iEmailMetrics => {
+    const { followers:followersKpi, engagements, impressions, clicks, tweets, replies } = kpis
     const { profile, tweets:[tweet1, tweet2, tweet3] } = bestTweets
     const [ topic1, topic2, topic3, topic4, topic5 ] = topics
+    const { topFollower, followers:[ follower1, follower2, follower3, follower4 ] } = followers
 
     const emailKpis: iEmailKpis = {
-        followers: formatNumber(followers.value),
-        new_followers: formatNumber(followers.trend),
-        follower_color: followers.color,
+        followers: formatNumber(followersKpi.value),
+        new_followers: formatNumber(followersKpi.trend),
+        follower_color: followersKpi.color,
 
         engagements: formatNumber(engagements.value),
         engagements_trend: formatNumber(engagements.trend),
@@ -110,6 +111,53 @@ export const buildEmailMetrics = ({ kpis, bestTweets, topics }:iData):iEmailMetr
         topic_impressions_5: formatNumber(topic5.impressions),
         topic_engagements_5: formatNumber(topic5.engagements),
         topic_width_5: formatNumber(topic5.width),
+    }
+
+    const emailFollowers:iEmailFollowers = {
+        top_follower_image: topFollower.image,
+        top_follower_link: topFollower.link,
+        top_follower_name: topFollower.name,
+        top_follower_bio: topFollower.bio,
+        
+        first_follower_image: follower1.image,
+        first_follower_name: follower1.name,
+        first_follower_link: follower1.link,
+        first_follower_color: follower1.ratioColor,
+        first_follower_followers: formatNumber(follower1.followers),
+        first_follower_ratio: formatNumber(follower1.ratio),
+        first_follower_niche: formatNumber(follower1.niche),
+        first_follower_niche_color: follower1.color,
+        first_follower_niche_text: follower1.textColor,
+
+        second_follower_image: follower2.image,
+        second_follower_name: follower2.name,
+        second_follower_link: follower2.link,
+        second_follower_color: follower2.ratioColor,
+        second_follower_followers: formatNumber(follower2.followers),
+        second_follower_ratio: formatNumber(follower2.ratio),
+        second_follower_niche: formatNumber(follower2.niche),
+        second_follower_niche_color: follower2.color,
+        second_follower_niche_text: follower2.textColor,
+
+        third_follower_image: follower3.image,
+        third_follower_name: follower3.name,
+        third_follower_link: follower3.link,
+        third_follower_color: follower3.ratioColor,
+        third_follower_followers: formatNumber(follower3.followers),
+        third_follower_ratio: formatNumber(follower3.ratio),
+        third_follower_niche: formatNumber(follower3.niche),
+        third_follower_niche_color: follower3.color,
+        third_follower_niche_text: follower3.textColor,
+
+        fourth_follower_image: follower4.image,
+        fourth_follower_name: follower4.name,
+        fourth_follower_link: follower4.link,
+        fourth_follower_color: follower4.ratioColor,
+        fourth_follower_followers: formatNumber(follower4.followers),
+        fourth_follower_ratio: formatNumber(follower4.ratio),
+        fourth_follower_niche: formatNumber(follower4.niche),
+        fourth_follower_niche_color: follower4.color,
+        fourth_follower_niche_text: follower4.textColor,
     }
 }
 
