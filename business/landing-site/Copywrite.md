@@ -57,3 +57,5 @@ I will start by searching for the first 100 users and get your feedback. Hopeful
 Then, I want to gain traction in 2 strategical startup niches to grow faster: journalists & investors.
 Finally, I will be thinking and searching for a business model that I feel confortable on the short and long term. Always prioritizing values avobe earnings.
 
+* **Are you working on this full time?**
+Almost, I'm validating and about too launch 2 other product ideas in my local market (Mexico). I'll be happy to [connect with you](https://twitter.com/SocialQui) if you have fresh ideas, quality feedback or collaboration proposals :)
