@@ -82,3 +82,12 @@ interface iReply {
     impressions: number
     engagements: number    
 }
+
+
+export interface iData {
+    kpis: iKpis
+    bestTweets: iBestTweets
+    topics: iTopic[]
+    followers: iFollowers
+    replies: iReply[]
+}
