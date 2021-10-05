@@ -25,7 +25,7 @@ export interface iEmailKpis {
 }
 
 
-interface iEmailTweets {
+export interface iEmailTweets {
     profile_name: string
     profile_handle: string
     profile_link: string
