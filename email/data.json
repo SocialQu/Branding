@@ -14,21 +14,22 @@
     "clicks":"9",
     "clicks_trend":"41%",
     "clicks_color":"007500",
-    
+
     "tweets":"6",
     "tweets_trend":"23%",
     "tweets_color":"007500",
-    
+
     "replies":"3",
     "replies_trend":"-25%",
     "replies_color":"A31700",
+
 
     "editorial_title":"A growth routine",
     "editorial":"includes all the activities that you do not necesarily like but with time buids an audience for you. This can include replying to a couple of tweets, meeting new people or writing ideas for future content. A particular song can help you get in the mood and keep it short. I usually use Sunset by Robin Schulz. Do you have a growth routine? How does it look like?",
     "editorial_CTA":"Send me a DM",
     "editorial_link":"https://twitter.com/SocialQui",
     "editorial_2": " to let me know.",
-    
+
 
     "profile_name":"Santiago M. Quintero",
     "profile_handle":"SocialQui",
@@ -43,7 +44,7 @@
     "best_tweet_profile_visits":"4",
     "best_tweet_date":"8:04 PM · Sep 24, 2021",
     "best_tweet_link":"https://twitter.com/SocialQui/status/1441569138200104965",
-    
+
     "best_tweet_text_2":"I'm starting a project to teach Spanish using AI. I need a name for the repo, ideas?",
     "best_tweet_impressions_2":"376",
     "best_tweet_retweets_2":"0",
@@ -61,8 +62,8 @@
     "best_tweet_profile_visits_3":"4",
     "best_tweet_date_3":"8:04 PM · Sep 24, 2021",
     "best_tweet_link_3":"https://twitter.com/SocialQui/status/1441569138200104965",
-    
-    
+
+
     "topic_name":"Javascript",
     "topic_color":"purple",
     "topic_text":"white",
@@ -102,7 +103,8 @@
     "topic_impressions_5":"988",
     "topic_engagements_5":"13",
     "topic_width_5":"60",
-    
+
+
     "content_title":"Your dream 100:",
     "content":"is the list of your ideal customers. If you are B2B it includes all the potential customers that would represent the top 80% of your sales. If you are B2C it includes the leaders of the communities your customers follow. You can learn more at ",
     "content_CTA":"Russell Brunson's podcast",
@@ -110,12 +112,11 @@
     "content_2": ".",
 
 
-
     "top_follower_image":"https://pbs.twimg.com/profile_images/1312956785821724673/k-wK1l6g_400x400.jpg",
     "top_follower_link":"https://twitter.com/SocialQui",
     "top_follower_name":"Santiago M. Quintero",
     "top_follower_bio":"🧪 Data Scientist of engagement.\n 🔥 Exploring applications of AI to social interactions. \n 🇲🇽 Fractional CTO & founder of http://branding.gq",
-    
+
     "first_follower_image":"https://pbs.twimg.com/profile_images/1243466706158305285/KNWS2bva_400x400.jpg",
     "first_follower_name":"Intelequia EN",
     "first_follower_link":"https://twitter.com/IntelequiaEN",
@@ -157,7 +158,6 @@
     "fourth_follower_niche_text":"black",
 
 
-    
     "first_reply_image":"https://pbs.twimg.com/profile_images/1243466706158305285/KNWS2bva_400x400.jpg",
     "first_reply_name":"Intelequia EN",
     "first_reply_link":"https://twitter.com/IntelequiaEN",
@@ -192,7 +192,6 @@
     "fifth_reply_percent":"40",
     "fifth_reply_impressions":"400",
     "fifth_reply_engagements":"13",
-
 
 
     "cta_link":"https://twitter.com/intent/tweet?text=Get+your+weekly+Twitter+stats+at+your+inbox+with+branding.gq",
