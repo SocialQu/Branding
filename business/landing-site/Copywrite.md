@@ -24,6 +24,9 @@ This product is ideal if you use Twitter for one of the following 3 activities:
 
 ## Value Proposition
 
+My goal with this product is to save you time and help you sustain audience-growing habits that will deliver you long-term value.
+
+
 ## How to get started
 
 ## FAQ section
