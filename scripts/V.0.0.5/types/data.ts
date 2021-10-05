@@ -60,7 +60,7 @@ interface iFollower {
     name: string
     link: string
     image: string
-    color: number
+    color: string
     niche: number
     ratio: number
     followers: number
