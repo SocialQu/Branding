@@ -1,4 +1,4 @@
-import { iData, iKpis, iKpi, iTweet as iBestTweet, iBestTweets, iTopic, iFollowers } from './types/data'
+import { iData, iKpis, iKpi, iTweet as iBestTweet, iBestTweets, iTopic, iFollowers, iReply } from './types/data'
 import { iFetchedData, iTweet } from './types/fetch'
 
 
@@ -60,5 +60,9 @@ export const aggregateData = ({ tweets, replies, user  }:iFetchedData):iData => 
     }
 
 
-    return { kpis, bestTweets, topics, followers, replies:[] }
+    const sortedReplies = [...replies].sort(({metrics:{impressions:a}}, {metrics:{impressions:b}}) => a > b ? 1 : -1)
+    const topReplies = sortedReplies.filter((_, i) => i < 5)
+
+
+    return { kpis, bestTweets, topics, followers, replies:emailReplies }
 }
