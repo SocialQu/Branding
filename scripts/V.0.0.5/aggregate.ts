@@ -62,6 +62,8 @@ export const aggregateData = ({ tweets, replies, user  }:iFetchedData):iData => 
 
     const sortedReplies = [...replies].sort(({metrics:{impressions:a}}, {metrics:{impressions:b}}) => a > b ? 1 : -1)
     const topReplies = sortedReplies.filter((_, i) => i < 5)
+    const bottomImpressions = topReplies[topReplies.length - 1].metrics.impressions
+    const replyImpressions = topReplies[0].metrics.impressions - bottomImpressions
 
 
     return { kpis, bestTweets, topics, followers, replies:emailReplies }
