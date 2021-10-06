@@ -27,6 +27,7 @@ export interface iFollower {
 export interface iUser {
     id: number
     name: string
+    image: string
     screen_name: string
     followers_count: number
 }

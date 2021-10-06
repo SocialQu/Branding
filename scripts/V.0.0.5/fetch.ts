@@ -21,8 +21,10 @@ const metricsClient = new Twitter({ ...options, version:'2', extension:false })
 
 
 const getUser = async():Promise<iUser> => {
-    const { id, name, screen_name, followers_count }:iAuth = await client.get('/account/verify_credentials')
-    const user:iUser = { id, name, screen_name, followers_count }
+    const auth:iAuth = await client.get('/account/verify_credentials')
+    const { id, name, screen_name, followers_count, profile_image_url:image } = auth
+
+    const user:iUser = { id, name, screen_name, followers_count, image }
     return user
 }
 

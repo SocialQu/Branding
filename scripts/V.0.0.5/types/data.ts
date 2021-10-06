@@ -21,7 +21,7 @@ interface iProfile {
     image: string
 }
 
-interface iTweet {
+export interface iTweet {
     date: Date
     text: string
     link: string
