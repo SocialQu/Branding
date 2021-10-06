@@ -96,9 +96,9 @@ const getTopics = async():Promise<iTopic[]> => {
 
 export const fetchData = async():Promise<iFetchedData> => {
     const user = await getUser()
-    const { tweets } = await getTweets()
+    const { tweets, replies } = await getTweets()
     const followers = await getFollowers()
     const topics = await getTopics()
 
-    return { user, tweets, followers, topics }
+    return { user, tweets, replies, followers, topics }
 }
