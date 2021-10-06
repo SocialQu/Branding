@@ -5,3 +5,5 @@
 - [ ] Tweets are sorted by impressions.
 - [ ] Test links in tweets including image, profile & tweets.
 - [ ] Test date on Tweets.
+- [ ] Validate computation of percent on replies.
+- [ ] Test link and user name on replies.

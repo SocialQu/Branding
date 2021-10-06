@@ -15,6 +15,11 @@ export interface iTweet {
     metrics: iMetrics
 }
 
+export interface iReply extends iTweet {
+    userId: string
+    userName: string
+}
+
 export interface iFollower {
     id: number
     name: string
@@ -42,7 +47,7 @@ export interface iTopic {
 export interface iFetchedData {
     user: iUser
     tweets:iTweet[]
-    replies: iTweet[]
+    replies: iReply[]
     followers: iFollower[]
     topics: iTopic[]
 }

@@ -1,4 +1,4 @@
-import { iData, iKpis, iKpi, iTweet as iBestTweet, iBestTweets, iTopic, iFollowers } from './types/data'
+import { iData, iKpis, iKpi, iTweet as iBestTweet, iBestTweets, iTopic, iFollowers, iReply } from './types/data'
 import { iFetchedData, iTweet } from './types/fetch'
 
 
@@ -60,5 +60,19 @@ export const aggregateData = ({ tweets, replies, user  }:iFetchedData):iData => 
     }
 
 
-    return { kpis, bestTweets, topics, followers, replies:[] }
+    const sortedReplies = [...replies].sort(({metrics:{impressions:a}}, {metrics:{impressions:b}}) => a > b ? 1 : -1)
+    const topReplies = sortedReplies.filter((_, i) => i < 5)
+    const bottomImpressions = topReplies[topReplies.length - 1].metrics.impressions
+    const replyImpressions = topReplies[0].metrics.impressions - bottomImpressions
+    const emailReplies:iReply[] = topReplies.map(({metrics:m, ...r}) => ({
+        image: '',
+        name: r.userName,
+        impressions: m.impressions,
+        link: `https://twitter.com/${r.userId}`,
+        engagements: m.likes + m.retweets + m.replies + m.visits + m.clicks,
+        percent: Math.round(((m.impressions - bottomImpressions)/replyImpressions)*50) + 50
+    }))
+
+
+    return { kpis, bestTweets, topics, followers, replies:emailReplies }
 }
