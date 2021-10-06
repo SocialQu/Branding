@@ -9,3 +9,5 @@
 - [ ] Specify at which time the stats were retrieved.
 - [ ] Format date on tweets.
 - [ ] Add clicks metric on best tweets.
+- [ ] Fetch or remove image from reply user.
+- [ ] Validate computation of percent on replies.
