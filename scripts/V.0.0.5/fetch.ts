@@ -27,25 +27,25 @@ const getUser = async():Promise<iUser> => {
 }
 
 
-const getTweets = async():Promise<iTweet[]> => {
+const getTweets = async():Promise<{tweets: iTweet[], replies: iTweet[]}> => {
     const rawTweets:iRawTweet[] = await client.get('/statuses/user_timeline.json?count=100')
 
     const noRetweets = rawTweets.filter(({ retweeted }) => !retweeted)
-    const filteredTweets = noRetweets.filter(({ in_reply_to_status_id }) => !in_reply_to_status_id)
 
-    const ids:string = filteredTweets.map(({ id_str }) => id_str).join(',')
+    const ids:string = noRetweets.map(({ id_str }) => id_str).join(',')
     const fields = 'fields=organic_metrics,created_at'
     const metricsUrl = `tweets?ids=${ids}&tweet.${fields}`
 
     const { data:metrics }:{ data: iRawMetrics[]} = await metricsClient.get(metricsUrl)
-    const tweetsWithMetrics = filteredTweets.map((t) => ({
+    const tweetsWithMetrics = noRetweets.map((t) => ({
         ...t, 
         metrics: metrics.find(({ id }) => t.id_str === id) as iRawMetrics
     }))
 
-    const tweets:iTweet[] = tweetsWithMetrics.filter(({ metrics }) => metrics).map(t => ({
+    const mappedTweets:iTweet[] = tweetsWithMetrics.filter(({ metrics }) => metrics).map(t => ({
         id: t.id,
         text: t.metrics.text,
+        isReply: !!t.in_reply_to_status_id,
         datetime: t.created_at,
         metrics:{
             likes: t.metrics.organic_metrics.like_count,
@@ -57,7 +57,10 @@ const getTweets = async():Promise<iTweet[]> => {
         }
     }))
 
-    return tweets
+    const tweets = mappedTweets.filter(({ isReply }) => !isReply)
+    const replies = mappedTweets.filter(({ isReply }) => isReply)
+
+    return { tweets, replies }
 }
 
 
@@ -93,7 +96,7 @@ const getTopics = async():Promise<iTopic[]> => {
 
 export const fetchData = async():Promise<iFetchedData> => {
     const user = await getUser()
-    const tweets = await getTweets()
+    const { tweets } = await getTweets()
     const followers = await getFollowers()
     const topics = await getTopics()
 
