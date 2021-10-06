@@ -34,8 +34,9 @@ export const aggregateData = ({ tweets, replies, user  }:iFetchedData):iData => 
         replies:{ value:replies.length, trend:0, color:'007500' }
     }
 
+    const { screen_name, image, name } = user
     const bestTweets:iBestTweets = {
-        profile:{ name:'', link:'', image:'', handle:'' },
+        profile:{ name:screen_name, link:`https://twitter.com/${name}`, image, handle:name },
         tweets:[]
     }
 
