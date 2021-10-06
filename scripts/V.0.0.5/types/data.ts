@@ -38,7 +38,7 @@ export interface iBestTweets {
 }
 
 
-interface iTopic {
+export interface iTopic {
     name: string
     text: string
     color: string
@@ -74,7 +74,7 @@ interface iFollowers {
 }
 
 
-interface iReply {
+export interface iReply {
     image: string
     name: string
     link: string
