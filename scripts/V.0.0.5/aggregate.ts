@@ -35,6 +35,9 @@ export const aggregateData = ({ tweets, replies, user  }:iFetchedData):iData => 
     }
 
     const { screen_name, image, name } = user
+    const sortedTweets = [...tweets].sort(({metrics:{impressions:a}}, {metrics:{impressions:b}}) => a > b ? 1 : -1)
+    const topTweets = sortedTweets.filter((_, i) => i < 3)
+
     const bestTweets:iBestTweets = {
         profile:{ name:screen_name, link:`https://twitter.com/${name}`, image, handle:name },
         tweets:[]
