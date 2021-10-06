@@ -9,14 +9,18 @@ const labelFollowers = () => {}
 const sortReplies = () => {}
 
 
+const getImpressions = (tweets: iTweet[], replies:iTweet[]):number => [
+    ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.impressions,0)
+
 const getClicks = (tweets: iTweet[], replies:iTweet[]):number => [
     ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.clicks,0)
+
 
 export const aggregateData = ({ tweets, replies, user  }:iFetchedData):iData => {
     const kpi:iKpi = { trend:0, value:0, color:'007500' }
     const kpis:iKpis = {
         followers:{ value:user.followers_count, trend:0, color:'007500' },
-        impressions:kpi,
+        impressions:{ value:getImpressions(tweets, replies), trend:0, color:'007500' },
         engagements:kpi,
         clicks:{ value:getClicks(tweets, replies), trend:0, color:'007500' },
         tweets: { value:tweets.length, trend:0, color:'007500' },
