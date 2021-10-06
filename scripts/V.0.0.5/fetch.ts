@@ -1,4 +1,4 @@
-import { iTweet, iFollower, iUser, iTopic, iFetchedData } from './types/fetch'
+import { iTweet, iReply, iFollower, iUser, iTopic, iFetchedData } from './types/fetch'
 import { iRawTweet, iRawMetrics, iRawFollower, iAuth } from './types'
 import Twitter, { TwitterOptions } from 'twitter-lite'
 import { MongoClient } from 'mongodb'
@@ -29,7 +29,7 @@ const getUser = async():Promise<iUser> => {
 }
 
 
-const getTweets = async():Promise<{tweets: iTweet[], replies: iTweet[]}> => {
+const getTweets = async():Promise<{tweets:iTweet[], replies:iReply[]}> => {
     const rawTweets:iRawTweet[] = await client.get('/statuses/user_timeline.json?count=100')
 
     const noRetweets = rawTweets.filter(({ retweeted }) => !retweeted)
@@ -56,11 +56,13 @@ const getTweets = async():Promise<{tweets: iTweet[], replies: iTweet[]}> => {
             impressions: t.metrics.organic_metrics.impression_count,
             visits: t.metrics.organic_metrics.user_profile_clicks,
             clicks: t.metrics.organic_metrics.url_link_clicks || 0
-        }
+        },
+        userId:t.in_reply_to_user_id_str,
+        userName:t.in_reply_to_screen_name
     }))
 
     const tweets = mappedTweets.filter(({ isReply }) => !isReply)
-    const replies = mappedTweets.filter(({ isReply }) => isReply)
+    const replies = mappedTweets.filter(({ isReply }) => isReply) as iReply[]
 
     return { tweets, replies }
 }
