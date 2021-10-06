@@ -1,4 +1,4 @@
-import { iData, iKpis, iKpi, iBestTweets, iTopic, iReply } from './types/data'
+import { iData, iKpis, iKpi, iBestTweets, iTopic, iReply, iFollowers } from './types/data'
 import { iFetchedData } from './types/fetch'
 
 
@@ -25,8 +25,13 @@ export const aggregateData = (data:iFetchedData):iData => {
         tweets:[]
     }
 
+    const followers:iFollowers = {
+        topFollower:{ bio:'', link:'', name:'', image:'' },
+        followers:[]        
+    }
+
     const topics:iTopic[] = []
     const replies:iReply[] = []
 
-    return { kpis, bestTweets, topics, replies }
+    return { kpis, bestTweets, topics, followers, replies }
 }
