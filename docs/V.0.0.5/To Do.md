@@ -5,3 +5,5 @@
 - [ ] KPI color based on value.
 - [ ] Support null values on KPI trend.
 - [ ] Order color's property names on followers data.
+- [ ] Recursively fetch tweets until given date.
+- [ ] Specify at which time the stats were retrieved.
