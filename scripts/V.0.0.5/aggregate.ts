@@ -9,10 +9,10 @@ const labelFollowers = () => {}
 const sortReplies = () => {}
 
 
-export const aggregateData = ({ tweets, replies }:iFetchedData):iData => {
+export const aggregateData = ({ tweets, replies, user  }:iFetchedData):iData => {
     const kpi:iKpi = { trend:0, value:0, color:'007500' }
     const kpis:iKpis = {
-        followers:kpi,
+        followers:{ value:user.followers_count, trend:0, color:'007500' },
         impressions:kpi,
         engagements:kpi,
         clicks:kpi,
