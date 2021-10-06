@@ -1,10 +1,10 @@
-interface iKpi {
+export interface iKpi {
     value: number
     trend: number
     color: '007500' | 'A31700'
 }
 
-interface iKpis {
+export interface iKpis {
     followers: iKpi
     engagements: iKpi
     impressions: iKpi
@@ -32,13 +32,13 @@ interface iTweet {
     profile_visits: number
 }
 
-interface iBestTweets {
+export interface iBestTweets {
     profile: iProfile
     tweets: iTweet[]
 }
 
 
-interface iTopic {
+export interface iTopic {
     name: string
     text: string
     color: string
@@ -68,13 +68,13 @@ interface iFollower {
     ratioColor: 'A31700' | '007500'
 }
 
-interface iFollowers {
+export interface iFollowers {
     topFollower: iTopFollower
     followers: iFollower[]
 }
 
 
-interface iReply {
+export interface iReply {
     image: string
     name: string
     link: string
