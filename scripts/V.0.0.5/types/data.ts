@@ -1,10 +1,10 @@
-interface iKpi {
+export interface iKpi {
     value: number
     trend: number
     color: '007500' | 'A31700'
 }
 
-interface iKpis {
+export interface iKpis {
     followers: iKpi
     engagements: iKpi
     impressions: iKpi
