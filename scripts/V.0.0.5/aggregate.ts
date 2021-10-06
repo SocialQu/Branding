@@ -1,4 +1,4 @@
-import { iData, iKpis, iKpi, iBestTweets, iTopic, iFollowers } from './types/data'
+import { iData, iKpis, iKpi, iTweet as iBestTweet, iBestTweets, iTopic, iFollowers } from './types/data'
 import { iFetchedData, iTweet } from './types/fetch'
 
 
@@ -37,10 +37,20 @@ export const aggregateData = ({ tweets, replies, user  }:iFetchedData):iData => 
     const { screen_name, image, name } = user
     const sortedTweets = [...tweets].sort(({metrics:{impressions:a}}, {metrics:{impressions:b}}) => a > b ? 1 : -1)
     const topTweets = sortedTweets.filter((_, i) => i < 3)
+    const mappedTweets:iBestTweet[] = topTweets.map(({ text, id, datetime, metrics }) => ({ 
+        text,
+        date:new Date(datetime),
+        likes: metrics.likes,
+        replies: metrics.replies, 
+        retweets: metrics.retweets, 
+        profile_visits: metrics.visits, 
+        impressions: metrics.impressions,
+        link: `https://twitter.com/${name}/status/${id}`
+    }))
 
     const bestTweets:iBestTweets = {
         profile:{ name:screen_name, link:`https://twitter.com/${name}`, image, handle:name },
-        tweets:[]
+        tweets:mappedTweets
     }
 
     const topics:iTopic[] = []
