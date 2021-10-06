@@ -10,10 +10,17 @@ const sortReplies = () => {}
 
 
 const getImpressions = (tweets: iTweet[], replies:iTweet[]):number => [
-    ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.impressions,0)
+    ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.impressions
+, 0)
+
+const getEngagements = (tweets: iTweet[], replies:iTweet[]):number => [
+    ...tweets, ...replies].reduce((d, { metrics: { likes, retweets, replies, visits, clicks } }) => 
+    d+= likes + retweets + replies + visits + clicks
+, 0)
 
 const getClicks = (tweets: iTweet[], replies:iTweet[]):number => [
-    ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.clicks,0)
+    ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.clicks
+, 0)
 
 
 export const aggregateData = ({ tweets, replies, user  }:iFetchedData):iData => {
@@ -21,7 +28,7 @@ export const aggregateData = ({ tweets, replies, user  }:iFetchedData):iData => 
     const kpis:iKpis = {
         followers:{ value:user.followers_count, trend:0, color:'007500' },
         impressions:{ value:getImpressions(tweets, replies), trend:0, color:'007500' },
-        engagements:kpi,
+        engagements:{ value:getEngagements(tweets, replies), trend:0, color:'007500' },
         clicks:{ value:getClicks(tweets, replies), trend:0, color:'007500' },
         tweets: { value:tweets.length, trend:0, color:'007500' },
         replies:{ value:replies.length, trend:0, color:'007500' }
