@@ -32,7 +32,7 @@ interface iTweet {
     profile_visits: number
 }
 
-interface iBestTweets {
+export interface iBestTweets {
     profile: iProfile
     tweets: iTweet[]
 }
