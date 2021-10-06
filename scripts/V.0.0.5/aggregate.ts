@@ -1,5 +1,5 @@
 import { iFetchedData } from './types/fetch'
-import { iData, iKpis, iKpi } from './types/data'
+import { iData, iKpis, iKpi, iBestTweets } from './types/data'
 
 
 const computeKPIs = () => {}
@@ -20,5 +20,10 @@ export const aggregateData = (data:iFetchedData):iData => {
         replies:kpi
     }
 
-    return { kpis }
+    const bestTweets:iBestTweets = {
+        profile:{ name:'', link:'', image:'', handle:'' },
+        tweets:[]
+    }
+
+    return { kpis, bestTweets }
 }
