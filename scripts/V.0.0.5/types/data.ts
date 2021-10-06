@@ -68,7 +68,7 @@ interface iFollower {
     ratioColor: 'A31700' | '007500'
 }
 
-interface iFollowers {
+export interface iFollowers {
     topFollower: iTopFollower
     followers: iFollower[]
 }
