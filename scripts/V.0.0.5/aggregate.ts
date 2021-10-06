@@ -1,4 +1,4 @@
-import { iData, iKpis, iKpi, iBestTweets, iTopic, iReply, iFollowers } from './types/data'
+import { iData, iKpis, iKpi, iBestTweets, iTopic, iFollowers } from './types/data'
 import { iFetchedData } from './types/fetch'
 
 
@@ -9,15 +9,15 @@ const labelFollowers = () => {}
 const sortReplies = () => {}
 
 
-export const aggregateData = (data:iFetchedData):iData => {
+export const aggregateData = ({ tweets, replies }:iFetchedData):iData => {
     const kpi:iKpi = { trend:0, value:0, color:'007500' }
     const kpis:iKpis = {
         followers:kpi,
         impressions:kpi,
         engagements:kpi,
         clicks:kpi,
-        tweets:kpi,
-        replies:kpi
+        tweets: { value:tweets.length, trend:0, color:'007500' },
+        replies:{ value:replies.length, trend:0, color:'007500' }
     }
 
     const bestTweets:iBestTweets = {
@@ -25,13 +25,12 @@ export const aggregateData = (data:iFetchedData):iData => {
         tweets:[]
     }
 
+    const topics:iTopic[] = []
     const followers:iFollowers = {
         topFollower:{ bio:'', link:'', name:'', image:'' },
         followers:[]        
     }
 
-    const topics:iTopic[] = []
-    const replies:iReply[] = []
 
-    return { kpis, bestTweets, topics, followers, replies }
+    return { kpis, bestTweets, topics, followers, replies:[] }
 }
