@@ -1,5 +1,5 @@
 import { iData, iKpis, iKpi, iBestTweets, iTopic, iFollowers } from './types/data'
-import { iFetchedData } from './types/fetch'
+import { iFetchedData, iTweet } from './types/fetch'
 
 
 const computeKPIs = () => {}
@@ -9,13 +9,16 @@ const labelFollowers = () => {}
 const sortReplies = () => {}
 
 
+const getClicks = (tweets: iTweet[], replies:iTweet[]):number => [
+    ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.clicks,0)
+
 export const aggregateData = ({ tweets, replies, user  }:iFetchedData):iData => {
     const kpi:iKpi = { trend:0, value:0, color:'007500' }
     const kpis:iKpis = {
         followers:{ value:user.followers_count, trend:0, color:'007500' },
         impressions:kpi,
         engagements:kpi,
-        clicks:kpi,
+        clicks:{ value:getClicks(tweets, replies), trend:0, color:'007500' },
         tweets: { value:tweets.length, trend:0, color:'007500' },
         replies:{ value:replies.length, trend:0, color:'007500' }
     }
