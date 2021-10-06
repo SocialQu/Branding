@@ -41,6 +41,7 @@ export interface iTopic {
 export interface iFetchedData {
     user: iUser
     tweets:iTweet[]
+    replies: iTweet[]
     followers: iFollower[]
     topics: iTopic[]
 }
