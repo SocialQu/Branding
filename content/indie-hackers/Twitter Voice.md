@@ -24,6 +24,7 @@ After some deliveration, I chose first-time founders. Particularily, those that 
 
 
 4. Promote succesful people that capture your product's values.
+This serves two outcomes: create engaging content that reinforces your content and building strategical relationships with influencers in your niche. I recommend you take a look at the concept of the [Dream 100]() to learn who are the people you may want to promote. An example for me is [Arvid Kahl](https://twitter.com/arvidkahl) that wrote a book about building an audience.
 
 
 5. Provide valuable advice for the problem you solve.
