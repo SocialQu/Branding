@@ -95,7 +95,11 @@ const getTopics = async():Promise<iTopic[]> => {
     const topics:iTopic[] = await Topics.find().toArray()
 
     await client.close()
-    return topics
+
+    const generateColor = () => Math.floor(Math.random()*16777215).toString(16);
+    const coloredTopics = topics.map(topic => ({...topic, color:generateColor() }))
+
+    return coloredTopics
 }
 
 
