@@ -29,7 +29,8 @@ const embedBios = async(followers:iFollower[], model:iModel):Promise<iEmbeddedFo
 }
 
 
-const findTopic = ({embeddings}:{embeddings:number[]}, topics:iTopic[]):string => {
+interface iColoredTopic { topic:string, color:string, niche:string }
+const findTopic = ({embeddings}:{embeddings:number[]}, topics:iTopic[]):iColoredTopic => {
     const getSimilarity = (center:number[], embedding: number[]) => {
         if (center.length !== embedding.length) return Infinity
         const delta = center.reduce((d, i, idx) => d + Math.abs(i - embedding[idx]), 0)
@@ -40,20 +41,20 @@ const findTopic = ({embeddings}:{embeddings:number[]}, topics:iTopic[]):string =
         getSimilarity(embeddings, a) > getSimilarity(embeddings, b) ? 1 : -1
     )
 
-    return topics[0].topic
+    return { topic:topics[0].topic, color:topics[0].color, niche:topics[0].topic }
 }
 
 
-export interface iLabeledTweet extends iEmbeddedTweet { topic:string }
+export interface iLabeledTweet extends iEmbeddedTweet { topic:string, color:string }
 const classifyTweets = async(tweets:iEmbeddedTweet[], topics:iTopic[]):Promise<iLabeledTweet[]> => {
-    const labeledTweets = tweets.map(t => ({...t, topic:findTopic(t, topics)}))
+    const labeledTweets = tweets.map(t => ({...t, ...findTopic(t, topics) }))
     return labeledTweets
 }
 
 
-export interface iLabeledFollower extends iEmbeddedFollower { niche:string }
+export interface iLabeledFollower extends iEmbeddedFollower { niche:string, color:string }
 const classifyFollowers = async(followers:iEmbeddedFollower[], topics:iTopic[]):Promise<iLabeledFollower[]> => {
-    const labeledFollowers = followers.map(t => ({...t, niche:findTopic(t, topics)}))
+    const labeledFollowers = followers.map(t => ({...t, ...findTopic(t, topics)}))
     return labeledFollowers
 }
 
