@@ -16,7 +16,29 @@ const computeKPIs = ({ tweets, replies, user }:iAggregateData):iKpis => {
     return kpis
 }
 
-const selectTweets = () => {}
+const selectTweets = ({ tweets, user }:iAggregateData):iBestTweets => {
+    const { screen_name, image, name } = user
+    const sortedTweets = [...tweets].sort(({metrics:{impressions:a}}, {metrics:{impressions:b}}) => a > b ? 1 : -1)
+    const topTweets = sortedTweets.filter((_, i) => i < 3)
+    const mappedTweets:iBestTweet[] = topTweets.map(({ text, id, datetime, metrics }) => ({ 
+        text,
+        date:new Date(datetime),
+        likes: metrics.likes,
+        replies: metrics.replies, 
+        retweets: metrics.retweets, 
+        profile_visits: metrics.visits, 
+        impressions: metrics.impressions,
+        link: `https://twitter.com/${name}/status/${id}`
+    }))
+
+    const bestTweets:iBestTweets = {
+        profile:{ name:screen_name, link:`https://twitter.com/${name}`, image, handle:name },
+        tweets:mappedTweets
+    }
+
+    return bestTweets
+}
+
 const contentAnalysis = () => {}
 const labelFollowers = () => {}
 const sortReplies = () => {}
@@ -39,26 +61,9 @@ const getClicks = (tweets: iTweet[], replies:iTweet[]):number => [
 interface iAggregateData extends iFetchedData { tweets:iReducedTweet[], followers:iLabeledFollower[] }
 export const aggregateData = (data:iAggregateData):iData => {
     const kpis = computeKPIs(data)
+    const bestTweets = selectTweets(data)
 
     const { tweets, replies, user, followers } = data
-    const { screen_name, image, name } = user
-    const sortedTweets = [...tweets].sort(({metrics:{impressions:a}}, {metrics:{impressions:b}}) => a > b ? 1 : -1)
-    const topTweets = sortedTweets.filter((_, i) => i < 3)
-    const mappedTweets:iBestTweet[] = topTweets.map(({ text, id, datetime, metrics }) => ({ 
-        text,
-        date:new Date(datetime),
-        likes: metrics.likes,
-        replies: metrics.replies, 
-        retweets: metrics.retweets, 
-        profile_visits: metrics.visits, 
-        impressions: metrics.impressions,
-        link: `https://twitter.com/${name}/status/${id}`
-    }))
-
-    const bestTweets:iBestTweets = {
-        profile:{ name:screen_name, link:`https://twitter.com/${name}`, image, handle:name },
-        tweets:mappedTweets
-    }
 
     const uniqueTopics = new Set(tweets.map(({ topic }) => topic))
     const topicsDict = [...uniqueTopics].map(topic => ({
