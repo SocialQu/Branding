@@ -7,21 +7,30 @@ So I started looking at other [founders that I admire](https://twitter.com/agazd
 In this post, I will share the 10 steps that I used to define the strategy for my product. For each I include concrete examples so you can also start thinking about yours.
 
 1. Choose a message that is relevant to your product.
+For me it will be growing an audience because I looked at this other post and I was amazed but how many different opiniones it brought. Plus, people looking to receive their Twitter Analytics periodically are most likely also trying to build an audience.
 
 2. Make your message bigger than your product.
 
+
 3. Find a funny take to support your message.
+
 
 4. Promote succesful people that capture your product's values.
 
+
 5. Provide valuable advice for the problem you solve.
+
 
 6. Advice on what not to do it's just as valuable.
 
+
 7. Convey one idea per tweet.
+
 
 8. Share media congruent with you message deliver.
 
+
 9. Debunk myths around your niche.
+
 
 10. Be inspirational when you promote your produt.
