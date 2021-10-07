@@ -2,6 +2,7 @@ import { sendEmail, writeJSON } from './utils'
 import { aggregateData } from './aggregate'
 import { analyzeData } from './analysis'
 import { fetchData } from './fetch'
+import { promises as fs } from 'fs'
 
 
 const sendNewsletter = async() => {
@@ -13,5 +14,10 @@ const sendNewsletter = async() => {
     sendEmail()
 }
 
+const fetch = async() => {
+    const fetched = await fetchData()
+    await fs.writeFile('./data/fetched.json', JSON.stringify(fetched))
+}
 
-sendNewsletter()
+
+fetch().catch(console.log)
