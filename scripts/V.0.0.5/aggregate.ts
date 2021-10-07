@@ -97,7 +97,7 @@ export const aggregateData = ({ tweets, replies, user, followers }:iAggregateDat
         image: '',
         name: r.userName,
         impressions: m.impressions,
-        link: `https://twitter.com/${r.userId}`,
+        link: `https://twitter.com/${r.userName}`,
         engagements: m.likes + m.retweets + m.replies + m.visits + m.clicks,
         percent: Math.round(((m.impressions - replyBottomImpressions)/replyImpressions)*50) + 50
     }))
