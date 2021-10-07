@@ -2,9 +2,9 @@
 
 As I work on getting traction for [Twitter Analytics at your Inbox](https://santiagoq.gumroad.com/l/twitter-analytics) I found that I needed to develop a content strategy that creates inbound leads for my product.
 
-I started looking at other [founders that I admire](https://twitter.com/agazdecki) and are getting good traction to learn what is it that they are doing right to consistenly create good engagement.
+So I started looking at other [founders that I admire](https://twitter.com/agazdecki) and are getting good traction to learn what is it that they are doing right to consistenly create good engagement.
 
-
+In this post, I will share the 10 steps that I used to define the strategy for my product. For each I include concrete examples so you can also start thinking about yours.
 
 1. Choose a message that is relevant to your product.
 
