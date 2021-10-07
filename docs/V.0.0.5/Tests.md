@@ -7,3 +7,4 @@
 - [ ] Date on Tweets.
 - [ ] Validate computation of percent on replies.
 - [ ] Link and user name on replies.
+- [ ] Computation and selection of topics.
