@@ -82,10 +82,10 @@ export const aggregateData = ({ tweets, replies, user, followers }:iAggregateDat
         width:Math.round(((impressions - bottomImpressions)/topicImpressions)*50) + 50
     }))
 
-    const [ topFollower, follower1, follower2, follower3, follower4 ] = followers
+    const [ top, follower1, follower2, follower3, follower4 ] = followers
     const emailFollowers:iFollowers = {
-        topFollower:{ bio:topFollower.bio, link:'', name:topFollower.name, image:'' },
-        followers:[]        
+        topFollower:{ bio:top.bio, link:`https://twitter.com/${top.name}`, name:top.handle, image:top.image },
+        followers:[]
     }
 
 
