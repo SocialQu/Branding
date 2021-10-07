@@ -1,6 +1,6 @@
 import { iData, iKpis, iKpi, iTweet as iBestTweet, iBestTweets, iTopic, iFollowers, iReply } from './types/data'
+import { iFetchedData, iTweet, iMetrics } from './types/fetch'
 import { iReducedTweet, iLabeledFollower } from './analysis'
-import { iFetchedData, iTweet } from './types/fetch'
 
 
 const computeKPIs = () => {}
@@ -55,7 +55,34 @@ export const aggregateData = ({ tweets, replies, user, followers }:iAggregateDat
         tweets:mappedTweets
     }
 
-    const topics:iTopic[] = []
+    const uniqueTopics = new Set(tweets.map(({ topic }) => topic))
+    const topicsDict = [...uniqueTopics].map(topic => ({
+        topic,
+        tweets: tweets.filter(({ topic:t }) => topic === t)
+    }))
+
+    const countEngagements = (m: iMetrics) => m.likes + m.clicks + m.visits + m.replies + m.retweets
+    const engagementTopics = topicsDict.map(({ topic, tweets }) => ({
+        topic,
+        tweets:tweets.length,
+        impressions: tweets.reduce((d, { metrics }) => d += metrics.impressions, 0 ),
+        engagements: tweets.reduce((d, { metrics }) => d+= countEngagements(metrics), 0)
+    }))
+
+    const sortedTopics = engagementTopics.sort(({ engagements:a }, { engagements:b }) => a > b ? -1 : 1)
+    const topTopics = sortedTopics.filter((_, i, l) => i < 5).filter((_, i) => i < 5)
+    const bottomImpressions = topTopics[topTopics.length - 1].impressions
+    const topicImpressions = topTopics[0].impressions - bottomImpressions
+    const topics:iTopic[] = topTopics.map(({ topic, tweets, engagements, impressions }) => ({
+        name:topic,
+        text: '', 
+        color:'',
+        tweets,
+        impressions,
+        engagements,
+        width:Math.round(((impressions - bottomImpressions)/topicImpressions)*50) + 50
+    }))
+
     const emailFollowers:iFollowers = {
         topFollower:{ bio:'', link:'', name:'', image:'' },
         followers:[]        
@@ -64,15 +91,15 @@ export const aggregateData = ({ tweets, replies, user, followers }:iAggregateDat
 
     const sortedReplies = [...replies].sort(({metrics:{impressions:a}}, {metrics:{impressions:b}}) => a > b ? 1 : -1)
     const topReplies = sortedReplies.filter((_, i) => i < 5)
-    const bottomImpressions = topReplies[topReplies.length - 1].metrics.impressions
-    const replyImpressions = topReplies[0].metrics.impressions - bottomImpressions
+    const replyBottomImpressions = topReplies[topReplies.length - 1].metrics.impressions
+    const replyImpressions = topReplies[0].metrics.impressions - replyBottomImpressions
     const emailReplies:iReply[] = topReplies.map(({metrics:m, ...r}) => ({
         image: '',
         name: r.userName,
         impressions: m.impressions,
         link: `https://twitter.com/${r.userId}`,
         engagements: m.likes + m.retweets + m.replies + m.visits + m.clicks,
-        percent: Math.round(((m.impressions - bottomImpressions)/replyImpressions)*50) + 50
+        percent: Math.round(((m.impressions - replyBottomImpressions)/replyImpressions)*50) + 50
     }))
 
 

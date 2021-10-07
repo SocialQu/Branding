@@ -1,9 +1,9 @@
 import { iData, iEngagementLocations, iKpis } from '../../../app/types/data'
 import { iContent, iAudience, iSuggestions } from '../../../app/types/data'
-import { iFetchedData, iMetrics } from '../types/fetch'
+import { iFetchedData, iMetrics } from '../../V.0.0.5/types/fetch'
 
-import { analyzeData, iAnalysisData } from './analysis'
-import { fetchData } from './fetch'
+import { analyzeData, iAnalysisData } from '../../V.0.0.5/analysis'
+import { fetchData } from '../../V.0.0.5/fetch'
 
 import { promises as fs } from 'fs'
 
