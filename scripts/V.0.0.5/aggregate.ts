@@ -30,6 +30,7 @@ const computeKPIs = ({ tweets, replies, user }:iAggregateData):iKpis => {
     return kpis
 }
 
+
 const selectTweets = ({ tweets, user }:iAggregateData):iBestTweets => {
     const { screen_name, image, name } = user
     const sortedTweets = [...tweets].sort(({metrics:{impressions:a}}, {metrics:{impressions:b}}) => a > b ? 1 : -1)
@@ -112,19 +113,8 @@ const labelFollowers = ({ followers }: iAggregateData):iFollowers => {
     return emailFollowers
 }
 
-const sortReplies = () => {}
 
-
-
-
-interface iAggregateData extends iFetchedData { tweets:iReducedTweet[], followers:iLabeledFollower[] }
-export const aggregateData = (data:iAggregateData):iData => {
-    const kpis = computeKPIs(data)
-    const bestTweets = selectTweets(data)
-    const topics = contentAnalysis(data)
-    const followers = labelFollowers(data)
-
-    const { replies } = data
+const sortReplies = ({ replies }: iAggregateData) => {
     const sortedReplies = [...replies].sort(({metrics:{impressions:a}}, {metrics:{impressions:b}}) => a > b ? 1 : -1)
     const topReplies = sortedReplies.filter((_, i) => i < 5)
     const replyBottomImpressions = topReplies[topReplies.length - 1].metrics.impressions
@@ -138,6 +128,17 @@ export const aggregateData = (data:iAggregateData):iData => {
         percent: Math.round(((m.impressions - replyBottomImpressions)/replyImpressions)*50) + 50
     }))
 
+    return emailReplies
+}
 
-    return { kpis, bestTweets, topics, followers, replies:emailReplies }
+
+interface iAggregateData extends iFetchedData { tweets:iReducedTweet[], followers:iLabeledFollower[] }
+export const aggregateData = (data:iAggregateData):iData => {
+    const kpis = computeKPIs(data)
+    const bestTweets = selectTweets(data)
+    const topics = contentAnalysis(data)
+    const followers = labelFollowers(data)
+    const replies = sortReplies(data)
+
+    return { kpis, bestTweets, topics, followers, replies }
 }
