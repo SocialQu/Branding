@@ -36,10 +36,10 @@ Might be intutive, but is better to be concious about this. We learn as much fro
 
 
 7. Convey one idea per tweet.
+It is tempting to deliver a lot of value but Twitter rewards short content so when writing a Tweet focus on delivering a single message. 
 
 
 8. Share media congruent with you message deliver.
-
 
 9. Debunk myths around your niche.
 
