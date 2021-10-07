@@ -1,6 +1,6 @@
 import { iData, iKpis, iKpi, iTweet as iBestTweet, iBestTweets, iTopic, iFollowers, iReply } from './types/data'
+import { iFetchedData, iTweet, iMetrics } from './types/fetch'
 import { iReducedTweet, iLabeledFollower } from './analysis'
-import { iFetchedData, iTweet } from './types/fetch'
 
 
 const computeKPIs = () => {}
@@ -54,6 +54,13 @@ export const aggregateData = ({ tweets, replies, user, followers }:iAggregateDat
         profile:{ name:screen_name, link:`https://twitter.com/${name}`, image, handle:name },
         tweets:mappedTweets
     }
+
+    const uniqueTopics = new Set(tweets.map(({ topic }) => topic))
+    const topicsDict = [...uniqueTopics].map(topic => ({
+        topic,
+        tweets: tweets.filter(({ topic:t }) => topic === t)
+    }))
+
 
     const topics:iTopic[] = []
     const emailFollowers:iFollowers = {
