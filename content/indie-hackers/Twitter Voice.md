@@ -15,3 +15,5 @@
 7. Convey one idea per tweet.
 
 8. Share media congruent with you message deliver.
+
+9. Debunk myths around your niche.
