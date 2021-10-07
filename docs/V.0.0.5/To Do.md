@@ -10,4 +10,5 @@
 - [ ] Format date on tweets.
 - [ ] Add clicks metric on best tweets.
 - [ ] Fetch or remove image from reply user.
-- [ ] Clean fetched tweeet and reply interfaces. 
+- [ ] Clean fetched tweeet and reply interfaces.
+- [ ] Create color map with dimensionality reduction.  
