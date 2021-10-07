@@ -71,7 +71,16 @@ export const aggregateData = ({ tweets, replies, user, followers }:iAggregateDat
     const sortedTopics = engagementTopics.sort(({ engagements:a }, { engagements:b }) => a > b ? -1 : 1)
     const topTopics = sortedTopics.filter((_, i, l) => i < 5).filter((_, i) => i < 5)
 
-    const topics:iTopic[] = []
+    const topics:iTopic[] = topTopics.map(({ topic, tweets, engagements }) => ({
+        name:'',
+        color:'',
+        width:0,
+        impressions:0,
+        text: topic, 
+        engagements,
+        tweets,
+    }))
+
     const emailFollowers:iFollowers = {
         topFollower:{ bio:'', link:'', name:'', image:'' },
         followers:[]        
