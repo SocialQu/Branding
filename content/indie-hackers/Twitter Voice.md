@@ -9,3 +9,5 @@
 4. Promote succesful people that capture your product's values.
 
 5. Provide valuable advice for the problem you solve.
+
+6. Advice on what not to do it's just as valuable.
