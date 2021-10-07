@@ -22,9 +22,10 @@ export interface iReply extends iTweet {
 
 export interface iFollower {
     id: number
-    name: string
-    handle: string
     bio: string
+    name: string
+    image: string
+    handle: string
     tweets: number
     followers: number
     following: number
