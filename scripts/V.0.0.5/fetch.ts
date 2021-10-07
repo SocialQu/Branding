@@ -74,6 +74,7 @@ const getFollowers = async():Promise<iFollower[]> => {
         id: user.id,
         name: user.name,
         bio: user.description,
+        handle: user.screen_name,
         tweets: user.statuses_count,
         followers: user.followers_count,
         following: user.friends_count
