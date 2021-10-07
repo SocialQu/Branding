@@ -3,7 +3,19 @@ import { iFetchedData, iTweet, iMetrics } from './types/fetch'
 import { iReducedTweet, iLabeledFollower } from './analysis'
 
 
-const computeKPIs = () => {}
+const computeKPIs = ({ tweets, replies, user }:iAggregateData):iKpis => {
+    const kpis:iKpis = {
+        followers:{ value:user.followers_count, trend:0, color:'007500' },
+        impressions:{ value:getImpressions(tweets, replies), trend:0, color:'007500' },
+        engagements:{ value:getEngagements(tweets, replies), trend:0, color:'007500' },
+        clicks:{ value:getClicks(tweets, replies), trend:0, color:'007500' },
+        tweets: { value:tweets.length, trend:0, color:'007500' },
+        replies:{ value:replies.length, trend:0, color:'007500' }
+    }
+
+    return kpis
+}
+
 const selectTweets = () => {}
 const contentAnalysis = () => {}
 const labelFollowers = () => {}
@@ -25,16 +37,10 @@ const getClicks = (tweets: iTweet[], replies:iTweet[]):number => [
 
 
 interface iAggregateData extends iFetchedData { tweets:iReducedTweet[], followers:iLabeledFollower[] }
-export const aggregateData = ({ tweets, replies, user, followers }:iAggregateData):iData => {
-    const kpis:iKpis = {
-        followers:{ value:user.followers_count, trend:0, color:'007500' },
-        impressions:{ value:getImpressions(tweets, replies), trend:0, color:'007500' },
-        engagements:{ value:getEngagements(tweets, replies), trend:0, color:'007500' },
-        clicks:{ value:getClicks(tweets, replies), trend:0, color:'007500' },
-        tweets: { value:tweets.length, trend:0, color:'007500' },
-        replies:{ value:replies.length, trend:0, color:'007500' }
-    }
+export const aggregateData = (data:iAggregateData):iData => {
+    const kpis = computeKPIs(data)
 
+    const { tweets, replies, user, followers } = data
     const { screen_name, image, name } = user
     const sortedTweets = [...tweets].sort(({metrics:{impressions:a}}, {metrics:{impressions:b}}) => a > b ? 1 : -1)
     const topTweets = sortedTweets.filter((_, i) => i < 3)
