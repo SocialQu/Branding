@@ -74,7 +74,7 @@ export const aggregateData = ({ tweets, replies, user, followers }:iAggregateDat
     const topicImpressions = topTopics[0].impressions - bottomImpressions
     const topics:iTopic[] = topTopics.map(({ topic, tweets, engagements, impressions }) => ({
         name:topic,
-        text: '', 
+        text: 'black', 
         color:'',
         tweets,
         impressions,
