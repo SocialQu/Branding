@@ -39,32 +39,8 @@ const selectTweets = ({ tweets, user }:iAggregateData):iBestTweets => {
     return bestTweets
 }
 
-const contentAnalysis = () => {}
-const labelFollowers = () => {}
-const sortReplies = () => {}
 
-
-const getImpressions = (tweets: iTweet[], replies:iTweet[]):number => [
-    ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.impressions
-, 0)
-
-const getEngagements = (tweets: iTweet[], replies:iTweet[]):number => [
-    ...tweets, ...replies].reduce((d, { metrics: { likes, retweets, replies, visits, clicks } }) => 
-    d+= likes + retweets + replies + visits + clicks
-, 0)
-
-const getClicks = (tweets: iTweet[], replies:iTweet[]):number => [
-    ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.clicks
-, 0)
-
-
-interface iAggregateData extends iFetchedData { tweets:iReducedTweet[], followers:iLabeledFollower[] }
-export const aggregateData = (data:iAggregateData):iData => {
-    const kpis = computeKPIs(data)
-    const bestTweets = selectTweets(data)
-
-    const { tweets, replies, user, followers } = data
-
+const contentAnalysis = ({ tweets }: iAggregateData):iTopic[] => {
     const uniqueTopics = new Set(tweets.map(({ topic }) => topic))
     const topicsDict = [...uniqueTopics].map(topic => ({
         topic,
@@ -92,6 +68,37 @@ export const aggregateData = (data:iAggregateData):iData => {
         engagements,
         width:Math.round(((impressions - bottomImpressions)/topicImpressions)*50) + 50
     }))
+
+    return topics
+}
+
+
+const labelFollowers = () => {}
+const sortReplies = () => {}
+
+
+const getImpressions = (tweets: iTweet[], replies:iTweet[]):number => [
+    ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.impressions
+, 0)
+
+const getEngagements = (tweets: iTweet[], replies:iTweet[]):number => [
+    ...tweets, ...replies].reduce((d, { metrics: { likes, retweets, replies, visits, clicks } }) => 
+    d+= likes + retweets + replies + visits + clicks
+, 0)
+
+const getClicks = (tweets: iTweet[], replies:iTweet[]):number => [
+    ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.clicks
+, 0)
+
+
+interface iAggregateData extends iFetchedData { tweets:iReducedTweet[], followers:iLabeledFollower[] }
+export const aggregateData = (data:iAggregateData):iData => {
+    const kpis = computeKPIs(data)
+    const bestTweets = selectTweets(data)
+    const topics = contentAnalysis(data)
+
+    const { tweets, replies, user, followers } = data
+
 
     const [ topFollower, follower1, follower2, follower3, follower4 ] = followers
     const { bio, name:screenName, handle, image:profileImage } = topFollower
