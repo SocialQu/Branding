@@ -10,6 +10,8 @@ In this post, I will share the 10 steps that I used to define the strategy for m
 For me it will be growing an audience. Interestingly, it's because I looked at this post about launching in Product Hunt and I was amazed about how many different opiniones audience building brings. Plus, people looking to receive their Twitter Analytics periodically are most likely trying to build an audience.
 
 2. Make your message bigger than your product.
+Now, I'm not choosing Twitter, or even content creation as a message. It would be boring! 
+And since my product plays only a small role in the audience building space I can start creating awareness by delivering an interesting message to people that might not be ready to use my product yet.
 
 
 3. Find a funny take to support your message.
