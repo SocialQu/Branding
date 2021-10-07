@@ -11,3 +11,5 @@
 5. Provide valuable advice for the problem you solve.
 
 6. Advice on what not to do it's just as valuable.
+
+7. Convey one idea per tweet.
