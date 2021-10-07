@@ -42,6 +42,7 @@ export interface iUser {
 export interface iTopic {
     _id: string
     topic: string
+    color: string
     embeddings: number[]
     center: [number, number]
 }
