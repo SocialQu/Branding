@@ -6,3 +6,5 @@
 2. Make your message bigger than your product.
 
 3. Find a funny supporting topic for your main message.
+
+4. Promote succesful people that capture your product's values.
