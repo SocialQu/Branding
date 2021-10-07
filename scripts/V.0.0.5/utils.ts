@@ -126,7 +126,7 @@ export const buildEmailMetrics = ({ kpis, bestTweets, topics, followers, replies
         first_follower_color: follower1.ratioColor,
         first_follower_followers: formatNumber(follower1.followers),
         first_follower_ratio: formatNumber(follower1.ratio),
-        first_follower_niche: formatNumber(follower1.niche),
+        first_follower_niche: follower1.niche,
         first_follower_niche_color: follower1.color,
         first_follower_niche_text: follower1.textColor,
 
@@ -136,7 +136,7 @@ export const buildEmailMetrics = ({ kpis, bestTweets, topics, followers, replies
         second_follower_color: follower2.ratioColor,
         second_follower_followers: formatNumber(follower2.followers),
         second_follower_ratio: formatNumber(follower2.ratio),
-        second_follower_niche: formatNumber(follower2.niche),
+        second_follower_niche: follower2.niche,
         second_follower_niche_color: follower2.color,
         second_follower_niche_text: follower2.textColor,
 
@@ -146,7 +146,7 @@ export const buildEmailMetrics = ({ kpis, bestTweets, topics, followers, replies
         third_follower_color: follower3.ratioColor,
         third_follower_followers: formatNumber(follower3.followers),
         third_follower_ratio: formatNumber(follower3.ratio),
-        third_follower_niche: formatNumber(follower3.niche),
+        third_follower_niche: follower3.niche,
         third_follower_niche_color: follower3.color,
         third_follower_niche_text: follower3.textColor,
 
@@ -156,7 +156,7 @@ export const buildEmailMetrics = ({ kpis, bestTweets, topics, followers, replies
         fourth_follower_color: follower4.ratioColor,
         fourth_follower_followers: formatNumber(follower4.followers),
         fourth_follower_ratio: formatNumber(follower4.ratio),
-        fourth_follower_niche: formatNumber(follower4.niche),
+        fourth_follower_niche: follower4.niche,
         fourth_follower_niche_color: follower4.color,
         fourth_follower_niche_text: follower4.textColor,
     }
