@@ -61,6 +61,13 @@ export const aggregateData = ({ tweets, replies, user, followers }:iAggregateDat
         tweets: tweets.filter(({ topic:t }) => topic === t)
     }))
 
+    const countEngagements = (m: iMetrics) => m.likes + m.clicks + m.visits + m.replies + m.retweets
+    const mapTopics = topicsDict.map(({ topic, tweets }) => ({
+        topic,
+        tweets:tweets.length,
+        words: tweets.reduce((d, { text }) => [...d, ...text.split(' ')], [] as string[]),
+        engagements: tweets.reduce((d, { metrics }) => d+= countEngagements(metrics), 0)/tweets.length
+    }))
 
     const topics:iTopic[] = []
     const emailFollowers:iFollowers = {
