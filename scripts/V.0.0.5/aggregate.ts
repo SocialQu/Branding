@@ -26,7 +26,6 @@ const getClicks = (tweets: iTweet[], replies:iTweet[]):number => [
 
 interface iAggregateData extends iFetchedData { tweets:iReducedTweet[], followers:iLabeledFollower[] }
 export const aggregateData = ({ tweets, replies, user, followers }:iAggregateData):iData => {
-    const kpi:iKpi = { trend:0, value:0, color:'007500' }
     const kpis:iKpis = {
         followers:{ value:user.followers_count, trend:0, color:'007500' },
         impressions:{ value:getImpressions(tweets, replies), trend:0, color:'007500' },
@@ -83,8 +82,9 @@ export const aggregateData = ({ tweets, replies, user, followers }:iAggregateDat
         width:Math.round(((impressions - bottomImpressions)/topicImpressions)*50) + 50
     }))
 
+    const [ topFollower, follower1, follower2, follower3, follower4 ] = followers
     const emailFollowers:iFollowers = {
-        topFollower:{ bio:'', link:'', name:'', image:'' },
+        topFollower:{ bio:topFollower.bio, link:'', name:topFollower.name, image:'' },
         followers:[]        
     }
 
