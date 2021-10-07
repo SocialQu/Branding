@@ -98,7 +98,7 @@ const labelFollowers = ({ followers }: iAggregateData):iFollowers => {
         niche: follower.niche,
         image: follower.image,
         link:`https://twitter.com/${follower.name}`,
-        color:'',
+        color:follower.color,
         textColor:'black',
         followers: follower.followers,
         ratio: follower.followers/follower.following,
