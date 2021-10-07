@@ -47,4 +47,5 @@ Twitter is a text based social network. But is okay to ocasionally share images 
 Is always engaging to look at unpopular opinions. Stir controversy by debunking common wisdom related to the problem you solve. Examples for me are that building an audience only brings benefit on the long term, or that it involves a lot of grind.
 
 
-10. Be inspirational when you promote your produt.
+10. Be inspirational when you promote your product.
+Your product is not only a solution, it should inspire a lifestyle. So be sure to share that vision when you (very ocasionally) promote your product. More than promotion, is a reminder of the values that you stand for. [My newsletter](https://santiagoq.gumroad.com/l/twitter-analytics) believes that an audience is the shortest path to living a creative, fulfiling life.
