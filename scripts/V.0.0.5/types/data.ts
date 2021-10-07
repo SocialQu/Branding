@@ -56,7 +56,7 @@ interface iTopFollower {
     image: string
 }
 
-interface iFollower {
+export interface iFollower {
     name: string
     link: string
     image: string
