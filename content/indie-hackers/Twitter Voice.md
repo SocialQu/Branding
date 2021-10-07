@@ -1,5 +1,4 @@
-# 10 Steps to find a voice in Twitter for your Product
-
+# How to find a Twitter voice for your Product
 
 1. Choose a topic that is relevant to your product.
 
