@@ -1,5 +1,8 @@
 # How to find a Twitter voice for your Product
 
+As I work on getting traction for [Twitter Analytics at your Inbox](https://santiagoq.gumroad.com/l/twitter-analytics) I found that I needed to develop a content strategy that creates inbound leads for my product.
+
+
 1. Choose a message that is relevant to your product.
 
 2. Make your message bigger than your product.
