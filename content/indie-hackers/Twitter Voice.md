@@ -13,3 +13,5 @@
 6. Advice on what not to do it's just as valuable.
 
 7. Convey one idea per tweet.
+
+8. Share media congruent with you message deliver.
