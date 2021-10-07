@@ -12,6 +12,7 @@ For me it will be growing an audience. Interestingly, it's because I looked at t
 2. Make your message bigger than your product.
 Now, I'm not choosing Twitter, or even content creation as a message. It would be boring! 
 And since my product plays only a small role in the audience building space I can start creating awareness by delivering an interesting message to people that might not be ready to use my product yet.
+My goal is that a person that first reads my tweets, asks themselves: Santiago writes cool content, I wonder what product does he offers? 
 
 
 3. Find a funny take to support your message.
