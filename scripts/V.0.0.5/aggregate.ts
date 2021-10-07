@@ -1,7 +1,6 @@
 import { iData, iKpis, iKpi, iTweet as iBestTweet, iBestTweets, iTopic, iFollowers, iReply } from './types/data'
 import { iFetchedData, iTweet, iMetrics } from './types/fetch'
 import { iReducedTweet, iLabeledFollower } from './analysis'
-import { metrics } from '../V.0.0.3/data/raw/metrics'
 
 
 const computeKPIs = () => {}
