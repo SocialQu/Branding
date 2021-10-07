@@ -1,9 +1,9 @@
 # Tests
 
 - [ ] Tweets and replies are accordingly filtered.
-- [ ] Test follower count on user data.
+- [ ] Follower count on user data.
 - [ ] Tweets are sorted by impressions.
-- [ ] Test links in tweets including image, profile & tweets.
-- [ ] Test date on Tweets.
+- [ ] Links in tweets including image, profile & tweets.
+- [ ] Date on Tweets.
 - [ ] Validate computation of percent on replies.
-- [ ] Test link and user name on replies.
+- [ ] Link and user name on replies.
