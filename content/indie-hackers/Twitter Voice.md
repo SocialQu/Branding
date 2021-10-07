@@ -17,3 +17,5 @@
 8. Share media congruent with you message deliver.
 
 9. Debunk myths around your niche.
+
+10. Be inspirational when you promote your produt.
