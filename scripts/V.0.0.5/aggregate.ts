@@ -1,4 +1,4 @@
-import { iData, iKpis, iKpi, iTweet as iBestTweet, iBestTweets, iTopic, iFollowers, iReply } from './types/data'
+import { iData, iKpis, iTweet as iBestTweet, iBestTweets, iTopic, iFollower, iFollowers, iReply } from './types/data'
 import { iFetchedData, iTweet, iMetrics } from './types/fetch'
 import { iReducedTweet, iLabeledFollower } from './analysis'
 
@@ -26,7 +26,6 @@ const getClicks = (tweets: iTweet[], replies:iTweet[]):number => [
 
 interface iAggregateData extends iFetchedData { tweets:iReducedTweet[], followers:iLabeledFollower[] }
 export const aggregateData = ({ tweets, replies, user, followers }:iAggregateData):iData => {
-    const kpi:iKpi = { trend:0, value:0, color:'007500' }
     const kpis:iKpis = {
         followers:{ value:user.followers_count, trend:0, color:'007500' },
         impressions:{ value:getImpressions(tweets, replies), trend:0, color:'007500' },
@@ -75,7 +74,7 @@ export const aggregateData = ({ tweets, replies, user, followers }:iAggregateDat
     const topicImpressions = topTopics[0].impressions - bottomImpressions
     const topics:iTopic[] = topTopics.map(({ topic, tweets, engagements, impressions }) => ({
         name:topic,
-        text: '', 
+        text: 'black', 
         color:'',
         tweets,
         impressions,
@@ -83,9 +82,25 @@ export const aggregateData = ({ tweets, replies, user, followers }:iAggregateDat
         width:Math.round(((impressions - bottomImpressions)/topicImpressions)*50) + 50
     }))
 
+    const [ topFollower, follower1, follower2, follower3, follower4 ] = followers
+    const { bio, name:screenName, handle, image:profileImage } = topFollower
+
+    const mapFollower = (follower:iLabeledFollower):iFollower => ({
+        name: follower.name,
+        niche: follower.niche,
+        image: follower.image,
+        link:`https://twitter.com/${follower.name}`,
+        color:'',
+        textColor:'black',
+        followers: follower.followers,
+        ratio: follower.followers/follower.following,
+        ratioColor: follower.followers/follower.following > 1 ? '007500' : 'A31700'
+    })
+
+
     const emailFollowers:iFollowers = {
-        topFollower:{ bio:'', link:'', name:'', image:'' },
-        followers:[]        
+        topFollower:{ bio, link:`https://twitter.com/${handle}`, name:screenName, image:profileImage },
+        followers:[mapFollower(follower1), mapFollower(follower2), mapFollower(follower3), mapFollower(follower4)]
     }
 
 
@@ -97,7 +112,7 @@ export const aggregateData = ({ tweets, replies, user, followers }:iAggregateDat
         image: '',
         name: r.userName,
         impressions: m.impressions,
-        link: `https://twitter.com/${r.userId}`,
+        link: `https://twitter.com/${r.userName}`,
         engagements: m.likes + m.retweets + m.replies + m.visits + m.clicks,
         percent: Math.round(((m.impressions - replyBottomImpressions)/replyImpressions)*50) + 50
     }))

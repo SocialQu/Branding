@@ -40,12 +40,12 @@ export interface iBestTweets {
 
 export interface iTopic {
     name: string
-    text: string
     color: string
     width: number
     tweets: number
     impressions: number
     engagements: number
+    text: 'black' | 'white'
 }
 
 
@@ -56,12 +56,12 @@ interface iTopFollower {
     image: string
 }
 
-interface iFollower {
+export interface iFollower {
     name: string
     link: string
     image: string
     color: string
-    niche: number
+    niche: string
     ratio: number
     followers: number
     textColor: 'black' | 'white'
