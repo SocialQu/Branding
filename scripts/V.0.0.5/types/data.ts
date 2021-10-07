@@ -40,12 +40,12 @@ export interface iBestTweets {
 
 export interface iTopic {
     name: string
-    text: string
     color: string
     width: number
     tweets: number
     impressions: number
     engagements: number
+    text: 'black' | 'white'
 }
 
 
