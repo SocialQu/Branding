@@ -42,7 +42,9 @@ It is tempting to deliver a lot of value but Twitter rewards short content so wh
 8. Share media congruent with you message deliver.
 Twitter is a text based social network. But is okay to ocasionally share images that suppoort the values you promote. One example for me would be screenshots of other succesful products that achieved impressing growth numbers by building an audience.
 
+
 9. Debunk myths around your niche.
+Is always engaging to look at unpopular opinions. Stir controversy by debunking common wisdom related to the problem you solve. Examples for me are that building an audience only brings benefit on the long term, or that it involves a lot of grind.
 
 
 10. Be inspirational when you promote your produt.
