@@ -82,7 +82,8 @@ export const aggregateData = ({ tweets, replies, user, followers }:iAggregateDat
         width:Math.round(((impressions - bottomImpressions)/topicImpressions)*50) + 50
     }))
 
-    const [ top, follower1, follower2, follower3, follower4 ] = followers
+    const [ topFollower, follower1, follower2, follower3, follower4 ] = followers
+    const { bio, name:screenName, handle, image:profileImage } = topFollower
 
     const mapFollower = (follower:iLabeledFollower):iFollower => ({
         name: follower.name,
@@ -98,7 +99,7 @@ export const aggregateData = ({ tweets, replies, user, followers }:iAggregateDat
 
 
     const emailFollowers:iFollowers = {
-        topFollower:{ bio:top.bio, link:`https://twitter.com/${top.name}`, name:top.handle, image:top.image },
+        topFollower:{ bio, link:`https://twitter.com/${handle}`, name:screenName, image:profileImage },
         followers:[mapFollower(follower1), mapFollower(follower2), mapFollower(follower3), mapFollower(follower4)]
     }
 
