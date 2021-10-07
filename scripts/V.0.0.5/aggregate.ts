@@ -66,6 +66,7 @@ const contentAnalysis = ({ tweets }: iAggregateData):iTopic[] => {
     const engagementTopics = topicsDict.map(({ topic, tweets }) => ({
         topic,
         tweets:tweets.length,
+        color: tweets[0].color,
         impressions: tweets.reduce((d, { metrics }) => d += metrics.impressions, 0 ),
         engagements: tweets.reduce((d, { metrics }) => d+= countEngagements(metrics), 0)
     }))
@@ -74,10 +75,10 @@ const contentAnalysis = ({ tweets }: iAggregateData):iTopic[] => {
     const topTopics = sortedTopics.filter((_, i, l) => i < 5).filter((_, i) => i < 5)
     const bottomImpressions = topTopics[topTopics.length - 1].impressions
     const topicImpressions = topTopics[0].impressions - bottomImpressions
-    const topics:iTopic[] = topTopics.map(({ topic, tweets, engagements, impressions }) => ({
+    const topics:iTopic[] = topTopics.map(({ topic, tweets, engagements, impressions, color }) => ({
         name:topic,
         text: 'black', 
-        color:'',
+        color,
         tweets,
         impressions,
         engagements,
