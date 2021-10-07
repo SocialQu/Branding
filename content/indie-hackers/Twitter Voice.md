@@ -30,7 +30,9 @@ This serves two outcomes: create engaging content that reinforces your content a
 5. Provide valuable advice for the problem you solve.
 The obvious, you will need to become a domain expert. I plan to do this via reading, I will assign daily time to this task and focus on sharing what I learn to technically oriented founders. As I scale, I will generalize my message to encompass other people that with whom I do not necesarily share a background. 
 
+
 6. Advice on what not to do it's just as valuable.
+Might be intutive, but is better to be concious about this. We learn as much from good examples as from bad examples. This step works great in conjunction with step 3 and might also possibly include autobiographical references. By admiting your mistakes is easier for people to relate to you. For me it will be easy, as I'm still a first-time founder and most of my income today comes from consulting not my business.
 
 
 7. Convey one idea per tweet.
