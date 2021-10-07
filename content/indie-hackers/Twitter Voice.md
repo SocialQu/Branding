@@ -6,8 +6,10 @@ So I started looking at other [founders that I admire](https://twitter.com/agazd
 
 In this post, I will share the 10 steps that I used to define the strategy for my product. For each I include concrete examples so you can also start thinking about yours.
 
+
 1. Choose a message that is relevant to your product.
-For me it will be growing an audience. Interestingly, it's because I looked at this post about launching in Product Hunt and I was amazed about how many different opiniones audience building brings. Plus, people looking to receive their Twitter Analytics periodically are most likely trying to build an audience.
+For me it will be growing an audience. Interestingly, it's because I looked at [this post]() about launching in Product Hunt and I was amazed about how many different opiniones audience building brings. Plus, people looking to receive their Twitter Analytics periodically are most likely trying to build an audience.
+
 
 2. Make your message bigger than your product.
 Now, I'm not choosing Twitter, or even content creation as a message. It would be boring! 
@@ -16,6 +18,9 @@ My goal is that a person that first reads my tweets, asks themselves: Santiago w
 
 
 3. Find a funny take to support your message.
+We like to be entertained, so don't be so serious and try to make people smile.
+It works the best, if you are consistent about what you make fun, to let people know what to expect. 
+After some deliveration, I chose first-time founders. Particularily, those that do not focus on marketing and distribution enough. 
 
 
 4. Promote succesful people that capture your product's values.
