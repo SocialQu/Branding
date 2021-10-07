@@ -1,5 +1,5 @@
 import { load, UniversalSentenceEncoder as iModel } from '@tensorflow-models/universal-sentence-encoder'
-import { iFollower, iTopic, iTweet } from '../types/fetch'
+import { iFollower, iTopic, iTweet } from './types/fetch'
 import '@tensorflow/tfjs-node'
 import { PCA } from 'ml-pca'
 
@@ -57,7 +57,7 @@ const classifyFollowers = async(followers:iEmbeddedFollower[], topics:iTopic[]):
     return labeledFollowers
 }
 
-interface iReducedTweet extends iLabeledTweet { location:{ x:number, y:number } }
+export interface iReducedTweet extends iLabeledTweet { location:{ x:number, y:number } }
 const reduceTweets = (tweets:iLabeledTweet[]):iReducedTweet[] => {
     const embeddings = tweets.map(({ embeddings }) => embeddings)
     const pca = new PCA(embeddings)
