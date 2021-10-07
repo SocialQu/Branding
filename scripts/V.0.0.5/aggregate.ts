@@ -85,7 +85,19 @@ export const aggregateData = ({ tweets, replies, user, followers }:iAggregateDat
     const [ top, follower1, follower2, follower3, follower4 ] = followers
     const emailFollowers:iFollowers = {
         topFollower:{ bio:top.bio, link:`https://twitter.com/${top.name}`, name:top.handle, image:top.image },
-        followers:[]
+        followers:[
+            { 
+                name: follower1.name, 
+                niche: follower1.niche, 
+                image: follower1.image,
+                link:`https://twitter.com/${follower1.name}`,
+                color:'',
+                textColor:'black',
+                followers: follower1.followers, 
+                ratio: follower1.followers/follower1.following, 
+                ratioColor: follower1.followers/follower1.following > 1 ? '007500' : 'A31700',
+            }
+        ]
     }
 
 
