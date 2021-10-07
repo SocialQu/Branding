@@ -73,7 +73,31 @@ const contentAnalysis = ({ tweets }: iAggregateData):iTopic[] => {
 }
 
 
-const labelFollowers = () => {}
+const labelFollowers = ({ followers }: iAggregateData):iFollowers => {
+    const [ topFollower, follower1, follower2, follower3, follower4 ] = followers
+    const { bio, name:screenName, handle, image:profileImage } = topFollower
+
+    const mapFollower = (follower:iLabeledFollower):iFollower => ({
+        name: follower.name,
+        niche: follower.niche,
+        image: follower.image,
+        link:`https://twitter.com/${follower.name}`,
+        color:'',
+        textColor:'black',
+        followers: follower.followers,
+        ratio: follower.followers/follower.following,
+        ratioColor: follower.followers/follower.following > 1 ? '007500' : 'A31700'
+    })
+
+
+    const emailFollowers:iFollowers = {
+        topFollower:{ bio, link:`https://twitter.com/${handle}`, name:screenName, image:profileImage },
+        followers:[mapFollower(follower1), mapFollower(follower2), mapFollower(follower3), mapFollower(follower4)]
+    }
+
+    return emailFollowers
+}
+
 const sortReplies = () => {}
 
 
@@ -96,32 +120,9 @@ export const aggregateData = (data:iAggregateData):iData => {
     const kpis = computeKPIs(data)
     const bestTweets = selectTweets(data)
     const topics = contentAnalysis(data)
+    const followers = labelFollowers(data)
 
-    const { tweets, replies, user, followers } = data
-
-
-    const [ topFollower, follower1, follower2, follower3, follower4 ] = followers
-    const { bio, name:screenName, handle, image:profileImage } = topFollower
-
-    const mapFollower = (follower:iLabeledFollower):iFollower => ({
-        name: follower.name,
-        niche: follower.niche,
-        image: follower.image,
-        link:`https://twitter.com/${follower.name}`,
-        color:'',
-        textColor:'black',
-        followers: follower.followers,
-        ratio: follower.followers/follower.following,
-        ratioColor: follower.followers/follower.following > 1 ? '007500' : 'A31700'
-    })
-
-
-    const emailFollowers:iFollowers = {
-        topFollower:{ bio, link:`https://twitter.com/${handle}`, name:screenName, image:profileImage },
-        followers:[mapFollower(follower1), mapFollower(follower2), mapFollower(follower3), mapFollower(follower4)]
-    }
-
-
+    const { replies } = data
     const sortedReplies = [...replies].sort(({metrics:{impressions:a}}, {metrics:{impressions:b}}) => a > b ? 1 : -1)
     const topReplies = sortedReplies.filter((_, i) => i < 5)
     const replyBottomImpressions = topReplies[topReplies.length - 1].metrics.impressions
@@ -136,5 +137,5 @@ export const aggregateData = (data:iAggregateData):iData => {
     }))
 
 
-    return { kpis, bestTweets, topics, followers:emailFollowers, replies:emailReplies }
+    return { kpis, bestTweets, topics, followers, replies:emailReplies }
 }
