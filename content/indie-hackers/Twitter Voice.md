@@ -7,3 +7,5 @@
 3. Find a funny take to support your message.
 
 4. Promote succesful people that capture your product's values.
+
+5. Provide valuable advice for the problem you solve.
