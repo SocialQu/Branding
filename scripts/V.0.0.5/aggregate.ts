@@ -1,6 +1,7 @@
 import { iData, iKpis, iKpi, iTweet as iBestTweet, iBestTweets, iTopic, iFollowers, iReply } from './types/data'
 import { iFetchedData, iTweet, iMetrics } from './types/fetch'
 import { iReducedTweet, iLabeledFollower } from './analysis'
+import { metrics } from '../V.0.0.3/data/raw/metrics'
 
 
 const computeKPIs = () => {}
@@ -65,20 +66,21 @@ export const aggregateData = ({ tweets, replies, user, followers }:iAggregateDat
     const engagementTopics = topicsDict.map(({ topic, tweets }) => ({
         topic,
         tweets:tweets.length,
-        engagements: tweets.reduce((d, { metrics }) => d+= countEngagements(metrics), 0)/tweets.length
+        impressions: tweets.reduce((d, { metrics }) => d += metrics.impressions, 0 ),
+        engagements: tweets.reduce((d, { metrics }) => d+= countEngagements(metrics), 0)
     }))
 
     const sortedTopics = engagementTopics.sort(({ engagements:a }, { engagements:b }) => a > b ? -1 : 1)
     const topTopics = sortedTopics.filter((_, i, l) => i < 5).filter((_, i) => i < 5)
 
-    const topics:iTopic[] = topTopics.map(({ topic, tweets, engagements }) => ({
-        name:'',
+    const topics:iTopic[] = topTopics.map(({ topic, tweets, engagements, impressions }) => ({
+        name:topic,
+        text: '', 
         color:'',
         width:0,
-        impressions:0,
-        text: topic, 
-        engagements,
         tweets,
+        impressions,
+        engagements
     }))
 
     const emailFollowers:iFollowers = {
