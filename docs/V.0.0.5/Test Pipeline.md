@@ -10,3 +10,8 @@
 8. [ ] Send clean email.
 9. [ ] Store email as HTML.
 10. [ ] Upload email to cloud.
+11. [ ] Upate screenshots.
+12. [ ] Improve Gumroad copywrite.
+13. [ ] Launch on Indie Hackers.
+14. [ ] Tweet and share launch.
+15. [ ] Plan post MVP steps.
