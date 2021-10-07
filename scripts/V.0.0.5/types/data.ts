@@ -61,7 +61,7 @@ interface iFollower {
     link: string
     image: string
     color: string
-    niche: number
+    niche: string
     ratio: number
     followers: number
     textColor: 'black' | 'white'
