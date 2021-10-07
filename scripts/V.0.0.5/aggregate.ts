@@ -1,4 +1,4 @@
-import { iData, iKpis, iKpi, iTweet as iBestTweet, iBestTweets, iTopic, iFollowers, iReply } from './types/data'
+import { iData, iKpis, iTweet as iBestTweet, iBestTweets, iTopic, iFollower, iFollowers, iReply } from './types/data'
 import { iFetchedData, iTweet, iMetrics } from './types/fetch'
 import { iReducedTweet, iLabeledFollower } from './analysis'
 
@@ -83,21 +83,23 @@ export const aggregateData = ({ tweets, replies, user, followers }:iAggregateDat
     }))
 
     const [ top, follower1, follower2, follower3, follower4 ] = followers
+
+    const mapFollower = (follower:iLabeledFollower):iFollower => ({
+        name: follower.name,
+        niche: follower.niche,
+        image: follower.image,
+        link:`https://twitter.com/${follower.name}`,
+        color:'',
+        textColor:'black',
+        followers: follower.followers,
+        ratio: follower.followers/follower.following,
+        ratioColor: follower.followers/follower.following > 1 ? '007500' : 'A31700'
+    })
+
+
     const emailFollowers:iFollowers = {
         topFollower:{ bio:top.bio, link:`https://twitter.com/${top.name}`, name:top.handle, image:top.image },
-        followers:[
-            { 
-                name: follower1.name, 
-                niche: follower1.niche, 
-                image: follower1.image,
-                link:`https://twitter.com/${follower1.name}`,
-                color:'',
-                textColor:'black',
-                followers: follower1.followers, 
-                ratio: follower1.followers/follower1.following, 
-                ratioColor: follower1.followers/follower1.following > 1 ? '007500' : 'A31700',
-            }
-        ]
+        followers:[mapFollower(follower1), mapFollower(follower2), mapFollower(follower3), mapFollower(follower4)]
     }
 
 
