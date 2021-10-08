@@ -17,6 +17,7 @@ const sendNewsletter = async() => {
 }
 
 const fetchedFile = './data/fetched.json'
+const analysisFile = './data/analysis.json'
 const aggregatedFile = './data/aggregate.json'
 
 const fetch = async() => {
@@ -26,8 +27,18 @@ const fetch = async() => {
 
 const classify = async() => {
     const analysis = await analyzeData(fetchedData)
-    await fs.writeFile(aggregatedFile, JSON.stringify(analysis))
+    await fs.writeFile(analysisFile, JSON.stringify(analysis))
+}
+
+const aggregate = async() => {
+    const analysis = await fs.readFile(analysisFile)
+    const analysisJson = JSON.parse(analysis.toString())
+
+    const aggregatedData = aggregateData(analysisJson)
+    const aggregatedJson = JSON.stringify(aggregatedData)
+
+    await fs.writeFile(aggregatedFile, aggregatedJson)
 }
 
 
-classify().catch(console.log)
+aggregate().catch(console.log)
