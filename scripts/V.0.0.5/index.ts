@@ -1,5 +1,3 @@
-import fetchedData from './data/fetched.json'
-
 import { sendEmail, writeJSON } from './utils'
 import { aggregateData } from './aggregate'
 import { analyzeData } from './analysis'
@@ -26,9 +24,15 @@ const fetch = async() => {
 }
 
 const classify = async() => {
-    const analysis = await analyzeData(fetchedData)
-    await fs.writeFile(analysisFile, JSON.stringify(analysis))
+    const fetched = await fs.readFile(fetchedFile)
+    const fetchedJson = JSON.parse(fetched.toString())
+
+    const analysis = await analyzeData(fetchedJson)
+    const analysisJson = JSON.stringify(analysis)
+
+    await fs.writeFile(analysisFile, analysisJson)
 }
+
 
 const aggregate = async() => {
     const analysis = await fs.readFile(analysisFile)
