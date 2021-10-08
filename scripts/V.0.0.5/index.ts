@@ -1,6 +1,6 @@
-import { sendEmail, writeJSON } from './utils'
 import { aggregateData } from './aggregate'
 import { analyzeData } from './analysis'
+import { buildEmail } from './utils'
 import { fetchData } from './fetch'
 import { promises as fs } from 'fs'
 
@@ -40,8 +40,14 @@ const aggregate = async() => {
 
 
 const write = async() => {
+    const aggregated = await fs.readFile(aggregatedFile)
+    const aggregatedJson = JSON.parse(aggregated.toString())
 
+    const writteData = buildEmail(aggregatedJson)
+    const writteJson = JSON.stringify(writteData)
+
+    await fs.writeFile(writeFile, writteJson)
 }
 
 
-aggregate().catch(console.log)
+write().catch(console.log)
