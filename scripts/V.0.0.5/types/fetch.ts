@@ -44,7 +44,7 @@ export interface iTopic {
     topic: string
     color: string
     embeddings: number[]
-    center: [number, number]
+    center: number[]
 }
 
 export interface iFetchedData {

@@ -133,7 +133,7 @@ const sortReplies = ({ replies }: iAggregateData) => {
 }
 
 
-interface iAggregateData extends iFetchedData { tweets:iReducedTweet[], followers:iLabeledFollower[] }
+export interface iAggregateData extends iFetchedData { tweets:iReducedTweet[], followers:iLabeledFollower[] }
 export const aggregateData = (data:iAggregateData):iData => {
     const kpis = computeKPIs(data)
     const bestTweets = selectTweets(data)
