@@ -5,7 +5,7 @@ import { iData } from './types/data'
 const formatNumber = (value:number):string => String(value)
 const formatDate = (date:Date):string => String(date)
 
-export const buildEmailMetrics = ({ kpis, bestTweets, topics, followers, replies }:iData):iEmailMetrics => {
+export const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEmailMetrics => {
     const { followers:followersKpi, engagements, impressions, clicks, tweets, replies:repliesKpis } = kpis
     const { profile, tweets:[tweet1, tweet2, tweet3] } = bestTweets
     const [ topic1, topic2, topic3, topic4, topic5 ] = topics
