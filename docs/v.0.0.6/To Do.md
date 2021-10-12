@@ -10,3 +10,7 @@
 ## Tweets
 - [ ] Text align
 - [ ] Emojis
+
+# Content
+- [ ] Text align
+- [ ] Bold content.
