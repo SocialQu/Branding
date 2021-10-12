@@ -6,3 +6,7 @@
 - [ ] Colored header on cards
 - [ ] Bold on editorial.
 - [ ] Border on card.
+
+## Tweets
+- [ ] Text align
+- [ ] Emojis
