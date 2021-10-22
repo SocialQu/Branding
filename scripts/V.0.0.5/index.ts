@@ -53,6 +53,9 @@ const write = async() => {
 
 
 const index = async() => {
+    await fetch().catch(console.log)
+    await classify().catch(console.log)
+
     await aggregate().catch(console.log)
     await write().catch(console.log)
 }
