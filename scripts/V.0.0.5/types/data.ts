@@ -1,7 +1,8 @@
+export type kpiColor = '007500' | 'A31700'
 export interface iKpi {
     value: number
     trend?: number
-    color: '007500' | 'A31700'
+    color:kpiColor 
 }
 
 export interface iKpis {
