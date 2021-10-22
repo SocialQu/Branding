@@ -2,10 +2,13 @@ import { iEmailKpis, iEmailTweets, iEmailTopics, iEmailFollowers, iEmailReplies,
 import { iData } from './types/data'
 
 
-const formatNumber = (value:number):string => {
+const formatNumber = (value:number|undefined):string => {
+    if(value === undefined) return `-`
+
     if (value > 10**6) return `${Math.round(value/10**5)/10}M`
     if (value > 10**4) return `${Math.round(value/100)/10}K`
     if (value > 10**3) return `${value.toLocaleString()}`
+
     return `${value}`
 }
 
