@@ -34,7 +34,7 @@ const computeKPIs = ({ tweets, replies, user }:iAggregateData, lastWeek:iLastWee
         ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.impressions
     , 0)
     
-    const getEngagements = (tweets: iTweet[], replies:iTweet[]):number => [
+    const getEngagements = ({tweets, replies}:{tweets: iTweet[], replies:iTweet[]}):number => [
         ...tweets, ...replies].reduce((d, { metrics: { likes, retweets, replies, visits, clicks } }) => 
         d+= likes + retweets + replies + visits + clicks
     , 0)
@@ -52,7 +52,7 @@ const computeKPIs = ({ tweets, replies, user }:iAggregateData, lastWeek:iLastWee
     const kpis:iKpis = {
         followers: computeKPI(user.followers_count, undefined),
         impressions: computeKPI(getImpressions({tweets, replies}), getImpressions(lastWeek)),
-        engagements:{ value:getEngagements(tweets, replies), trend:0, color:'007500' },
+        engagements: computeKPI(getEngagements({tweets, replies}), getImpressions(lastWeek)),
         clicks:{ value:getClicks(tweets, replies), trend:0, color:'007500' },
         tweets: { value:tweets.length, trend:tweets.length/lastWeek.tweets.length, color:'007500' },
         replies:{ value:replies.length, trend:replies.length/lastWeek.replies.length, color:'007500' }
