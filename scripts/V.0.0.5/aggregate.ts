@@ -17,9 +17,13 @@ const filterReplies = ({ replies }:iAggregateData) => {
 
 const daySeconds = 1000*60*60*24
 const getDaysDelta = (datetime:string) => (Number(new Date(datetime)) - Number(new Date()))/daySeconds
-const filterData = () => {
-    
+const filterData = (data:iAggregateData) => {
+    const { weekTweets, lastWeekTweets } = filterTweets(data)
+    const { weekReplies, lastWeekReplies } = filterReplies(data)
 
+    const filteredData = {...data, tweets:weekTweets, replies:weekReplies }
+    const lastWeekData = { tweets:lastWeekTweets, replies:lastWeekReplies }
+    return { filteredData, lastWeekData }
 }
 
 
@@ -155,7 +159,7 @@ const sortReplies = ({ replies }: iAggregateData) => {
 
 export interface iAggregateData extends iFetchedData { tweets:iReducedTweet[], followers:iLabeledFollower[] }
 export const aggregateData = (data:iAggregateData):iData => {
-    const { filteredData, lastWeekTweets } = filterTweets(data)
+    const { filteredData } = filterData(data)
 
     const kpis = computeKPIs(filteredData)
     const bestTweets = selectTweets(filteredData)
