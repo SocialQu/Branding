@@ -1,6 +1,6 @@
 export interface iKpi {
     value: number
-    trend: number
+    trend?: number
     color: '007500' | 'A31700'
 }
 
