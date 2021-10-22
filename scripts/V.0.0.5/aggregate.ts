@@ -1,5 +1,5 @@
 import { iData, iKpis, iTweet as iBestTweet, iBestTweets, iTopic, iFollower, iFollowers, iReply } from './types/data'
-import { iFetchedData, iTweet, iMetrics } from './types/fetch'
+import { iFetchedData, iTweet, iMetrics, iReply as iFetchedReply } from './types/fetch'
 import { iReducedTweet, iLabeledFollower } from './analysis'
 
 
@@ -26,8 +26,8 @@ const filterData = (data:iAggregateData) => {
     return { filteredData, lastWeekData }
 }
 
-
-const computeKPIs = ({ tweets, replies, user }:iAggregateData):iKpis => {
+interface iLastWeekData { tweets:iReducedTweet[], replies:iFetchedReply[] }
+const computeKPIs = ({ tweets, replies, user }:iAggregateData, lastWeek:iLastWeekData):iKpis => {
     const getImpressions = (tweets: iTweet[], replies:iTweet[]):number => [
         ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.impressions
     , 0)
@@ -159,9 +159,9 @@ const sortReplies = ({ replies }: iAggregateData) => {
 
 export interface iAggregateData extends iFetchedData { tweets:iReducedTweet[], followers:iLabeledFollower[] }
 export const aggregateData = (data:iAggregateData):iData => {
-    const { filteredData } = filterData(data)
+    const { filteredData, lastWeekData } = filterData(data)
 
-    const kpis = computeKPIs(filteredData)
+    const kpis = computeKPIs(filteredData, lastWeekData)
     const bestTweets = selectTweets(filteredData)
     const topics = contentAnalysis(filteredData)
     const followers = labelFollowers(filteredData)
