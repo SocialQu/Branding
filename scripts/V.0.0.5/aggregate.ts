@@ -54,7 +54,7 @@ const computeKPIs = ({ tweets, replies, user }:iAggregateData, lastWeek:iLastWee
         impressions: computeKPI(getImpressions({tweets, replies}), getImpressions(lastWeek)),
         engagements: computeKPI(getEngagements({tweets, replies}), getImpressions(lastWeek)),
         clicks: computeKPI(getClicks({tweets, replies}), getClicks(lastWeek)),
-        tweets: { value:tweets.length, trend:tweets.length/lastWeek.tweets.length, color:'007500' },
+        tweets: computeKPI(tweets.length, lastWeek.tweets.length),
         replies:{ value:replies.length, trend:replies.length/lastWeek.replies.length, color:'007500' }
     }
 
