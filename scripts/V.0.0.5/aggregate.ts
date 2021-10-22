@@ -3,6 +3,30 @@ import { iFetchedData, iTweet, iMetrics } from './types/fetch'
 import { iReducedTweet, iLabeledFollower } from './analysis'
 
 
+const filterTweets = ({ tweets }:iAggregateData) => {
+    const weekTweets = tweets.filter(({ datetime }) => getDaysDelta(datetime) < 7)
+    const lastWeekTweets = tweets.filter(({ datetime:d }) => getDaysDelta(d) > 7 && getDaysDelta(d) < 14)
+    return { weekTweets, lastWeekTweets }
+}
+
+const filterReplies = ({ replies }:iAggregateData) => {
+    const weekReplies = replies.filter(({ datetime }) => getDaysDelta(datetime) < 7)
+    const lastWeekReplies = replies.filter(({ datetime:d }) => getDaysDelta(d) > 7 && getDaysDelta(d) < 14)
+    return { weekReplies, lastWeekReplies }
+}
+
+const daySeconds = 1000*60*60*24
+const getDaysDelta = (datetime:string) => (Number(new Date(datetime)) - Number(new Date()))/daySeconds
+const filterData = (data:iAggregateData) => {
+    const { weekTweets, lastWeekTweets } = filterTweets(data)
+    const { weekReplies, lastWeekReplies } = filterReplies(data)
+
+    const filteredData = {...data, tweets:weekTweets, replies:weekReplies }
+    const lastWeekData = { tweets:lastWeekTweets, replies:lastWeekReplies }
+    return { filteredData, lastWeekData }
+}
+
+
 const computeKPIs = ({ tweets, replies, user }:iAggregateData):iKpis => {
     const getImpressions = (tweets: iTweet[], replies:iTweet[]):number => [
         ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.impressions
@@ -135,11 +159,13 @@ const sortReplies = ({ replies }: iAggregateData) => {
 
 export interface iAggregateData extends iFetchedData { tweets:iReducedTweet[], followers:iLabeledFollower[] }
 export const aggregateData = (data:iAggregateData):iData => {
-    const kpis = computeKPIs(data)
-    const bestTweets = selectTweets(data)
-    const topics = contentAnalysis(data)
-    const followers = labelFollowers(data)
-    const replies = sortReplies(data)
+    const { filteredData } = filterData(data)
+
+    const kpis = computeKPIs(filteredData)
+    const bestTweets = selectTweets(filteredData)
+    const topics = contentAnalysis(filteredData)
+    const followers = labelFollowers(filteredData)
+    const replies = sortReplies(filteredData)
 
     return { kpis, bestTweets, topics, followers, replies }
 }

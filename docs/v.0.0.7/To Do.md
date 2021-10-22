@@ -1,20 +1,27 @@
 # To Do
 
  1. [X] Format numbers on KPIs
- 2. [ ] Colors on trends.
- 3. [ ] Trend values.
+ 2. [ ] Trend values.
+    - [X] Separate tweets by 7 day periods.
+    - [X] Get two similar data objects one for each week.
+    - [ ] Compute the trend by comparing both objects.
+    - [ ] Iterate until all tweets are fetched.
+    - [ ] Use only last week tweets for the rest of the metrics.
+
+ 3. [ ] Colors on trends.
  4. [ ] Editorial
- 5. [ ] Sort best tweets.
- 6. [ ] Format date.
- 7. [ ] Format links.
- 8. [ ] Fix topics width.
- 9. [ ] White color on topics.
-10. [ ] Add content
-11. [ ] Follower Stats on top follower.
-12. [ ] Sort followers.
-13. [ ] Round ratios.
-14. [ ] Width on niches.
-15. [ ] Image on replies.
-16. [ ] Sort replies.
-17. [ ] Add Tweets on replies.
-18. [ ] Aggregate replies by user.
+ 5. [ ] KPI footer with time.
+ 6. [ ] Sort best tweets.
+ 7. [ ] Format date.
+ 8. [ ] Format links.
+ 9. [ ] Fix topics width.
+10. [ ] White color on topics.
+11. [ ] Add content
+12. [ ] Follower Stats on top follower.
+13. [ ] Sort followers.
+14. [ ] Round ratios.
+15. [ ] Width on niches.
+16. [ ] Image on replies.
+17. [ ] Sort replies.
+18. [ ] Add Tweets on replies.
+19. [ ] Aggregate replies by user.
