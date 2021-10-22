@@ -1,5 +1,7 @@
-import { iData, iKpis, iTweet as iBestTweet, iBestTweets, iTopic, iFollower, iFollowers, iReply } from './types/data'
-import { iFetchedData, iTweet, iMetrics, iReply as iFetchedReply } from './types/fetch'
+import { iTweet as iBestTweet, iBestTweets, iReply as iMention } from './types/data'
+import { iData, iKpis, iKpi, iTopic, iFollower, iFollowers  } from './types/data'
+
+import { iFetchedData, iTweet, iMetrics, iReply } from './types/fetch'
 import { iReducedTweet, iLabeledFollower } from './analysis'
 
 
@@ -26,29 +28,34 @@ const filterData = (data:iAggregateData) => {
     return { filteredData, lastWeekData }
 }
 
-interface iLastWeekData { tweets:iReducedTweet[], replies:iFetchedReply[] }
+interface iLastWeekData { tweets:iReducedTweet[], replies:iReply[] }
 const computeKPIs = ({ tweets, replies, user }:iAggregateData, lastWeek:iLastWeekData):iKpis => {
-    const getImpressions = (tweets: iTweet[], replies:iTweet[]):number => [
+    const getImpressions = ({tweets, replies}:{tweets: iTweet[], replies:iTweet[]}):number => [
         ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.impressions
     , 0)
     
-    const getEngagements = (tweets: iTweet[], replies:iTweet[]):number => [
+    const getEngagements = ({tweets, replies}:{tweets: iTweet[], replies:iTweet[]}):number => [
         ...tweets, ...replies].reduce((d, { metrics: { likes, retweets, replies, visits, clicks } }) => 
         d+= likes + retweets + replies + visits + clicks
     , 0)
     
-    const getClicks = (tweets: iTweet[], replies:iTweet[]):number => [
+    const getClicks = ({tweets, replies}:{tweets: iTweet[], replies:iTweet[]}):number => [
         ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.clicks
     , 0)
 
+    const computeKPI = (value:number, lastWeekValue:number|undefined):iKpi => {
+        const trend = lastWeekValue ? value/lastWeekValue : undefined
+        return { value, trend, color: trend === undefined || trend > 0 ? '007500' : 'A31700' }
+    }
+
 
     const kpis:iKpis = {
-        followers:{ value:user.followers_count, trend:0, color:'007500' },
-        impressions:{ value:getImpressions(tweets, replies), trend:0, color:'007500' },
-        engagements:{ value:getEngagements(tweets, replies), trend:0, color:'007500' },
-        clicks:{ value:getClicks(tweets, replies), trend:0, color:'007500' },
-        tweets: { value:tweets.length, trend:0, color:'007500' },
-        replies:{ value:replies.length, trend:0, color:'007500' }
+        followers: computeKPI(user.followers_count, undefined),
+        impressions: computeKPI(getImpressions({tweets, replies}), getImpressions(lastWeek)),
+        engagements: computeKPI(getEngagements({tweets, replies}), getImpressions(lastWeek)),
+        clicks: computeKPI(getClicks({tweets, replies}), getClicks(lastWeek)),
+        tweets: computeKPI(tweets.length, lastWeek.tweets.length),
+        replies: computeKPI(replies.length, lastWeek.replies.length)
     }
 
     return kpis
@@ -144,7 +151,7 @@ const sortReplies = ({ replies }: iAggregateData) => {
     const topReplies = sortedReplies.filter((_, i) => i < 5)
     const replyBottomImpressions = topReplies[topReplies.length - 1].metrics.impressions
     const replyImpressions = topReplies[0].metrics.impressions - replyBottomImpressions
-    const emailReplies:iReply[] = topReplies.map(({metrics:m, ...r}) => ({
+    const emailReplies:iMention[] = topReplies.map(({metrics:m, ...r}) => ({
         image: '',
         name: r.userName,
         impressions: m.impressions,
