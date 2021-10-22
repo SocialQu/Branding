@@ -1,8 +1,12 @@
 # To Do
 
  1. [X] Format numbers on KPIs
- 2. [ ] Colors on trends.
- 3. [ ] Trend values.
+ 2. [ ] Trend values.
+    - [ ] Separate tweets by 7 day periods.
+    - [ ] Get two similar data objects one for each week.
+    - [ ] Compute the trend by comparing both objects.
+
+ 3. [ ] Colors on trends.
  4. [ ] Editorial
  5. [ ] Sort best tweets.
  6. [ ] Format date.
