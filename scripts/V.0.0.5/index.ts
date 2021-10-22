@@ -17,6 +17,7 @@ const writeFile = '../../email/write.json'
 const fetch = async() => {
     const fetched = await fetchData()
     await fs.writeFile(fetchedFile, JSON.stringify(fetched))
+    console.log('Fetched')
 }
 
 const classify = async() => {
@@ -27,6 +28,7 @@ const classify = async() => {
     const analysisJson = JSON.stringify(analysis)
 
     await fs.writeFile(analysisFile, analysisJson)
+    console.log('Classified')
 }
 
 
@@ -38,6 +40,7 @@ const aggregate = async() => {
     const aggregatedJson = JSON.stringify(aggregatedData)
 
     await fs.writeFile(aggregatedFile, aggregatedJson)
+    console.log('Aggregated')
 }
 
 
@@ -49,6 +52,7 @@ const write = async() => {
     const writeJson = JSON.stringify(writeData)
 
     await fs.writeFile(writeFile, writeJson)
+    console.log('Wrote')
 }
 
 
