@@ -1,5 +1,7 @@
-import { iData, iKpis, iTweet as iBestTweet, iBestTweets, iTopic, iFollower, iFollowers, iReply } from './types/data'
-import { iFetchedData, iTweet, iMetrics, iReply as iFetchedReply } from './types/fetch'
+import { iTweet as iBestTweet, iBestTweets, iReply as iMention } from './types/data'
+import { iData, iKpis, iKpi, iTopic, iFollower, iFollowers  } from './types/data'
+
+import { iFetchedData, iTweet, iMetrics, iReply } from './types/fetch'
 import { iReducedTweet, iLabeledFollower } from './analysis'
 
 
@@ -26,7 +28,7 @@ const filterData = (data:iAggregateData) => {
     return { filteredData, lastWeekData }
 }
 
-interface iLastWeekData { tweets:iReducedTweet[], replies:iFetchedReply[] }
+interface iLastWeekData { tweets:iReducedTweet[], replies:iReply[] }
 const computeKPIs = ({ tweets, replies, user }:iAggregateData, lastWeek:iLastWeekData):iKpis => {
     const getImpressions = (tweets: iTweet[], replies:iTweet[]):number => [
         ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.impressions
@@ -41,14 +43,14 @@ const computeKPIs = ({ tweets, replies, user }:iAggregateData, lastWeek:iLastWee
         ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.clicks
     , 0)
 
-    const computeKPI = (value:number, lastWeekValue:number|undefined) => {
+    const computeKPI = (value:number, lastWeekValue:number|undefined):iKpi => {
         const trend = lastWeekValue ? value/lastWeekValue : undefined
         return { value, trend, color: trend ? '007500' : 'A31700' }
     }
 
 
     const kpis:iKpis = {
-        followers:{ value:user.followers_count, trend:undefined, color:'007500' },
+        followers:computeKPI(user.followers_count, undefined),
         impressions:{ value:getImpressions(tweets, replies), trend:0, color:'007500' },
         engagements:{ value:getEngagements(tweets, replies), trend:0, color:'007500' },
         clicks:{ value:getClicks(tweets, replies), trend:0, color:'007500' },
@@ -149,7 +151,7 @@ const sortReplies = ({ replies }: iAggregateData) => {
     const topReplies = sortedReplies.filter((_, i) => i < 5)
     const replyBottomImpressions = topReplies[topReplies.length - 1].metrics.impressions
     const replyImpressions = topReplies[0].metrics.impressions - replyBottomImpressions
-    const emailReplies:iReply[] = topReplies.map(({metrics:m, ...r}) => ({
+    const emailReplies:iMention[] = topReplies.map(({metrics:m, ...r}) => ({
         image: '',
         name: r.userName,
         impressions: m.impressions,
