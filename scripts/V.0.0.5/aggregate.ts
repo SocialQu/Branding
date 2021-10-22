@@ -3,15 +3,23 @@ import { iFetchedData, iTweet, iMetrics } from './types/fetch'
 import { iReducedTweet, iLabeledFollower } from './analysis'
 
 
-const filterTweets = (data:iAggregateData) => {
-    const daySeconds = 1000*60*60*24
-    const getDaysDelta = (datetime:string) => (Number(new Date(datetime)) - Number(new Date()))/daySeconds
+const filterTweets = ({ tweets }:iAggregateData) => {
+    const weekTweets = tweets.filter(({ datetime }) => getDaysDelta(datetime) < 7)
+    const lastWeekTweets = tweets.filter(({ datetime:d }) => getDaysDelta(d) > 7 && getDaysDelta(d) < 14)
+    return { weekTweets, lastWeekTweets }
+}
 
-    const tweets = data.tweets.filter(({ datetime }) => getDaysDelta(datetime) < 7)
-    const lastWeekTweets = data.tweets.filter(({ datetime:d }) => getDaysDelta(d) > 7 && getDaysDelta(d) < 14)
+const filterReplies = ({ replies }:iAggregateData) => {
+    const weekReplies = replies.filter(({ datetime }) => getDaysDelta(datetime) < 7)
+    const lastWeekReplies = replies.filter(({ datetime:d }) => getDaysDelta(d) > 7 && getDaysDelta(d) < 14)
+    return { weekReplies, lastWeekReplies }
+}
 
-    const filteredData:iAggregateData = {...data, tweets }
-    return { filteredData, lastWeekTweets }
+const daySeconds = 1000*60*60*24
+const getDaysDelta = (datetime:string) => (Number(new Date(datetime)) - Number(new Date()))/daySeconds
+const filterData = () => {
+    
+
 }
 
 
