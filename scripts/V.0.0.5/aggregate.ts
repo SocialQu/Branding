@@ -105,8 +105,11 @@ const contentAnalysis = ({ tweets }: iAggregateData):iTopic[] => {
 
     const sortedTopics = engagementTopics.sort(({ engagements:a }, { engagements:b }) => a > b ? -1 : 1)
     const topTopics = sortedTopics.filter((_, i, l) => i < 5).filter((_, i) => i < 5)
+
+    if(!topTopics.length) return []
     const bottomImpressions = topTopics[topTopics.length - 1].impressions
     const topicImpressions = topTopics[0].impressions - bottomImpressions
+
     const topics:iTopic[] = topTopics.map(({ topic, tweets, engagements, impressions, color }) => ({
         name:topic,
         text: 'black', 
@@ -150,8 +153,11 @@ const labelFollowers = ({ followers }: iAggregateData):iFollowers => {
 const sortReplies = ({ replies }: iAggregateData) => {
     const sortedReplies = [...replies].sort(({metrics:{impressions:a}}, {metrics:{impressions:b}}) => a > b ? 1 : -1)
     const topReplies = sortedReplies.filter((_, i) => i < 5)
+
+    if(!topReplies.length) return []
     const replyBottomImpressions = topReplies[topReplies.length - 1].metrics.impressions
     const replyImpressions = topReplies[0].metrics.impressions - replyBottomImpressions
+
     const emailReplies:iMention[] = topReplies.map(({metrics:m, ...r}) => ({
         image: '',
         name: r.userName,
