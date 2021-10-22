@@ -1,6 +1,6 @@
 # To Do
 
- 1. [ ] Format numbers on KPIs
+ 1. [X] Format numbers on KPIs
  2. [ ] Colors on trends.
  3. [ ] Trend values.
  4. [ ] Editorial

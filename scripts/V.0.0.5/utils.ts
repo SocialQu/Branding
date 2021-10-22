@@ -2,7 +2,14 @@ import { iEmailKpis, iEmailTweets, iEmailTopics, iEmailFollowers, iEmailReplies,
 import { iData } from './types/data'
 
 
-const formatNumber = (value:number):string => String(value)
+const formatNumber = (value:number):string => {
+    if (value > 10**6) return `${Math.round(value/10**5)/10}M`
+    if (value > 10**4) return `${Math.round(value/100)/10}K`
+    if (value > 10**3) return `${value.toLocaleString()}`
+    return `${value}`
+}
+
+
 const formatDate = (date:Date):string => String(date)
 
 export const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEmailMetrics => {
