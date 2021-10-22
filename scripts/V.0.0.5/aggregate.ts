@@ -30,7 +30,7 @@ const filterData = (data:iAggregateData) => {
 
 interface iLastWeekData { tweets:iReducedTweet[], replies:iReply[] }
 const computeKPIs = ({ tweets, replies, user }:iAggregateData, lastWeek:iLastWeekData):iKpis => {
-    const getImpressions = (tweets: iTweet[], replies:iTweet[]):number => [
+    const getImpressions = ({tweets, replies}:{tweets: iTweet[], replies:iTweet[]}):number => [
         ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.impressions
     , 0)
     
@@ -50,8 +50,8 @@ const computeKPIs = ({ tweets, replies, user }:iAggregateData, lastWeek:iLastWee
 
 
     const kpis:iKpis = {
-        followers:computeKPI(user.followers_count, undefined),
-        impressions:{ value:getImpressions(tweets, replies), trend:0, color:'007500' },
+        followers: computeKPI(user.followers_count, undefined),
+        impressions: computeKPI(getImpressions({tweets, replies}), getImpressions(lastWeek)),
         engagements:{ value:getEngagements(tweets, replies), trend:0, color:'007500' },
         clicks:{ value:getClicks(tweets, replies), trend:0, color:'007500' },
         tweets: { value:tweets.length, trend:tweets.length/lastWeek.tweets.length, color:'007500' },
