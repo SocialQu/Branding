@@ -45,11 +45,17 @@ const write = async() => {
     const aggregated = await fs.readFile(aggregatedFile)
     const aggregatedJson = JSON.parse(aggregated.toString())
 
-    const writteData = buildEmail(aggregatedJson)
-    const writteJson = JSON.stringify(writteData)
+    const writeData = buildEmail(aggregatedJson)
+    const writeJson = JSON.stringify(writeData)
 
-    await fs.writeFile(writeFile, writteJson)
+    await fs.writeFile(writeFile, writeJson)
 }
 
 
-write().catch(console.log)
+const index = async() => {
+    await aggregate().catch(console.log)
+    await write().catch(console.log)
+}
+
+
+index().catch(console.log)
