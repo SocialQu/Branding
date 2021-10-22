@@ -18,12 +18,12 @@ const filterReplies = ({ replies }:iAggregateData) => {
 }
 
 const daySeconds = 1000*60*60*24
-const getDaysDelta = (datetime:string) => (Number(new Date(datetime)) - Number(new Date()))/daySeconds
+const getDaysDelta = (datetime:string) => (Number(new Date()) - Number(new Date(datetime)))/daySeconds
 const filterData = (data:iAggregateData) => {
     const { weekTweets, lastWeekTweets } = filterTweets(data)
     const { weekReplies, lastWeekReplies } = filterReplies(data)
 
-    const filteredData = {...data, tweets:weekTweets, replies:weekReplies }
+    const filteredData = { ...data, tweets:weekTweets, replies:weekReplies }
     const lastWeekData = { tweets:lastWeekTweets, replies:lastWeekReplies }
     return { filteredData, lastWeekData }
 }
@@ -44,8 +44,9 @@ const computeKPIs = ({ tweets, replies, user }:iAggregateData, lastWeek:iLastWee
     , 0)
 
     const computeKPI = (value:number, lastWeekValue:number|undefined):iKpi => {
-        const trend = lastWeekValue ? value/lastWeekValue : undefined
-        return { value, trend, color: trend === undefined || trend > 0 ? '007500' : 'A31700' }
+        const trend = lastWeekValue ? value/lastWeekValue*100 : undefined
+        const kpi = { value, trend, color: trend === undefined || trend > 0 ? '007500' : 'A31700' } as iKpi
+        return kpi
     }
 
 
