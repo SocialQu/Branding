@@ -234,14 +234,14 @@ const getWeekDay = (date:Date):string => ({
 })[date.getDate()] || ''
 
 
-const getKpiFooter = () => `Data fetched Sunday at 12:00am PT. Trends computed against the 7-day average values.`
+const getKpiFooter = (date:Date) => `Data fetched ${getWeekDay(date)} at 12:00am PT. Trends computed against the 7-day average values.`
 const addEditorial = ():iEmailEditorial => ({
     editorial_title:'Your growth routine ',
     editorial:'includes all the daily activities that helps you build an audience over time. It can include creating content, replying to tweets, sending DMs or finding new leads! Do you have a growth routine? ',
     editorial_CTA:'Share it with me.',
     editorial_link:'https://twitter.com/SocialQui',
     editorial_2:'',
-    kpi_footer:getKpiFooter()
+    kpi_footer:getKpiFooter(new Date)
 })
 
 const addContent = ():iEmailContent => ({
