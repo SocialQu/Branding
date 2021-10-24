@@ -75,7 +75,7 @@ const selectTweets = ({ tweets, user }:iAggregateData):iBestTweets => {
         retweets: metrics.retweets, 
         profile_visits: metrics.visits, 
         impressions: metrics.impressions,
-        link: `https://twitter.com/${name}/status/${id}`
+        link: `https://twitter.com/${screen_name}/status/${id}`
     }))
 
     const bestTweets:iBestTweets = {
