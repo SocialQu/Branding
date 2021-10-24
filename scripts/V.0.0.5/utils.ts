@@ -15,9 +15,7 @@ const formatNumber = (value:number|undefined):string => {
 }
 
 
-const formatDate = (date:Date):string => String(date)
-
-
+const formatDate = (date:Date):string => `${getWeekDay(date)} ${getTime(date)}`
 const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEmailMetrics => {
     const { followers:followersKpi, engagements, impressions, clicks, tweets, replies:repliesKpis } = kpis
     const { profile, tweets:[tweet1, tweet2, tweet3] } = bestTweets
@@ -235,8 +233,8 @@ const getWeekDay = (date:Date):string => ({
     6: 'Saturday'
 })[date.getDay() as WeekDay] || ''
 
-const getTime = (date:Date) => `${date.getHours()}:${String(date.getMinutes()).length > 1 ? date.getMinutes() : `0${date.getMinutes()}`} ${date.getHours() < 12 ? 'am' : 'pm'}`
-const getKpiFooter = (date:Date) => `Data fetched on ${getWeekDay(date)} at ${getTime(date)} CT. Trends computed against the 7-day average values.`
+const getTime = (date:Date) => `${date.getHours()}:${String(date.getMinutes()).length > 1 ? date.getMinutes() : `0${date.getMinutes()}`} ${date.getHours() < 12 ? 'am' : 'pm'} CT`
+const getKpiFooter = (date:Date) => `Data fetched on ${getWeekDay(date)} at ${getTime(date)}. Trends computed against the 7-day average values.`
 const addEditorial = ():iEmailEditorial => ({
     editorial_title:'Your growth routine ',
     editorial:'includes all the daily activities that helps you build an audience over time. It can include creating content, replying to tweets, sending DMs or finding new leads! Do you have a growth routine? ',
