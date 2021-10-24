@@ -1,6 +1,5 @@
 import { iEmailEditorial, iEmailContent, iEmailFooter, iEmailData, iEmailMetrics } from './types/email'
 import { iEmailKpis, iEmailTweets, iEmailTopics, iEmailFollowers, iEmailReplies } from './types/email'
-import {  } from './types/email'
 import { iData } from './types/data'
 
 
