@@ -1,4 +1,5 @@
-import { iEmailKpis, iEmailTweets, iEmailTopics, iEmailFollowers, iEmailReplies, iEmailMetrics } from './types/email'
+import { iEmailKpis, iEmailTweets, iEmailTopics, iEmailFollowers } from './types/email'
+import { iEmailReplies, iEmailMetrics, iEmailData } from './types/email'
 import { iData } from './types/data'
 
 
@@ -227,9 +228,10 @@ const addEditorial = () => {
 }
 
 
-const wrapEmail = (metrics:iEmailMetrics) => {}
+const wrapEmail = (metrics:iEmailMetrics):iEmailData => {}
 
-export const writeEmail = (data:iData) => {
+export const writeEmail = (data:iData):iEmailData => {
     const metrics = buildEmail(data)
-    return metrics    
+    const email = wrapEmail(metrics)
+    return email    
 }
