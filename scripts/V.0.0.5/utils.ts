@@ -235,7 +235,7 @@ const getWeekDay = (date:Date):string => ({
     6: 'Saturday'
 })[date.getDay() as WeekDay] || ''
 
-const getTime = (date:Date) => `${date.getHours()}:${date.getMinutes()} ${date.getHours() < 12 ? 'am' : 'pm'}`
+const getTime = (date:Date) => `${date.getHours()}:${String(date.getMinutes()).length > 1 ? date.getMinutes() : `0${date.getMinutes()}`} ${date.getHours() < 12 ? 'am' : 'pm'}`
 const getKpiFooter = (date:Date) => `Data fetched on ${getWeekDay(date)} at ${getTime(date)} CT. Trends computed against the 7-day average values.`
 const addEditorial = ():iEmailEditorial => ({
     editorial_title:'Your growth routine ',

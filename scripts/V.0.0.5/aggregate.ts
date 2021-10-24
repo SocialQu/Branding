@@ -65,7 +65,7 @@ const computeKPIs = ({ tweets, replies, user }:iAggregateData, lastWeek:iLastWee
 
 const selectTweets = ({ tweets, user }:iAggregateData):iBestTweets => {
     const { screen_name, image, name } = user
-    const sortedTweets = [...tweets].sort(({metrics:{impressions:a}}, {metrics:{impressions:b}}) => a > b ? 1 : -1)
+    const sortedTweets = [...tweets].sort(({metrics:{impressions:a}}, {metrics:{impressions:b}}) => a > b ? -1 : 1)
     const topTweets = sortedTweets.filter((_, i) => i < 3)
     const mappedTweets:iBestTweet[] = topTweets.map(({ text, id, datetime, metrics }) => ({ 
         text,

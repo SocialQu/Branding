@@ -11,17 +11,19 @@
  3. [X] Colors on trends.
  4. [X] Editorial
  5. [X] KPI footer with time.
- 6. [ ] Sort best tweets.
+ 6. [X] Sort best tweets.
  7. [ ] Format date.
  8. [ ] Format links.
- 9. [ ] Fix topics width.
-10. [ ] White color on topics.
-11. [ ] Add content
-12. [ ] Follower Stats on top follower.
-13. [ ] Sort followers.
-14. [ ] Round ratios.
-15. [ ] Width on niches.
-16. [ ] Image on replies.
-17. [ ] Sort replies.
-18. [ ] Add Tweets on replies.
-19. [ ] Aggregate replies by user.
+ 9. [ ] Clicks on best tweets.
+10. [ ] Link on best tweets.
+11. [ ] Fix topics width.
+12. [ ] White color on topics.
+13. [ ] Add content
+14. [ ] Follower Stats on top follower.
+15. [ ] Sort followers.
+16. [ ] Round ratios.
+17. [ ] Width on niches.
+18. [ ] Image on replies.
+19. [ ] Sort replies.
+20. [ ] Add Tweets on replies.
+21. [ ] Aggregate replies by user.
