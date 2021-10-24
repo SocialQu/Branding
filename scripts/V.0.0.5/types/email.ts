@@ -195,6 +195,7 @@ export interface iEmailEditorial {
     editorial_CTA: string
     editorial_link: string
     editorial_2: string
+    kpi_footer: string
 }
 
 
