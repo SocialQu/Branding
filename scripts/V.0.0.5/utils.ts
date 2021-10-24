@@ -232,7 +232,14 @@ const addEditorial = ():iEmailEditorial => ({
     editorial_2:''
 })
 
-const addContent = ():iEmailContent => {}
+const addContent = ():iEmailContent => ({
+    content_title:'',
+    content:'',
+    content_CTA:'',
+    content_link:'',
+    content_2:''
+})
+
 const addFooter = ():iEmailFooter => {}
 
 
