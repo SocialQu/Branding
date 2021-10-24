@@ -44,7 +44,7 @@ const computeKPIs = ({ tweets, replies, user }:iAggregateData, lastWeek:iLastWee
     , 0)
 
     const computeKPI = (value:number, lastWeekValue:number|undefined):iKpi => {
-        const trend = lastWeekValue ? value/lastWeekValue*100 : undefined
+        const trend = lastWeekValue ? Math.round(value/lastWeekValue*100) : undefined
         const kpi = { value, trend, color: trend === undefined || trend > 0 ? '007500' : 'A31700' } as iKpi
         return kpi
     }
