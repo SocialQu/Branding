@@ -57,7 +57,7 @@ const getTweets = async():Promise<{tweets:iTweet[], replies:iReply[]}> => {
         }))
 
         const mappedTweets:iTweet[] = tweetsWithMetrics.filter(({ metrics }) => metrics).map(t => ({
-            id: t.id,
+            id: t.id_str,
             text: t.metrics.text,
             isReply: !!t.in_reply_to_status_id,
             datetime: t.created_at,
