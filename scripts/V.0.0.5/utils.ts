@@ -223,6 +223,17 @@ const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEma
     return emailMetrics
 }
 
+const getWeekDay = (date:Date):string => ({
+    0: 'Sunday',
+    1: 'Monday',
+    2: 'Tuesday',
+    3: 'Wednesday',
+    4: 'Thursday',
+    5: 'Friday',
+    6: 'Saturday'
+})[date.getDate()] || ''
+
+
 const getKpiFooter = () => `Data fetched Sunday at 12:00am PT. Trends computed against the 7-day average values.`
 const addEditorial = ():iEmailEditorial => ({
     editorial_title:'Your growth routine ',
