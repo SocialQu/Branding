@@ -17,7 +17,7 @@
  9. [ ] Clicks on best tweets.
 10. [X] Link on best tweets.
 11. [X] Fix topics width.
-12. [ ] White color on topics.
+12. [X] White color on topics.
 13. [ ] Add content
 14. [ ] Follower Stats on top follower.
 15. [ ] Sort followers.
