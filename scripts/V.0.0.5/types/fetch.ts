@@ -9,6 +9,7 @@ export interface iMetrics {
 
 export interface iTweet {
     id: number
+    id_str: string
     text: string
     datetime: string
     isReply: boolean
