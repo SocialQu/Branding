@@ -15,7 +15,7 @@
  7. [X] Format date.
  8. [ ] Format links.
  9. [ ] Clicks on best tweets.
-10. [ ] Link on best tweets.
+10. [X] Link on best tweets.
 11. [ ] Fix topics width.
 12. [ ] White color on topics.
 13. [ ] Add content
