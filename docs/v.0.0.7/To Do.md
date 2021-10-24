@@ -18,7 +18,7 @@
 10. [X] Link on best tweets.
 11. [X] Fix topics width.
 12. [X] White color on topics.
-13. [ ] Add content
+13. [X] Add content
 14. [ ] Follower Stats on top follower.
 15. [ ] Sort followers.
 16. [ ] Round ratios.
