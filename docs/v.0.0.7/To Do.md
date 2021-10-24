@@ -21,7 +21,7 @@
 13. [X] Add content
 14. [ ] Follower Stats on top follower.
 15. [X] Sort followers.
-16. [ ] Round ratios.
+16. [X] Round ratios.
 17. [ ] Width on niches.
 18. [ ] Trim Followers Name.
 19. [ ] Image on replies.
