@@ -233,7 +233,7 @@ const getWeekDay = (date:Date):string => ({
     4: 'Thursday',
     5: 'Friday',
     6: 'Saturday'
-})[date.getDate() as WeekDay] || ''
+})[date.getDay() as WeekDay] || ''
 
 const getTime = (date:Date) => `${date.getHours()}:${date.getMinutes()} ${date.getHours() < 12 ? 'am' : 'pm'}`
 const getKpiFooter = (date:Date) => `Data fetched on ${getWeekDay(date)} at ${getTime(date)} CT. Trends computed against the 7-day average values.`
