@@ -20,10 +20,10 @@
 12. [X] White color on topics.
 13. [X] Add content
 14. [ ] Follower Stats on top follower.
-15. [ ] Trim Followers Name.
-16. [ ] Sort followers.
-17. [ ] Round ratios.
-18. [ ] Width on niches.
+15. [X] Sort followers.
+16. [ ] Round ratios.
+17. [ ] Width on niches.
+18. [ ] Trim Followers Name.
 19. [ ] Image on replies.
 20. [ ] Sort replies.
 21. [ ] Aggregate replies by user.
