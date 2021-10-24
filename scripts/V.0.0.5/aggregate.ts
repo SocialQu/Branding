@@ -125,18 +125,19 @@ const contentAnalysis = ({ tweets }: iAggregateData):iTopic[] => {
 
 
 const labelFollowers = ({ followers }: iAggregateData):iFollowers => {
-    const [ topFollower, follower1, follower2, follower3, follower4 ] = followers
+    const topFollowers = followers.sort(({ followers:a }, { followers:b }) => a > b ? -1 : 1)
+    const [ topFollower, follower1, follower2, follower3, follower4 ] = topFollowers
     const { bio, name:screenName, handle, image:profileImage } = topFollower
 
     const mapFollower = (follower:iLabeledFollower):iFollower => ({
-        name: follower.name,
+        name: follower.name.substring(0, 20),
         niche: follower.niche,
         image: follower.image,
         link:`https://twitter.com/${follower.name}`,
         color:follower.color,
         textColor:'black',
         followers: follower.followers,
-        ratio: follower.followers/follower.following,
+        ratio: Math.round(follower.followers/follower.following*100)/100,
         ratioColor: follower.followers/follower.following > 1 ? '007500' : 'A31700'
     })
 
