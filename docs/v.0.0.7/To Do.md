@@ -25,5 +25,5 @@
 17. [ ] Width on niches.
 18. [ ] Image on replies.
 19. [ ] Sort replies.
-20. [ ] Add Tweets on replies.
-21. [ ] Aggregate replies by user.
+20. [ ] Aggregate replies by user.
+21. [ ] Replicate Footer data.
