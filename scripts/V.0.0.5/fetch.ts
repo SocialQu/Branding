@@ -30,39 +30,54 @@ const getUser = async():Promise<iUser> => {
 
 
 const getTweets = async():Promise<{tweets:iTweet[], replies:iReply[]}> => {
-    const rawTweets:iRawTweet[] = await client.get('/statuses/user_timeline.json?count=100')
-
-    const noRetweets = rawTweets.filter(({ retweeted }) => !retweeted)
-
-    const ids:string = noRetweets.map(({ id_str }) => id_str).join(',')
+    let fetchedTweets:iTweet[] = []
+    let max_id: BigInt = BigInt(0)
     const fields = 'fields=organic_metrics,created_at'
-    const metricsUrl = `tweets?ids=${ids}&tweet.${fields}`
 
-    const { data:metrics }:{ data: iRawMetrics[]} = await metricsClient.get(metricsUrl)
-    const tweetsWithMetrics = noRetweets.map((t) => ({
-        ...t, 
-        metrics: metrics.find(({ id }) => t.id_str === id) as iRawMetrics
-    }))
+    for (const x of [...Array(10)]) {
+        const count = 100
 
-    const mappedTweets:iTweet[] = tweetsWithMetrics.filter(({ metrics }) => metrics).map(t => ({
-        id: t.id,
-        text: t.metrics.text,
-        isReply: !!t.in_reply_to_status_id,
-        datetime: t.created_at,
-        metrics:{
-            likes: t.metrics.organic_metrics.like_count,
-            replies: t.metrics.organic_metrics.reply_count,
-            retweets: t.metrics.organic_metrics.retweet_count,
-            impressions: t.metrics.organic_metrics.impression_count,
-            visits: t.metrics.organic_metrics.user_profile_clicks,
-            clicks: t.metrics.organic_metrics.url_link_clicks || 0
-        },
-        userId:t.in_reply_to_user_id_str,
-        userName:t.in_reply_to_screen_name
-    }))
+        const rawTweets:iRawTweet[] =  !max_id
+            ? await client.get(`/statuses/user_timeline.json?count=${count}`) 
+            : await client.get(`/statuses/user_timeline.json?count=${count}&max_id=${max_id}`)
 
-    const tweets = mappedTweets.filter(({ isReply }) => !isReply)
-    const replies = mappedTweets.filter(({ isReply }) => isReply) as iReply[]
+        const noRetweets = rawTweets.filter(({ retweeted }) => !retweeted)
+        if(!noRetweets.length) break
+
+        const ids:string = noRetweets.map(({ id_str }) => id_str).join(',')
+        max_id = (BigInt(ids.split(',')[ids.split(',').length - 1]) - BigInt(1))
+        const metricsUrl = `tweets?ids=${ids}&tweet.${fields}`
+
+        const { data:metrics }:{ data: iRawMetrics[]} = await metricsClient.get(metricsUrl)
+        if (!metrics)  break
+
+        const tweetsWithMetrics = noRetweets.map((t) => ({
+            ...t,
+            metrics: metrics.find(({ id }) => t.id_str === id) as iRawMetrics
+        }))
+
+        const mappedTweets:iTweet[] = tweetsWithMetrics.filter(({ metrics }) => metrics).map(t => ({
+            id: t.id,
+            text: t.metrics.text,
+            isReply: !!t.in_reply_to_status_id,
+            datetime: t.created_at,
+            metrics:{
+                likes: t.metrics.organic_metrics.like_count,
+                replies: t.metrics.organic_metrics.reply_count,
+                retweets: t.metrics.organic_metrics.retweet_count,
+                impressions: t.metrics.organic_metrics.impression_count,
+                visits: t.metrics.organic_metrics.user_profile_clicks,
+                clicks: t.metrics.organic_metrics.url_link_clicks || 0
+            },
+            userId:t.in_reply_to_user_id_str,
+            userName:t.in_reply_to_screen_name
+        }))
+
+        fetchedTweets = [...fetchedTweets, ...mappedTweets]
+    }
+
+    const tweets = fetchedTweets.filter(({ isReply }) => !isReply)
+    const replies = fetchedTweets.filter(({ isReply }) => isReply) as iReply[]
 
     return { tweets, replies }
 }
