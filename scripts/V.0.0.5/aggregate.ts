@@ -152,9 +152,18 @@ const labelFollowers = ({ followers }: iAggregateData):iFollowers => {
 
 
 const sortReplies = ({ replies }: iAggregateData) => {
-    const groupReplies = replies.reduce((d, i) => 
+    const grouppedReplies = replies.reduce((d, i) => 
         ({...d, [i.userName]: d[i.userName] ? [...d[i.userName], i] : [i] })
     , {} as {[mention:string]:iReply[] })
+
+    const mentions = Object.keys(grouppedReplies).reduce((d, i) => [...d, grouppedReplies[i]], [] as iReply[][])
+ 
+    interface iAggregatedMention { userName:string, impressions:number, engagements:number }
+    const aggregatedMentions:iAggregatedMention[] = mentions.map(replies => ({
+        userName: replies[0].userName, 
+        impressions: replies.reduce((d, { metrics }) => d+= metrics.impressions, 0),
+        engagements: replies.reduce((d, { metrics:m }) => d += m.likes + m.retweets + m.replies + m.visits + m.clicks , 0)
+    }))
 
     const sortedReplies = [...replies].sort(({metrics:{impressions:a}}, {metrics:{impressions:b}}) => a > b ? 1 : -1)
     const topReplies = sortedReplies.filter((_, i) => i < 5)
