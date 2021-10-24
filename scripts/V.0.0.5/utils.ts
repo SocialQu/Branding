@@ -229,7 +229,8 @@ const addEditorial = ():iEmailEditorial => ({
     editorial:'includes all the daily activities that helps you build an audience over time. It can include creating content, replying to tweets, sending DMs or finding new leads! Do you have a growth routine? ',
     editorial_CTA:'Share it with me.',
     editorial_link:'https://twitter.com/SocialQui',
-    editorial_2:''
+    editorial_2:'',
+    kpi_footer:`Data fetched Sunday at 12:00am PT. Trends computed against the 7-day average values.`
 })
 
 const addContent = ():iEmailContent => ({
