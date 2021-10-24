@@ -224,7 +224,14 @@ const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEma
 }
 
 
-const addEditorial = ():iEmailEditorial => {}
+const addEditorial = ():iEmailEditorial => ({
+    editorial_title:'',
+    editorial:'',
+    editorial_CTA:'',
+    editorial_link:'',
+    editorial_2:''
+})
+
 const addContent = ():iEmailContent => {}
 const addFooter = ():iEmailFooter => {}
 
