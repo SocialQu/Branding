@@ -9,7 +9,7 @@
     - [X] Iterate until all tweets are fetched.
 
  3. [X] Colors on trends.
- 4. [ ] Editorial
+ 4. [X] Editorial
  5. [ ] KPI footer with time.
  6. [ ] Sort best tweets.
  7. [ ] Format date.
