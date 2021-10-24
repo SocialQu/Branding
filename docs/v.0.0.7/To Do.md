@@ -11,7 +11,7 @@
  3. [X] Colors on trends.
  4. [X] Editorial
  5. [X] KPI footer with time.
- 6. [ ] Sort best tweets.
+ 6. [X] Sort best tweets.
  7. [ ] Format date.
  8. [ ] Format links.
  9. [ ] Fix topics width.
