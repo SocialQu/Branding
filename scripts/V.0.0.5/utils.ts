@@ -1,8 +1,24 @@
 import { iEmailEditorial, iEmailContent, iEmailFooter, iEmailData, iEmailMetrics } from './types/email'
 import { iEmailKpis, iEmailTweets, iEmailTopics, iEmailFollowers, iEmailReplies } from './types/email'
-import {  } from './types/email'
 import { iData } from './types/data'
 
+
+type WeekDay = 0 | 1 | 2 | 3 | 4 | 5 | 6 
+const getWeekDay = (date:Date):string => ({
+    0: 'Sunday',
+    1: 'Monday',
+    2: 'Tuesday',
+    3: 'Wednesday',
+    4: 'Thursday',
+    5: 'Friday',
+    6: 'Saturday'
+})[date.getDay() as WeekDay] || ''
+
+const getTime = (date:Date) => `${date.getHours()}:${String(date.getMinutes()).length > 1 ? date.getMinutes() : `0${date.getMinutes()}`} ${date.getHours() < 12 ? 'am' : 'pm'} CT`
+const formatDate = (date:Date):string => {
+    const dateTime = new Date(date) // TODO: Delete when JSON is not reused.
+    return `${getWeekDay(dateTime)} ${getTime(dateTime)}`
+}
 
 const formatNumber = (value:number|undefined):string => {
     if(value === undefined) return `-`
@@ -13,9 +29,6 @@ const formatNumber = (value:number|undefined):string => {
 
     return `${value}`
 }
-
-
-const formatDate = (date:Date):string => String(date)
 
 
 const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEmailMetrics => {
@@ -224,19 +237,7 @@ const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEma
 }
 
 
-type WeekDay = 0 | 1 | 2 | 3 | 4 | 5 | 6 
-const getWeekDay = (date:Date):string => ({
-    0: 'Sunday',
-    1: 'Monday',
-    2: 'Tuesday',
-    3: 'Wednesday',
-    4: 'Thursday',
-    5: 'Friday',
-    6: 'Saturday'
-})[date.getDay() as WeekDay] || ''
-
-const getTime = (date:Date) => `${date.getHours()}:${String(date.getMinutes()).length > 1 ? date.getMinutes() : `0${date.getMinutes()}`} ${date.getHours() < 12 ? 'am' : 'pm'}`
-const getKpiFooter = (date:Date) => `Data fetched on ${getWeekDay(date)} at ${getTime(date)} CT. Trends computed against the 7-day average values.`
+const getKpiFooter = (date:Date) => `Data fetched on ${getWeekDay(date)} at ${getTime(date)}. Trends computed against the 7-day average values.`
 const addEditorial = ():iEmailEditorial => ({
     editorial_title:'Your growth routine ',
     editorial:'includes all the daily activities that helps you build an audience over time. It can include creating content, replying to tweets, sending DMs or finding new leads! Do you have a growth routine? ',
