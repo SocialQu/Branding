@@ -28,15 +28,16 @@ const filterData = (data:iAggregateData) => {
     return { filteredData, lastWeekData }
 }
 
+const sumEngagements = (m:iMetrics) => m.likes + m.retweets + m.replies + m.visits + m.clicks
+
 interface iLastWeekData { tweets:iReducedTweet[], replies:iReply[] }
 const computeKPIs = ({ tweets, replies, user }:iAggregateData, lastWeek:iLastWeekData):iKpis => {
     const getImpressions = ({tweets, replies}:{tweets: iTweet[], replies:iTweet[]}):number => [
-        ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.impressions
+        ...tweets, ...replies].reduce((d, { metrics }) => d += metrics.impressions
     , 0)
     
     const getEngagements = ({tweets, replies}:{tweets: iTweet[], replies:iTweet[]}):number => [
-        ...tweets, ...replies].reduce((d, { metrics: { likes, retweets, replies, visits, clicks } }) => 
-        d+= likes + retweets + replies + visits + clicks
+        ...tweets, ...replies].reduce((d, { metrics }) => d += sumEngagements(metrics)
     , 0)
     
     const getClicks = ({tweets, replies}:{tweets: iTweet[], replies:iTweet[]}):number => [
@@ -94,13 +95,12 @@ const contentAnalysis = ({ tweets }: iAggregateData):iTopic[] => {
         tweets: tweets.filter(({ topic:t }) => topic === t)
     }))
 
-    const countEngagements = (m: iMetrics) => m.likes + m.clicks + m.visits + m.replies + m.retweets
     const engagementTopics = topicsDict.map(({ topic, tweets }) => ({
         topic,
         tweets:tweets.length,
         color: tweets[0].color,
         impressions: tweets.reduce((d, { metrics }) => d += metrics.impressions, 0 ),
-        engagements: tweets.reduce((d, { metrics }) => d+= countEngagements(metrics), 0)
+        engagements: tweets.reduce((d, { metrics }) => d+= sumEngagements(metrics), 0)
     }))
 
     const sortedTopics = engagementTopics.sort(({ engagements:a }, { engagements:b }) => a > b ? -1 : 1)
@@ -152,20 +152,33 @@ const labelFollowers = ({ followers }: iAggregateData):iFollowers => {
 
 
 const sortReplies = ({ replies }: iAggregateData) => {
-    const sortedReplies = [...replies].sort(({metrics:{impressions:a}}, {metrics:{impressions:b}}) => a > b ? 1 : -1)
+    const grouppedReplies = replies.reduce((d, i) => 
+        ({...d, [i.userName]: d[i.userName] ? [...d[i.userName], i] : [i] })
+    , {} as {[mention:string]:iReply[] })
+
+    const mentions = Object.keys(grouppedReplies).reduce((d, i) => [...d, grouppedReplies[i]], [] as iReply[][])
+ 
+    interface iAggregatedMention { userName:string, impressions:number, engagements:number }
+    const aggregatedMentions:iAggregatedMention[] = mentions.map(replies => ({
+        userName: replies[0].userName, 
+        impressions: replies.reduce((d, { metrics }) => d+= metrics.impressions, 0),
+        engagements: replies.reduce((d, { metrics:m }) => d += m.likes + m.retweets + m.replies + m.visits + m.clicks , 0)
+    }))
+
+    const sortedReplies = [...aggregatedMentions].sort(({impressions:a}, {impressions:b}) => a > b ? -1 : 1)
     const topReplies = sortedReplies.filter((_, i) => i < 5)
 
     if(!topReplies.length) return []
-    const replyBottomImpressions = topReplies[topReplies.length - 1].metrics.impressions
-    const replyImpressions = topReplies[0].metrics.impressions - replyBottomImpressions
+    const replyBottomImpressions = topReplies[topReplies.length - 1].impressions
+    const replyImpressions = topReplies[0].impressions - replyBottomImpressions
 
-    const emailReplies:iMention[] = topReplies.map(({metrics:m, ...r}) => ({
+    const emailReplies:iMention[] = topReplies.map(({impressions, engagements, ...r}) => ({
         image: '',
+        impressions,
+        engagements,
         name: r.userName,
-        impressions: m.impressions,
         link: `https://twitter.com/${r.userName}`,
-        engagements: m.likes + m.retweets + m.replies + m.visits + m.clicks,
-        percent: Math.round(((m.impressions - replyBottomImpressions)/replyImpressions)*50) + 50
+        percent: Math.round(((impressions - replyBottomImpressions)/replyImpressions)*50) + 50
     }))
 
     return emailReplies
