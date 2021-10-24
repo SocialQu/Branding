@@ -1,12 +1,12 @@
 # To Do
 
  1. [X] Format numbers on KPIs
- 2. [ ] Trend values.
+ 2. [X] Trend values.
     - [X] Separate tweets by 7 day periods.
     - [X] Get two similar data objects one for each week.
     - [X] Compute the trend by comparing both objects.
-    - [ ] Iterate until all tweets are fetched.
-    - [ ] Use only last week tweets for the rest of the metrics.
+    - [X] Use only last week tweets for the rest of the metrics.
+    - [X] Iterate until all tweets are fetched.
 
  3. [ ] Colors on trends.
  4. [ ] Editorial
