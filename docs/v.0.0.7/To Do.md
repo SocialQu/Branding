@@ -15,14 +15,15 @@
  7. [ ] Format date.
  8. [ ] Format links.
  9. [ ] Clicks on best tweets.
-10. [ ] Fix topics width.
-11. [ ] White color on topics.
-12. [ ] Add content
-13. [ ] Follower Stats on top follower.
-14. [ ] Sort followers.
-15. [ ] Round ratios.
-16. [ ] Width on niches.
-17. [ ] Image on replies.
-18. [ ] Sort replies.
-19. [ ] Add Tweets on replies.
-20. [ ] Aggregate replies by user.
+10. [ ] Link on best tweets.
+11. [ ] Fix topics width.
+12. [ ] White color on topics.
+13. [ ] Add content
+14. [ ] Follower Stats on top follower.
+15. [ ] Sort followers.
+16. [ ] Round ratios.
+17. [ ] Width on niches.
+18. [ ] Image on replies.
+19. [ ] Sort replies.
+20. [ ] Add Tweets on replies.
+21. [ ] Aggregate replies by user.
