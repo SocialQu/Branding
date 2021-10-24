@@ -15,6 +15,10 @@ const getWeekDay = (date:Date):string => ({
 })[date.getDay() as WeekDay] || ''
 
 const getTime = (date:Date) => `${date.getHours()}:${String(date.getMinutes()).length > 1 ? date.getMinutes() : `0${date.getMinutes()}`} ${date.getHours() < 12 ? 'am' : 'pm'} CT`
+const formatDate = (date:Date):string => {
+    const dateTime = new Date(date) // TODO: Delete when JSON is not reused.
+    return `${getWeekDay(dateTime)} ${getTime(dateTime)}`
+}
 
 const formatNumber = (value:number|undefined):string => {
     if(value === undefined) return `-`
@@ -27,7 +31,6 @@ const formatNumber = (value:number|undefined):string => {
 }
 
 
-const formatDate = (date:Date):string => `${getWeekDay(date)} ${getTime(date)}`
 const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEmailMetrics => {
     const { followers:followersKpi, engagements, impressions, clicks, tweets, replies:repliesKpis } = kpis
     const { profile, tweets:[tweet1, tweet2, tweet3] } = bestTweets
