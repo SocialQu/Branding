@@ -1,5 +1,6 @@
-import { iEmailKpis, iEmailTweets, iEmailTopics, iEmailFollowers } from './types/email'
-import { iEmailReplies, iEmailMetrics, iEmailData } from './types/email'
+import { iEmailEditorial, iEmailContent, iEmailFooter, iEmailData, iEmailMetrics } from './types/email'
+import { iEmailKpis, iEmailTweets, iEmailTopics, iEmailFollowers, iEmailReplies } from './types/email'
+import {  } from './types/email'
 import { iData } from './types/data'
 
 
@@ -223,12 +224,19 @@ const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEma
 }
 
 
-const addEditorial = () => {
+const addEditorial = ():iEmailEditorial => {}
+const addContent = ():iEmailContent => {}
+const addFooter = ():iEmailFooter => {}
 
+
+const wrapEmail = (metrics:iEmailMetrics):iEmailData => {
+    return {
+        ...metrics,
+        ...addEditorial(),
+        ...addContent(),
+        ...addFooter()
+    }
 }
-
-
-const wrapEmail = (metrics:iEmailMetrics):iEmailData => {}
 
 export const writeEmail = (data:iData):iEmailData => {
     const metrics = buildEmail(data)
