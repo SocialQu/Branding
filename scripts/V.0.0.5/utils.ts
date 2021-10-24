@@ -4,6 +4,19 @@ import {  } from './types/email'
 import { iData } from './types/data'
 
 
+type WeekDay = 0 | 1 | 2 | 3 | 4 | 5 | 6 
+const getWeekDay = (date:Date):string => ({
+    0: 'Sunday',
+    1: 'Monday',
+    2: 'Tuesday',
+    3: 'Wednesday',
+    4: 'Thursday',
+    5: 'Friday',
+    6: 'Saturday'
+})[date.getDay() as WeekDay] || ''
+
+const getTime = (date:Date) => `${date.getHours()}:${String(date.getMinutes()).length > 1 ? date.getMinutes() : `0${date.getMinutes()}`} ${date.getHours() < 12 ? 'am' : 'pm'} CT`
+
 const formatNumber = (value:number|undefined):string => {
     if(value === undefined) return `-`
 
@@ -222,18 +235,6 @@ const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEma
 }
 
 
-type WeekDay = 0 | 1 | 2 | 3 | 4 | 5 | 6 
-const getWeekDay = (date:Date):string => ({
-    0: 'Sunday',
-    1: 'Monday',
-    2: 'Tuesday',
-    3: 'Wednesday',
-    4: 'Thursday',
-    5: 'Friday',
-    6: 'Saturday'
-})[date.getDay() as WeekDay] || ''
-
-const getTime = (date:Date) => `${date.getHours()}:${String(date.getMinutes()).length > 1 ? date.getMinutes() : `0${date.getMinutes()}`} ${date.getHours() < 12 ? 'am' : 'pm'} CT`
 const getKpiFooter = (date:Date) => `Data fetched on ${getWeekDay(date)} at ${getTime(date)}. Trends computed against the 7-day average values.`
 const addEditorial = ():iEmailEditorial => ({
     editorial_title:'Your growth routine ',
