@@ -165,20 +165,20 @@ const sortReplies = ({ replies }: iAggregateData) => {
         engagements: replies.reduce((d, { metrics:m }) => d += m.likes + m.retweets + m.replies + m.visits + m.clicks , 0)
     }))
 
-    const sortedReplies = [...replies].sort(({metrics:{impressions:a}}, {metrics:{impressions:b}}) => a > b ? 1 : -1)
+    const sortedReplies = [...aggregatedMentions].sort(({impressions:a}, {impressions:b}) => a > b ? 1 : -1)
     const topReplies = sortedReplies.filter((_, i) => i < 5)
 
     if(!topReplies.length) return []
-    const replyBottomImpressions = topReplies[topReplies.length - 1].metrics.impressions
-    const replyImpressions = topReplies[0].metrics.impressions - replyBottomImpressions
+    const replyBottomImpressions = topReplies[topReplies.length - 1].impressions
+    const replyImpressions = topReplies[0].impressions - replyBottomImpressions
 
-    const emailReplies:iMention[] = topReplies.map(({metrics:m, ...r}) => ({
+    const emailReplies:iMention[] = topReplies.map(({impressions, engagements, ...r}) => ({
         image: '',
+        impressions,
+        engagements,
         name: r.userName,
-        impressions: m.impressions,
         link: `https://twitter.com/${r.userName}`,
-        engagements: m.likes + m.retweets + m.replies + m.visits + m.clicks,
-        percent: Math.round(((m.impressions - replyBottomImpressions)/replyImpressions)*50) + 50
+        percent: Math.round(((impressions - replyBottomImpressions)/replyImpressions)*50) + 50
     }))
 
     return emailReplies
