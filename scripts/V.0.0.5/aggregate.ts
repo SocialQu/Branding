@@ -107,8 +107,8 @@ const contentAnalysis = ({ tweets }: iAggregateData):iTopic[] => {
     const topTopics = sortedTopics.filter((_, i, l) => i < 5).filter((_, i) => i < 5)
 
     if(!topTopics.length) return []
-    const bottomImpressions = topTopics[topTopics.length - 1].impressions
-    const topicImpressions = topTopics[0].impressions - bottomImpressions
+    const bottomEngagements = topTopics[topTopics.length - 1].engagements
+    const topicEngagements = topTopics[0].engagements - bottomEngagements
 
     const topics:iTopic[] = topTopics.map(({ topic, tweets, engagements, impressions, color }) => ({
         name:topic,
@@ -117,7 +117,7 @@ const contentAnalysis = ({ tweets }: iAggregateData):iTopic[] => {
         tweets,
         impressions,
         engagements,
-        width:Math.round(((impressions - bottomImpressions)/topicImpressions)*50) + 50
+        width:Math.round(((engagements - bottomEngagements)/topicEngagements)*50) + 50
     }))
 
     return topics

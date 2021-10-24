@@ -16,14 +16,14 @@
  8. [ ] Format links.
  9. [ ] Clicks on best tweets.
 10. [X] Link on best tweets.
-11. [ ] Fix topics width.
-12. [ ] White color on topics.
-13. [ ] Add content
+11. [X] Fix topics width.
+12. [X] White color on topics.
+13. [X] Add content
 14. [ ] Follower Stats on top follower.
 15. [ ] Sort followers.
 16. [ ] Round ratios.
 17. [ ] Width on niches.
 18. [ ] Image on replies.
 19. [ ] Sort replies.
-20. [ ] Add Tweets on replies.
-21. [ ] Aggregate replies by user.
+20. [ ] Aggregate replies by user.
+21. [ ] Replicate Footer data.
