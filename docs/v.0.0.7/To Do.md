@@ -23,7 +23,7 @@
 15. [X] Sort followers.
 16. [X] Round ratios.
 17. [X] Width on niches.
-18. [ ] Trim Followers Name.
+18. [X] Trim Followers Name.
 19. [ ] Image on replies.
 20. [ ] Sort replies.
 21. [ ] Aggregate replies by user.
