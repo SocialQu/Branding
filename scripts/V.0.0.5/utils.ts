@@ -233,8 +233,10 @@ const getWeekDay = (date:Date):string => ({
     6: 'Saturday'
 })[date.getDate()] || ''
 
+const getTime = (date:Date) => `${date.getHours()}:${date.getMinutes()} ${date.getHours() < 12 ? 'am' : 'pm'}`
 
-const getKpiFooter = (date:Date) => `Data fetched ${getWeekDay(date)} at 12:00am PT. Trends computed against the 7-day average values.`
+
+const getKpiFooter = (date:Date) => `Data fetched ${getWeekDay(date)} at ${date.getHours()}:${date.getMinutes()} CT. Trends computed against the 7-day average values.`
 const addEditorial = ():iEmailEditorial => ({
     editorial_title:'Your growth routine ',
     editorial:'includes all the daily activities that helps you build an audience over time. It can include creating content, replying to tweets, sending DMs or finding new leads! Do you have a growth routine? ',
