@@ -225,11 +225,11 @@ const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEma
 
 
 const addEditorial = ():iEmailEditorial => ({
-    editorial_title:'',
-    editorial:'',
-    editorial_CTA:'',
-    editorial_link:'',
-    editorial_2:''
+    editorial_title:'Your growth routine ',
+    editorial:'includes all the daily activities that helps you build an audience over time. Do you have a growth routine? I invite you to ',
+    editorial_CTA:'share it with me',
+    editorial_link:'https://twitter.com/SocialQui',
+    editorial_2:'.'
 })
 
 const addContent = ():iEmailContent => ({
