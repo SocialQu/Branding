@@ -223,6 +223,8 @@ const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEma
     return emailMetrics
 }
 
+
+type WeekDay = 0 | 1 | 2 | 3 | 4 | 5 | 6 
 const getWeekDay = (date:Date):string => ({
     0: 'Sunday',
     1: 'Monday',
@@ -231,7 +233,7 @@ const getWeekDay = (date:Date):string => ({
     4: 'Thursday',
     5: 'Friday',
     6: 'Saturday'
-})[date.getDate()] || ''
+})[date.getDate() as WeekDay] || ''
 
 const getTime = (date:Date) => `${date.getHours()}:${date.getMinutes()} ${date.getHours() < 12 ? 'am' : 'pm'}`
 const getKpiFooter = (date:Date) => `Data fetched ${getWeekDay(date)} at ${getTime(date)} CT. Trends computed against the 7-day average values.`
