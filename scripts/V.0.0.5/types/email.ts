@@ -189,7 +189,7 @@ export interface iEmailReplies {
 }
 
 
-interface iEmailContent {
+export interface iEmailContent {
     editorial_title: string
     editorial: string
     editorial_CTA: string
@@ -204,7 +204,7 @@ interface iEmailContent {
 }
 
 
-interface iEmailFooter {
+export interface iEmailFooter {
     cta_link: string
     Sender_City: string
     Sender_State: string
