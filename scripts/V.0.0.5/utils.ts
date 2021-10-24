@@ -240,7 +240,13 @@ const addContent = ():iEmailContent => ({
     content_2:''
 })
 
-const addFooter = ():iEmailFooter => {}
+const addFooter = ():iEmailFooter => ({
+    cta_link: '',
+    Sender_City: '',
+    Sender_State: '',
+    Sender_Zip: '',
+    unsubscribe: ''    
+})
 
 
 const wrapEmail = (metrics:iEmailMetrics):iEmailData => {
