@@ -1,4 +1,6 @@
-import { iEmailKpis, iEmailTweets, iEmailTopics, iEmailFollowers, iEmailReplies, iEmailMetrics } from './types/email'
+import { iEmailEditorial, iEmailContent, iEmailFooter, iEmailData, iEmailMetrics } from './types/email'
+import { iEmailKpis, iEmailTweets, iEmailTopics, iEmailFollowers, iEmailReplies } from './types/email'
+import {  } from './types/email'
 import { iData } from './types/data'
 
 
@@ -15,7 +17,8 @@ const formatNumber = (value:number|undefined):string => {
 
 const formatDate = (date:Date):string => String(date)
 
-export const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEmailMetrics => {
+
+const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEmailMetrics => {
     const { followers:followersKpi, engagements, impressions, clicks, tweets, replies:repliesKpis } = kpis
     const { profile, tweets:[tweet1, tweet2, tweet3] } = bestTweets
     const [ topic1, topic2, topic3, topic4, topic5 ] = topics
@@ -220,5 +223,43 @@ export const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iDat
     return emailMetrics
 }
 
-export const writeJSON = () => {}
-export const sendEmail = () => {}
+
+const addEditorial = ():iEmailEditorial => ({
+    editorial_title:'',
+    editorial:'',
+    editorial_CTA:'',
+    editorial_link:'',
+    editorial_2:''
+})
+
+const addContent = ():iEmailContent => ({
+    content_title:'',
+    content:'',
+    content_CTA:'',
+    content_link:'',
+    content_2:''
+})
+
+const addFooter = ():iEmailFooter => ({
+    cta_link: '',
+    Sender_City: '',
+    Sender_State: '',
+    Sender_Zip: '',
+    unsubscribe: ''    
+})
+
+
+const wrapEmail = (metrics:iEmailMetrics):iEmailData => {
+    return {
+        ...metrics,
+        ...addEditorial(),
+        ...addContent(),
+        ...addFooter()
+    }
+}
+
+export const writeEmail = (data:iData):iEmailData => {
+    const metrics = buildEmail(data)
+    const email = wrapEmail(metrics)
+    return email    
+}

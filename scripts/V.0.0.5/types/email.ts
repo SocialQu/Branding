@@ -189,13 +189,16 @@ export interface iEmailReplies {
 }
 
 
-interface iEmailContent {
+export interface iEmailEditorial {
     editorial_title: string
     editorial: string
     editorial_CTA: string
     editorial_link: string
     editorial_2: string
+}
 
+
+export interface iEmailContent {
     content_title: string
     content: string
     content_CTA: string
@@ -204,7 +207,7 @@ interface iEmailContent {
 }
 
 
-interface iEmailFooter {
+export interface iEmailFooter {
     cta_link: string
     Sender_City: string
     Sender_State: string
@@ -213,4 +216,4 @@ interface iEmailFooter {
 }
 
 export interface iEmailMetrics extends iEmailKpis, iEmailTweets, iEmailTopics, iEmailFollowers, iEmailReplies {}
-export interface iEmailData extends iEmailMetrics, iEmailContent, iEmailFooter {}
+export interface iEmailData extends iEmailMetrics, iEmailEditorial, iEmailContent, iEmailFooter {}
