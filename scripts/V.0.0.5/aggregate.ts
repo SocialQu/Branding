@@ -152,6 +152,10 @@ const labelFollowers = ({ followers }: iAggregateData):iFollowers => {
 
 
 const sortReplies = ({ replies }: iAggregateData) => {
+    const groupReplies = replies.reduce((d, i) => 
+        ({...d, [i.userName]: d[i.userName] ? [...d[i.userName], i] : [i] })
+    , {} as {[mention:string]:iReply[] })
+
     const sortedReplies = [...replies].sort(({metrics:{impressions:a}}, {metrics:{impressions:b}}) => a > b ? 1 : -1)
     const topReplies = sortedReplies.filter((_, i) => i < 5)
 
