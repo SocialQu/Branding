@@ -17,6 +17,7 @@ const writeFile = '../../email/write.json'
 const fetch = async() => {
     const fetched = await fetchData()
     await fs.writeFile(fetchedFile, JSON.stringify(fetched))
+    console.log('Fetched')
 }
 
 const classify = async() => {
@@ -27,6 +28,7 @@ const classify = async() => {
     const analysisJson = JSON.stringify(analysis)
 
     await fs.writeFile(analysisFile, analysisJson)
+    console.log('Classified')
 }
 
 
@@ -38,6 +40,7 @@ const aggregate = async() => {
     const aggregatedJson = JSON.stringify(aggregatedData)
 
     await fs.writeFile(aggregatedFile, aggregatedJson)
+    console.log('Aggregated')
 }
 
 
@@ -45,11 +48,21 @@ const write = async() => {
     const aggregated = await fs.readFile(aggregatedFile)
     const aggregatedJson = JSON.parse(aggregated.toString())
 
-    const writteData = buildEmail(aggregatedJson)
-    const writteJson = JSON.stringify(writteData)
+    const writeData = buildEmail(aggregatedJson)
+    const writeJson = JSON.stringify(writeData)
 
-    await fs.writeFile(writeFile, writteJson)
+    await fs.writeFile(writeFile, writeJson)
+    console.log('Wrote')
 }
 
 
-write().catch(console.log)
+const index = async() => {
+    // await fetch().catch(console.log)
+    // await classify().catch(console.log)
+
+    await aggregate().catch(console.log)
+    await write().catch(console.log)
+}
+
+
+index().catch(console.log)

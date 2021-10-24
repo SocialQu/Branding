@@ -28,23 +28,23 @@ export const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iDat
         follower_color: followersKpi.color,
 
         engagements: formatNumber(engagements.value),
-        engagements_trend: formatNumber(engagements.trend),
+        engagements_trend: `${formatNumber(engagements.trend)}%`,
         engagements_color: engagements.color,
 
         impressions: formatNumber(impressions.value),
-        impressions_trend: formatNumber(impressions.trend),
+        impressions_trend: `${formatNumber(impressions.trend)}%`,
         impressions_color: impressions.color,
 
         clicks: formatNumber(clicks.value),
-        clicks_trend: formatNumber(clicks.trend),
+        clicks_trend: `${formatNumber(clicks.trend)}%`,
         clicks_color: clicks.color,
 
         tweets: formatNumber(tweets.value),
-        tweets_trend: formatNumber(tweets.trend),
+        tweets_trend: `${formatNumber(tweets.trend)}%`,
         tweets_color: tweets.color,
 
         replies: formatNumber(repliesKpis.value),
-        replies_trend: formatNumber(repliesKpis.trend),
+        replies_trend: `${formatNumber(repliesKpis.trend)}%`,
         replies_color: repliesKpis.color
     }
 

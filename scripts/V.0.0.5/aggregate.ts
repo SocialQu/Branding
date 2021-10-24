@@ -18,12 +18,12 @@ const filterReplies = ({ replies }:iAggregateData) => {
 }
 
 const daySeconds = 1000*60*60*24
-const getDaysDelta = (datetime:string) => (Number(new Date(datetime)) - Number(new Date()))/daySeconds
+const getDaysDelta = (datetime:string) => (Number(new Date()) - Number(new Date(datetime)))/daySeconds
 const filterData = (data:iAggregateData) => {
     const { weekTweets, lastWeekTweets } = filterTweets(data)
     const { weekReplies, lastWeekReplies } = filterReplies(data)
 
-    const filteredData = {...data, tweets:weekTweets, replies:weekReplies }
+    const filteredData = { ...data, tweets:weekTweets, replies:weekReplies }
     const lastWeekData = { tweets:lastWeekTweets, replies:lastWeekReplies }
     return { filteredData, lastWeekData }
 }
@@ -44,8 +44,9 @@ const computeKPIs = ({ tweets, replies, user }:iAggregateData, lastWeek:iLastWee
     , 0)
 
     const computeKPI = (value:number, lastWeekValue:number|undefined):iKpi => {
-        const trend = lastWeekValue ? value/lastWeekValue : undefined
-        return { value, trend, color: trend === undefined || trend > 0 ? '007500' : 'A31700' }
+        const trend = lastWeekValue ? Math.round(value/lastWeekValue*100) : undefined
+        const kpi = { value, trend, color: trend === undefined || trend > 0 ? '007500' : 'A31700' } as iKpi
+        return kpi
     }
 
 
@@ -104,8 +105,11 @@ const contentAnalysis = ({ tweets }: iAggregateData):iTopic[] => {
 
     const sortedTopics = engagementTopics.sort(({ engagements:a }, { engagements:b }) => a > b ? -1 : 1)
     const topTopics = sortedTopics.filter((_, i, l) => i < 5).filter((_, i) => i < 5)
+
+    if(!topTopics.length) return []
     const bottomImpressions = topTopics[topTopics.length - 1].impressions
     const topicImpressions = topTopics[0].impressions - bottomImpressions
+
     const topics:iTopic[] = topTopics.map(({ topic, tweets, engagements, impressions, color }) => ({
         name:topic,
         text: 'black', 
@@ -149,8 +153,11 @@ const labelFollowers = ({ followers }: iAggregateData):iFollowers => {
 const sortReplies = ({ replies }: iAggregateData) => {
     const sortedReplies = [...replies].sort(({metrics:{impressions:a}}, {metrics:{impressions:b}}) => a > b ? 1 : -1)
     const topReplies = sortedReplies.filter((_, i) => i < 5)
+
+    if(!topReplies.length) return []
     const replyBottomImpressions = topReplies[topReplies.length - 1].metrics.impressions
     const replyImpressions = topReplies[0].metrics.impressions - replyBottomImpressions
+
     const emailReplies:iMention[] = topReplies.map(({metrics:m, ...r}) => ({
         image: '',
         name: r.userName,
