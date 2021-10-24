@@ -248,11 +248,11 @@ const addEditorial = ():iEmailEditorial => ({
 })
 
 const addContent = ():iEmailContent => ({
-    content_title:'',
-    content:'',
-    content_CTA:'',
-    content_link:'',
-    content_2:''
+    content_title: "In the wanna-be entrepreneur podcast ",
+    content: "Dagobert talked about how he goes through all the tweets in his timeline before starting with the notifications and DMs. He spents more that 3 hours every day on Twitter and has gone from a couple hundred followers in May to more than 6,000. He also posts  ",
+    content_CTA: "hillarious memes",
+    content_link: "https://twitter.com/dagorenouf/status/1441425223270686721",
+    content_2: " and is finally starting to see his business grow.",
 })
 
 const addFooter = ():iEmailFooter => ({
