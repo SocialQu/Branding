@@ -130,7 +130,7 @@ const labelFollowers = ({ followers }: iAggregateData):iFollowers => {
     const { bio, name:screenName, handle, image:profileImage } = topFollower
 
     const mapFollower = (follower:iLabeledFollower):iFollower => ({
-        name: follower.name,
+        name: follower.name.substring(0, 20),
         niche: follower.niche,
         image: follower.image,
         link:`https://twitter.com/${follower.name}`,
