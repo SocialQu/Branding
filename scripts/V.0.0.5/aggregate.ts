@@ -137,7 +137,7 @@ const labelFollowers = ({ followers }: iAggregateData):iFollowers => {
         color:follower.color,
         textColor:'black',
         followers: follower.followers,
-        ratio: follower.followers/follower.following,
+        ratio: Math.round(follower.followers/follower.following*100)/100,
         ratioColor: follower.followers/follower.following > 1 ? '007500' : 'A31700'
     })
 
