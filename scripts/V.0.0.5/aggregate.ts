@@ -165,7 +165,7 @@ const sortReplies = ({ replies }: iAggregateData) => {
         engagements: replies.reduce((d, { metrics:m }) => d += m.likes + m.retweets + m.replies + m.visits + m.clicks , 0)
     }))
 
-    const sortedReplies = [...aggregatedMentions].sort(({impressions:a}, {impressions:b}) => a > b ? 1 : -1)
+    const sortedReplies = [...aggregatedMentions].sort(({impressions:a}, {impressions:b}) => a > b ? -1 : 1)
     const topReplies = sortedReplies.filter((_, i) => i < 5)
 
     if(!topReplies.length) return []
