@@ -223,14 +223,14 @@ const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEma
     return emailMetrics
 }
 
-
+const getKpiFooter = () => `Data fetched Sunday at 12:00am PT. Trends computed against the 7-day average values.`
 const addEditorial = ():iEmailEditorial => ({
     editorial_title:'Your growth routine ',
     editorial:'includes all the daily activities that helps you build an audience over time. It can include creating content, replying to tweets, sending DMs or finding new leads! Do you have a growth routine? ',
     editorial_CTA:'Share it with me.',
     editorial_link:'https://twitter.com/SocialQui',
     editorial_2:'',
-    kpi_footer:`Data fetched Sunday at 12:00am PT. Trends computed against the 7-day average values.`
+    kpi_footer:getKpiFooter()
 })
 
 const addContent = ():iEmailContent => ({
