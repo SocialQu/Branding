@@ -28,15 +28,16 @@ const filterData = (data:iAggregateData) => {
     return { filteredData, lastWeekData }
 }
 
+const sumEngagements = (m:iMetrics) => m.likes + m.retweets + m.replies + m.visits + m.clicks
+
 interface iLastWeekData { tweets:iReducedTweet[], replies:iReply[] }
 const computeKPIs = ({ tweets, replies, user }:iAggregateData, lastWeek:iLastWeekData):iKpis => {
     const getImpressions = ({tweets, replies}:{tweets: iTweet[], replies:iTweet[]}):number => [
-        ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.impressions
+        ...tweets, ...replies].reduce((d, { metrics }) => d += metrics.impressions
     , 0)
     
     const getEngagements = ({tweets, replies}:{tweets: iTweet[], replies:iTweet[]}):number => [
-        ...tweets, ...replies].reduce((d, { metrics: { likes, retweets, replies, visits, clicks } }) => 
-        d+= likes + retweets + replies + visits + clicks
+        ...tweets, ...replies].reduce((d, { metrics }) => d += sumEngagements(metrics)
     , 0)
     
     const getClicks = ({tweets, replies}:{tweets: iTweet[], replies:iTweet[]}):number => [
@@ -94,13 +95,12 @@ const contentAnalysis = ({ tweets }: iAggregateData):iTopic[] => {
         tweets: tweets.filter(({ topic:t }) => topic === t)
     }))
 
-    const countEngagements = (m: iMetrics) => m.likes + m.clicks + m.visits + m.replies + m.retweets
     const engagementTopics = topicsDict.map(({ topic, tweets }) => ({
         topic,
         tweets:tweets.length,
         color: tweets[0].color,
         impressions: tweets.reduce((d, { metrics }) => d += metrics.impressions, 0 ),
-        engagements: tweets.reduce((d, { metrics }) => d+= countEngagements(metrics), 0)
+        engagements: tweets.reduce((d, { metrics }) => d+= sumEngagements(metrics), 0)
     }))
 
     const sortedTopics = engagementTopics.sort(({ engagements:a }, { engagements:b }) => a > b ? -1 : 1)
