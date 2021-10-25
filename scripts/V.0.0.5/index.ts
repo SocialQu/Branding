@@ -56,7 +56,7 @@ const write = async({ screen_name }:iSubscriber) => {
 }
 
 
-const index = async(user:string) => {
+const index = async(user:string, full:boolean=false) => {
     // fetchSubscribers().catch(console.log)
 
     const fetched = await fs.readFile(subscribersFile)
@@ -64,8 +64,8 @@ const index = async(user:string) => {
     const subscriber = subscribers.find(({ screen_name }) => screen_name === user)
     if(!subscriber) return
 
-    await fetch(subscriber).catch(console.log)
-    await classify().catch(console.log)
+    if(full) await fetch(subscriber).catch(console.log)
+    if(full) await classify().catch(console.log)
 
     await aggregate().catch(console.log)
     await write(subscriber).catch(console.log)
