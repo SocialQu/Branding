@@ -32,6 +32,7 @@ const getTweets = async(client:Twitter, metricsClient:Twitter):Promise<iGetTweet
     const fields = 'fields=organic_metrics,created_at'
 
     for (const x of [...Array(10)]) {
+        console.log('Fetch', x)
         const count = 100
 
         const rawTweets:iRawTweet[] =  !max_id
