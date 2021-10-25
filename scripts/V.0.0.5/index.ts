@@ -73,4 +73,4 @@ const index = async(user:string, steps:iSteps) => {
 }
 
 
-index('SocialQui', {fetch:true, write:false}).catch(console.log)
+index('SocialQui', {fetch:false, write:true}).catch(console.log)
