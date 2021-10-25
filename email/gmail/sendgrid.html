@@ -308,7 +308,7 @@
 												<strong style="color:#000">{{editorial_title}} </strong>
 											</span>
 											<span> {{editorial}} </span>
-											<a href="{{editorial_link}}" style="color:#73bec1"> {{editorial_CTA}} </a> {{editorial_2}}
+											<a href="{{editorial_link}}" style="color:#00a2c7"> {{editorial_CTA}} </a> {{editorial_2}}
 										</ul>
 									</td>
 								</tr>
@@ -447,12 +447,12 @@
 								<td class="pads10 pads6m lastline" style="border-bottom:1px solid #e6e6e6;padding-bottom:0;border-top: 1px solid #e6e6e6; mso-padding-alt: 0 20px 0 20px;">
 									<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
 										<tbody>
-											<tr style="height:64px">
-												<td valign="middle" style="width:44%;padding-top: 8px; padding-bottom: 8px;">
-													<table class="markets-bubble" role="presentation" cellpadding="0" cellspacing="0" border="0" style="width: {{topic_width}}%;border-collapse:collapse; margin-left:12px;">
+											<tr style="height:64px;">
+												<td valign="middle" style="width:44%;padding-top: 8px; padding-bottom: 8px;padding-left:12px;">
+													<table class="markets-bubble" role="presentation" cellpadding="0" cellspacing="0" border="0" style="width: {{topic_width}}%;border-collapse:collapse;">
 														<tbody>
 															<tr>
-																<td valign="middle" style="padding-left: 8px; padding-right: 8px; padding-top: 10px; padding-bottom: 10px; border-radius: 8px; background-color:{{topic_color}};">
+																<td valign="middle" style="padding-left: 8px; padding-right: 8px; padding-top: 10px; padding-bottom: 10px; border-radius: 8px; background-color:#{{topic_color}};">
 																	<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; color:{{topic_text}}; margin-left:12px; text-align:left">{{topic_name}}</p>
 																</td>
 															</tr>
@@ -460,14 +460,15 @@
 													</table>
 												</td>
 												<td class="markets-value-cell" valign="middle" style="width:12%">
-													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;">{{topic_engagements}} 🔥 </p>
+													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align:right;">{{topic_engagements}} 🔥 </p>
 												</td>
-												<td class="markets-value-cell" valign="middle" style="width:12%">
-													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;"> {{topic_impressions}} 👀 </p>
+												<td class="audience-tag" valign="middle" style="width:14%">
+													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align:right;"> {{topic_impressions}} 👀 </p>
 												</td>
-												<td class="markets-value-cell" valign="middle" style="width:18%">
-													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: center;"> {{topic_tweets}} 🐦 </p>
+												<td class="audience-tag" valign="middle" style="width:10%">
+													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align:right;"> {{topic_tweets}} 🐦 </p>
 												</td>
+												<td valign="middle" style="width:6%"></td>
 											</tr>
 										</tbody>
 									</table>
@@ -478,12 +479,12 @@
 								<td class="pads10 pads6m lastline" style="border-bottom:1px solid #e6e6e6;padding-bottom:0;text-align: center; border-top: 1px solid #e6e6e6; mso-padding-alt: 0 20px 0 20px;">
 									<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
 										<tbody>
-											<tr style="height:64px">
-												<td valign="middle" style="width:44%;padding-top: 8px; padding-bottom: 8px;">
-													<table class="markets-bubble" role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:{{topic_width_2}}%;border-collapse:collapse; margin-left:12px;">
+											<tr style="height:64px;padding-right:12px">
+												<td valign="middle" style="width:44%;padding-top: 8px; padding-bottom: 8px;padding-left:12px;">
+													<table class="markets-bubble" role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:{{topic_width_2}}%;border-collapse:collapse;">
 														<tbody>
 															<tr>
-																<td valign="middle" style="padding-left: 8px; padding-right: 8px; padding-top: 10px; padding-bottom: 10px; border-radius: 8px; background-color:{{topic_color_2}};">
+																<td valign="middle" style="padding-left: 8px; padding-right: 8px; padding-top: 10px; padding-bottom: 10px; border-radius: 8px; background-color:#{{topic_color_2}};">
 																	<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; color:{{topic_text_2}}; margin-left:12px; text-align:left">{{topic_name_2}}</p>
 																</td>
 															</tr>
@@ -493,12 +494,14 @@
 												<td class="markets-value-cell" valign="middle" style="width:12%">
 													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;">{{topic_engagements_2}} 🔥 </p>
 												</td>
-												<td class="markets-value-cell" valign="middle" style="width:12%">
+												<td class="audience-tag" valign="middle" style="width:14%">
 													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;"> {{topic_impressions_2}} 👀 </p>
 												</td>
-												<td class="markets-value-cell" valign="middle" style="width:18%">
-													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: center;"> {{topic_tweets_2}} 🐦 </p>
+												<td class="audience-tag" valign="middle" style="width:10%">
+													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;"> {{topic_tweets_2}} 🐦 </p>
 												</td>
+
+												<td valign="middle" style="width:6%"></td>
 											</tr>
 										</tbody>
 									</table>
@@ -509,12 +512,12 @@
 								<td class="pads10 pads6m lastline" style="border-bottom:1px solid #e6e6e6;padding-bottom:0;text-align: center; border-top: 1px solid #e6e6e6; mso-padding-alt: 0 20px 0 20px;">
 									<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
 										<tbody>
-											<tr style="height:64px">
-												<td valign="middle" style="width:44%;padding-top: 8px; padding-bottom: 8px;">
-													<table class="markets-bubble" role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:{{topic_width_3}}%;border-collapse:collapse; margin-left:12px;">
+											<tr style="height:64px;padding-right:12px">
+												<td valign="middle" style="width:44%;padding-top: 8px; padding-bottom: 8px;padding-left:12px;">
+													<table class="markets-bubble" role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:{{topic_width_3}}%;border-collapse:collapse;">
 														<tbody>
 															<tr>
-																<td valign="middle" style="padding-left: 8px; padding-right: 8px; padding-top: 10px; padding-bottom: 10px; border-radius: 8px; background-color:{{topic_color_3}};margin-left:12px">
+																<td valign="middle" style="padding-left: 8px; padding-right: 8px; padding-top: 10px; padding-bottom: 10px; border-radius: 8px; background-color:#{{topic_color_3}};margin-left:12px">
 																	<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; color:{{topic_text_3}}; margin-left:12px; text-align:left">{{topic_name_3}}</p>
 																</td>
 															</tr>
@@ -524,12 +527,14 @@
 												<td class="markets-value-cell" valign="middle" style="width:12%">
 													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;">{{topic_engagements_3}} 🔥 </p>
 												</td>
-												<td class="markets-value-cell" valign="middle" style="width:12%">
+												<td class="audience-tag" valign="middle" style="width:14%">
 													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;"> {{topic_impressions_3}} 👀 </p>
 												</td>
-												<td class="markets-value-cell" valign="middle" style="width:18%">
-													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: center;"> {{topic_tweets_3}} 🐦 </p>
+												<td class="audience-tag" valign="middle" style="width:10%">
+													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;"> {{topic_tweets_3}} 🐦 </p>
 												</td>
+												<td valign="middle" style="width:6%"></td>
+
 											</tr>
 										</tbody>
 									</table>
@@ -540,9 +545,9 @@
 								<td class="pads10 pads6m lastline" style="border-bottom:1px solid #e6e6e6;padding-bottom:0;text-align: center; border-top: 1px solid #e6e6e6; mso-padding-alt: 0 20px 0 20px;">
 									<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
 										<tbody>
-											<tr style="height:64px">
-												<td valign="middle" style="width:44%;padding-top: 8px; padding-bottom: 8px;">
-													<table class="markets-bubble" role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:{{topic_width_4}}%;border-collapse:collapse; margin-left:12px;">
+											<tr style="height:64px;padding-right:12px">
+												<td valign="middle" style="width:44%;padding-top: 8px; padding-bottom: 8px;padding-left:12px;">
+													<table class="markets-bubble" role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:{{topic_width_4}}%;border-collapse:collapse;">
 														<tbody>
 															<tr>
 																<td valign="middle" style="padding-left: 8px; padding-right: 8px; padding-top: 10px; padding-bottom: 10px; border-radius: 8px; background-color:#{{topic_color_4}};">
@@ -555,12 +560,13 @@
 												<td class="markets-value-cell" valign="middle" style="width:12%">
 													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;">{{topic_engagements_4}} 🔥 </p>
 												</td>
-												<td class="markets-value-cell" valign="middle" style="width:12%">
+												<td class="audience-tag" valign="middle" style="width:14%">
 													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;"> {{topic_impressions_4}} 👀 </p>
 												</td>
-												<td class="markets-value-cell" valign="middle" style="width:18%">
-													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: center;"> {{topic_tweets_4}} 🐦 </p>
+												<td class="audience-tag" valign="middle" style="width:10%">
+													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;"> {{topic_tweets_4}} 🐦 </p>
 												</td>
+												<td valign="middle" style="width:6%"></td>
 											</tr>
 										</tbody>
 									</table>
@@ -571,12 +577,12 @@
 								<td class="pads10 pads6m lastline" style="border-bottom:1px solid #e6e6e6;padding-bottom:0;text-align: center; border-top: 1px solid #e6e6e6; mso-padding-alt: 0 20px 0 20px;">
 									<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
 										<tbody>
-											<tr style="height:64px">
-												<td valign="middle" style="width:44%;padding-top: 8px; padding-bottom: 8px;">
-													<table class="markets-bubble" role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:{{topic_width_5}}%;border-collapse:collapse; margin-left:12px;">
+											<tr style="height:64px;padding-right:12px">
+												<td valign="middle" style="width:44%;padding-top: 8px; padding-bottom: 8px;padding-left:12px;">
+													<table class="markets-bubble" role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:{{topic_width_5}}%;border-collapse:collapse;">
 														<tbody>
 															<tr>
-																<td valign="middle" style="padding-left: 8px; padding-right: 8px; padding-top: 10px; padding-bottom: 10px; border-radius: 8px; background-color:{{topic_color_5}};">
+																<td valign="middle" style="padding-left: 8px; padding-right: 8px; padding-top: 10px; padding-bottom: 10px; border-radius: 8px; background-color:#{{topic_color_5}};">
 																	<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; color:{{topic_text_5}}; margin-left:12px; ; text-align:left">{{topic_name_5}}</p>
 																</td>
 															</tr>
@@ -586,12 +592,13 @@
 												<td class="markets-value-cell" valign="middle" style="width:12%">
 													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;">{{topic_engagements_5}} 🔥 </p>
 												</td>
-												<td class="markets-value-cell" valign="middle" style="width:12%">
+												<td class="audience-tag" valign="middle" style="width:14%">
 													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;"> {{topic_impressions_5}} 👀 </p>
 												</td>
-												<td class="markets-value-cell" valign="middle" style="width:18%">
-													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: center;"> {{topic_tweets_5}} 🐦 </p>
+												<td class="audience-tag" valign="middle" style="width:10%">
+													<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;"> {{topic_tweets_5}} 🐦 </p>
 												</td>
+												<td valign="middle" style="width:6%"></td>
 											</tr>
 										</tbody>
 									</table>
@@ -604,7 +611,7 @@
 											<strong style="color:#000">{{content_title}} </strong>
 										</span>
 										<span>{{content}}</span>
-										<a href="{{content_link}}" style="color:#73bec1"> {{content_CTA}}</a>{{content_2}}
+										<a href="{{content_link}}" style="color:#00a2c7"> {{content_CTA}}</a>{{content_2}}
 									</ul>
 								</td>
 							</tr>
@@ -701,7 +708,7 @@
 																										</a>
 																									</td>
 																									<td class="markets-value-cell" valign="middle" style="width:20%">
-																										<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;">{{first_follower_followers}} 👣 <span style="color:{{first_follower_color}}"> ({{first_follower_ratio}}) </span>
+																										<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;">{{first_follower_followers}} 👣 <span style="color:#{{first_follower_color}}"> ({{first_follower_ratio}}) </span>
 																										</p>
 																									</td>
 																									<td class="audience-tag" valign="middle" style="width:40%;padding-top: 8px; padding-bottom: 8px;">
@@ -736,7 +743,7 @@
 																										</a>
 																									</td>
 																									<td class="markets-value-cell" valign="middle" style="width:20%">
-																										<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;">{{second_follower_followers}} 👣 <span style="color:{{second_follower_color}}">({{second_follower_ratio}}) </span>
+																										<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;">{{second_follower_followers}} 👣 <span style="color:#{{second_follower_color}}">({{second_follower_ratio}}) </span>
 																										</p>
 																									</td>
 																									<td class="audience-tag" valign="middle" style="width:40%;padding-top: 8px; padding-bottom: 8px;">
@@ -771,7 +778,7 @@
 																										</a>
 																									</td>
 																									<td class="markets-value-cell" valign="middle" style="width:20%">
-																										<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;">{{third_follower_followers}} 👣 <span style="color:{{third_follower_color}}">({{third_follower_ratio}}) </span>
+																										<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;">{{third_follower_followers}} 👣 <span style="color:#{{third_follower_color}}">({{third_follower_ratio}}) </span>
 																										</p>
 																									</td>
 																									<td class="audience-tag" valign="middle" style="width:40%;padding-top: 8px; padding-bottom: 8px;">
@@ -806,15 +813,15 @@
 																										</a>
 																									</td>
 																									<td class="markets-value-cell" valign="middle" style="width:20%">
-																										<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;">{{fourth_follower_followers}} 👣 <span style="color:{{fourth_follower_color}}">({{fourth_follower_ratio}}) </span>
+																										<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: right;">{{fourth_follower_followers}} 👣 <span style="color:#{{fourth_follower_color}}">({{fourth_follower_ratio}}) </span>
 																										</p>
 																									</td>
 																									<td class="audience-tag" valign="middle" style="width:40%;padding-top: 8px; padding-bottom: 8px;">
 																										<table class="markets-bubble" role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:80%;border-collapse:collapse; margin: 0 auto;">
 																											<tbody>
 																												<tr>
-																													<td valign="middle" style="0px; padding-top: 10px; padding-bottom: 10px; border-radius: 8px; background-color:#{{fourth_follower_niche_color}};">
-																														<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-align: left;color:{{fourth_follower_niche_text}};text-align:center">{{fourth_follower_niche}}</p>
+																													<td valign="middle" style="padding-top: 10px; padding-bottom: 10px; border-radius: 8px; background-color:#{{fourth_follower_niche_color}};">
+																														<p class="pad0 mar0 markets-table-text" style="line-height:22px;margin-top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: nowrap; font-weight: bold; vertical-align: middle; line-height: 1em; color:{{fourth_follower_niche_text}};text-align:center">{{fourth_follower_niche}}</p>
 																													</td>
 																												</tr>
 																											</tbody>

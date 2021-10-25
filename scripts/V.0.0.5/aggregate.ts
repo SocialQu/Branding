@@ -3,7 +3,7 @@ import { iData, iKpis, iKpi, iTopic, iFollower, iFollowers  } from './types/data
 
 import { iFetchedData, iTweet, iMetrics, iReply } from './types/fetch'
 import { iReducedTweet, iLabeledFollower } from './analysis'
-
+import Mentions from './data/mentions.json'
 
 const filterTweets = ({ tweets }:iAggregateData) => {
     const weekTweets = tweets.filter(({ datetime }) => getDaysDelta(datetime) < 7)
@@ -173,7 +173,7 @@ const sortReplies = ({ replies }: iAggregateData) => {
     const replyImpressions = topReplies[0].impressions - replyBottomImpressions
 
     const emailReplies:iMention[] = topReplies.map(({impressions, engagements, ...r}) => ({
-        image: '',
+        image: Mentions[r.userName as keyof typeof Mentions],
         impressions,
         engagements,
         name: r.userName,
