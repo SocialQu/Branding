@@ -1,9 +1,9 @@
 // npx ts-node index
 
+import { fetchData, fetchSubscribers, subscribersFile, iSubscriber } from './fetch'
 import { aggregateData } from './aggregate'
 import { analyzeData } from './analysis'
 import { writeEmail } from './utils'
-import { fetchData } from './fetch'
 import { promises as fs } from 'fs'
 
 
@@ -11,11 +11,10 @@ import { promises as fs } from 'fs'
 const fetchedFile = './data/fetched.json'
 const analysisFile = './data/analysis.json'
 const aggregatedFile = './data/aggregate.json'
-const writeFile = '../../email/write.json'
 
 
-const fetch = async() => {
-    const fetched = await fetchData()
+const fetch = async(subscriber:iSubscriber) => {
+    const fetched = await fetchData(subscriber)
     await fs.writeFile(fetchedFile, JSON.stringify(fetched))
     console.log('Fetched')
 }
@@ -44,25 +43,33 @@ const aggregate = async() => {
 }
 
 
-const write = async() => {
+const write = async({ screen_name }:iSubscriber) => {
     const aggregated = await fs.readFile(aggregatedFile)
     const aggregatedJson = JSON.parse(aggregated.toString())
 
     const writeData = writeEmail(aggregatedJson)
     const writeJson = JSON.stringify(writeData)
 
+    const writeFile = `./data/emails/${screen_name}.json`
     await fs.writeFile(writeFile, writeJson)
     console.log('Wrote')
 }
 
 
-const index = async() => {
-    // await fetch().catch(console.log)
-    // await classify().catch(console.log)
+const index = async(user:string, full:boolean=false) => {
+    // fetchSubscribers().catch(console.log)
+
+    const fetched = await fs.readFile(subscribersFile)
+    const subscribers:iSubscriber[] = JSON.parse(fetched.toString())
+    const subscriber = subscribers.find(({ screen_name }) => screen_name === user)
+    if(!subscriber) return
+
+    if(full) await fetch(subscriber).catch(console.log)
+    if(full) await classify().catch(console.log)
 
     await aggregate().catch(console.log)
-    await write().catch(console.log)
+    await write(subscriber).catch(console.log)
 }
 
 
-index().catch(console.log)
+index('SocialQui').catch(console.log)
