@@ -11,7 +11,6 @@ import { promises as fs } from 'fs'
 const fetchedFile = './data/fetched.json'
 const analysisFile = './data/analysis.json'
 const aggregatedFile = './data/aggregate.json'
-const writeFile = './data/write.json'
 
 
 const fetch = async(subscriber:iSubscriber) => {
@@ -44,31 +43,33 @@ const aggregate = async() => {
 }
 
 
-const write = async() => {
+const write = async({ screen_name }:iSubscriber) => {
     const aggregated = await fs.readFile(aggregatedFile)
     const aggregatedJson = JSON.parse(aggregated.toString())
 
     const writeData = writeEmail(aggregatedJson)
     const writeJson = JSON.stringify(writeData)
 
+    const writeFile = `./data/emails/${screen_name}.json`
     await fs.writeFile(writeFile, writeJson)
     console.log('Wrote')
 }
 
 
-const index = async() => {
+const index = async(user:string) => {
     // fetchSubscribers().catch(console.log)
 
     const fetched = await fs.readFile(subscribersFile)
     const subscribers:iSubscriber[] = JSON.parse(fetched.toString())
-    const subscriber = subscribers.find(({ screen_name }) => screen_name === 'SocialQui')
+    const subscriber = subscribers.find(({ screen_name }) => screen_name === user)
+    if(!subscriber) return
 
-    await fetch(subscriber as iSubscriber).catch(console.log)
+    await fetch(subscriber).catch(console.log)
     await classify().catch(console.log)
 
     await aggregate().catch(console.log)
-    // await write().catch(console.log)
+    await write(subscriber).catch(console.log)
 }
 
 
-index().catch(console.log)
+index('SocialQui').catch(console.log)
