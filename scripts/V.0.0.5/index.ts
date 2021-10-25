@@ -56,7 +56,8 @@ const write = async({ screen_name }:iSubscriber) => {
 }
 
 
-const index = async(user:string, full:boolean=false) => {
+interface iSteps { fetch:boolean, write:boolean }
+const index = async(user:string, steps:iSteps) => {
     // fetchSubscribers().catch(console.log)
 
     const fetched = await fs.readFile(subscribersFile)
@@ -64,12 +65,12 @@ const index = async(user:string, full:boolean=false) => {
     const subscriber = subscribers.find(({ screen_name }) => screen_name === user)
     if(!subscriber) return
 
-    if(full) await fetch(subscriber).catch(console.log)
-    if(full) await classify().catch(console.log)
+    if(steps.fetch) await fetch(subscriber).catch(console.log)
+    if(steps.fetch) await classify().catch(console.log)
 
     await aggregate().catch(console.log)
-    await write(subscriber).catch(console.log)
+    if(steps.write) await write(subscriber).catch(console.log)
 }
 
 
-index('SocialQui').catch(console.log)
+index('SocialQui', {fetch:true, write:false}).catch(console.log)
