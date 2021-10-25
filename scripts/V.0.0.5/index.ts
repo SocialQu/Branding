@@ -1,9 +1,9 @@
 // npx ts-node index
 
+import { fetchData, fetchSubscribers } from './fetch'
 import { aggregateData } from './aggregate'
 import { analyzeData } from './analysis'
 import { writeEmail } from './utils'
-import { fetchData } from './fetch'
 import { promises as fs } from 'fs'
 
 
@@ -11,7 +11,7 @@ import { promises as fs } from 'fs'
 const fetchedFile = './data/fetched.json'
 const analysisFile = './data/analysis.json'
 const aggregatedFile = './data/aggregate.json'
-const writeFile = '../../email/write.json'
+const writeFile = './data/write.json'
 
 
 const fetch = async() => {
@@ -65,4 +65,5 @@ const index = async() => {
 }
 
 
-index().catch(console.log)
+// index().catch(console.log)
+fetchSubscribers().catch(console.log)
