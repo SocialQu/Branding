@@ -2,6 +2,7 @@ import { iTweet, iReply, iFollower, iUser, iTopic, iFetchedData } from './types/
 import { iRawTweet, iRawMetrics, iRawFollower, iAuth } from './types'
 import Twitter, { TwitterOptions } from 'twitter-lite'
 import { MongoClient } from 'mongodb'
+import { promises as fs } from 'fs'
 
 require('dotenv').config()
 
@@ -126,4 +127,25 @@ export const fetchData = async():Promise<iFetchedData> => {
     const topics = await getTopics()
 
     return { user, tweets, replies, followers, topics }
+}
+
+
+export const fetchSubscribers = async() => {
+    const uri = `mongodb+srv://${process.env.mongo_admin}/${process.env.cortazar_db}`
+
+    const client = new MongoClient(uri)
+    await client.connect()
+
+    const db = process.env.subscribers_collection
+    const collection = process.env.subscribers_db as string
+    const Subscribers = await client.db(db).collection(collection)
+
+    const subscribers = await Subscribers.find().toArray()
+    await client.close()
+
+    const subscribersData = JSON.stringify(subscribers)
+    const subscribersFile = './data/subscribers.json'
+
+    await fs.writeFile(subscribersFile, subscribersData)
+    return subscribers
 }
