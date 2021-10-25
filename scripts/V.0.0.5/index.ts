@@ -1,6 +1,6 @@
 // npx ts-node index
 
-import { fetchData, fetchSubscribers } from './fetch'
+import { fetchData, fetchSubscribers, subscribersFile, iSubscriber } from './fetch'
 import { aggregateData } from './aggregate'
 import { analyzeData } from './analysis'
 import { writeEmail } from './utils'
@@ -14,8 +14,8 @@ const aggregatedFile = './data/aggregate.json'
 const writeFile = './data/write.json'
 
 
-const fetch = async() => {
-    const fetched = await fetchData()
+const fetch = async(subscriber:iSubscriber) => {
+    const fetched = await fetchData(subscriber)
     await fs.writeFile(fetchedFile, JSON.stringify(fetched))
     console.log('Fetched')
 }
@@ -57,13 +57,18 @@ const write = async() => {
 
 
 const index = async() => {
-    // await fetch().catch(console.log)
-    // await classify().catch(console.log)
+    // fetchSubscribers().catch(console.log)
+
+    const fetched = await fs.readFile(fetchedFile)
+    const subscribers:iSubscriber[] = JSON.parse(fetched.toString())
+    const subscriber = subscribers.find(({ screen_name }) => screen_name === 'SocialQui')
+
+    await fetch(subscriber as iSubscriber).catch(console.log)
+    await classify().catch(console.log)
 
     await aggregate().catch(console.log)
-    await write().catch(console.log)
+    // await write().catch(console.log)
 }
 
 
-// index().catch(console.log)
-fetchSubscribers().catch(console.log)
+index().catch(console.log)
