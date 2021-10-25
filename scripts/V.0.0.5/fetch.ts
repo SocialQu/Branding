@@ -5,6 +5,7 @@ import { MongoClient } from 'mongodb'
 import { promises as fs } from 'fs'
 
 require('dotenv').config()
+export const subscribersFile = './data/subscribers.json'
 
 
 const subdomain = 'api'
@@ -13,15 +14,9 @@ const version = '1.1'
 const consumer_key = process.env.consumer_key as string
 const consumer_secret = process.env.consumer_secret as string
 
-const access_token_key = process.env.access_token_key as string
-const access_token_secret = process.env.access_token_secret as string
-
-const options:TwitterOptions = { consumer_key, consumer_secret, access_token_key, access_token_secret }
-const client = new Twitter({...options, subdomain, version })
-const metricsClient = new Twitter({ ...options, version:'2', extension:false })
 
 
-const getUser = async():Promise<iUser> => {
+const getUser = async(client:Twitter):Promise<iUser> => {
     const auth:iAuth = await client.get('/account/verify_credentials')
     const { id, name, screen_name, followers_count, profile_image_url:image } = auth
 
@@ -30,7 +25,8 @@ const getUser = async():Promise<iUser> => {
 }
 
 
-const getTweets = async():Promise<{tweets:iTweet[], replies:iReply[]}> => {
+interface iGetTweets { tweets:iTweet[], replies:iReply[] }
+const getTweets = async(client:Twitter, metricsClient:Twitter):Promise<iGetTweets> => {
     let fetchedTweets:iTweet[] = []
     let max_id: BigInt = BigInt(0)
     const fields = 'fields=organic_metrics,created_at'
@@ -84,7 +80,7 @@ const getTweets = async():Promise<{tweets:iTweet[], replies:iReply[]}> => {
 }
 
 
-const getFollowers = async():Promise<iFollower[]> => {
+const getFollowers = async(client:Twitter):Promise<iFollower[]> => {
     const { users }:{ users:iRawFollower[] } = await client.get('/followers/list.json?')
     const followers:iFollower[] = users.map(user => ({
         id: user.id,
@@ -120,10 +116,15 @@ const getTopics = async():Promise<iTopic[]> => {
 
 
 
-export const fetchData = async():Promise<iFetchedData> => {
-    const user = await getUser()
-    const { tweets, replies } = await getTweets()
-    const followers = await getFollowers()
+export interface iSubscriber { access_token_key:string, access_token_secret:string, screen_name:string }
+export const fetchData = async({ access_token_key, access_token_secret }:iSubscriber):Promise<iFetchedData> => {  
+    const options:TwitterOptions = { consumer_key, consumer_secret, access_token_key, access_token_secret }
+    const client = new Twitter({...options, subdomain, version })
+    const metricsClient = new Twitter({ ...options, version:'2', extension:false })
+
+    const user = await getUser(client)
+    const { tweets, replies } = await getTweets(client, metricsClient)
+    const followers = await getFollowers(client)
     const topics = await getTopics()
 
     return { user, tweets, replies, followers, topics }
@@ -144,7 +145,6 @@ export const fetchSubscribers = async() => {
     await client.close()
 
     const subscribersData = JSON.stringify(subscribers)
-    const subscribersFile = './data/subscribers.json'
 
     await fs.writeFile(subscribersFile, subscribersData)
     return subscribers
