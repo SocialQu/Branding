@@ -59,7 +59,7 @@ const write = async() => {
 const index = async() => {
     // fetchSubscribers().catch(console.log)
 
-    const fetched = await fs.readFile(fetchedFile)
+    const fetched = await fs.readFile(subscribersFile)
     const subscribers:iSubscriber[] = JSON.parse(fetched.toString())
     const subscriber = subscribers.find(({ screen_name }) => screen_name === 'SocialQui')
 
