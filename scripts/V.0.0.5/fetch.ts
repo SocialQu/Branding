@@ -28,11 +28,11 @@ const getUser = async(client:Twitter):Promise<iUser> => {
 interface iGetTweets { tweets:iTweet[], replies:iReply[] }
 const getTweets = async(client:Twitter, metricsClient:Twitter):Promise<iGetTweets> => {
     let fetchedTweets:iTweet[] = []
-    let max_id: BigInt = BigInt(0)
+    let max_id:BigInt = BigInt(0)
     const fields = 'fields=organic_metrics,created_at'
 
     for (const x of [...Array(10)]) {
-        console.log('Fetch', x)
+        console.log('Fetch', max_id)
         const count = 100
 
         const rawTweets:iRawTweet[] =  !max_id
@@ -140,7 +140,7 @@ export const fetchSubscribers = async() => {
 
     const db = process.env.subscribers_collection
     const collection = process.env.subscribers_db as string
-    const Subscribers = await client.db(db).collection(collection)
+    const Subscribers = client.db(db).collection(collection)
 
     const subscribers = await Subscribers.find().toArray()
     await client.close()
