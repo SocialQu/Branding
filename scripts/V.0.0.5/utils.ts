@@ -256,11 +256,11 @@ const addContent = ():iEmailContent => ({
 })
 
 const addFooter = ():iEmailFooter => ({
-    cta_link: '',
-    Sender_City: '',
-    Sender_State: '',
-    Sender_Zip: '',
-    unsubscribe: ''    
+    cta_link:"https://twitter.com/intent/tweet?text=Get+your+weekly+Twitter+stats+at+your+inbox+with+branding.gq",
+    Sender_City:"Tepoztlán",
+    Sender_State:"Mexico",
+    Sender_Zip:"",
+    unsubscribe:"https://twitter.com/SocialQui"
 })
 
 
