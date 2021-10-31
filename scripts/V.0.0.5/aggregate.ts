@@ -32,7 +32,7 @@ const filterData = async(data:iAggregateData) => {
     const aggregated = await fs.readFile(aggregatedFile)
     const aggregatedData = JSON.parse(aggregated.toString()) as iEmailData
 
-    const lastFollowers = aggregatedData.followers
+    const lastFollowers = Number(aggregatedData.followers)
     const lastWeekData = { tweets:lastWeekTweets, replies:lastWeekReplies, followers:lastFollowers }
 
     return { filteredData, lastWeekData }
@@ -40,7 +40,7 @@ const filterData = async(data:iAggregateData) => {
 
 const sumEngagements = (m:iMetrics) => m.likes + m.retweets + m.replies + m.visits + m.clicks
 
-interface iLastWeekData { tweets:iReducedTweet[], replies:iReply[] }
+interface iLastWeekData { tweets:iReducedTweet[], replies:iReply[], followers:number }
 const computeKPIs = ({ tweets, replies, user }:iAggregateData, lastWeek:iLastWeekData):iKpis => {
     const getImpressions = ({tweets, replies}:{tweets: iTweet[], replies:iTweet[]}):number => [
         ...tweets, ...replies].reduce((d, { metrics }) => d += metrics.impressions
@@ -62,7 +62,7 @@ const computeKPIs = ({ tweets, replies, user }:iAggregateData, lastWeek:iLastWee
 
 
     const kpis:iKpis = {
-        followers: computeKPI(user.followers_count, undefined),
+        followers: computeKPI(user.followers_count, user.followers_count - lastWeek.followers),
         impressions: computeKPI(getImpressions({tweets, replies}), getImpressions(lastWeek)),
         engagements: computeKPI(getEngagements({tweets, replies}), getImpressions(lastWeek)),
         clicks: computeKPI(getClicks({tweets, replies}), getClicks(lastWeek)),
