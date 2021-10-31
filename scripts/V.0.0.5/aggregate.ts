@@ -4,6 +4,7 @@ import { iData, iKpis, iKpi, iTopic, iFollower, iFollowers  } from './types/data
 import { iFetchedData, iTweet, iMetrics, iReply } from './types/fetch'
 import { iReducedTweet, iLabeledFollower } from './analysis'
 import Mentions from './data/mentions.json'
+import { iEmailData } from './types/email'
 import { promises as fs } from 'fs'
 
 
@@ -31,9 +32,9 @@ const filterData = async(data:iAggregateData) => {
     const { user: { screen_name: screenName } } = data
     const aggregatedFile = `./data/emails/${screenName}.json`
     const aggregated = await fs.readFile(aggregatedFile)
-    const aggregatedData = JSON.parse(aggregated.toString()) as iData
-    const lastFollowers = aggregatedData.kpis.followers
+    const aggregatedData = JSON.parse(aggregated.toString()) as iEmailData
 
+    const lastFollowers = aggregatedData.followers
     return { filteredData, lastWeekData, lastFollowers }
 }
 
