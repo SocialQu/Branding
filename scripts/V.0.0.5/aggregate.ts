@@ -54,15 +54,19 @@ const computeKPIs = ({ tweets, replies, user }:iAggregateData, lastWeek:iLastWee
         ...tweets, ...replies].reduce((d, { metrics }) => d+=metrics.clicks
     , 0)
 
+    const getKpiColor = (trend:number|undefined) => trend === undefined || trend > 0 ? '007500' : 'A31700'
     const computeKPI = (value:number, lastWeekValue:number|undefined):iKpi => {
         const trend = lastWeekValue ? Math.round(value/lastWeekValue*100) : undefined
-        const kpi = { value, trend, color: trend === undefined || trend > 0 ? '007500' : 'A31700' } as iKpi
+        const kpi = { value, trend, color:getKpiColor(trend) } as iKpi
         return kpi
     }
 
+    const { followers_count:followers } = user
+    const followersDelta = followers - lastWeek.followers
+    const followersKpi:iKpi = { value:followers, trend:followersDelta, color:getKpiColor(followersDelta) }
 
     const kpis:iKpis = {
-        followers: computeKPI(user.followers_count, user.followers_count - lastWeek.followers),
+        followers: followersKpi,
         impressions: computeKPI(getImpressions({tweets, replies}), getImpressions(lastWeek)),
         engagements: computeKPI(getEngagements({tweets, replies}), getImpressions(lastWeek)),
         clicks: computeKPI(getClicks({tweets, replies}), getClicks(lastWeek)),
