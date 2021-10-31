@@ -5,4 +5,5 @@
 - [ ] Send emails (+ subject).
 - [ ] Fix links on best tweets.
 - [ ] Add clicks to best tweets?
-- [ ] Send emails
+- [ ] Deliver 2nd batch of emails.
+- [ ] Add suggested followers on image.
