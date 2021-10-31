@@ -44,14 +44,14 @@ const aggregate = async() => {
 }
 
 
-const write = async({ screen_name }:iSubscriber) => {
+const write = async() => {
     const aggregated = await fs.readFile(aggregatedFile)
     const aggregatedJson = JSON.parse(aggregated.toString())
 
     const writeData = writeEmail(aggregatedJson)
     const writeJson = JSON.stringify(writeData)
 
-    const writeFile = `./data/emails/${screen_name}.json`
+    const writeFile = `./data/write.json`
     await fs.writeFile(writeFile, writeJson)
     console.log('Wrote')
 }
@@ -75,10 +75,10 @@ const debug = async(user:string, steps:iSteps) => {
     if(steps.fetch) await classify().catch(console.log)
 
     await aggregate().catch(console.log)
-    if(steps.write) await write(subscriber).catch(console.log)
+    if(steps.write) await write().catch(console.log)
 }
 
-debug('SocialQui', { fetch:false, write:false }).catch(console.log)
+debug('SocialQui', { fetch:false, write:true }).catch(console.log)
 
 
 
@@ -114,11 +114,9 @@ const index = async(user:string) => {
     const writeData = writeEmail(aggregatedData)
     const writeJson = JSON.stringify(writeData)
 
-    // const writeFile = `./data/emails/${subscriber.screen_name}.json`
-    // await fs.writeFile(writeFile, writeJson)
-
-    const writeFile = `./data/write.json`
+    const writeFile = `./data/emails/${subscriber.screen_name}.json`
     await fs.writeFile(writeFile, writeJson)
+
     console.log(writeJson)
 }
 
