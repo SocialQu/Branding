@@ -36,7 +36,7 @@ const aggregate = async() => {
     const analysis = await fs.readFile(analysisFile)
     const analysisJson = JSON.parse(analysis.toString())
 
-    const aggregatedData = aggregateData(analysisJson)
+    const aggregatedData = await aggregateData(analysisJson)
     const aggregatedJson = JSON.stringify(aggregatedData)
 
     await fs.writeFile(aggregatedFile, aggregatedJson)
@@ -69,7 +69,6 @@ const grabTokens = async(user:string):Promise<iSubscriber> => {
 interface iSteps { fetch:boolean, write:boolean }
 const debug = async(user:string, steps:iSteps) => {
     // fetchSubscribers().catch(console.log)
-
     const subscriber = await grabTokens(user)
 
     if(steps.fetch) await fetch(subscriber).catch(console.log)
@@ -79,7 +78,7 @@ const debug = async(user:string, steps:iSteps) => {
     if(steps.write) await write(subscriber).catch(console.log)
 }
 
-// debug('SocialQui', { fetch:false, write:false }).catch(console.log)
+debug('SocialQui', { fetch:false, write:false }).catch(console.log)
 
 
 
@@ -106,7 +105,7 @@ const index = async(user:string) => {
 
     const fetched = await fetchData(subscriber)
     const analysis = await analyzeData(fetched)
-    const aggregatedData = aggregateData(analysis)
+    const aggregatedData = await aggregateData(analysis)
 
     const mentions = aggregatedData.replies.map(({ name }) => name)
     const images = await fetchMentions(subscriber, mentions)
@@ -123,4 +122,4 @@ const index = async(user:string) => {
     console.log(writeJson)
 }
 
-index('SocialQui').catch(console.log)
+// index('SocialQui').catch(console.log)
