@@ -81,6 +81,16 @@ const debug = async(user:string, steps:iSteps) => {
 // debug('SocialQui', { fetch:false, write:true }).catch(console.log)
 
 
+const debugSend = async() => {
+    const writeFile = `./data/write.json`
+    const writen = await fs.readFile(writeFile)
+    const writenJson = JSON.parse(writen.toString())
+
+    await sendEmail(writenJson).catch()
+}
+
+debugSend().catch(console.log)
+
 
 const getMentionImages = async() => {
     const subscriber = await grabTokens('SocialQui')
@@ -123,4 +133,3 @@ const index = async(user:string) => {
 // index('SocialQui').catch(console.log)
 
 
-sendEmail().catch()
