@@ -217,4 +217,4 @@ export interface iEmailFooter {
 }
 
 export interface iEmailMetrics extends iEmailKpis, iEmailTweets, iEmailTopics, iEmailFollowers, iEmailReplies {}
-export interface iEmailData extends iEmailMetrics, iEmailEditorial, iEmailContent, iEmailFooter {}
+export interface iEmailData extends iEmailMetrics, iEmailEditorial, iEmailContent, iEmailFooter { date:string }
