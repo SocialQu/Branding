@@ -137,9 +137,16 @@ export const fetchData = async({ access_token_key, access_token_secret }:iSubscr
     return { user, tweets, replies, followers, topics }
 }
 
-interface iFetchMentions extends iGetTwitterClients { mention_name:string }
-export const fetchMentions = async(data : iFetchMentions):Promise<string> => {
-    const { client, metricsClient } = getTwitterClients(data)
+interface iFetchMentions extends iGetTwitterClients { mentionName:string }
+export const fetchMentions = async(input : iFetchMentions):Promise<string> => {
+    const { client } = getTwitterClients(input)
+
+    const { mentionName } = input
+    const data = await client.get(`/users/show.json?screen_name=${mentionName}`)
+
+    console.log(data)
+    await fs.writeFile('./data/following.json', data)
+
     return ''
 }
 
