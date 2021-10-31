@@ -25,6 +25,6 @@
 17. [X] Width on niches.
 18. [X] Trim Followers Name.
 19. [ ] Image on replies.
-20. [ ] Sort replies.
-21. [ ] Aggregate replies by user.
-22. [ ] Replicate Footer data.
+20. [X] Sort replies.
+21. [X] Aggregate replies by user.
+22. [X] Replicate Footer data.
