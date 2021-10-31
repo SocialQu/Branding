@@ -54,3 +54,10 @@ export interface iFetchedData {
     followers: iFollower[]
     topics: iTopic[]
 }
+
+export interface iMention {
+    profile_image_url: string
+    name: string
+    id: string
+    username: string
+}

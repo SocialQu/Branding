@@ -5,6 +5,7 @@ import { aggregateData } from './aggregate'
 import { analyzeData } from './analysis'
 import { writeEmail } from './utils'
 import { promises as fs } from 'fs'
+import { iData } from './types/data'
 
 
 
@@ -66,7 +67,7 @@ const grabTokens = async(user:string):Promise<iSubscriber> => {
 }
 
 interface iSteps { fetch:boolean, write:boolean }
-const index = async(user:string, steps:iSteps) => {
+const debug = async(user:string, steps:iSteps) => {
     // fetchSubscribers().catch(console.log)
 
     const subscriber = await grabTokens(user)
@@ -78,13 +79,43 @@ const index = async(user:string, steps:iSteps) => {
     if(steps.write) await write(subscriber).catch(console.log)
 }
 
+// debug('SocialQui', { fetch:false, write:false }).catch(console.log)
 
-// index('SocialQui', {fetch:false, write:true}).catch(console.log)
 
 
-const getMention = async() => {
+const getMentionImages = async() => {
     const subscriber = await grabTokens('SocialQui')
-    fetchMentions({...subscriber, mentionName:'justinkan' })
+
+    const aggregated = await fs.readFile(aggregatedFile)
+    const aggregatedData = JSON.parse(aggregated.toString()) as iData
+    const mentions = aggregatedData.replies.map(({ name }) => name)
+
+    const images = await fetchMentions(subscriber, mentions)
+    aggregatedData.replies.map(reply => ({ ...reply, image:images[reply.name] }))
+
+    console.log('Replies:', aggregatedData.replies)
 }
 
-getMention().catch(console.log)
+// getMentionImages().catch(console.log)
+
+
+
+const index = async(user:string) => {
+    // fetchSubscribers().catch(console.log)
+    const subscriber = await grabTokens(user)
+
+    const fetched = await fetchData(subscriber)
+    const analysis = await analyzeData(fetched)
+    const aggregatedData = aggregateData(analysis)
+
+    const mentions = aggregatedData.replies.map(({ name }) => name)
+    const images = await fetchMentions(subscriber, mentions)
+    aggregatedData.replies.map(reply => ({ ...reply, image:images[reply.name] }))
+
+    const writeData = writeEmail(aggregatedData)
+    const writeJson = JSON.stringify(writeData)
+    const writeFile = `./data/emails/${subscriber.screen_name}.json`
+    await fs.writeFile(writeFile, writeJson)
+}
+
+// index('SocialQui').catch(console.log)

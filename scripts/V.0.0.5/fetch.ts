@@ -1,4 +1,4 @@
-import { iTweet, iReply, iFollower, iUser, iTopic, iFetchedData } from './types/fetch'
+import { iTweet, iReply, iFollower, iUser, iTopic, iFetchedData, iMention } from './types/fetch'
 import { iRawTweet, iRawMetrics, iRawFollower, iAuth } from './types'
 import Twitter, { TwitterOptions } from 'twitter-lite'
 import { MongoClient } from 'mongodb'
@@ -116,8 +116,8 @@ const getTopics = async():Promise<iTopic[]> => {
 }
 
 
-interface iGetTwitterClients { access_token_key:string, access_token_secret:string }
-const getTwitterClients = ({ access_token_key, access_token_secret }: iGetTwitterClients) => {
+interface iTwitterClients { access_token_key:string, access_token_secret:string }
+const getTwitterClients = ({ access_token_key, access_token_secret }: iTwitterClients) => {
     const options:TwitterOptions = { consumer_key, consumer_secret, access_token_key, access_token_secret }
     const client = new Twitter({...options, subdomain, version })
     const metricsClient = new Twitter({ ...options, version:'2', extension:false })
@@ -125,7 +125,7 @@ const getTwitterClients = ({ access_token_key, access_token_secret }: iGetTwitte
     return { client, metricsClient }
 }
 
-export interface iSubscriber extends iGetTwitterClients { screen_name:string }
+export interface iSubscriber extends iTwitterClients { screen_name:string }
 export const fetchData = async({ access_token_key, access_token_secret }:iSubscriber):Promise<iFetchedData> => {  
     const { client, metricsClient } = getTwitterClients({ access_token_key, access_token_secret })
 
@@ -137,17 +137,17 @@ export const fetchData = async({ access_token_key, access_token_secret }:iSubscr
     return { user, tweets, replies, followers, topics }
 }
 
-interface iFetchMentions extends iGetTwitterClients { mentionName:string }
-export const fetchMentions = async(input : iFetchMentions):Promise<string> => {
-    const { client } = getTwitterClients(input)
+interface iProfileImages { [username:string]:string }
+export const fetchMentions = async(clients:iTwitterClients, mentions:string[]):Promise<iProfileImages> => {
+    const { metricsClient } = getTwitterClients(clients)
 
-    const { mentionName } = input
-    const data = await client.get(`/users/show.json?screen_name=${mentionName}`)
+    const url = `users/by?usernames=${mentions.join(',')}&user.fields=profile_image_url`
+    const { data }:{ data:iMention[] } = await metricsClient.get(url)
 
-    console.log(data)
-    await fs.writeFile('./data/following.json', data)
+    const images = data.reduce((d, { profile_image_url, username }) => ({ ...d, [username]: profile_image_url }), {})
 
-    return ''
+    console.log(images)
+    return images
 }
 
 
