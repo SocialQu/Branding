@@ -79,6 +79,8 @@ const debug = async(user:string, steps:iSteps) => {
     if(steps.write) await write(subscriber).catch(console.log)
 }
 
+// debug('SocialQui', { fetch:false, write:false }).catch(console.log)
+
 
 
 const getMentionImages = async() => {
@@ -94,6 +96,7 @@ const getMentionImages = async() => {
 }
 
 // getMention().catch(console.log)
+
 
 
 const index = async(user:string) => {
