@@ -3,7 +3,6 @@ import { iData, iKpis, iKpi, iTopic, iFollower, iFollowers  } from './types/data
 
 import { iFetchedData, iTweet, iMetrics, iReply } from './types/fetch'
 import { iReducedTweet, iLabeledFollower } from './analysis'
-import Mentions from './data/mentions.json'
 import { iEmailData } from './types/email'
 import { promises as fs } from 'fs'
 
@@ -184,7 +183,7 @@ const sortReplies = ({ replies }: iAggregateData) => {
     const replyImpressions = topReplies[0].impressions - replyBottomImpressions
 
     const emailReplies:iMention[] = topReplies.map(({impressions, engagements, ...r}) => ({
-        image: Mentions[r.userName as keyof typeof Mentions],
+        image: '',
         impressions,
         engagements,
         name: r.userName,
