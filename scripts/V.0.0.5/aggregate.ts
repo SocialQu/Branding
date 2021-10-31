@@ -32,7 +32,7 @@ const filterData = async(data:iAggregateData) => {
     const aggregated = await fs.readFile(aggregatedFile)
     const aggregatedData = JSON.parse(aggregated.toString()) as iEmailData
 
-    const lastFollowers = Number(aggregatedData.followers)
+    const lastFollowers = Number(aggregatedData.followers.replace(',', ''))
     const lastWeekData = { tweets:lastWeekTweets, replies:lastWeekReplies, followers:lastFollowers }
 
     return { filteredData, lastWeekData }
