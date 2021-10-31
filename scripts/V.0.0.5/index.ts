@@ -5,6 +5,7 @@ import { aggregateData } from './aggregate'
 import { analyzeData } from './analysis'
 import { writeEmail } from './utils'
 import { promises as fs } from 'fs'
+import { iData } from './types/data'
 
 
 
@@ -80,12 +81,16 @@ const debug = async(user:string, steps:iSteps) => {
 
 
 
-
-const getMention = async() => {
+const getMentionImages = async() => {
     const subscriber = await grabTokens('SocialQui')
 
-    const mentions = ['justinkan', 'mynameis_davis', 'agazdecki', 'iamjonjackson', 'dagorenouf']
-    fetchMentions(subscriber, mentions)
+    const aggregated = await fs.readFile(aggregatedFile)
+    const aggregatedData = JSON.parse(aggregated.toString()) as iData
+    const mentions = aggregatedData.replies.map(({ name }) => name)
+
+    const images = await fetchMentions(subscriber, mentions)
+    aggregatedData.replies.map(reply => ({ ...reply, image:images[reply.name] }))
+
 }
 
 // getMention().catch(console.log)
@@ -109,4 +114,4 @@ const index = async(user:string) => {
     await fs.writeFile(writeFile, writeJson)
 }
 
-index('SocialQui').catch(console.log)
+// index('SocialQui').catch(console.log)
