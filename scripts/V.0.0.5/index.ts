@@ -68,8 +68,8 @@ const grabTokens = async(user:string):Promise<iSubscriber> => {
 interface iSteps { fetch:boolean, write:boolean }
 const index = async(user:string, steps:iSteps) => {
     // fetchSubscribers().catch(console.log)
-    const subscriber = await grabTokens(user)
 
+    const subscriber = await grabTokens(user)
 
     if(steps.fetch) await fetch(subscriber).catch(console.log)
     if(steps.fetch) await classify().catch(console.log)
@@ -80,3 +80,11 @@ const index = async(user:string, steps:iSteps) => {
 
 
 // index('SocialQui', {fetch:false, write:true}).catch(console.log)
+
+
+const getMention = async() => {
+    const subscriber = await grabTokens('SocialQui')
+    fetchMentions({...subscriber, mentionName:'justinkan' })
+}
+
+getMention().catch(console.log)
