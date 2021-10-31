@@ -31,6 +31,8 @@ const formatNumber = (value:number|undefined):string => {
     return `${value}`
 }
 
+const formatText = (text:string) => text.replace('"', '').replace('\"','').replace(`'`, '').replace(`\'`, '') 
+
 
 const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEmailMetrics => {
     const { followers:followersKpi, engagements, impressions, clicks, tweets, replies:repliesKpis } = kpis
@@ -71,7 +73,7 @@ const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEma
         profile_link: profile.link,
         profile_image: profile.image,
 
-        best_tweet_text: tweet1?.text,
+        best_tweet_text: formatText(tweet1?.text),
         best_tweet_impressions: formatNumber(tweet1?.impressions),
         best_tweet_retweets: formatNumber(tweet1?.retweets),
         best_tweet_likes: formatNumber(tweet1?.likes),
@@ -80,7 +82,7 @@ const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEma
         best_tweet_date: formatDate(tweet1?.date),
         best_tweet_link: tweet1?.link,
 
-        best_tweet_text_2: tweet2?.text,
+        best_tweet_text_2: formatText(tweet2?.text),
         best_tweet_impressions_2: formatNumber(tweet2?.impressions),
         best_tweet_retweets_2: formatNumber(tweet2?.retweets),
         best_tweet_likes_2: formatNumber(tweet2?.likes),
@@ -89,7 +91,7 @@ const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEma
         best_tweet_date_2: formatDate(tweet2?.date),
         best_tweet_link_2: tweet2?.link,
 
-        best_tweet_text_3: tweet3?.text,
+        best_tweet_text_3: formatText(tweet3?.text),
         best_tweet_impressions_3: formatNumber(tweet3?.impressions),
         best_tweet_retweets_3: formatNumber(tweet3?.retweets),
         best_tweet_likes_3: formatNumber(tweet3?.likes),
@@ -145,7 +147,7 @@ const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEma
         top_follower_image: topFollower.image,
         top_follower_link: topFollower.link,
         top_follower_name: topFollower.name,
-        top_follower_bio: topFollower.bio,
+        top_follower_bio: formatText(topFollower.bio),
         
         first_follower_image: follower1.image,
         first_follower_name: follower1.name,
@@ -287,7 +289,7 @@ export const sendEmail = async(data:iEmailData) => {
     sgMail.setApiKey(sendgrid_key)
 
     const msg:MailDataRequired = {
-        to: 'santiago.aws@gmail.com',
+        to: 'santiago.marti67@gmail.com',
         from: 'SocialQ@branding.gq',
         templateId:'d-c73ab5b0ca6142cb9db14aeac43aefe4',
         dynamicTemplateData:data,
