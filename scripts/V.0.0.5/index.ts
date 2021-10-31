@@ -4,8 +4,8 @@ import { fetchData, fetchSubscribers, subscribersFile, iSubscriber, fetchMention
 import { aggregateData } from './aggregate'
 import { analyzeData } from './analysis'
 import { writeEmail } from './utils'
-import { promises as fs } from 'fs'
 import { iData } from './types/data'
+import { promises as fs } from 'fs'
 
 
 
@@ -114,8 +114,13 @@ const index = async(user:string) => {
 
     const writeData = writeEmail(aggregatedData)
     const writeJson = JSON.stringify(writeData)
-    const writeFile = `./data/emails/${subscriber.screen_name}.json`
+
+    // const writeFile = `./data/emails/${subscriber.screen_name}.json`
+    // await fs.writeFile(writeFile, writeJson)
+
+    const writeFile = `./data/write.json`
     await fs.writeFile(writeFile, writeJson)
+    console.log(writeJson)
 }
 
-// index('SocialQui').catch(console.log)
+index('SocialQui').catch(console.log)
