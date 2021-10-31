@@ -85,7 +85,7 @@ const getMention = async() => {
     const subscriber = await grabTokens('SocialQui')
 
     const mentions = ['justinkan', 'mynameis_davis', 'agazdecki', 'iamjonjackson', 'dagorenouf']
-    fetchMentions({clients:subscriber, mentions })
+    fetchMentions(subscriber, mentions)
 }
 
 // getMention().catch(console.log)
@@ -98,6 +98,10 @@ const index = async(user:string) => {
     const fetched = await fetchData(subscriber)
     const analysis = await analyzeData(fetched)
     const aggregatedData = aggregateData(analysis)
+
+    const mentions = aggregatedData.replies.map(({ name }) => name)
+    const images = await fetchMentions(subscriber, mentions)
+    aggregatedData.replies.map(reply => ({ ...reply, image:images[reply.name] }))
 
     const writeData = writeEmail(aggregatedData)
     const writeJson = JSON.stringify(writeData)
