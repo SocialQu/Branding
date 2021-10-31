@@ -11,3 +11,4 @@
 - [ ] Clean unused files.
 
 - [ ] Save original follower count to compute trend.
+- [ ] Get email from subscriber.
