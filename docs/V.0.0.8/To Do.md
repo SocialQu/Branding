@@ -8,3 +8,5 @@
 - [ ] Deliver 2nd batch of emails.
 - [ ] Add suggested followers on image.
 - [ ] Clean unused files.
+
+- [ ] Save original follower count to compute trend.
