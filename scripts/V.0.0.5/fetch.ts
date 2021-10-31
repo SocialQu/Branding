@@ -137,6 +137,12 @@ export const fetchData = async({ access_token_key, access_token_secret }:iSubscr
     return { user, tweets, replies, followers, topics }
 }
 
+interface iFetchMentions extends iGetTwitterClients { mention_name:string }
+export const fetchMentions = async(data : iFetchMentions):Promise<string> => {
+    const { client, metricsClient } = getTwitterClients(data)
+    return ''
+}
+
 
 export const fetchSubscribers = async() => {
     const uri = `mongodb+srv://${process.env.mongo_admin}/${process.env.cortazar_db}`
