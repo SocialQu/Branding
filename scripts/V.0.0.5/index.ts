@@ -79,7 +79,6 @@ const debug = async(user:string, steps:iSteps) => {
 }
 
 
-// index('SocialQui', {fetch:false, write:true}).catch(console.log)
 
 
 const getMention = async() => {
@@ -89,4 +88,21 @@ const getMention = async() => {
     fetchMentions({...subscriber, mentions })
 }
 
-getMention().catch(console.log)
+// getMention().catch(console.log)
+
+
+const index = async(user:string) => {
+    // fetchSubscribers().catch(console.log)
+    const subscriber = await grabTokens(user)
+
+    const fetched = await fetchData(subscriber)
+    const analysis = await analyzeData(fetched)
+    const aggregatedData = aggregateData(analysis)
+
+    const writeData = writeEmail(aggregatedData)
+    const writeJson = JSON.stringify(writeData)
+    const writeFile = `./data/emails/${subscriber.screen_name}.json`
+    await fs.writeFile(writeFile, writeJson)
+}
+
+index('SocialQui').catch(console.log)
