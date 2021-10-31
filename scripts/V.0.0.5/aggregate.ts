@@ -4,6 +4,8 @@ import { iData, iKpis, iKpi, iTopic, iFollower, iFollowers  } from './types/data
 import { iFetchedData, iTweet, iMetrics, iReply } from './types/fetch'
 import { iReducedTweet, iLabeledFollower } from './analysis'
 import Mentions from './data/mentions.json'
+import { promises as fs } from 'fs'
+
 
 const filterTweets = ({ tweets }:iAggregateData) => {
     const weekTweets = tweets.filter(({ datetime }) => getDaysDelta(datetime) < 7)
@@ -19,13 +21,20 @@ const filterReplies = ({ replies }:iAggregateData) => {
 
 const daySeconds = 1000*60*60*24
 const getDaysDelta = (datetime:string) => (Number(new Date()) - Number(new Date(datetime)))/daySeconds
-const filterData = (data:iAggregateData) => {
+const filterData = async(data:iAggregateData) => {
     const { weekTweets, lastWeekTweets } = filterTweets(data)
     const { weekReplies, lastWeekReplies } = filterReplies(data)
 
     const filteredData = { ...data, tweets:weekTweets, replies:weekReplies }
     const lastWeekData = { tweets:lastWeekTweets, replies:lastWeekReplies }
-    return { filteredData, lastWeekData }
+
+    const { user: { screen_name: screenName } } = data
+    const aggregatedFile = `./data/emails/${screenName}.json`
+    const aggregated = await fs.readFile(aggregatedFile)
+    const aggregatedData = JSON.parse(aggregated.toString()) as iData
+    const lastFollowers = aggregatedData.kpis.followers
+
+    return { filteredData, lastWeekData, lastFollowers }
 }
 
 const sumEngagements = (m:iMetrics) => m.likes + m.retweets + m.replies + m.visits + m.clicks
@@ -187,8 +196,8 @@ const sortReplies = ({ replies }: iAggregateData) => {
 
 
 export interface iAggregateData extends iFetchedData { tweets:iReducedTweet[], followers:iLabeledFollower[] }
-export const aggregateData = (data:iAggregateData):iData => {
-    const { filteredData, lastWeekData } = filterData(data)
+export const aggregateData = async (data:iAggregateData):Promise<iData> => {
+    const { filteredData, lastWeekData } = await filterData(data)
 
     const kpis = computeKPIs(filteredData, lastWeekData)
     const bestTweets = selectTweets(filteredData)
