@@ -116,12 +116,18 @@ const getTopics = async():Promise<iTopic[]> => {
 }
 
 
-
-export interface iSubscriber { access_token_key:string, access_token_secret:string, screen_name:string }
-export const fetchData = async({ access_token_key, access_token_secret }:iSubscriber):Promise<iFetchedData> => {  
+interface iGetTwitterClients { access_token_key:string, access_token_secret:string }
+const getTwitterClients = ({ access_token_key, access_token_secret }: iGetTwitterClients) => {
     const options:TwitterOptions = { consumer_key, consumer_secret, access_token_key, access_token_secret }
     const client = new Twitter({...options, subdomain, version })
     const metricsClient = new Twitter({ ...options, version:'2', extension:false })
+    
+    return { client, metricsClient }
+}
+
+export interface iSubscriber extends iGetTwitterClients { screen_name:string }
+export const fetchData = async({ access_token_key, access_token_secret }:iSubscriber):Promise<iFetchedData> => {  
+    const { client, metricsClient } = getTwitterClients({ access_token_key, access_token_secret })
 
     const user = await getUser(client)
     const { tweets, replies } = await getTweets(client, metricsClient)
@@ -129,6 +135,19 @@ export const fetchData = async({ access_token_key, access_token_secret }:iSubscr
     const topics = await getTopics()
 
     return { user, tweets, replies, followers, topics }
+}
+
+interface iFetchMentions extends iGetTwitterClients { mentionName:string }
+export const fetchMentions = async(input : iFetchMentions):Promise<string> => {
+    const { client } = getTwitterClients(input)
+
+    const { mentionName } = input
+    const data = await client.get(`/users/show.json?screen_name=${mentionName}`)
+
+    console.log(data)
+    await fs.writeFile('./data/following.json', data)
+
+    return ''
 }
 
 
