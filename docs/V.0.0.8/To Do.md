@@ -1,7 +1,7 @@
 # To Do
 
 - [X] Fetch reply images.
-- [ ] Fetch last followers.
+- [X] Fetch last followers.
 - [ ] Send emails (+ subject).
 - [ ] Fix links on best tweets.
 - [ ] Add clicks to best tweets?
