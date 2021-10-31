@@ -26,7 +26,6 @@ const filterData = async(data:iAggregateData) => {
     const { weekReplies, lastWeekReplies } = filterReplies(data)
 
     const filteredData = { ...data, tweets:weekTweets, replies:weekReplies }
-    const lastWeekData = { tweets:lastWeekTweets, replies:lastWeekReplies }
 
     const { user: { screen_name: screenName } } = data
     const aggregatedFile = `./data/emails/${screenName}.json`
@@ -34,7 +33,9 @@ const filterData = async(data:iAggregateData) => {
     const aggregatedData = JSON.parse(aggregated.toString()) as iEmailData
 
     const lastFollowers = aggregatedData.followers
-    return { filteredData, lastWeekData, lastFollowers }
+    const lastWeekData = { tweets:lastWeekTweets, replies:lastWeekReplies, followers:lastFollowers }
+
+    return { filteredData, lastWeekData }
 }
 
 const sumEngagements = (m:iMetrics) => m.likes + m.retweets + m.replies + m.visits + m.clicks
