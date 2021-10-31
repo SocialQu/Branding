@@ -93,9 +93,10 @@ const getMentionImages = async() => {
     const images = await fetchMentions(subscriber, mentions)
     aggregatedData.replies.map(reply => ({ ...reply, image:images[reply.name] }))
 
+    console.log('Replies:', aggregatedData.replies)
 }
 
-// getMention().catch(console.log)
+// getMentionImages().catch(console.log)
 
 
 
