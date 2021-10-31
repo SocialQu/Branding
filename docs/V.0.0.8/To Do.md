@@ -12,3 +12,4 @@
 
 - [ ] Save original follower count to compute trend.
 - [ ] Get email from subscriber.
+- [ ] Fix random selection of colors.
