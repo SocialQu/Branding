@@ -1,7 +1,7 @@
 import { iEmailEditorial, iEmailContent, iEmailFooter, iEmailData, iEmailMetrics } from './types/email'
 import { iEmailKpis, iEmailTweets, iEmailTopics, iEmailFollowers, iEmailReplies } from './types/email'
+import sgMail, { MailDataRequired } from '@sendgrid/mail'
 import { iData } from './types/data'
-import sgMail from '@sendgrid/mail'
 
 
 type WeekDay = 0 | 1 | 2 | 3 | 4 | 5 | 6 
@@ -281,16 +281,15 @@ export const writeEmail = (data:iData):iEmailData => {
 }
 
 
-export const sendEmail = async() => {
+export const sendEmail = async(data:iEmailData) => {
     const sendgrid_key = process.env.sendgrid_key as string
     sgMail.setApiKey(sendgrid_key)
 
-    const msg = {
+    const msg:MailDataRequired = {
         to: 'santiago.aws@gmail.com',
         from: 'SocialQ@branding.gq',
-        subject: 'Sending with SendGrid is Fun',
-        text: 'and easy to do anywhere, even with Node.js',
-        html: '<strong>and easy to do anywhere, even with Node.js</strong>'
+        templateId:'d-c73ab5b0ca6142cb9db14aeac43aefe4',
+        dynamicTemplateData:data,
     }
 
     await sgMail.send(msg).catch(({ response }) => console.log(response.body))
