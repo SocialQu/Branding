@@ -1,9 +1,9 @@
 // npx ts-node index
 
 import { fetchData, fetchSubscribers, subscribersFile, iSubscriber, fetchMentions } from './fetch'
+import { writeEmail, sendEmail } from './utils'
 import { aggregateData } from './aggregate'
 import { analyzeData } from './analysis'
-import { writeEmail } from './utils'
 import { iData } from './types/data'
 import { promises as fs } from 'fs'
 
@@ -78,7 +78,7 @@ const debug = async(user:string, steps:iSteps) => {
     if(steps.write) await write().catch(console.log)
 }
 
-debug('SocialQui', { fetch:false, write:true }).catch(console.log)
+// debug('SocialQui', { fetch:false, write:true }).catch(console.log)
 
 
 
@@ -121,3 +121,6 @@ const index = async(user:string) => {
 }
 
 // index('SocialQui').catch(console.log)
+
+
+sendEmail().catch()
