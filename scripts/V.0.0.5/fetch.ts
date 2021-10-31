@@ -1,4 +1,4 @@
-import { iTweet, iReply, iFollower, iUser, iTopic, iFetchedData } from './types/fetch'
+import { iTweet, iReply, iFollower, iUser, iTopic, iFetchedData, iMention } from './types/fetch'
 import { iRawTweet, iRawMetrics, iRawFollower, iAuth } from './types'
 import Twitter, { TwitterOptions } from 'twitter-lite'
 import { MongoClient } from 'mongodb'
@@ -138,17 +138,14 @@ export const fetchData = async({ access_token_key, access_token_secret }:iSubscr
 }
 
 interface iFetchMentions extends iGetTwitterClients { mentionName:string }
-export const fetchMentions = async(input : iFetchMentions):Promise<string> => {
+export const fetchMentions = async(input : iFetchMentions):Promise<iMention[]> => {
     const { metricsClient } = getTwitterClients(input)
 
     const { mentionName } = input
     const url = `users/by?usernames=${mentionName}&user.fields=profile_image_url`
-    const { data } = await metricsClient.get(url)
+    const { data }:{ data:iMention[] } = await metricsClient.get(url)
 
-    console.log(data)
-    await fs.writeFile('./data/following.json', data)
-
-    return ''
+    return data
 }
 
 
