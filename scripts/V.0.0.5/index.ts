@@ -85,7 +85,7 @@ const getMention = async() => {
     const subscriber = await grabTokens('SocialQui')
 
     const mentions = ['justinkan', 'mynameis_davis', 'agazdecki', 'iamjonjackson', 'dagorenouf']
-    fetchMentions({...subscriber, mentions })
+    fetchMentions({clients:subscriber, mentions })
 }
 
 // getMention().catch(console.log)
