@@ -181,7 +181,6 @@ const sortReplies = ({ replies }: iAggregateData) => {
 
     const sortedReplies = [...aggregatedMentions].sort(({impressions:a}, {impressions:b}) => a > b ? -1 : 1)
     const topReplies = sortedReplies.filter((_, i) => i < 5)
-    topReplies.map(({ userName }) => console.log(userName))
 
     if(!topReplies.length) return []
     const replyBottomImpressions = topReplies[topReplies.length - 1].impressions
