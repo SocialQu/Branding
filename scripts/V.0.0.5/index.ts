@@ -1,6 +1,6 @@
 // npx ts-node index
 
-import { fetchData, fetchSubscribers, subscribersFile, iSubscriber } from './fetch'
+import { fetchData, fetchSubscribers, subscribersFile, iSubscriber, fetchMentions } from './fetch'
 import { aggregateData } from './aggregate'
 import { analyzeData } from './analysis'
 import { writeEmail } from './utils'
@@ -56,14 +56,20 @@ const write = async({ screen_name }:iSubscriber) => {
 }
 
 
-interface iSteps { fetch:boolean, write:boolean }
-const index = async(user:string, steps:iSteps) => {
-    // fetchSubscribers().catch(console.log)
-
+const grabTokens = async(user:string):Promise<iSubscriber> => {
     const fetched = await fs.readFile(subscribersFile)
     const subscribers:iSubscriber[] = JSON.parse(fetched.toString())
     const subscriber = subscribers.find(({ screen_name }) => screen_name === user)
-    if(!subscriber) return
+    if(!subscriber) throw Error(`Missing data for ${user}`)
+
+    return subscriber
+}
+
+interface iSteps { fetch:boolean, write:boolean }
+const index = async(user:string, steps:iSteps) => {
+    // fetchSubscribers().catch(console.log)
+    const subscriber = await grabTokens(user)
+
 
     if(steps.fetch) await fetch(subscriber).catch(console.log)
     if(steps.fetch) await classify().catch(console.log)
@@ -73,4 +79,4 @@ const index = async(user:string, steps:iSteps) => {
 }
 
 
-index('SocialQui', {fetch:false, write:true}).catch(console.log)
+// index('SocialQui', {fetch:false, write:true}).catch(console.log)
