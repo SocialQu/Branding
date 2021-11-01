@@ -269,7 +269,7 @@ const addFooter = ():iEmailFooter => ({
 
 const wrapEmail = (metrics:iEmailMetrics):iEmailData => {
     return {
-        date:'Mon, Oct 18 to Sun, Oct 24',
+        date:'Mon, Oct 25 to Sun, Nov 1',
         ...addEditorial(),
         ...addContent(),
         ...metrics,
