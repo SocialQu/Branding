@@ -252,7 +252,7 @@ const addEditorial = ():iEmailEditorial => ({
 
 const addContent = ():iEmailContent => ({
     content_title: "Jonathan Barone ",
-    content: 'is working on Bipdash to compile the greatest threads in Twitter whether you are looking for inspiration to write better threads, or content that helps you grow your business. Take some time to visit and support the ',
+    content: 'is working on Bipdash to compile the greatest threads in Twitter. Whether you are looking for inspiration to write better, or find content that helps you grow your business. Take some time to visit and support the ',
     content_CTA: "project.",
     content_link: "https://www.bipdash.com/",
     content_2: '',
