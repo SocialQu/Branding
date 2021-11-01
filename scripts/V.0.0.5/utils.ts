@@ -242,20 +242,20 @@ const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEma
 
 const getKpiFooter = (date:Date) => `Data fetched on ${getWeekDay(date)} at ${getTime(date)}. Trends computed against the 7-day average values.`
 const addEditorial = ():iEmailEditorial => ({
-    editorial_title:'Your growth routine ',
-    editorial:'includes all the daily activities that helps you build an audience over time. It can include creating content, replying to tweets, sending DMs or finding new leads! Do you have a growth routine? ',
-    editorial_CTA:'Share it with me.',
+    editorial_title:'Did you wrote a thread this week? ',
+    editorial:'Threads can be time-consuming but they are also a terrific way to grow your brand if you do it consistently one or twice a week. If you did wrote a thread ',
+    editorial_CTA:'share it with me,',
     editorial_link:'https://twitter.com/SocialQui',
-    editorial_2:'',
+    editorial_2:` I will be glad to retweet it.`,
     kpi_footer:getKpiFooter(new Date)
 })
 
 const addContent = ():iEmailContent => ({
-    content_title: "In the wanna-be entrepreneur podcast ",
-    content: "Dagobert talked about how he goes through all the tweets in his timeline before starting with the notifications and DMs. He spents more that 3 hours every day on Twitter and has gone from a couple hundred followers in May to more than 6,000. He also posts  ",
-    content_CTA: "hillarious memes",
-    content_link: "https://twitter.com/dagorenouf/status/1441425223270686721",
-    content_2: " and is finally starting to see his business grow.",
+    content_title: "Jonathan Barone ",
+    content: 'is working on Bipdash to compile the greatest threads in Twitter. Whether you are looking for inspiration to write better, or find content that helps you grow your business. Take some time to visit and support the ',
+    content_CTA: "project.",
+    content_link: "https://www.bipdash.com/",
+    content_2: '',
 })
 
 const addFooter = ():iEmailFooter => ({
@@ -269,7 +269,7 @@ const addFooter = ():iEmailFooter => ({
 
 const wrapEmail = (metrics:iEmailMetrics):iEmailData => {
     return {
-        date:'Mon, Oct 18 to Sun, Oct 24',
+        date:'Mon, Oct 25 to Sun, Nov 1',
         ...addEditorial(),
         ...addContent(),
         ...metrics,
@@ -284,12 +284,12 @@ export const writeEmail = (data:iData):iEmailData => {
 }
 
 
-export const sendEmail = async(data:iEmailData) => {
+export const sendEmail = async(data:iEmailData, email:string) => {
     const sendgrid_key = process.env.sendgrid_key as string
     sgMail.setApiKey(sendgrid_key)
 
     const msg:MailDataRequired = {
-        to: 'santiago.marti67@gmail.com',
+        to: email,
         from: 'SocialQ@branding.gq',
         templateId:'d-c73ab5b0ca6142cb9db14aeac43aefe4',
         dynamicTemplateData:data,

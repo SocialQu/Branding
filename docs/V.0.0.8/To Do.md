@@ -2,7 +2,7 @@
 
 - [X] Fetch reply images.
 - [X] Fetch last followers.
-- [ ] Send emails (+ subject).
+- [X] Send emails (+ subject).
 - [ ] Fix links on best tweets.
 - [ ] Add clicks to best tweets?
 - [ ] Draft editorial & content.
@@ -11,3 +11,7 @@
 - [ ] Clean unused files.
 
 - [ ] Save original follower count to compute trend.
+- [ ] Get email from subscriber.
+- [ ] Fix random selection of colors.
+- [ ] Debug pipeline on scripts.
+- [ ] Filter own user from mentions/replies.

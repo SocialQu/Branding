@@ -39,10 +39,12 @@ export interface iUser {
     followers_count: number
 }
 
+export type TextColor = 'black' | 'white'
 export interface iTopic {
     _id: string
     topic: string
     color: string
+    text: TextColor
     embeddings: number[]
     center: number[]
 }

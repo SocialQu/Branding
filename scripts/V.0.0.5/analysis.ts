@@ -1,5 +1,5 @@
 import { load, UniversalSentenceEncoder as iModel } from '@tensorflow-models/universal-sentence-encoder'
-import { iFetchedData, iFollower, iTopic, iTweet } from './types/fetch'
+import { iFetchedData, iFollower, iTopic, iTweet, TextColor } from './types/fetch'
 import { iAggregateData } from './aggregate'
 
 import '@tensorflow/tfjs-node'
@@ -32,7 +32,7 @@ const embedBios = async(followers:iFollower[], model:iModel):Promise<iEmbeddedFo
 }
 
 
-interface iColoredTopic { topic:string, color:string, niche:string }
+interface iColoredTopic { topic:string, color:string, niche:string, textColor:TextColor }
 const findTopic = ({embeddings}:{embeddings:number[]}, topics:iTopic[]):iColoredTopic => {
     const getSimilarity = (center:number[], embedding: number[]) => {
         if (center.length !== embedding.length) return Infinity
@@ -44,18 +44,18 @@ const findTopic = ({embeddings}:{embeddings:number[]}, topics:iTopic[]):iColored
         getSimilarity(embeddings, a) > getSimilarity(embeddings, b) ? 1 : -1
     )
 
-    return { topic:topics[0].topic, color:topics[0].color, niche:topics[0].topic }
+    return { topic:topics[0].topic, color:topics[0].color, niche:topics[0].topic, textColor:topics[0].text }
 }
 
 
-export interface iLabeledTweet extends iEmbeddedTweet { topic:string, color:string }
+export interface iLabeledTweet extends iEmbeddedTweet { topic:string, color:string, textColor:TextColor }
 const classifyTweets = async(tweets:iEmbeddedTweet[], topics:iTopic[]):Promise<iLabeledTweet[]> => {
     const labeledTweets = tweets.map(t => ({...t, ...findTopic(t, topics) }))
     return labeledTweets
 }
 
 
-export interface iLabeledFollower extends iEmbeddedFollower { niche:string, color:string }
+export interface iLabeledFollower extends iEmbeddedFollower { niche:string, color:string, textColor:TextColor }
 const classifyFollowers = async(followers:iEmbeddedFollower[], topics:iTopic[]):Promise<iLabeledFollower[]> => {
     const labeledFollowers = followers.map(t => ({...t, ...findTopic(t, topics)}))
     return labeledFollowers

@@ -66,7 +66,7 @@ const grabTokens = async(user:string):Promise<iSubscriber> => {
     return subscriber
 }
 
-interface iSteps { fetch:boolean, write:boolean }
+interface iSteps { fetch:boolean, write:boolean, send:boolean }
 const debug = async(user:string, steps:iSteps) => {
     // fetchSubscribers().catch(console.log)
     const subscriber = await grabTokens(user)
@@ -86,10 +86,10 @@ const debugSend = async() => {
     const writen = await fs.readFile(writeFile)
     const writenJson = JSON.parse(writen.toString())
 
-    await sendEmail(writenJson).catch()
+    await sendEmail(writenJson, 'santiago.aws@gmail.com').catch()
 }
 
-debugSend().catch(console.log)
+// debugSend().catch(console.log)
 
 
 const getMentionImages = async() => {
@@ -109,9 +109,10 @@ const getMentionImages = async() => {
 
 
 
-const index = async(user:string) => {
-    // fetchSubscribers().catch(console.log)
-    const subscriber = await grabTokens(user)
+interface iUser { twitter:string, email:string }
+const index = async({ twitter, email } :iUser, { fetch, write, send }:iSteps) => {
+    if(fetch) await fetchSubscribers().catch(console.log)
+    const subscriber = await grabTokens(twitter)
 
     const fetched = await fetchData(subscriber)
     const analysis = await analyzeData(fetched)
@@ -119,17 +120,16 @@ const index = async(user:string) => {
 
     const mentions = aggregatedData.replies.map(({ name }) => name)
     const images = await fetchMentions(subscriber, mentions)
-    aggregatedData.replies.map(reply => ({ ...reply, image:images[reply.name] }))
+    const replies = aggregatedData.replies.map(reply => ({ ...reply, image:images[reply.name] }))
 
-    const writeData = writeEmail(aggregatedData)
+    const writeData = writeEmail({...aggregatedData, replies })
+    if(send) await sendEmail(writeData, email).catch()
+
     const writeJson = JSON.stringify(writeData)
-
-    const writeFile = `./data/emails/${subscriber.screen_name}.json`
+    const file = write ? `emails/${subscriber.screen_name}` : 'write'
+    const writeFile = `./data/emails/${file}.json`
     await fs.writeFile(writeFile, writeJson)
-
-    console.log(writeJson)
 }
 
-// index('SocialQui').catch(console.log)
-
-
+const user:iUser = { twitter:'SocialQui', email:'santiago.aws@gmail.com' }
+index(user, { fetch:false, send:true, write:false }).catch(console.log)
