@@ -1,6 +1,7 @@
-import { iTweet, iReply, iFollower, iUser, iTopic, iFetchedData, iMention } from './types/fetch'
+import { iTweet, iReply, iFollower, iUser, iTopic, iFetchedData, iMention, TextColor } from './types/fetch'
 import { iRawTweet, iRawMetrics, iRawFollower, iAuth } from './types'
 import Twitter, { TwitterOptions } from 'twitter-lite'
+import colors from './data/colors.json'
 import { MongoClient } from 'mongodb'
 import { promises as fs } from 'fs'
 
@@ -109,11 +110,12 @@ export const getTopics = async():Promise<iTopic[]> => {
 
     await client.close()
 
-    const generateColor = () => Math.floor(Math.random()*16777215).toString(16);
-    const coloredTopics = topics.map(topic => ({...topic, color:generateColor() }))
+    interface iColor { topic:string, color: string, text?:TextColor }
+    const findTopic = ({topic}:iTopic) => colors.find(({ topic:t }) => topic === t) as iColor
+    const coloredTopics = topics.map(topic => ({...topic, text:'black', ...findTopic(topic) })) as iTopic[]
 
-    const colorsData = JSON.stringify(coloredTopics.map(({ color, topic }) => ({ color, topic })))
-    await fs.writeFile('./data/colors.json', colorsData)
+    // const colorsData = JSON.stringify(coloredTopics.map(({ color, topic }) => ({ color, topic })))
+    // await fs.writeFile('./data/colors.json', colorsData)
 
     return coloredTopics
 }
