@@ -1,3 +1,5 @@
+import { TextColor } from "./fetch";
+
 export type kpiColor = '007500' | 'A31700'
 export interface iKpi {
     value: number
@@ -46,7 +48,7 @@ export interface iTopic {
     tweets: number
     impressions: number
     engagements: number
-    text: 'black' | 'white'
+    text:TextColor
 }
 
 
@@ -65,7 +67,7 @@ export interface iFollower {
     niche: string
     ratio: number
     followers: number
-    textColor: 'black' | 'white'
+    textColor:TextColor
     ratioColor: 'A31700' | '007500'
 }
 
