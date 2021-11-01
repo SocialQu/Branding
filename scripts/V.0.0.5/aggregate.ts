@@ -113,7 +113,7 @@ const contentAnalysis = ({ tweets }: iAggregateData):iTopic[] => {
         topic,
         tweets:tweets.length,
         color: tweets[0].color,
-        text: tweets[0].text,
+        text: tweets[0].textColor,
         impressions: tweets.reduce((d, { metrics }) => d += metrics.impressions, 0 ),
         engagements: tweets.reduce((d, { metrics }) => d+= sumEngagements(metrics), 0)
     }))
@@ -127,7 +127,7 @@ const contentAnalysis = ({ tweets }: iAggregateData):iTopic[] => {
 
     const topics:iTopic[] = topTopics.map(({ topic, tweets, engagements, impressions, color, text }) => ({
         name:topic,
-        text: text as TextColor, 
+        text: text, 
         color,
         tweets,
         impressions,
@@ -150,7 +150,7 @@ const labelFollowers = ({ followers }: iAggregateData):iFollowers => {
         image: follower.image,
         link:`https://twitter.com/${follower.name}`,
         color:follower.color,
-        textColor:'black',
+        textColor:follower.textColor,
         followers: follower.followers,
         ratio: Math.round(follower.followers/follower.following*100)/100,
         ratioColor: follower.followers/follower.following > 1 ? '007500' : 'A31700'
