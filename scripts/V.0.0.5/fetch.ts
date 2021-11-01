@@ -98,7 +98,7 @@ const getFollowers = async(client:Twitter):Promise<iFollower[]> => {
 }
 
 
-const getTopics = async():Promise<iTopic[]> => {
+export const getTopics = async():Promise<iTopic[]> => {
     const uri = `mongodb+srv://${process.env.mongo_admin}/${process.env.cortazar_db}`
 
     const client = new MongoClient(uri)
@@ -111,6 +111,9 @@ const getTopics = async():Promise<iTopic[]> => {
 
     const generateColor = () => Math.floor(Math.random()*16777215).toString(16);
     const coloredTopics = topics.map(topic => ({...topic, color:generateColor() }))
+
+    const colorsData = JSON.stringify(coloredTopics.map(({ color, topic }) => ({ color, topic })))
+    await fs.writeFile('./data/colors.json', colorsData)
 
     return coloredTopics
 }
@@ -165,7 +168,7 @@ export const fetchSubscribers = async() => {
     await client.close()
 
     const subscribersData = JSON.stringify(subscribers)
-
     await fs.writeFile(subscribersFile, subscribersData)
+
     return subscribers
 }
