@@ -1,7 +1,7 @@
 import { iTweet as iBestTweet, iBestTweets, iReply as iMention } from './types/data'
 import { iData, iKpis, iKpi, iTopic, iFollower, iFollowers  } from './types/data'
 
-import { iFetchedData, iTweet, iMetrics, iReply } from './types/fetch'
+import { iFetchedData, iTweet, iMetrics, iReply, TextColor } from './types/fetch'
 import { iReducedTweet, iLabeledFollower } from './analysis'
 import { iEmailData } from './types/email'
 import { promises as fs } from 'fs'
@@ -113,6 +113,7 @@ const contentAnalysis = ({ tweets }: iAggregateData):iTopic[] => {
         topic,
         tweets:tweets.length,
         color: tweets[0].color,
+        text: tweets[0].text,
         impressions: tweets.reduce((d, { metrics }) => d += metrics.impressions, 0 ),
         engagements: tweets.reduce((d, { metrics }) => d+= sumEngagements(metrics), 0)
     }))
@@ -124,9 +125,9 @@ const contentAnalysis = ({ tweets }: iAggregateData):iTopic[] => {
     const bottomEngagements = topTopics[topTopics.length - 1].engagements
     const topicEngagements = topTopics[0].engagements - bottomEngagements
 
-    const topics:iTopic[] = topTopics.map(({ topic, tweets, engagements, impressions, color }) => ({
+    const topics:iTopic[] = topTopics.map(({ topic, tweets, engagements, impressions, color, text }) => ({
         name:topic,
-        text: 'black', 
+        text: text as TextColor, 
         color,
         tweets,
         impressions,
