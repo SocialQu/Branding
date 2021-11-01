@@ -120,16 +120,15 @@ const index = async({ twitter, email } :iUser, { fetch, write, send }:iSteps) =>
 
     const mentions = aggregatedData.replies.map(({ name }) => name)
     const images = await fetchMentions(subscriber, mentions)
-    aggregatedData.replies.map(reply => ({ ...reply, image:images[reply.name] }))
+    const replies = aggregatedData.replies.map(reply => ({ ...reply, image:images[reply.name] }))
 
-    const writeData = writeEmail(aggregatedData)
+    const writeData = writeEmail({...aggregatedData, replies })
     if(send) await sendEmail(writeData, email).catch()
 
-    if(write){
-        const writeJson = JSON.stringify(writeData)
-        const writeFile = `./data/emails/${subscriber.screen_name}.json`
-        await fs.writeFile(writeFile, writeJson)
-    }
+    const writeJson = JSON.stringify(writeData)
+    const file = write ? `emails/${subscriber.screen_name}` : 'write'
+    const writeFile = `./data/emails/${file}.json`
+    await fs.writeFile(writeFile, writeJson)
 }
 
 const user:iUser = { twitter:'SocialQui', email:'santiago.aws@gmail.com' }
