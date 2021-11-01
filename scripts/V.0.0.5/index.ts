@@ -66,7 +66,7 @@ const grabTokens = async(user:string):Promise<iSubscriber> => {
     return subscriber
 }
 
-interface iSteps { fetch:boolean, write:boolean }
+interface iSteps { fetch?:boolean, write:boolean, send:boolean }
 const debug = async(user:string, steps:iSteps) => {
     // fetchSubscribers().catch(console.log)
     const subscriber = await grabTokens(user)
@@ -110,7 +110,7 @@ const getMentionImages = async() => {
 
 
 interface iUser { twitter:string, email:string }
-const index = async({ twitter, email } :iUser) => {
+const index = async({ twitter, email } :iUser, { write, send }:iSteps = { write:true, send:true }) => {
     // fetchSubscribers().catch(console.log)
     const subscriber = await grabTokens(twitter)
 
@@ -123,15 +123,16 @@ const index = async({ twitter, email } :iUser) => {
     aggregatedData.replies.map(reply => ({ ...reply, image:images[reply.name] }))
 
     const writeData = writeEmail(aggregatedData)
-    await sendEmail(writeData, email).catch()
+    if(send) await sendEmail(writeData, email).catch()
 
-    // const writeJson = JSON.stringify(writeData)
-    // const writeFile = `./data/emails/${subscriber.screen_name}.json`
-    // await fs.writeFile(writeFile, writeJson)
-
+    if(write){
+        const writeJson = JSON.stringify(writeData)
+        const writeFile = `./data/emails/${subscriber.screen_name}.json`
+        await fs.writeFile(writeFile, writeJson)
+    }
 }
 
 const user:iUser = { twitter:'SocialQui', email:'santiago.aws@gmail.com' }
-index(user).catch(console.log)
+index(user, { send:true, write:false }).catch(console.log)
 
 
