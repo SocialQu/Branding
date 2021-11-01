@@ -127,7 +127,7 @@ const index = async({ twitter, email } :iUser, { fetch, write, send }:iSteps) =>
 
     const writeJson = JSON.stringify(writeData)
     const file = write ? `emails/${subscriber.screen_name}` : 'write'
-    const writeFile = `./data/emails/${file}.json`
+    const writeFile = `./data/${file}.json`
     await fs.writeFile(writeFile, writeJson)
 }
 
