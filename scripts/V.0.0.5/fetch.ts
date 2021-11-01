@@ -152,8 +152,6 @@ export const fetchMentions = async(clients:iTwitterClients, mentions:string[]):P
     const { data }:{ data:iMention[] } = await metricsClient.get(url)
 
     const images = data.reduce((d, { profile_image_url, username }) => ({ ...d, [username]: profile_image_url }), {})
-
-    console.log(images)
     return images
 }
 
