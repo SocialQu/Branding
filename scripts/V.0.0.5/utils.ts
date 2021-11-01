@@ -242,7 +242,7 @@ const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEma
 
 const getKpiFooter = (date:Date) => `Data fetched on ${getWeekDay(date)} at ${getTime(date)}. Trends computed against the 7-day average values.`
 const addEditorial = ():iEmailEditorial => ({
-    editorial_title:'Your growth routine ',
+    editorial_title:'Did you wrote a thread this week? ',
     editorial:'includes all the daily activities that helps you build an audience over time. It can include creating content, replying to tweets, sending DMs or finding new leads! Do you have a growth routine? ',
     editorial_CTA:'Share it with me.',
     editorial_link:'https://twitter.com/SocialQui',
