@@ -86,10 +86,10 @@ const debugSend = async() => {
     const writen = await fs.readFile(writeFile)
     const writenJson = JSON.parse(writen.toString())
 
-    await sendEmail(writenJson).catch()
+    await sendEmail(writenJson, 'santiago.aws@gmail.com').catch()
 }
 
-debugSend().catch(console.log)
+// debugSend().catch(console.log)
 
 
 const getMentionImages = async() => {
@@ -109,9 +109,10 @@ const getMentionImages = async() => {
 
 
 
-const index = async(user:string) => {
+interface iUser { twitter:string, email:string }
+const index = async({ twitter, email } :iUser) => {
     // fetchSubscribers().catch(console.log)
-    const subscriber = await grabTokens(user)
+    const subscriber = await grabTokens(twitter)
 
     const fetched = await fetchData(subscriber)
     const analysis = await analyzeData(fetched)
@@ -122,14 +123,15 @@ const index = async(user:string) => {
     aggregatedData.replies.map(reply => ({ ...reply, image:images[reply.name] }))
 
     const writeData = writeEmail(aggregatedData)
-    const writeJson = JSON.stringify(writeData)
+    await sendEmail(writeData, email).catch()
 
-    const writeFile = `./data/emails/${subscriber.screen_name}.json`
-    await fs.writeFile(writeFile, writeJson)
+    // const writeJson = JSON.stringify(writeData)
+    // const writeFile = `./data/emails/${subscriber.screen_name}.json`
+    // await fs.writeFile(writeFile, writeJson)
 
-    console.log(writeJson)
 }
 
-// index('SocialQui').catch(console.log)
+const user:iUser = { twitter:'SocialQui', email:'santiago.aws@gmail.com' }
+index(user).catch(console.log)
 
 
