@@ -243,10 +243,10 @@ const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEma
 const getKpiFooter = (date:Date) => `Data fetched on ${getWeekDay(date)} at ${getTime(date)}. Trends computed against the 7-day average values.`
 const addEditorial = ():iEmailEditorial => ({
     editorial_title:'Did you wrote a thread this week? ',
-    editorial:'Threads can be time-consuming to write but they are also a terrific way to grow your brand if you do it consistently one or twice a week. If you do write a thread ',
-    editorial_CTA:'share it with me.',
+    editorial:'Threads can be time-consuming but they are also a terrific way to grow your brand if you do it consistently one or twice a week. If you did wrote a thread ',
+    editorial_CTA:'share it with me,',
     editorial_link:'https://twitter.com/SocialQui',
-    editorial_2:`and I'll be happy to share it and retweet it.`,
+    editorial_2:` I will be glad to retweet it.`,
     kpi_footer:getKpiFooter(new Date)
 })
 
