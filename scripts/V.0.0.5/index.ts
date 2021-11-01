@@ -66,7 +66,7 @@ const grabTokens = async(user:string):Promise<iSubscriber> => {
     return subscriber
 }
 
-interface iSteps { fetch?:boolean, write:boolean, send:boolean }
+interface iSteps { fetch:boolean, write:boolean, send:boolean }
 const debug = async(user:string, steps:iSteps) => {
     // fetchSubscribers().catch(console.log)
     const subscriber = await grabTokens(user)
@@ -110,8 +110,8 @@ const getMentionImages = async() => {
 
 
 interface iUser { twitter:string, email:string }
-const index = async({ twitter, email } :iUser, { write, send }:iSteps = { write:true, send:true }) => {
-    // fetchSubscribers().catch(console.log)
+const index = async({ twitter, email } :iUser, { fetch, write, send }:iSteps) => {
+    if(fetch) await fetchSubscribers().catch(console.log)
     const subscriber = await grabTokens(twitter)
 
     const fetched = await fetchData(subscriber)
@@ -133,6 +133,4 @@ const index = async({ twitter, email } :iUser, { write, send }:iSteps = { write:
 }
 
 const user:iUser = { twitter:'SocialQui', email:'santiago.aws@gmail.com' }
-index(user, { send:true, write:false }).catch(console.log)
-
-
+index(user, { fetch:false, send:true, write:false }).catch(console.log)
