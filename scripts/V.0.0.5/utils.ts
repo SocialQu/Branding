@@ -284,12 +284,12 @@ export const writeEmail = (data:iData):iEmailData => {
 }
 
 
-export const sendEmail = async(data:iEmailData) => {
+export const sendEmail = async(data:iEmailData, email:string) => {
     const sendgrid_key = process.env.sendgrid_key as string
     sgMail.setApiKey(sendgrid_key)
 
     const msg:MailDataRequired = {
-        to: 'santiago.marti67@gmail.com',
+        to: email,
         from: 'SocialQ@branding.gq',
         templateId:'d-c73ab5b0ca6142cb9db14aeac43aefe4',
         dynamicTemplateData:data,
