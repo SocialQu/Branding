@@ -251,11 +251,11 @@ const addEditorial = ():iEmailEditorial => ({
 })
 
 const addContent = ():iEmailContent => ({
-    content_title: "In the wanna-be entrepreneur podcast ",
-    content: "Dagobert talked about how he goes through all the tweets in his timeline before starting with the notifications and DMs. He spents more that 3 hours every day on Twitter and has gone from a couple hundred followers in May to more than 6,000. He also posts  ",
-    content_CTA: "hillarious memes",
-    content_link: "https://twitter.com/dagorenouf/status/1441425223270686721",
-    content_2: " and is finally starting to see his business grow.",
+    content_title: "Jonathan Barone ",
+    content: 'is working on Bipdash to compile the greatest threads in Twitter whether you are looking for inspiration to write better threads, or content that helps you grow your business. Take some time to visit and support the ',
+    content_CTA: "project.",
+    content_link: "https://www.bipdash.com/",
+    content_2: '',
 })
 
 const addFooter = ():iEmailFooter => ({
