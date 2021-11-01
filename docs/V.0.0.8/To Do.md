@@ -14,3 +14,4 @@
 - [ ] Get email from subscriber.
 - [ ] Fix random selection of colors.
 - [ ] Debug pipeline on scripts.
+- [ ] Filter own user from mentions/replies.
