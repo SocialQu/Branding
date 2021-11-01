@@ -84,7 +84,7 @@ export const analyzeData = async(data:iFetchedData):Promise<iAggregateData>  => 
     const labeledTweets = await classifyTweets(embededTweets, topics)
     const labeledFollowers = await classifyFollowers(embededFollowers, topics)
 
-    const reducedTweets = reduceTweets(labeledTweets)
-    return { ...data, tweets:reducedTweets, followers:labeledFollowers }
+    // const reducedTweets = reduceTweets(labeledTweets)
+    return { ...data, tweets:labeledTweets, followers:labeledFollowers }
 }
 
