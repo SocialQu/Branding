@@ -144,6 +144,8 @@ export const fetchData = async({ access_token_key, access_token_secret }:iSubscr
 
 interface iProfileImages { [username:string]:string }
 export const fetchMentions = async(clients:iTwitterClients, mentions:string[]):Promise<iProfileImages> => {
+    if(!mentions.length) return {}
+
     const { metricsClient } = getTwitterClients(clients)
 
     const url = `users/by?usernames=${mentions.join(',')}&user.fields=profile_image_url`
