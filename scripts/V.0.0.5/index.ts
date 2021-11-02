@@ -12,6 +12,7 @@ import { promises as fs } from 'fs'
 const fetchedFile = './data/fetched.json'
 const analysisFile = './data/analysis.json'
 const aggregatedFile = './data/aggregate.json'
+const email = 'santiago.aws@gmail.com'
 
 
 const fetch = async(subscriber:iSubscriber) => {
@@ -78,7 +79,7 @@ const debug = async(user:string, steps:iSteps) => {
     if(steps.write) await write().catch(console.log)
 }
 
-// debug('SocialQui', { fetch:false, write:true }).catch(console.log)
+// debug('tiimgreen', { fetch:false, write:false, send:false }).catch(console.log)
 
 
 const debugSend = async() => {
@@ -86,7 +87,7 @@ const debugSend = async() => {
     const writen = await fs.readFile(writeFile)
     const writenJson = JSON.parse(writen.toString())
 
-    await sendEmail(writenJson, 'santiago.aws@gmail.com').catch()
+    await sendEmail(writenJson, email).catch()
 }
 
 // debugSend().catch(console.log)
@@ -111,6 +112,8 @@ const getMentionImages = async() => {
 
 interface iUser { twitter:string, email:string }
 const index = async({ twitter, email } :iUser, { fetch, write, send }:iSteps) => {
+    console.log('User:', user)
+
     if(fetch) await fetchSubscribers().catch(console.log)
     const subscriber = await grabTokens(twitter)
 
@@ -131,5 +134,5 @@ const index = async({ twitter, email } :iUser, { fetch, write, send }:iSteps) =>
     await fs.writeFile(writeFile, writeJson)
 }
 
-const user:iUser = { twitter:'SocialQui', email:'santiago.aws@gmail.com' }
-index(user, { fetch:false, send:true, write:false }).catch(console.log)
+const user:iUser = { twitter:'SocialQui', email }
+index(user, { fetch:false, send:true, write:true }).catch(console.log)
