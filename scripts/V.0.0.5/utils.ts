@@ -31,7 +31,7 @@ const formatNumber = (value:number|undefined):string => {
     return `${value}`
 }
 
-const formatText = (text:string) => text.replace('"', '').replace('\"','').replace(`'`, '').replace(`\'`, '') 
+const formatText = (text:string = '') => text.replace('"', '').replace('\"','').replace(`'`, '').replace(`\'`, '') 
 
 
 const buildEmail = ({ kpis, bestTweets, topics, followers, replies }:iData):iEmailMetrics => {

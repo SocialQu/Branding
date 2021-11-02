@@ -1,8 +1,8 @@
 import { iTweet as iBestTweet, iBestTweets, iReply as iMention } from './types/data'
 import { iData, iKpis, iKpi, iTopic, iFollower, iFollowers  } from './types/data'
 
-import { iFetchedData, iTweet, iMetrics, iReply, TextColor } from './types/fetch'
-import { iReducedTweet, iLabeledFollower } from './analysis'
+import { iFetchedData, iTweet, iMetrics, iReply } from './types/fetch'
+import { iLabeledFollower, iLabeledTweet } from './analysis'
 import { iEmailData } from './types/email'
 import { promises as fs } from 'fs'
 
@@ -27,20 +27,26 @@ const filterData = async(data:iAggregateData) => {
 
     const filteredData = { ...data, tweets:weekTweets, replies:weekReplies }
 
-    const { user: { screen_name: screenName } } = data
-    const aggregatedFile = `./data/emails/${screenName}.json`
-    const aggregated = await fs.readFile(aggregatedFile)
-    const aggregatedData = JSON.parse(aggregated.toString()) as iEmailData
+    try{
+        const { user: { screen_name: screenName } } = data
+        const aggregatedFile = `./data/emails/${screenName}.json`
+        const aggregated = await fs.readFile(aggregatedFile)
+        const aggregatedData = JSON.parse(aggregated.toString()) as iEmailData
+    
+        const lastFollowers = Number(aggregatedData.followers.replace(',', ''))
+        const lastWeekData = { tweets:lastWeekTweets, replies:lastWeekReplies, followers:lastFollowers }    
+        return { filteredData, lastWeekData }
 
-    const lastFollowers = Number(aggregatedData.followers.replace(',', ''))
-    const lastWeekData = { tweets:lastWeekTweets, replies:lastWeekReplies, followers:lastFollowers }
+    } catch(e){
+        const lastWeekData = { tweets:lastWeekTweets, replies:lastWeekReplies, followers:undefined }    
+        return { filteredData, lastWeekData }
+    }
 
-    return { filteredData, lastWeekData }
 }
 
 const sumEngagements = (m:iMetrics) => m.likes + m.retweets + m.replies + m.visits + m.clicks
 
-interface iLastWeekData { tweets:iReducedTweet[], replies:iReply[], followers:number }
+interface iLastWeekData { tweets:iLabeledTweet[], replies:iReply[], followers?:number }
 const computeKPIs = ({ tweets, replies, user }:iAggregateData, lastWeek:iLastWeekData):iKpis => {
     const getImpressions = ({tweets, replies}:{tweets: iTweet[], replies:iTweet[]}):number => [
         ...tweets, ...replies].reduce((d, { metrics }) => d += metrics.impressions
@@ -62,7 +68,7 @@ const computeKPIs = ({ tweets, replies, user }:iAggregateData, lastWeek:iLastWee
     }
 
     const { followers_count:followers } = user
-    const followersDelta = followers - lastWeek.followers
+    const followersDelta = lastWeek.followers ? followers - lastWeek.followers : undefined
     const followersKpi:iKpi = { value:followers, trend:followersDelta, color:getKpiColor(followersDelta) }
 
     const kpis:iKpis = {
@@ -148,7 +154,7 @@ const labelFollowers = ({ followers }: iAggregateData):iFollowers => {
         name: follower.name.substring(0, 20),
         niche: follower.niche,
         image: follower.image,
-        link:`https://twitter.com/${follower.name}`,
+        link:`https://twitter.com/${follower.handle}`,
         color:follower.color,
         textColor:follower.textColor,
         followers: follower.followers,
@@ -200,7 +206,7 @@ const sortReplies = ({ replies }: iAggregateData) => {
 }
 
 
-export interface iAggregateData extends iFetchedData { tweets:iReducedTweet[], followers:iLabeledFollower[] }
+export interface iAggregateData extends iFetchedData { tweets:iLabeledTweet[], followers:iLabeledFollower[] }
 export const aggregateData = async (data:iAggregateData):Promise<iData> => {
     const { filteredData, lastWeekData } = await filterData(data)
 
