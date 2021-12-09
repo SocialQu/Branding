@@ -17,3 +17,8 @@
     - [ ] Hashtags & Mentions.
     - [ ] Intro and conclussion (word embeddings).
     - [ ] Entity Recognition.
+
+- [ ] Intrinsic Attributes
+    - [ ] Tweet length & structure.
+    - [ ] Word selection & language attributes.
+    - [ ] Use of Emojis.
