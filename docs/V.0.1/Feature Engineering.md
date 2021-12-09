@@ -44,3 +44,8 @@
     - [ ] Bio & coherence.
     - [ ] Profile Image (CNN)?
     - [ ] Username & handle.
+
+- [ ] Activity
+    - [ ] Likes.
+    - [ ] Follows.
+    - [ ] Sessions.
