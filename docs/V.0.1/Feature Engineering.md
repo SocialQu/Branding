@@ -16,3 +16,4 @@
 - [ ] Parts of speech.
     - [ ] Hashtags & Mentions.
     - [ ] Intro and conclussion (word embeddings).
+    - [ ] Entity Recognition.
