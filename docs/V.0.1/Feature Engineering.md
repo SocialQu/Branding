@@ -22,3 +22,10 @@
     - [ ] Tweet length & structure.
     - [ ] Word selection & language attributes.
     - [ ] Use of Emojis.
+
+- [ ] Content Analysis
+    - [ ] Topic Selection.
+    - [ ] Tweet Delivery.
+    - [ ] Idea & Simplicity.
+    - [ ] Novelty & Originality.
+    - [ ] Question & Imperatives.
