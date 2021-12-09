@@ -29,3 +29,12 @@
     - [ ] Idea & Simplicity.
     - [ ] Novelty & Originality.
     - [ ] Question & Imperatives.
+
+- [ ] Content Strategy
+    - [ ] Topic Diversity.
+    - [ ] Replies & Retweets.
+    - [ ] Size of Network.
+    - [ ] Tweet diversity.
+    - [ ] Images & Media. 
+    - [ ] Threads.
+    - [ ] Humour & uniqueness.
