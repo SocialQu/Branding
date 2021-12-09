@@ -12,3 +12,7 @@
     - [ ] Datetime influence.
     - [ ] Previous tweets
     - [ ] Feed & uniqueness.
+
+- [ ] Parts of speech.
+    - [ ] Hashtags & Mentions.
+    - [ ] Intro and conclussion (word embeddings).
