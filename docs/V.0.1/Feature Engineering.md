@@ -38,3 +38,9 @@
     - [ ] Images & Media. 
     - [ ] Threads.
     - [ ] Humour & uniqueness.
+
+- [ ] Profile Features
+    - [ ] Follower correlation.
+    - [ ] Bio & coherence.
+    - [ ] Profile Image (CNN)?
+    - [ ] Username & handle.
