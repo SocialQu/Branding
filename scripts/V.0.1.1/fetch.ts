@@ -2,9 +2,10 @@ import { getTwitterClients, iTwitterClients } from '../V.0.0.5/fetch'
 import { iRawTweet, iRawMetrics } from '../V.0.0.5/types'
 import { iMetrics } from '../V.0.0.5/types/fetch'
 import { MongoClient } from 'mongodb'
+import { promises as fs } from 'fs'
+
 
 require('dotenv').config()
-
 
 export interface iTweet {
     id: string
@@ -20,7 +21,7 @@ const fetchTweets = async({ access_token_key, access_token_secret }: iTwitterCli
     const rawTweets:iRawTweet[] = await client.get(`/statuses/user_timeline.json?count=100`) 
 
     const noRetweets = rawTweets.filter(({ retweeted }) => !retweeted)
-    if(!noRetweets.length) return
+    if(!noRetweets.length) return []
 
     const ids:string = noRetweets.map(({ id_str }) => id_str).join(',')
 
@@ -28,7 +29,7 @@ const fetchTweets = async({ access_token_key, access_token_secret }: iTwitterCli
     const metricsUrl = `tweets?ids=${ids}&tweet.${fields}`
 
     const { data:metrics }:{ data: iRawMetrics[]} = await metricsClient.get(metricsUrl)
-    if (!metrics) return
+    if (!metrics) return []
 
     const tweetsWithMetrics = noRetweets.map((t) => ({
         ...t,
@@ -95,6 +96,24 @@ const fetchUsers = async() => {
 
 
 
-const fetch = async() => {
+const fetch = async(users:iUser[], idx:number) => {
+    if (idx + 1 === users.length) return
+
+    const user = users[idx]
+
+    try {
+        const tweets = await fetchTweets(user)
+        const tweetsData = JSON.stringify(tweets)
+    
+        await fs.writeFile(`./data/tweets/${user.screen_name}.json`, tweetsData)
+        console.log(`Fetched ${user.screen_name} tweets.`)
+
+    } catch(e) { console.log(`Error fetching ${user.screen_name} tweets`) }
+
+    fetch(users, idx + 1)
+}
+
+const index = async() => {
     const users = await fetchUsers()
+    await fetch(users, 0)
 }
