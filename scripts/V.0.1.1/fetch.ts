@@ -9,6 +9,7 @@ export interface iTweet {
     datetime: string
     isReply: boolean
     metrics?: iMetrics
+    replyTo?: string
 }
 
 const fetchTweets = async({ access_token_key, access_token_secret }: iTwitterClients) => {
@@ -31,22 +32,32 @@ const fetchTweets = async({ access_token_key, access_token_secret }: iTwitterCli
         metrics: metrics.find(({ id }) => t.id_str === id) as iRawMetrics
     }))
 
-    const mappedTweets:iTweet[] = tweetsWithMetrics.filter(({ metrics }) => metrics).map(t => ({
-        id: t.id_str,
-        text: t.metrics.text,
-        isReply: !!t.in_reply_to_status_id,
-        datetime: t.created_at,
-        metrics:{
-            likes: t.metrics.organic_metrics.like_count,
-            replies: t.metrics.organic_metrics.reply_count,
-            retweets: t.metrics.organic_metrics.retweet_count,
-            impressions: t.metrics.organic_metrics.impression_count,
-            visits: t.metrics.organic_metrics.user_profile_clicks,
-            clicks: t.metrics.organic_metrics.url_link_clicks || 0
-        },
-        userId:t.in_reply_to_user_id_str,
-        userName:t.in_reply_to_screen_name
-    }))
+    const tweets:iTweet[] = rawTweets.map(t => {
+        const tweet:iTweet = {
+            id: t.id_str,
+            text: t.text,
+            isReply: !!t.in_reply_to_status_id,
+            datetime: t.created_at
+        }
 
-    return mappedTweets
+        const tweetWithMetrics = tweetsWithMetrics.find(({ id_str }) => id_str === t.id_str)
+
+        if(tweetWithMetrics){
+            const { metrics } = tweetWithMetrics
+
+            tweet.metrics = {
+                likes: metrics.organic_metrics.like_count,
+                replies: metrics.organic_metrics.reply_count,
+                retweets: metrics.organic_metrics.retweet_count,
+                impressions: metrics.organic_metrics.impression_count,
+                visits: metrics.organic_metrics.user_profile_clicks,
+                clicks: metrics.organic_metrics.url_link_clicks || 0
+            }
+        }
+
+        return tweet
+
+    })
+
+    return tweets
 }
