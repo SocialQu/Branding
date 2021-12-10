@@ -1,6 +1,9 @@
 import { getTwitterClients, iTwitterClients } from '../V.0.0.5/fetch'
 import { iRawTweet, iRawMetrics } from '../V.0.0.5/types'
 import { iMetrics } from '../V.0.0.5/types/fetch'
+import { MongoClient } from 'mongodb'
+
+require('dotenv').config()
 
 
 export interface iTweet {
@@ -60,4 +63,19 @@ const fetchTweets = async({ access_token_key, access_token_secret }: iTwitterCli
     })
 
     return tweets
+}
+
+
+const fetchUsers = async() => {
+    const uri = `mongodb+srv://${process.env.mongo_admin}/${process.env.cortazar_db}`
+
+    const client = new MongoClient(uri)
+    await client.connect()
+
+    const db = process.env.subscribers_collection
+    const collection = process.env.subscribers_db as string
+    const Users = client.db(db).collection(collection)
+
+    const users = await Users.find().toArray()
+    return users
 }
