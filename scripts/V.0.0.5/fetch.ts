@@ -121,8 +121,8 @@ export const getTopics = async():Promise<iTopic[]> => {
 }
 
 
-interface iTwitterClients { access_token_key:string, access_token_secret:string }
-const getTwitterClients = ({ access_token_key, access_token_secret }: iTwitterClients) => {
+export interface iTwitterClients { access_token_key:string, access_token_secret:string }
+export const getTwitterClients = ({ access_token_key, access_token_secret }: iTwitterClients) => {
     const options:TwitterOptions = { consumer_key, consumer_secret, access_token_key, access_token_secret }
     const client = new Twitter({...options, subdomain, version })
     const metricsClient = new Twitter({ ...options, version:'2', extension:false })
