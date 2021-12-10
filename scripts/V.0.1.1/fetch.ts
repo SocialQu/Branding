@@ -117,3 +117,6 @@ const index = async() => {
     const users = await fetchUsers()
     await fetch(users, 0)
 }
+
+
+index().catch()
