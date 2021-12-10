@@ -66,6 +66,12 @@ const fetchTweets = async({ access_token_key, access_token_secret }: iTwitterCli
 }
 
 
+interface iUser {
+    screen_name:string
+    access_token_key:string
+    access_token_secret:string
+}
+
 const fetchUsers = async() => {
     const uri = `mongodb+srv://${process.env.mongo_admin}/${process.env.cortazar_db}`
 
@@ -76,6 +82,19 @@ const fetchUsers = async() => {
     const collection = process.env.subscribers_db as string
     const Users = client.db(db).collection(collection)
 
-    const users = await Users.find().toArray()
-    return users
+    const users:iUser[] = await Users.find().toArray()
+
+    const names = users.map(({ screen_name:name }) => name)
+    const setOfNames = [...new Set(names)]
+
+    const uniqueUsers = setOfNames.map(name => users.find(({ screen_name }) => screen_name === name))
+
+    return uniqueUsers as iUser[]
+}
+
+
+
+
+const fetch = async() => {
+    const users = await fetchUsers()
 }
