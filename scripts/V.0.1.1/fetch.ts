@@ -46,7 +46,7 @@ const fetchTweets = async({ access_token_key, access_token_secret }: iTwitterCli
 
         const tweetWithMetrics = tweetsWithMetrics.find(({ id_str }) => id_str === t.id_str)
 
-        if(tweetWithMetrics){
+        if(tweetWithMetrics?.metrics){
             const { metrics } = tweetWithMetrics
 
             tweet.metrics = {
@@ -74,26 +74,29 @@ interface iUser {
 }
 
 const fetchUsers = async() => {
+    console.log('Fetching Users')
     const uri = `mongodb+srv://${process.env.mongo_admin}/${process.env.cortazar_db}`
 
     const client = new MongoClient(uri)
     await client.connect()
+    console.log('Connected')
 
     const db = process.env.subscribers_collection
     const collection = process.env.subscribers_db as string
     const Users = client.db(db).collection(collection)
 
     const users:iUser[] = await Users.find().toArray()
+    console.log(`Total Users: ${users.length}`)
 
     const names = users.map(({ screen_name:name }) => name)
     const setOfNames = [...new Set(names)]
 
     const uniqueUsers = setOfNames.map(name => users.find(({ screen_name }) => screen_name === name))
+    console.log(`Unique Users: ${uniqueUsers.length}`)
 
+    await client.close()
     return uniqueUsers as iUser[]
 }
-
-
 
 
 const fetch = async(users:iUser[], idx:number) => {
@@ -106,16 +109,16 @@ const fetch = async(users:iUser[], idx:number) => {
         const tweetsData = JSON.stringify(tweets)
     
         await fs.writeFile(`./data/tweets/${user.screen_name}.json`, tweetsData)
-        console.log(`Fetched ${user.screen_name} tweets.`)
+        console.log(`Fetched ${tweets.length} tweets from ${user.screen_name}.`)
 
-    } catch(e) { console.log(`Error fetching ${user.screen_name} tweets`) }
+    } catch(e) { console.log(`Error fetching ${user.screen_name} tweets: ${e}`) }
 
     fetch(users, idx + 1)
 }
 
 const index = async() => {
     const users = await fetchUsers()
-    await fetch(users, 0)
+    await fetch(users, 1)
 }
 
 
