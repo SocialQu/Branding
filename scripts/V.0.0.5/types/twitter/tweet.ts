@@ -19,7 +19,7 @@ interface iUser {
     location: string
     description: string
     url: string
-    entities: any[]
+    entities: any
     protected: boolean
     followers_count: number
     friends_count: number
@@ -64,14 +64,14 @@ interface iRetweet {
     id_str: string,
     text: string,
     truncated: boolean,
-    entities: any[],
+    entities: any,
     source: string | boolean,
     in_reply_to_status_id:number | null
     in_reply_to_status_id_str:string | null
     in_reply_to_user_id:number | null
     in_reply_to_user_id_str:string | null
     in_reply_to_screen_name:string | null
-    user: any[],
+    user: any,
     geo: null,
     coordinates: null,
     place: null,
@@ -84,7 +84,7 @@ interface iRetweet {
     lang: string
     quoted_status_id?: number,
     quoted_status_id_str?: string,
-    quoted_status?: any[]
+    quoted_status?: any
     possibly_sensitive?:boolean
 }
 
@@ -117,5 +117,5 @@ export interface iRawTweet {
     retweeted_status?:iRetweet
     quoted_status_id?: number,
     quoted_status_id_str?: string,
-    quoted_status?: any[]
+    quoted_status?: any
 }

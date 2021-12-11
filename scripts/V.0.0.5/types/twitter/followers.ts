@@ -6,7 +6,7 @@ export interface iRawFollower {
     location: string
     description: string
     url: string | null
-    entities: { url?: any[], description: any[] }
+    entities: { url?:any, description?:any }
     protected: boolean
     followers_count: number
     friends_count: number
@@ -25,7 +25,7 @@ export interface iRawFollower {
         id_str: string
         text: string
         truncated: boolean
-        entities: any[]
+        entities: any
         source: string
         in_reply_to_status_id: number | null
         in_reply_to_status_id_str: string | null
@@ -34,7 +34,7 @@ export interface iRawFollower {
         in_reply_to_screen_name: string | null
         geo: null
         coordinates: null
-        place: null
+        place: any
         contributors: null
         is_quote_status: boolean
         retweet_count: number
@@ -42,11 +42,11 @@ export interface iRawFollower {
         favorited: boolean
         retweeted: boolean
         lang: string
-        retweeted_status?: any[]
+        retweeted_status?: any
         possibly_sensitive?: boolean
         quoted_status_id?: number
         quoted_status_id_str?: string
-        extended_entities?: any[]
+        extended_entities?: any
     },
     contributors_enabled: boolean
     is_translator: boolean
@@ -74,5 +74,5 @@ export interface iRawFollower {
     blocking: boolean
     blocked_by: boolean
     translator_type: string
-    withheld_in_countries: []
+    withheld_in_countries?: any
 }

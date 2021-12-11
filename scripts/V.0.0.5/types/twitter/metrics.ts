@@ -4,7 +4,7 @@ interface iOrganicMetrics {
     impression_count: number
     like_count: number
     retweet_count: number
-    url_link_clicks?: 0
+    url_link_clicks?: number
 }
 
 export interface iRawMetrics {
