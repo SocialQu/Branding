@@ -1,25 +1,17 @@
 import { iRawTweet, iRawMetrics, iAuth } from '../V.0.0.5/types'
 import { getTwitterClients } from '../V.0.0.5/fetch'
-import { iMetrics } from '../V.0.0.5/types/fetch'
 import { MongoClient } from 'mongodb'
 import { promises as fs } from 'fs'
 
 
 require('dotenv').config()
 
-interface iTweet {
-    id: string
-    text: string
-    datetime: string
-    isReply: boolean
-    metrics?: iMetrics
-    replyTo?: string
-}
 
 interface iUser {
     screen_name:string
     access_token_key:string
     access_token_secret:string
+    fetched?:boolean
 }
 
 const fetchUser = async({ screen_name, access_token_key, access_token_secret }: iUser) => {
@@ -39,7 +31,7 @@ const fetchUser = async({ screen_name, access_token_key, access_token_secret }: 
     await fs.writeFile(`./data/tweets/${screen_name}.json`, tweetsData)
 
     const noRetweets = tweets.filter(({ retweeted }) => !retweeted)
-    if(!noRetweets.length) return []
+    if(!noRetweets.length) return
 
     const ids:string = noRetweets.map(({ id_str }) => id_str).filter((_, idx) => idx < 100).join(',')
 
@@ -49,6 +41,8 @@ const fetchUser = async({ screen_name, access_token_key, access_token_secret }: 
     const { data:metrics }:{ data: iRawMetrics[]} = await metricsClient.get(metricsUrl)
     const metricsData = JSON.stringify(metrics)
     await fs.writeFile(`./data/metrics/${screen_name}.json`, metricsData)
+
+    return true
 }
 
 
@@ -83,7 +77,7 @@ const fetch = async(users:iUser[], idx:number) => {
 
     const user = users[idx]
 
-    try { await fetchUser(user) } 
+    try { user.fetched = await fetchUser(user) } 
     catch(e) { console.log(`Error fetching ${user.screen_name} tweets: ${e}`) }
 
     fetch(users, idx + 1)
