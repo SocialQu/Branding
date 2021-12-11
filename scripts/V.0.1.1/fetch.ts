@@ -3,7 +3,6 @@ import { getTwitterClients } from '../V.0.0.5/fetch'
 import { MongoClient } from 'mongodb'
 import { promises as fs } from 'fs'
 
-
 require('dotenv').config()
 
 
@@ -83,10 +82,13 @@ const fetch = async(users:iUser[], idx:number) => {
     fetch(users, idx + 1)
 }
 
+
 const index = async() => {
     const users = await fetchUsers()
     await fetch(users, 0)
-}
 
+    const usersData = JSON.stringify(users)
+    await fs.writeFile(`./data/users.json`, usersData)
+}
 
 index().catch()
