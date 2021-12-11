@@ -30,14 +30,18 @@ const fetchUser = async({ screen_name, access_token_key, access_token_secret }: 
     const bioData = JSON.stringify(bio)
     await fs.writeFile(`./data/bios/${screen_name}.json`, bioData)
 
-    const tweets:iRawTweet[] = await client.get(`/statuses/user_timeline.json?count=100`) 
+    const followers = await client.get('/followers/list.json?count=200')
+    const followersData = JSON.stringify(followers)
+    await fs.writeFile(`./data/followers/${screen_name}.json`, followersData)
+
+    const tweets:iRawTweet[] = await client.get(`/statuses/user_timeline.json?count=200`) 
     const tweetsData = JSON.stringify(tweets)
     await fs.writeFile(`./data/tweets/${screen_name}.json`, tweetsData)
 
     const noRetweets = tweets.filter(({ retweeted }) => !retweeted)
     if(!noRetweets.length) return []
 
-    const ids:string = noRetweets.map(({ id_str }) => id_str).join(',')
+    const ids:string = noRetweets.map(({ id_str }) => id_str).filter((_, idx) => idx < 100).join(',')
 
     const fields = 'fields=organic_metrics,created_at'
     const metricsUrl = `tweets?ids=${ids}&tweet.${fields}`
