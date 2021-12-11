@@ -22,3 +22,7 @@
     - [ ] Mentions (boolean & numerical)
     - [ ] Is weekend (boolean)
     - [ ] Is working hours (boolean)
+
+3. I own a heatmap of engagement based on:
+    - [ ] Weekday
+    - [ ] Hour
