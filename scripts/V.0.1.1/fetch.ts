@@ -1,4 +1,4 @@
-import { iRawTweet, iRawMetrics } from '../V.0.0.5/types'
+import { iRawTweet, iRawMetrics, iAuth } from '../V.0.0.5/types'
 import { getTwitterClients } from '../V.0.0.5/fetch'
 import { iMetrics } from '../V.0.0.5/types/fetch'
 import { MongoClient } from 'mongodb'
@@ -23,7 +23,12 @@ interface iUser {
 }
 
 const fetchUser = async({ screen_name, access_token_key, access_token_secret }: iUser) => {
+    console.log(`Fetching: ${screen_name} data`)
     const { client, metricsClient } = getTwitterClients({ access_token_key, access_token_secret })
+
+    const bio:iAuth = await client.get('/account/verify_credentials')
+    const bioData = JSON.stringify(bio)
+    await fs.writeFile(`./data/bios/${screen_name}.json`, bioData)
 
     const tweets:iRawTweet[] = await client.get(`/statuses/user_timeline.json?count=100`) 
     const tweetsData = JSON.stringify(tweets)
@@ -74,7 +79,7 @@ const fetch = async(users:iUser[], idx:number) => {
 
     const user = users[idx]
 
-    try { const tweets = await fetchUser(user) } 
+    try { await fetchUser(user) } 
     catch(e) { console.log(`Error fetching ${user.screen_name} tweets: ${e}`) }
 
     fetch(users, idx + 1)
@@ -82,7 +87,7 @@ const fetch = async(users:iUser[], idx:number) => {
 
 const index = async() => {
     const users = await fetchUsers()
-    await fetch(users, 1)
+    await fetch(users, 0)
 }
 
 
