@@ -27,11 +27,11 @@ export interface iAuth {
         truncated: boolean
         entities: { hashtags: any[], symbols: any[], user_mentions: any[], urls: any[] }
         source: string
-        in_reply_to_status_id: null
-        in_reply_to_status_id_str: null
-        in_reply_to_user_id: null
-        in_reply_to_user_id_str: null
-        in_reply_to_screen_name: null
+        in_reply_to_status_id: number | null
+        in_reply_to_status_id_str: string | null
+        in_reply_to_user_id: number | null
+        in_reply_to_user_id_str: string | null
+        in_reply_to_screen_name: string | null
         geo: null
         coordinates: null
         place: null
@@ -47,8 +47,8 @@ export interface iAuth {
     is_translator: boolean
     is_translation_enabled: boolean
     profile_background_color: string
-    profile_background_image_url: null
-    profile_background_image_url_https: null
+    profile_background_image_url: string | null
+    profile_background_image_url_https: string | null
     profile_background_tile: boolean
     profile_image_url: string
     profile_image_url_https: string
@@ -65,7 +65,7 @@ export interface iAuth {
     follow_request_sent: boolean
     notifications: boolean
     translator_type: string
-    withheld_in_countries: []
+    withheld_in_countries: any[]
     suspended: boolean
     needs_phone_verification: boolean
 }
