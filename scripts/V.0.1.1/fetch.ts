@@ -1,5 +1,5 @@
-import { getTwitterClients, iTwitterClients } from '../V.0.0.5/fetch'
 import { iRawTweet, iRawMetrics } from '../V.0.0.5/types'
+import { getTwitterClients } from '../V.0.0.5/fetch'
 import { iMetrics } from '../V.0.0.5/types/fetch'
 import { MongoClient } from 'mongodb'
 import { promises as fs } from 'fs'
@@ -7,7 +7,7 @@ import { promises as fs } from 'fs'
 
 require('dotenv').config()
 
-export interface iTweet {
+interface iTweet {
     id: string
     text: string
     datetime: string
@@ -16,7 +16,13 @@ export interface iTweet {
     replyTo?: string
 }
 
-const fetchTweets = async({ access_token_key, access_token_secret }: iTwitterClients) => {
+interface iUser {
+    screen_name:string
+    access_token_key:string
+    access_token_secret:string
+}
+
+const fetchTweets = async({ screen_name, access_token_key, access_token_secret }: iUser) => {
     const { client, metricsClient } = getTwitterClients({ access_token_key, access_token_secret })
     const rawTweets:iRawTweet[] = await client.get(`/statuses/user_timeline.json?count=100`) 
 
@@ -66,12 +72,6 @@ const fetchTweets = async({ access_token_key, access_token_secret }: iTwitterCli
     return tweets
 }
 
-
-interface iUser {
-    screen_name:string
-    access_token_key:string
-    access_token_secret:string
-}
 
 const fetchUsers = async() => {
     console.log('Fetching Users')
