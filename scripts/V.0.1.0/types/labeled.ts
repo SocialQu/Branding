@@ -22,6 +22,10 @@ interface iLabeledData {
     hasLinks: Duple
     links: number
 
+    // hashtags
+    hasHashtags: Duple
+    hashtags: number
+
     // outputs
     likes: number
     visits: number
