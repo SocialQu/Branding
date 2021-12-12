@@ -56,7 +56,7 @@ const aggreagateData = ({ profile, tweets, metrics }:iAggreagateData):iAggregate
             mentions: tweet.entities.user_mentions.map(({ screen_name }) => screen_name),
             hashtags: tweet.entities.hashtags.map(({ text }) => text),
             media: tweet.entities.media?.map(({ media_url }) => media_url) || [],
-            links:[]
+            links: tweet.entities.urls.map(({ expanded_url }) => expanded_url)
         }
     }))
 
