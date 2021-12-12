@@ -15,7 +15,7 @@ interface iEntity {
         url: string
         expanded_url: string
         display_url: string
-        indices: number[]
+        indices: [number, number]
     }[]
     media?:{
         id: number
