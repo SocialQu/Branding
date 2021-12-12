@@ -38,8 +38,9 @@ interface iAggreagateData {
 }
 
 const aggreagateData = ({ profile, tweets, metrics }:iAggreagateData):iAggregatedUser => {
-    const findTweet = (id:string) => tweets.find(({ id_str }) => id_str === id)
+    const findTweet = (id:string) => tweets.find(({ id_str }) => id_str === id) as iRawTweet
     const metricTweets = metrics.map(metrics => ({ metrics, tweet:findTweet(metrics.id)}))
+
     const aggregatedTweet:iAggregatedTweet[] = metricTweets.map(({ metrics, tweet }) => ({
         text: metrics.text,
         datetime: new Date(metrics.created_at),
@@ -50,6 +51,12 @@ const aggreagateData = ({ profile, tweets, metrics }:iAggreagateData):iAggregate
             impressions:metrics.organic_metrics.impression_count,
             visits:metrics.organic_metrics.user_profile_clicks,
             clicks:metrics.organic_metrics.url_link_clicks || 0
+        },
+        entities:{
+            mentions:tweet.entities.user_mentions.map(({ screen_name }) => screen_name),
+            hashtags:[],
+            media:[],
+            links:[]
         }
     }))
 
