@@ -18,6 +18,10 @@ interface iLabeledData {
     hasMedia: Duple
     media: number
 
+    // links
+    hasLinks: Duple
+    links: number
+
     // outputs
     likes: number
     visits: number
