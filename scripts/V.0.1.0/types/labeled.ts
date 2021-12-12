@@ -1,39 +1,40 @@
 type Duple = 1 | 0
 
+
 interface iLabeledData {
-    // bio
+    // Bio
     followers: number
     following: number
 
-    // reply
+    // Reply
     isReply: Duple
 
-    // length
+    // Length
     characterLength: number
     wordLength: number
     sentenceLength: number
 
-    // line breaks
+    // Line breaks
     hasLineBreaks: Duple
     lineBreaks: number
 
-    // media
+    // Media
     hasMedia: Duple
     media: number
 
-    // links
+    // Links
     hasLinks: Duple
     links: number
 
-    // hashtags
+    // Hashtags
     hasHashtags: Duple
     hashtags: number
 
-    // mentions
+    // Mentions
     hasMentions: Duple
     mentions: number
 
-    // outputs
+    // Outputs
     likes: number
     visits: number
     clicks: number
