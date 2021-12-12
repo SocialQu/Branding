@@ -41,9 +41,10 @@ const aggreagateData = ({ profile, tweets, metrics }:iAggreagateData):iAggregate
     const findTweet = (id:string) => tweets.find(({ id_str }) => id_str === id) as iRawTweet
     const metricTweets = metrics.map(metrics => ({ metrics, tweet:findTweet(metrics.id)}))
 
-    const aggregatedTweet:iAggregatedTweet[] = metricTweets.map(({ metrics, tweet }) => ({
+    const aggregatedTweets:iAggregatedTweet[] = metricTweets.map(({ metrics, tweet }) => ({
         text: metrics.text,
         datetime: new Date(metrics.created_at),
+        isReply:!!tweet.in_reply_to_screen_name,
         metrics:{
             likes:metrics.organic_metrics.like_count,
             replies:metrics.organic_metrics.reply_count,
@@ -64,7 +65,7 @@ const aggreagateData = ({ profile, tweets, metrics }:iAggreagateData):iAggregate
         name: profile.screen_name,
         followers: profile.followers_count,
         following: profile.friends_count,
-        tweets: aggregatedTweet
+        tweets: aggregatedTweets
     }
 }
 
