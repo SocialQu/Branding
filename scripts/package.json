@@ -6,6 +6,7 @@
     "@types/node": "^16.6.0",
     "@types/regression": "^2.0.2",
     "dotenv": "^10.0.0",
+    "filehound": "^1.17.5",
     "ml-pca": "^4.0.2",
     "mongodb": "^4.1.0",
     "regression": "^2.0.1",

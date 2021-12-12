@@ -37,7 +37,7 @@ const fetchUser = async({ screen_name, access_token_key, access_token_secret }: 
     const fields = 'fields=organic_metrics,created_at'
     const metricsUrl = `tweets?ids=${ids}&tweet.${fields}`
 
-    const { data:metrics }:{ data: iRawMetrics[]} = await metricsClient.get(metricsUrl)
+    const { data:metrics }:{ data: iRawMetrics[] } = await metricsClient.get(metricsUrl)
     const metricsData = JSON.stringify(metrics)
     await fs.writeFile(`./data/metrics/${screen_name}.json`, metricsData)
 
@@ -72,13 +72,12 @@ const fetchUsers = async() => {
 
 
 const fetch = async(users:iUser[], idx:number) => {
-    if (idx + 1 === users.length) return
-
     const user = users[idx]
 
     try { user.fetched = await fetchUser(user) } 
     catch(e) { console.log(`Error fetching ${user.screen_name} tweets: ${e}`) }
 
+    if (idx + 1 === users.length) return
     fetch(users, idx + 1)
 }
 
