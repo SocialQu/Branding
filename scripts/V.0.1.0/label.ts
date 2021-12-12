@@ -8,7 +8,7 @@ const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.ma
     followers: data.followers,
     following: data.following,
 
-    isReply: 0,
+    isReply: toDuple(t.isReply),
 
     emojis: 0,
     hasEmojis: 0,
