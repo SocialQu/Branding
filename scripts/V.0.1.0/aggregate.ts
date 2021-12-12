@@ -1,5 +1,5 @@
+import { iRawMetrics, iRawTweet } from '../V.0.0.5/types'
 import { readFile, writeFile } from 'fs/promises'
-import { iRawMetrics } from '../V.0.0.5/types'
 import fileHound  from 'filehound'
 
 
@@ -9,6 +9,11 @@ const read = async(path:string) => {
     const metricsBuffer = await readFile(path)
     const metricsData = metricsBuffer.toString()
     const metrics:iRawMetrics[] = await JSON.parse(metricsData)
+
+    const tweetsPath = path.replace('metrics', 'tweets')
+    const tweetsBuffer = await readFile(tweetsPath)
+    const tweetsData = tweetsBuffer.toString()
+    const tweets:iRawTweet[] = await JSON.parse(tweetsData)
 
     return metrics
 }
