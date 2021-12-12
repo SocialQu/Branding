@@ -17,6 +17,27 @@ interface iEntity {
         display_url: string
         indices: number[]
     }[]
+    media?:{
+        id: number
+        id_str: string
+        indices: [number, number]
+        media_url: string
+        media_url_https: string
+        url: string
+        display_url: string
+        expanded_url: string
+        type: string
+        sizes:{
+            thumb: { w:number, h:number, resize:string }
+            medium: { w:number, h:number, resize:string }
+            large:{ w:number, h:number, resize:string }
+            small:{ w:number, h:number, resize:string }
+        }
+        source_status_id: number
+        source_status_id_str: string
+        source_user_id: number
+        source_user_id_str: string
+    }[]
 }
 
 
