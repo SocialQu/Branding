@@ -1,7 +1,7 @@
 type Duple = 1 | 0
 
 
-interface iLabeledData {
+export interface iLabeledData {
     // Bio
     followers: number
     following: number
