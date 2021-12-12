@@ -72,13 +72,12 @@ const fetchUsers = async() => {
 
 
 const fetch = async(users:iUser[], idx:number) => {
-    if (idx + 1 === users.length) return
-
     const user = users[idx]
 
     try { user.fetched = await fetchUser(user) } 
     catch(e) { console.log(`Error fetching ${user.screen_name} tweets: ${e}`) }
 
+    if (idx + 1 === users.length) return
     fetch(users, idx + 1)
 }
 
