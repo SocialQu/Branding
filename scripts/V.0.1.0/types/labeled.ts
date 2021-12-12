@@ -3,6 +3,11 @@ interface iLabeledData {
     followers: number
     following: number
 
+    // tweet length
+    characterLength: number
+    wordLength: number
+    sentenceLength: number
+
     // outputs
     likes: number
     visits: number
