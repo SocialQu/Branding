@@ -11,6 +11,7 @@
 2. To each output I know the correlation of:
     - [ ] No. of Followers
     - [ ] No. of Following
+    - [ ] Is reply
     - [ ] Tweet length (characters, words & sentences).
     - [ ] Line breaks (boolean & numerical)
     - [ ] Media (boolean)
@@ -19,7 +20,6 @@
     - [ ] Mentions (boolean & numerical)
     - [ ] Is weekend (boolean)
     - [ ] Is working hours (boolean)
-    - [ ] Is reply
     - [ ] Last Tweet (time & filtered replies)
     - [ ] Last Tweet (metrics)
     - [ ] Emojis (boolean & numerical)
