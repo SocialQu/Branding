@@ -1,13 +1,16 @@
 import { readFile, writeFile } from 'fs/promises'
+import { iRawMetrics } from '../V.0.0.5/types'
 import fileHound  from 'filehound'
 
 
 const read = async(path:string) => {
     console.log(path)
-    const data = await readFile(path)
-    const text = data.toString()
-    const tweets = await JSON.parse(text)
-    return tweets
+
+    const metricsBuffer = await readFile(path)
+    const metricsData = metricsBuffer.toString()
+    const metrics:iRawMetrics[] = await JSON.parse(metricsData)
+
+    return metrics
 }
 
 const recurse = async(data:any[], files:string[], idx:number) => {
@@ -20,11 +23,8 @@ const recurse = async(data:any[], files:string[], idx:number) => {
 }
 
 const aggregate = async() => {
-    const tweetFiles = await fileHound.create().paths('./data/tweets').ext('json').find()
     const metricFiles = await fileHound.create().paths('./data/metrics').ext('json').find()
-
-    console.log(tweetFiles, tweetFiles.length)
-    console.log(metricFiles, metricFiles.length)
+    console.log('MetricFiles: ', metricFiles.length)
 
     // await recurse([], files, 0)
 }
