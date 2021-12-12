@@ -17,6 +17,7 @@ interface iMetrics {
 export interface iAggregatedTweet {
     text:string
     datetime:Date
+    isReply:boolean
     metrics:iMetrics
     entities:iEntities
 }
