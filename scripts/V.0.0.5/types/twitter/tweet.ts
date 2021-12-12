@@ -1,5 +1,8 @@
 interface iEntity {
-    hashtags:any[]
+    hashtags:{
+        text: string,
+        indices: [number, number]
+    }[]
     symbols:any[]
     user_mentions:{
         id: number
