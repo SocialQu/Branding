@@ -1,4 +1,4 @@
-import { iRawFollower, iRawMetrics, iRawTweet } from '../V.0.0.5/types'
+import { iRawFollower, iRawMetrics, iRawTweet } from './types/rawData'
 import { readFile, writeFile } from 'fs/promises'
 import fileHound  from 'filehound'
 
