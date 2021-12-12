@@ -46,21 +46,29 @@ const aggreagateData = ({ profile, tweets, metrics, followers }:iAggreagateData)
     }
 }
 
+const aggregateUser = async(path:string) => {
+    const data = await readData(path)
+    const aggreagated = aggreagateData(data)
 
-const recurse = async(data:any[], files:string[], idx:number) => {
-    if(idx + 1 === files.length) return await writeFile('./data/tweets.ts', JSON.stringify(data))
+    const aggreagatedPath = path.replace('metrics', 'aggregated')
+    const writeData = JSON.stringify(aggreagated)
+    await writeFile(aggreagatedPath, writeData)
+}
+
+
+const recurse = async(files:string[], idx:number) => {
+    if(!files.length) return
 
     const file = files[idx]
-    const { tweets } = await readData(file)
+    await aggregateUser(file)
 
-    await recurse([...data, ...tweets], files, idx + 1)
+    if(idx + 1 === files.length) return
+    await recurse(files, idx + 1)
 }
 
 const aggregate = async() => {
-    const metricFiles = await fileHound.create().paths('./data/metrics').ext('json').find()
-    console.log('MetricFiles: ', metricFiles.length)
-
-    // await recurse([], files, 0)
+    const files = await fileHound.create().paths('./data/metrics').ext('json').find()
+    await recurse(files, 0)
 }
 
 
