@@ -4,46 +4,49 @@ import { iAggregatedUser } from './types/aggregated'
 
 const toDuple = (dual:boolean):Duple => dual ? 1 : 0
 
-const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.map(t => ({
-    followers: data.followers,
-    following: data.following,
+const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.map(t => {
 
-    isReply: toDuple(t.isReply),
+    return {
+        followers: data.followers,
+        following: data.following,
 
-    emojis: 0,
-    hasEmojis: 0,
+        isReply: toDuple(t.isReply),
 
-    characterLength: 0,
-    wordLength: 0,
-    sentenceLength: 0,
+        emojis: 0,
+        hasEmojis: 0,
 
-    lineBreaks: 0,
-    hasLineBreaks: 0,
+        characterLength: 0,
+        wordLength: 0,
+        sentenceLength: 0,
 
-    links: t.entities.links.length,
-    hasLinks: toDuple(!!t.entities.links.length),
+        lineBreaks: 0,
+        hasLineBreaks: 0,
 
-    media: t.entities.media.length,
-    hasMedia: toDuple(!!t.entities.media.length),
+        links: t.entities.links.length,
+        hasLinks: toDuple(!!t.entities.links.length),
 
-    hashtags: t.entities.hashtags.length,
-    hasHashtags: toDuple(!!t.entities.hashtags.length),
+        media: t.entities.media.length,
+        hasMedia: toDuple(!!t.entities.media.length),
 
-    mentions: t.entities.mentions.length,
-    hasMentions: toDuple(!!t.entities.mentions.length),
+        hashtags: t.entities.hashtags.length,
+        hasHashtags: toDuple(!!t.entities.hashtags.length),
 
-    isDaytime: 0,
-    isWeekDay: 0,
+        mentions: t.entities.mentions.length,
+        hasMentions: toDuple(!!t.entities.mentions.length),
 
-    hoursFromLastStatus: 0,
-    hoursFromLastTweet: 0,
+        isDaytime: 0,
+        isWeekDay: 0,
 
-    lastTweetLikes: 0,
-    lastTweetReplies:0,
-    lastTweetClicks: 0,
-    lastTweetVisits: 0,
-    lastTweetRetweets: 0,
-    lastTweetImpressions: 0,
+        hoursFromLastStatus: 0,
+        hoursFromLastTweet: 0,
 
-    ...t.metrics
-}))
+        lastTweetLikes: 0,
+        lastTweetReplies:0,
+        lastTweetClicks: 0,
+        lastTweetVisits: 0,
+        lastTweetRetweets: 0,
+        lastTweetImpressions: 0,
+
+        ...t.metrics
+    }
+})
