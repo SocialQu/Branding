@@ -3,7 +3,7 @@ import { readFile, writeFile } from 'fs/promises'
 import fileHound  from 'filehound'
 
 
-const read = async(path:string) => {
+const readData = async(path:string) => {
     console.log(path)
 
     const metricsBuffer = await readFile(path)
@@ -28,11 +28,21 @@ const read = async(path:string) => {
     return metrics
 }
 
+
+interface iAggreagateData {
+    profile: iAuth
+    tweets: iRawTweet[]
+    metrics: iRawMetrics[]
+    followers: iRawFollower[]
+}
+
+const aggreagateData = () => {}
+
 const recurse = async(data:any[], files:string[], idx:number) => {
     if(idx + 1 === files.length) return await writeFile('./data/tweets.ts', JSON.stringify(data))
 
     const file = files[idx]
-    const newData = await read(file)
+    const newData = await readData(file)
 
     await recurse([...data, ...newData], files, idx + 1)
 }
