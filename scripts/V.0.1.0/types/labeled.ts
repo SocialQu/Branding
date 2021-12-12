@@ -1,4 +1,4 @@
-type Duple = 1 | 0
+export type Duple = 1 | 0
 
 
 export interface iLabeledData {
