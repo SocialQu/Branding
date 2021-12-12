@@ -1,12 +1,42 @@
 interface iEntity {
-    hashtags:any[]
+    hashtags:{
+        text: string
+        indices: [number, number]
+    }[]
     symbols:any[]
-    user_mentions:any[]
+    user_mentions:{
+        id: number
+        name: string
+        id_str: string
+        screen_name: string
+        indices: [number, number]
+    }[]
     urls:{
         url: string
         expanded_url: string
         display_url: string
-        indices: number[]
+        indices: [number, number]
+    }[]
+    media?:{
+        id: number
+        id_str: string
+        indices: [number, number]
+        media_url: string
+        media_url_https: string
+        url: string
+        display_url: string
+        expanded_url: string
+        type: string
+        sizes:{
+            thumb: { w:number, h:number, resize:string }
+            medium: { w:number, h:number, resize:string }
+            large:{ w:number, h:number, resize:string }
+            small:{ w:number, h:number, resize:string }
+        }
+        source_status_id: number
+        source_status_id_str: string
+        source_user_id: number
+        source_user_id_str: string
     }[]
 }
 
@@ -60,49 +90,49 @@ interface iUser {
 
 interface iRetweet {
     created_at: string
-    id: number,
-    id_str: string,
-    text: string,
-    truncated: boolean,
-    entities: any,
-    source: string | boolean,
-    in_reply_to_status_id:number | null
-    in_reply_to_status_id_str:string | null
-    in_reply_to_user_id:number | null
-    in_reply_to_user_id_str:string | null
-    in_reply_to_screen_name:string | null
-    user: any,
-    geo: null,
-    coordinates: null,
-    place: null,
-    contributors: null,
-    is_quote_status: boolean,
-    retweet_count: number,
-    favorite_count: number,
-    favorited: boolean,
-    retweeted: boolean,
+    id: number
+    id_str: string
+    text: string
+    truncated: boolean
+    entities: any
+    source: string | boolean
+    in_reply_to_status_id: number | null
+    in_reply_to_status_id_str: string | null
+    in_reply_to_user_id: number | null
+    in_reply_to_user_id_str: string | null
+    in_reply_to_screen_name: string | null
+    user: any
+    geo: null
+    coordinates: null
+    place: null
+    contributors: null
+    is_quote_status: boolean
+    retweet_count: number
+    favorite_count: number
+    favorited: boolean
+    retweeted: boolean
     lang: string
-    quoted_status_id?: number,
-    quoted_status_id_str?: string,
+    quoted_status_id?: number
+    quoted_status_id_str?: string
     quoted_status?: any
-    possibly_sensitive?:boolean
+    possibly_sensitive?: boolean
 }
 
 
 export interface iRawTweet {
-    created_at:string
-    id:number
-    id_str:string
-    text:string
-    truncated:boolean
-    entities:iEntity
+    created_at: string
+    id: number
+    id_str: string
+    text: string
+    truncated: boolean
+    entities: iEntity
     source:string
-    in_reply_to_status_id:number | null
-    in_reply_to_status_id_str:string | null
-    in_reply_to_user_id:number | null
-    in_reply_to_user_id_str:string | null
-    in_reply_to_screen_name:string | null
-    user:iUser  
+    in_reply_to_status_id: number | null
+    in_reply_to_status_id_str: string | null
+    in_reply_to_user_id: number | null
+    in_reply_to_user_id_str: string | null
+    in_reply_to_screen_name: string | null
+    user: iUser  
     geo: any
     coordinates: any
     place: any
@@ -113,9 +143,9 @@ export interface iRawTweet {
     favorited: boolean
     retweeted: boolean
     lang: string
-    possibly_sensitive?:boolean
-    retweeted_status?:iRetweet
-    quoted_status_id?: number,
-    quoted_status_id_str?: string,
+    possibly_sensitive?: boolean
+    retweeted_status?: iRetweet
+    quoted_status_id?: number
+    quoted_status_id_str?: string
     quoted_status?: any
 }
