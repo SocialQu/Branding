@@ -38,6 +38,10 @@ interface iLabeledData {
     isWeekDay: Duple
     isDaytime: Duple
 
+    // Last tweet
+    hoursFromLastTweet?: number
+    hoursFromLastStatus?: number // includes replies
+
     // Outputs
     likes: number
     visits: number
