@@ -3,8 +3,8 @@ import { iLabeledData } from './types/labeled'
 
 const label = (data:iAggregatedUser):iLabeledData => {
     return {
-        followers: 0,
-        following: 0,
+        followers: data.followers,
+        following: data.following,
 
         isReply: 0,
 
