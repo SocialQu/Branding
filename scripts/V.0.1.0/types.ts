@@ -22,7 +22,7 @@ interface iAggregatedTweet {
 }
 
 
-interface iAggregatedUser {
+export interface iAggregatedUser {
     name: string
     followers: number
     following: number
