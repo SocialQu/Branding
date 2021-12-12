@@ -34,6 +34,10 @@ interface iLabeledData {
     hasMentions: Duple
     mentions: number
 
+    // Datetime
+    isWeekDay: Duple
+    isDaytime: Duple
+
     // Outputs
     likes: number
     visits: number
