@@ -1,6 +1,6 @@
 interface iEntity {
     hashtags:{
-        text: string,
+        text: string
         indices: [number, number]
     }[]
     symbols:any[]
@@ -90,30 +90,30 @@ interface iUser {
 
 interface iRetweet {
     created_at: string
-    id: number,
-    id_str: string,
-    text: string,
-    truncated: boolean,
-    entities: any,
-    source: string | boolean,
+    id: number
+    id_str: string
+    text: string
+    truncated: boolean
+    entities: any
+    source: string | boolean
     in_reply_to_status_id:number | null
     in_reply_to_status_id_str:string | null
     in_reply_to_user_id:number | null
     in_reply_to_user_id_str:string | null
     in_reply_to_screen_name:string | null
-    user: any,
-    geo: null,
-    coordinates: null,
-    place: null,
-    contributors: null,
-    is_quote_status: boolean,
-    retweet_count: number,
-    favorite_count: number,
-    favorited: boolean,
-    retweeted: boolean,
+    user: any
+    geo: null
+    coordinates: null
+    place: null
+    contributors: null
+    is_quote_status: boolean
+    retweet_count: number
+    favorite_count: number
+    favorited: boolean
+    retweeted: boolean
     lang: string
-    quoted_status_id?: number,
-    quoted_status_id_str?: string,
+    quoted_status_id?: number
+    quoted_status_id_str?: string
     quoted_status?: any
     possibly_sensitive?:boolean
 }
@@ -145,7 +145,7 @@ export interface iRawTweet {
     lang: string
     possibly_sensitive?:boolean
     retweeted_status?:iRetweet
-    quoted_status_id?: number,
-    quoted_status_id_str?: string,
+    quoted_status_id?: number
+    quoted_status_id_str?: string
     quoted_status?: any
 }
