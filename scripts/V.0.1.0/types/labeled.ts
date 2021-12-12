@@ -5,7 +5,10 @@ interface iLabeledData {
     followers: number
     following: number
 
-    // tweet length
+    // reply
+    isReply: Duple
+
+    // length
     characterLength: number
     wordLength: number
     sentenceLength: number
