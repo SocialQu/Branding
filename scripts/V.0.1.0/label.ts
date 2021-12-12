@@ -1,8 +1,10 @@
+import { Duple, iLabeledData } from './types/labeled'
 import { iAggregatedUser } from './types/aggregated'
-import { iLabeledData } from './types/labeled'
 
 
-const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.map(() => ({
+const toDuple = (dual:boolean):Duple => dual ? 1 : 0
+
+const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.map(t => ({
     followers: data.followers,
     following: data.following,
 
