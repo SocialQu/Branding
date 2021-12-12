@@ -14,3 +14,9 @@ interface iMetrics {
     visits: number
 }
 
+interface iAggregatedTweet {
+    text:string
+    datetime:Date
+    metrics:iMetrics
+    entities:iEntities
+}
