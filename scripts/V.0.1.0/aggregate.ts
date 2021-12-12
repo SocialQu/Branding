@@ -64,7 +64,7 @@ const aggreagateData = ({ profile, tweets, metrics }:iAggreagateData):iAggregate
         name: profile.screen_name,
         followers: profile.followers_count,
         following: profile.friends_count,
-        tweets:[]
+        tweets: aggregatedTweet
     }
 }
 
