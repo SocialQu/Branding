@@ -5,3 +5,12 @@ interface iEntities {
     links: string[] // URLs
 }
 
+interface iMetrics {
+    likes: number
+    clicks: number
+    impressions: number
+    retweets: number
+    replies: number
+    visits: number
+}
+
