@@ -26,8 +26,8 @@ const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.ma
     media: t.entities.media.length,
     hasMedia: toDuple(!!t.entities.media.length),
 
-    hashtags: 0,
-    hasHashtags: 0,
+    hashtags: t.entities.hashtags.length,
+    hasHashtags: toDuple(!!t.entities.hashtags.length),
 
     mentions: 0,
     hasMentions: 0,
