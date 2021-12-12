@@ -12,6 +12,10 @@ interface iLabeledData {
     hasLineBreaks: 1 | 0
     lineBreaks: number
 
+    // media
+    hasMedia: 1 | 0
+    media: number
+
     // outputs
     likes: number
     visits: number
