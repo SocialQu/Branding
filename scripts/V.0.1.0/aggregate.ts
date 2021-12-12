@@ -39,9 +39,9 @@ interface iAggreagateData {
 
 const aggreagateData = ({ profile, tweets, metrics, followers }:iAggreagateData):iAggregatedUser => {
     return {
-        name:'',
-        followers:0,
-        following:0,
+        name: profile.screen_name,
+        followers: profile.followers_count,
+        following: profile.friends_count,
         tweets:[]
     }
 }
