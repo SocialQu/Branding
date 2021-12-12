@@ -37,7 +37,10 @@ interface iAggreagateData {
     followers: iRawFollower[]
 }
 
-const aggreagateData = ({ profile, tweets, metrics, followers }:iAggreagateData):iAggregatedUser => {
+const aggreagateData = ({ profile, tweets, metrics }:iAggreagateData):iAggregatedUser => {
+    const findTweet = (id:string) => tweets.find(({ id_str }) => id_str === id)
+    const metricTweets = metrics.map(metrics => ({ metrics, tweet:findTweet(metrics.id)}))
+
     return {
         name: profile.screen_name,
         followers: profile.followers_count,
