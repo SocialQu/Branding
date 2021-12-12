@@ -20,8 +20,8 @@ const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.ma
     lineBreaks: 0,
     hasLineBreaks: 0,
 
-    links: 0,
-    hasLinks: 0,
+    links: t.entities.links.length,
+    hasLinks: toDuple(!!t.entities.links.length),
 
     hasMedia: 0,
     media: 0,
