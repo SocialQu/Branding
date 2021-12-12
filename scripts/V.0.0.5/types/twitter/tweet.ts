@@ -96,11 +96,11 @@ interface iRetweet {
     truncated: boolean
     entities: any
     source: string | boolean
-    in_reply_to_status_id:number | null
-    in_reply_to_status_id_str:string | null
-    in_reply_to_user_id:number | null
-    in_reply_to_user_id_str:string | null
-    in_reply_to_screen_name:string | null
+    in_reply_to_status_id: number | null
+    in_reply_to_status_id_str: string | null
+    in_reply_to_user_id: number | null
+    in_reply_to_user_id_str: string | null
+    in_reply_to_screen_name: string | null
     user: any
     geo: null
     coordinates: null
@@ -115,24 +115,24 @@ interface iRetweet {
     quoted_status_id?: number
     quoted_status_id_str?: string
     quoted_status?: any
-    possibly_sensitive?:boolean
+    possibly_sensitive?: boolean
 }
 
 
 export interface iRawTweet {
-    created_at:string
-    id:number
-    id_str:string
-    text:string
-    truncated:boolean
-    entities:iEntity
+    created_at: string
+    id: number
+    id_str: string
+    text: string
+    truncated: boolean
+    entities: iEntity
     source:string
-    in_reply_to_status_id:number | null
-    in_reply_to_status_id_str:string | null
-    in_reply_to_user_id:number | null
-    in_reply_to_user_id_str:string | null
-    in_reply_to_screen_name:string | null
-    user:iUser  
+    in_reply_to_status_id: number | null
+    in_reply_to_status_id_str: string | null
+    in_reply_to_user_id: number | null
+    in_reply_to_user_id_str: string | null
+    in_reply_to_screen_name: string | null
+    user: iUser  
     geo: any
     coordinates: any
     place: any
@@ -143,8 +143,8 @@ export interface iRawTweet {
     favorited: boolean
     retweeted: boolean
     lang: string
-    possibly_sensitive?:boolean
-    retweeted_status?:iRetweet
+    possibly_sensitive?: boolean
+    retweeted_status?: iRetweet
     quoted_status_id?: number
     quoted_status_id_str?: string
     quoted_status?: any
