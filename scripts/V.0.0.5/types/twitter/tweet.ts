@@ -1,7 +1,13 @@
 interface iEntity {
     hashtags:any[]
     symbols:any[]
-    user_mentions:any[]
+    user_mentions:{
+        id: number
+        name: string
+        id_str: string
+        screen_name: string
+        indices: [number, number]
+    }[]
     urls:{
         url: string
         expanded_url: string
