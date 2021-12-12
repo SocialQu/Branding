@@ -1,4 +1,4 @@
-import { iRawFollower, iRawMetrics, iRawTweet } from './types/rawData'
+import { iAuth, iRawFollower, iRawMetrics, iRawTweet } from './types/rawData'
 import { readFile, writeFile } from 'fs/promises'
 import fileHound  from 'filehound'
 
@@ -19,6 +19,11 @@ const read = async(path:string) => {
     const followersBuffer = await readFile(followersPath)
     const followersData = followersBuffer.toString()
     const followers:iRawFollower[] = await JSON.parse(followersData)
+
+    const profilePath = path.replace('metrics', 'bios')
+    const profileBuffer = await readFile(profilePath)
+    const profileData = profileBuffer.toString()
+    const profile:iAuth = await JSON.parse(profileData)
 
     return metrics
 }
