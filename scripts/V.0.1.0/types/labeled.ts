@@ -1,3 +1,5 @@
+type Duple = 1 | 0
+
 interface iLabeledData {
     // bio
     followers: number
@@ -9,11 +11,11 @@ interface iLabeledData {
     sentenceLength: number
 
     // line breaks
-    hasLineBreaks: 1 | 0
+    hasLineBreaks: Duple
     lineBreaks: number
 
     // media
-    hasMedia: 1 | 0
+    hasMedia: Duple
     media: number
 
     // outputs
