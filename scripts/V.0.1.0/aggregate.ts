@@ -53,8 +53,8 @@ const aggreagateData = ({ profile, tweets, metrics }:iAggreagateData):iAggregate
             clicks:metrics.organic_metrics.url_link_clicks || 0
         },
         entities:{
-            mentions:tweet.entities.user_mentions.map(({ screen_name }) => screen_name),
-            hashtags:[],
+            mentions: tweet.entities.user_mentions.map(({ screen_name }) => screen_name),
+            hashtags: tweet.entities.hashtags.map(({ text }) => text),
             media:[],
             links:[]
         }
