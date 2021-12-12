@@ -12,6 +12,7 @@
     - [ ] No. of Followers
     - [ ] No. of Following
     - [ ] Is reply
+    - [ ] Emojis (boolean & numerical)
     - [ ] Tweet length (characters, words & sentences).
     - [ ] Line breaks (boolean & numerical)
     - [ ] Media (boolean)
@@ -22,7 +23,6 @@
     - [ ] Is working hours (boolean)
     - [ ] Last Tweet (time & filtered replies)
     - [ ] Last Tweet (metrics)
-    - [ ] Emojis (boolean & numerical)
 
 
 3. I own a heatmap of engagement based on:
