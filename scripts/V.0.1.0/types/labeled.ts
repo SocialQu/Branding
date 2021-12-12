@@ -9,6 +9,10 @@ interface iLabeledData {
     // Reply
     isReply: Duple
 
+    // Emojis
+    hasEmojis: Duple
+    emojis: number
+
     // Length
     characterLength: number
     wordLength: number
