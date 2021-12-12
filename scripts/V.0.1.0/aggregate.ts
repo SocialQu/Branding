@@ -1,4 +1,5 @@
 import { iAuth, iRawFollower, iRawMetrics, iRawTweet } from './types/rawData'
+import { iAggregatedUser } from './types/aggregated'
 import { readFile, writeFile } from 'fs/promises'
 import fileHound  from 'filehound'
 
@@ -25,7 +26,7 @@ const readData = async(path:string) => {
     const profileData = profileBuffer.toString()
     const profile:iAuth = await JSON.parse(profileData)
 
-    return metrics
+    return { metrics, tweets, followers, profile }
 }
 
 
@@ -36,15 +37,18 @@ interface iAggreagateData {
     followers: iRawFollower[]
 }
 
-const aggreagateData = () => {}
+const aggreagateData = ({ profile, tweets, metrics, followers }:iAggreagateData):iAggregatedUser => {
+
+}
+
 
 const recurse = async(data:any[], files:string[], idx:number) => {
     if(idx + 1 === files.length) return await writeFile('./data/tweets.ts', JSON.stringify(data))
 
     const file = files[idx]
-    const newData = await readData(file)
+    const { tweets } = await readData(file)
 
-    await recurse([...data, ...newData], files, idx + 1)
+    await recurse([...data, ...tweets], files, idx + 1)
 }
 
 const aggregate = async() => {
