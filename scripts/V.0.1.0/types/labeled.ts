@@ -47,12 +47,12 @@ export interface iLabeledData {
     hoursFromLastStatus?: number // includes replies
 
     // Recent metrics
-    lastTweetLikes: number
-    lastTweetVisits: number
-    lastTweetClicks: number
-    lastTweetReplies: number
-    lastTweetRetweets: number
-    lastTweetImpressions: number
+    lastTweetLikes?: number
+    lastTweetVisits?: number
+    lastTweetClicks?: number
+    lastTweetReplies?: number
+    lastTweetRetweets?: number
+    lastTweetImpressions?: number
 
     // Outputs
     likes: number
