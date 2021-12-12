@@ -1,7 +1,9 @@
-type Duple = 1 | 0
+import { iMetrics } from './aggregated'
 
 
-interface iLabeledData {
+export type Duple = 1 | 0
+
+export interface iLabeledData extends iMetrics {
     // Bio
     followers: number
     following: number
@@ -47,18 +49,10 @@ interface iLabeledData {
     hoursFromLastStatus?: number // includes replies
 
     // Recent metrics
-    lastTweetLikes: number
-    lastTweetVisits: number
-    lastTweetClicks: number
-    lastTweetReplies: number
-    lastTweetRetweets: number
-    lastTweetImpressions: number
-
-    // Outputs
-    likes: number
-    visits: number
-    clicks: number
-    replies: number
-    retweets: number
-    impressions: number
+    lastTweetLikes?: number
+    lastTweetVisits?: number
+    lastTweetClicks?: number
+    lastTweetReplies?: number
+    lastTweetRetweets?: number
+    lastTweetImpressions?: number
 }

@@ -5,7 +5,7 @@ interface iEntities {
     links: string[] // URLs
 }
 
-interface iMetrics {
+export interface iMetrics {
     likes: number
     clicks: number
     impressions: number
