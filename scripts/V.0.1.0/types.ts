@@ -20,3 +20,11 @@ interface iAggregatedTweet {
     metrics:iMetrics
     entities:iEntities
 }
+
+
+interface iAggregatedUser {
+    name: string
+    followers: number
+    following: number
+    tweets: iAggregatedTweet[]
+}
