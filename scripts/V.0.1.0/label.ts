@@ -23,14 +23,14 @@ const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.ma
     links: t.entities.links.length,
     hasLinks: toDuple(!!t.entities.links.length),
 
-    hasMedia: 0,
-    media: 0,
+    media: t.entities.media.length,
+    hasMedia: toDuple(!!t.entities.media.length),
 
-    hasHashtags: 0,
     hashtags: 0,
+    hasHashtags: 0,
 
-    hasMentions: 0,
     mentions: 0,
+    hasMentions: 0,
 
     isDaytime: 0,
     isWeekDay: 0,
