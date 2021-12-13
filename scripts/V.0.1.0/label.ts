@@ -95,3 +95,6 @@ const label = async() => {
     const writeData = JSON.stringify(labeledData)
     await writeFile('./data/labeledData.json', writeData)
 }
+
+
+label().catch(console.log)
