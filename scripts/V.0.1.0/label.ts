@@ -82,6 +82,7 @@ const recurse = async(data:iLabeledData[], files:string[], idx:number):Promise<i
 
     const file = files[idx]
     const tweets = await labelFile(file)
+    console.log(file, tweets.length)
 
     if(idx + 1 === files.length) return data
     return await recurse([...data, ...tweets], files, idx + 1)
@@ -91,6 +92,7 @@ const recurse = async(data:iLabeledData[], files:string[], idx:number):Promise<i
 const label = async() => {
     const files = await fileHound.create().paths('./data/aggregated').ext('json').find()
     const labeledData = recurse([], files, 0)
+    console.log('Labeled Data', (await labeledData).length)
 
     const writeData = JSON.stringify(labeledData)
     await writeFile('./data/labeledData.json', writeData)
