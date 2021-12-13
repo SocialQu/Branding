@@ -21,7 +21,7 @@ const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.ma
         pargagraphLength: t.text.split('\n').length,
 
         lineBreaks: (t.text.match(/\n/g) || []).length,
-        hasLineBreaks: 0,
+        hasLineBreaks: toDuple(!!(t.text.match(/\n/g) || []).length),
 
         links: t.entities.links.length,
         hasLinks: toDuple(!!t.entities.links.length),
