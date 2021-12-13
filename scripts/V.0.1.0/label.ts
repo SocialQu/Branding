@@ -1,16 +1,16 @@
-import { iAggregatedTweet, iAggregatedUser } from './types/aggregated'
+import { iCompositeTweet, iAggregatedTweets } from './types/aggregated'
 import { Duple, iLabeledData } from './types/labeled'
 import { readFile, writeFile } from 'fs/promises'
 import fileHound  from 'filehound'
 
 
 const toDuple = (dual:boolean):Duple => dual ? 1 : 0
-const getLastTweet = (tweets:iAggregatedTweet[], i:number) => tweets.find((t, idx) => !t.isReply && idx > i)
+const getLastTweet = (tweets:iCompositeTweet[], i:number) => tweets.find((t, idx) => !t.isReply && idx > i)
 
 const emojiRegex = /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/gi
 
 
-const labelData = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.map((t, i) => {
+const labelData = ({ tweets, ...data }: iAggregatedTweets):iLabeledData[] => tweets.map((t, i) => {
     const date = new Date(t.datetime)
     const hours = date.getHours()
     const day = date.getDay()
@@ -71,7 +71,7 @@ const labelData = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweet
 const labelFile = async(path:string):Promise<iLabeledData[]> => {
     const buffer = await readFile(path)
     const str = buffer.toString()
-    const data:iAggregatedUser = await JSON.parse(str)
+    const data:iAggregatedTweets = await JSON.parse(str)
 
     const tweets = labelData(data)
     return tweets
