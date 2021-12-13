@@ -68,7 +68,7 @@ const labelData = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweet
     return tweet
 })
 
-const read = async(path:string):Promise<iLabeledData[]> => {
+const labelFile = async(path:string):Promise<iLabeledData[]> => {
     const buffer = await readFile(path)
     const str = buffer.toString()
     const data:iAggregatedUser = await JSON.parse(str)
@@ -81,7 +81,7 @@ const recurse = async(data:iLabeledData[], files:string[], idx:number):Promise<i
     if(!files.length) return data
 
     const file = files[idx]
-    const tweets = await read(file)
+    const tweets = await labelFile(file)
 
     if(idx + 1 === files.length) return data
     return await recurse([...data, ...tweets], files, idx + 1)
