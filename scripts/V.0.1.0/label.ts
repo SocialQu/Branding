@@ -6,7 +6,6 @@ const toDuple = (dual:boolean):Duple => dual ? 1 : 0
 const getLastTweet = (tweets:iAggregatedTweet[], i:number) => tweets.find((t, idx) => !t.isReply && idx > i)
 
 const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.map((t, i) => {
-
     const date = new Date(t.datetime)
     const hours = date.getHours()
     const day = date.getDay()
