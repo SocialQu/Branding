@@ -47,7 +47,7 @@ const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.ma
         hoursFromLastStatus: 0,
         hoursFromLastTweet: 0,
 
-        lastTweetLikes: 0,
+        lastTweetLikes: lastTweet.metrics.likes,
         lastTweetReplies:0,
         lastTweetClicks: 0,
         lastTweetVisits: 0,
