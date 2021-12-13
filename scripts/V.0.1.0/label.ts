@@ -6,6 +6,10 @@ const toDuple = (dual:boolean):Duple => dual ? 1 : 0
 
 const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.map(t => {
 
+    const date = new Date(t.datetime)
+    const hours = date.getHours()
+    const day = date.getDay()
+
     return {
         followers: data.followers,
         following: data.following,
