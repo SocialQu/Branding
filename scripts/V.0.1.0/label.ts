@@ -1,6 +1,6 @@
 import { iAggregatedTweet, iAggregatedUser } from './types/aggregated'
 import { Duple, iLabeledData } from './types/labeled'
-import { readFile } from 'fs/promises'
+import { readFile, writeFile } from 'fs/promises'
 import fileHound  from 'filehound'
 
 
@@ -90,5 +90,8 @@ const recurse = async(data:iLabeledData[], files:string[], idx:number):Promise<i
 
 const label = async() => {
     const files = await fileHound.create().paths('./data/aggregated').ext('json').find()
-    const labels = recurse([], files, 0)
+    const labeledData = recurse([], files, 0)
+
+    const writeData = JSON.stringify(labeledData)
+    await writeFile('./data/labeledData.json', writeData)
 }
