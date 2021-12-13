@@ -51,48 +51,15 @@ const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.ma
 
     if(!lastTweet) return tweet
 
-    return {
-        followers: data.followers,
-        following: data.following,
+    tweet.hoursFromLastStatus = (Number(new Date(lastStatus.datetime)) - Number(date))/(1000*60*60)
+    tweet.hoursFromLastTweet = (Number(new Date(lastTweet.datetime)) - Number(date))/(1000*60*60)
 
-        isReply: toDuple(t.isReply),
+    tweet.lastTweetLikes = lastTweet.metrics.likes
+    tweet.lastTweetReplies = lastTweet.metrics.replies
+    tweet.lastTweetClicks = lastTweet.metrics.clicks
+    tweet.lastTweetVisits = lastTweet.metrics.visits
+    tweet.lastTweetRetweets = lastTweet.metrics.retweets
+    tweet.lastTweetImpressions = lastTweet.metrics.impressions
 
-        emojis: 0,
-        hasEmojis: 0,
-
-        characterLength: t.text.length,
-        wordLength: t.text.split(/[\s]+/).length,
-        sentenceLength: t.text.split('.').length,
-        pargagraphLength: t.text.split('\n').length,
-
-        lineBreaks: (t.text.match(/\n/g) || []).length,
-        hasLineBreaks: toDuple(!!(t.text.match(/\n/g) || []).length),
-
-        links: t.entities.links.length,
-        hasLinks: toDuple(!!t.entities.links.length),
-
-        media: t.entities.media.length,
-        hasMedia: toDuple(!!t.entities.media.length),
-
-        hashtags: t.entities.hashtags.length,
-        hasHashtags: toDuple(!!t.entities.hashtags.length),
-
-        mentions: t.entities.mentions.length,
-        hasMentions: toDuple(!!t.entities.mentions.length),
-
-        isDaytime: toDuple(hours > 9 && hours < 21),
-        isWeekDay: toDuple(day === 0 || day === 6),
-
-        hoursFromLastStatus: (Number(new Date(lastStatus.datetime)) - Number(date))/(1000*60*60),
-        hoursFromLastTweet: (Number(new Date(lastTweet.datetime)) - Number(date))/(1000*60*60),
-
-        lastTweetLikes: lastTweet.metrics.likes,
-        lastTweetReplies:lastTweet.metrics.replies,
-        lastTweetClicks: lastTweet.metrics.clicks,
-        lastTweetVisits: lastTweet.metrics.visits,
-        lastTweetRetweets: lastTweet.metrics.retweets,
-        lastTweetImpressions: lastTweet.metrics.impressions,
-
-        ...t.metrics
-    }
+    return tweet
 })
