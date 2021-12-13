@@ -47,7 +47,9 @@ const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.ma
     }
 
     const lastStatus = tweets[i + 1]
-    const lastTweet = getLastTweet(tweets, i) as iAggregatedTweet
+    const lastTweet = getLastTweet(tweets, i)
+
+    if(!lastTweet) return tweet
 
     return {
         followers: data.followers,
