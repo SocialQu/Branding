@@ -10,7 +10,8 @@ const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.ma
     const hours = date.getHours()
     const day = date.getDay()
 
-    const lastTweet = tweets[i + 1]
+    const lastStatus = tweets[i + 1]
+    const lastTweet = tweets.find((t, idx) => !t.isReply && idx > i)
 
     return {
         followers: data.followers,
@@ -44,15 +45,15 @@ const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.ma
         isDaytime: toDuple(hours > 9 && hours < 21),
         isWeekDay: toDuple(day === 0 || day === 6),
 
-        hoursFromLastStatus: (Number(new Date(lastTweet.datetime)) - Number(date))/(1000*60*60),
+        hoursFromLastStatus: (Number(new Date(lastStatus.datetime)) - Number(date))/(1000*60*60),
         hoursFromLastTweet: 0,
 
-        lastTweetLikes: lastTweet.metrics.likes,
-        lastTweetReplies:lastTweet.metrics.replies,
-        lastTweetClicks: lastTweet.metrics.clicks,
-        lastTweetVisits: lastTweet.metrics.visits,
-        lastTweetRetweets: lastTweet.metrics.retweets,
-        lastTweetImpressions: lastTweet.metrics.impressions,
+        lastTweetLikes: lastTweet?.metrics.likes,
+        lastTweetReplies:lastTweet?.metrics.replies,
+        lastTweetClicks: lastTweet?.metrics.clicks,
+        lastTweetVisits: lastTweet?.metrics.visits,
+        lastTweetRetweets: lastTweet?.metrics.retweets,
+        lastTweetImpressions: lastTweet?.metrics.impressions,
 
         ...t.metrics
     }
