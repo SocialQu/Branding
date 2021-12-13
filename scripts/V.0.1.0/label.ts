@@ -3,9 +3,10 @@ import { Duple, iLabeledData } from './types/labeled'
 
 
 const toDuple = (dual:boolean):Duple => dual ? 1 : 0
+const getLastTweet = (tweets:iAggregatedTweet[], i:number) => tweets.find((t, idx) => !t.isReply && idx > i)
 
 const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.filter((_, i) => 
-    tweets.find((t, idx) => !t.isReply && idx > i)
+    getLastTweet(tweets, i)
 ).map((t, i) => {
 
     const date = new Date(t.datetime)
@@ -13,7 +14,7 @@ const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.fi
     const day = date.getDay()
 
     const lastStatus = tweets[i + 1]
-    const lastTweet = tweets.find((t, idx) => !t.isReply && idx > i) as iAggregatedTweet
+    const lastTweet = getLastTweet(tweets, i) as iAggregatedTweet
 
     return {
         followers: data.followers,
