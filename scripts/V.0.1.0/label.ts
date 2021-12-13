@@ -6,6 +6,7 @@ const toDuple = (dual:boolean):Duple => dual ? 1 : 0
 const getLastTweet = (tweets:iAggregatedTweet[], i:number) => tweets.find((t, idx) => !t.isReply && idx > i)
 
 const emojiRegex = /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/gi
+const hasEmoji = (text:string) => emojiRegex.test(text)
 
 
 const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.map((t, i) => {
@@ -20,7 +21,7 @@ const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.ma
         isReply: toDuple(t.isReply),
 
         emojis: 0,
-        hasEmojis: 0 as Duple,
+        hasEmojis: toDuple(!!emojiRegex.test(t.text)),
 
         characterLength: t.text.length,
         wordLength: t.text.split(/[\s]+/).length,
