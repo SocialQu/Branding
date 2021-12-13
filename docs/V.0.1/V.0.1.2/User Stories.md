@@ -13,7 +13,7 @@
     - [ ] No. of Following
     - [ ] Is reply
     - [ ] Emojis (boolean & numerical)
-    - [ ] Tweet length (characters, words & sentences).
+    - [ ] Tweet length (characters, words, sentences & paragraphs).
     - [ ] Line breaks (boolean & numerical)
     - [ ] Media (boolean)
     - [ ] Links (boolean)

@@ -19,6 +19,7 @@ export interface iLabeledData extends iMetrics {
     characterLength: number
     wordLength: number
     sentenceLength: number
+    pargagraphLength: number
 
     // Line breaks
     hasLineBreaks: Duple
