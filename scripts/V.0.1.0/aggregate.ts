@@ -1,5 +1,5 @@
 import { iAuth, iRawFollower, iRawMetrics, iRawTweet } from './types/rawData'
-import { iAggregatedTweet, iAggregatedUser } from './types/aggregated'
+import { iCompositeTweet, iAggregatedTweets } from './types/aggregated'
 import { readFile, writeFile } from 'fs/promises'
 import fileHound  from 'filehound'
 
@@ -37,11 +37,11 @@ interface iAggreagateData {
     followers: iRawFollower[]
 }
 
-const aggreagateData = ({ profile, tweets, metrics }:iAggreagateData):iAggregatedUser => {
+const aggreagateData = ({ profile, tweets, metrics }:iAggreagateData):iAggregatedTweets => {
     const findTweet = (id:string) => tweets.find(({ id_str }) => id_str === id) as iRawTweet
     const metricTweets = metrics.map(metrics => ({ metrics, tweet:findTweet(metrics.id)}))
 
-    const aggregatedTweets:iAggregatedTweet[] = metricTweets.map(({ metrics, tweet }) => ({
+    const aggregatedTweets:iCompositeTweet[] = metricTweets.map(({ metrics, tweet }) => ({
         text: metrics.text,
         datetime: new Date(metrics.created_at),
         isReply:!!tweet.in_reply_to_screen_name,
