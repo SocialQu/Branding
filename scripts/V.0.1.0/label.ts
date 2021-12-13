@@ -91,4 +91,5 @@ const recurse = async(data:iLabeledData[], files:string[], idx:number):Promise<i
 
 const label = async() => {
     const files = await fileHound.create().paths('./data/aggregated').ext('json').find()
+    const labels = recurse([], files, 0)
 }
