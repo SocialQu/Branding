@@ -1,17 +1,19 @@
+import { iAggregatedTweet, iAggregatedUser } from './types/aggregated'
 import { Duple, iLabeledData } from './types/labeled'
-import { iAggregatedUser } from './types/aggregated'
 
 
 const toDuple = (dual:boolean):Duple => dual ? 1 : 0
 
-const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.map((t, i) => {
+const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.filter((_, i) => 
+    tweets.find((t, idx) => !t.isReply && idx > i)
+).map((t, i) => {
 
     const date = new Date(t.datetime)
     const hours = date.getHours()
     const day = date.getDay()
 
     const lastStatus = tweets[i + 1]
-    const lastTweet = tweets.find((t, idx) => !t.isReply && idx > i)
+    const lastTweet = tweets.find((t, idx) => !t.isReply && idx > i) as iAggregatedTweet
 
     return {
         followers: data.followers,
@@ -48,12 +50,12 @@ const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.ma
         hoursFromLastStatus: (Number(new Date(lastStatus.datetime)) - Number(date))/(1000*60*60),
         hoursFromLastTweet: 0,
 
-        lastTweetLikes: lastTweet?.metrics.likes,
-        lastTweetReplies:lastTweet?.metrics.replies,
-        lastTweetClicks: lastTweet?.metrics.clicks,
-        lastTweetVisits: lastTweet?.metrics.visits,
-        lastTweetRetweets: lastTweet?.metrics.retweets,
-        lastTweetImpressions: lastTweet?.metrics.impressions,
+        lastTweetLikes: lastTweet.metrics.likes,
+        lastTweetReplies:lastTweet.metrics.replies,
+        lastTweetClicks: lastTweet.metrics.clicks,
+        lastTweetVisits: lastTweet.metrics.visits,
+        lastTweetRetweets: lastTweet.metrics.retweets,
+        lastTweetImpressions: lastTweet.metrics.impressions,
 
         ...t.metrics
     }
