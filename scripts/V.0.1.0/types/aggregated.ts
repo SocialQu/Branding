@@ -14,7 +14,7 @@ export interface iMetrics {
     visits: number
 }
 
-export interface iAggregatedTweet {
+export interface iCompositeTweet {
     text:string
     datetime:Date
     isReply:boolean
@@ -23,9 +23,9 @@ export interface iAggregatedTweet {
 }
 
 
-export interface iAggregatedUser {
+export interface iAggregatedTweets {
     name: string
     followers: number
     following: number
-    tweets: iAggregatedTweet[]
+    tweets: iCompositeTweet[]
 }

@@ -1,15 +1,16 @@
-import { iAggregatedTweet, iAggregatedUser } from './types/aggregated'
+import { iCompositeTweet, iAggregatedTweets } from './types/aggregated'
 import { Duple, iLabeledData } from './types/labeled'
+import { readFile, writeFile } from 'fs/promises'
+import fileHound  from 'filehound'
 
 
 const toDuple = (dual:boolean):Duple => dual ? 1 : 0
-const getLastTweet = (tweets:iAggregatedTweet[], i:number) => tweets.find((t, idx) => !t.isReply && idx > i)
+const getLastTweet = (tweets:iCompositeTweet[], i:number) => tweets.find((t, idx) => !t.isReply && idx > i)
 
 const emojiRegex = /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/gi
-const hasEmoji = (text:string) => emojiRegex.test(text)
 
 
-const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.map((t, i) => {
+const labelData = ({ tweets, ...data }: iAggregatedTweets):iLabeledData[] => tweets.map((t, i) => {
     const date = new Date(t.datetime)
     const hours = date.getHours()
     const day = date.getDay()
@@ -66,3 +67,36 @@ const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.ma
 
     return tweet
 })
+
+const labelFile = async(path:string):Promise<iLabeledData[]> => {
+    const buffer = await readFile(path)
+    const str = buffer.toString()
+    const data:iAggregatedTweets = await JSON.parse(str)
+
+    const tweets = labelData(data)
+    return tweets
+}
+
+const recurse = async(data:iLabeledData[], files:string[], idx:number):Promise<iLabeledData[]> => {
+    if(!files.length) return data
+
+    const file = files[idx]
+    const tweets = await labelFile(file)
+    console.log(file, tweets.length)
+
+    if(idx + 1 === files.length) return data
+    return await recurse([...data, ...tweets], files, idx + 1)
+}
+
+
+const label = async() => {
+    const files = await fileHound.create().paths('./data/aggregated').ext('json').find()
+    const labeledData = recurse([], files, 0)
+    console.log('Labeled Data', (await labeledData).length)
+
+    const writeData = JSON.stringify(labeledData)
+    await writeFile('./data/labeledData.json', writeData)
+}
+
+
+label().catch(console.log)
