@@ -1,5 +1,6 @@
 import { iAggregatedTweet, iAggregatedUser } from './types/aggregated'
 import { Duple, iLabeledData } from './types/labeled'
+import fileHound  from 'filehound'
 
 
 const toDuple = (dual:boolean):Duple => dual ? 1 : 0
@@ -9,7 +10,7 @@ const emojiRegex = /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[
 const hasEmoji = (text:string) => emojiRegex.test(text)
 
 
-const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.map((t, i) => {
+const labelData = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.map((t, i) => {
     const date = new Date(t.datetime)
     const hours = date.getHours()
     const day = date.getDay()
@@ -66,3 +67,7 @@ const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.ma
 
     return tweet
 })
+
+const label = async() => {
+    const files = await fileHound.create().paths('./data/aggregated').ext('json').find()
+}
