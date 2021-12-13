@@ -5,6 +5,9 @@ import { Duple, iLabeledData } from './types/labeled'
 const toDuple = (dual:boolean):Duple => dual ? 1 : 0
 const getLastTweet = (tweets:iAggregatedTweet[], i:number) => tweets.find((t, idx) => !t.isReply && idx > i)
 
+const emojiRegex = /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/gi
+
+
 const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.map((t, i) => {
     const date = new Date(t.datetime)
     const hours = date.getHours()
