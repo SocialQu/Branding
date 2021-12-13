@@ -78,6 +78,16 @@ const read = async(path:string):Promise<iLabeledData[]> => {
     return tweets
 }
 
+const recurse = async(files:string[], idx:number) => {
+    if(!files.length) return
+
+    const file = files[idx]
+    await read(file)
+
+    if(idx + 1 === files.length) return
+    await recurse(files, idx + 1)
+}
+
 
 const label = async() => {
     const files = await fileHound.create().paths('./data/aggregated').ext('json').find()
