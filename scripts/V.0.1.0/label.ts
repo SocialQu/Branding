@@ -19,7 +19,7 @@ const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.ma
         wordLength: t.text.split(/[\s]+/).length,
         sentenceLength: t.text.split('\n').length,
 
-        lineBreaks: 0,
+        lineBreaks: (t.text.match(/\n/g) || []).length,
         hasLineBreaks: 0,
 
         links: t.entities.links.length,
