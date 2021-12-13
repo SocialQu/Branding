@@ -91,8 +91,8 @@ const recurse = async(data:iLabeledData[], files:string[], idx:number):Promise<i
 
 const label = async() => {
     const files = await fileHound.create().paths('./data/aggregated').ext('json').find()
-    const labeledData = recurse([], files, 0)
-    console.log('Labeled Data', (await labeledData).length)
+    const labeledData = await recurse([], files, 0)
+    console.log('Labeled Data', labeledData.length)
 
     const writeData = JSON.stringify(labeledData)
     await writeFile('./data/labeledData.json', writeData)
