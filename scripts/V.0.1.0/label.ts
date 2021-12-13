@@ -40,7 +40,7 @@ const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.ma
         hasMentions: toDuple(!!t.entities.mentions.length),
 
         isDaytime: toDuple(hours > 9 && hours < 21),
-        isWeekDay: 0,
+        isWeekDay: toDuple(day === 0 || day === 6),
 
         hoursFromLastStatus: 0,
         hoursFromLastTweet: 0,
