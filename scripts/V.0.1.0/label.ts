@@ -15,7 +15,7 @@ const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.ma
         emojis: 0,
         hasEmojis: 0,
 
-        characterLength: 0,
+        characterLength: t.text.length,
         wordLength: 0,
         sentenceLength: 0,
 
