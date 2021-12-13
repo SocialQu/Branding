@@ -20,7 +20,7 @@ const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.ma
 
         isReply: toDuple(t.isReply),
 
-        emojis: 0,
+        emojis: (t.text.match(emojiRegex) || []).length,
         hasEmojis: toDuple(!!emojiRegex.test(t.text)),
 
         characterLength: t.text.length,
