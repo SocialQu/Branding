@@ -84,7 +84,7 @@ const label = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweets.ma
         isWeekDay: toDuple(day === 0 || day === 6),
 
         hoursFromLastStatus: (Number(new Date(lastStatus.datetime)) - Number(date))/(1000*60*60),
-        hoursFromLastTweet: 0,
+        hoursFromLastTweet: (Number(new Date(lastTweet.datetime)) - Number(date))/(1000*60*60),
 
         lastTweetLikes: lastTweet.metrics.likes,
         lastTweetReplies:lastTweet.metrics.replies,
