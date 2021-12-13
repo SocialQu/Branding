@@ -70,9 +70,11 @@ const labelData = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweet
 })
 
 const read = async(path:string) => {
-    const aggregatedBuffer = await readFile(path)
-    const aggregatedData = aggregatedBuffer.toString()
-    const aggregated:iAggregatedUser = await JSON.parse(aggregatedData)
+    const buffer = await readFile(path)
+    const str = buffer.toString()
+    const data:iAggregatedUser = await JSON.parse(str)
+
+    const tweets = labelData(data)
 }
 
 
