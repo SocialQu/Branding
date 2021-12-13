@@ -1,5 +1,6 @@
 import { iAggregatedTweet, iAggregatedUser } from './types/aggregated'
 import { Duple, iLabeledData } from './types/labeled'
+import { readFile } from 'fs/promises'
 import fileHound  from 'filehound'
 
 
@@ -67,6 +68,13 @@ const labelData = ({ tweets, ...data }: iAggregatedUser):iLabeledData[] => tweet
 
     return tweet
 })
+
+const read = async(path:string) => {
+    const aggregatedBuffer = await readFile(path)
+    const aggregatedData = aggregatedBuffer.toString()
+    const aggregated:iAggregatedUser = await JSON.parse(aggregatedData)
+}
+
 
 const label = async() => {
     const files = await fileHound.create().paths('./data/aggregated').ext('json').find()
