@@ -78,14 +78,14 @@ const read = async(path:string):Promise<iLabeledData[]> => {
     return tweets
 }
 
-const recurse = async(files:string[], idx:number) => {
-    if(!files.length) return
+const recurse = async(data:iLabeledData[], files:string[], idx:number):Promise<iLabeledData[]> => {
+    if(!files.length) return data
 
     const file = files[idx]
-    await read(file)
+    const tweets = await read(file)
 
-    if(idx + 1 === files.length) return
-    await recurse(files, idx + 1)
+    if(idx + 1 === files.length) return data
+    return await recurse([...data, ...tweets], files, idx + 1)
 }
 
 
