@@ -13,6 +13,9 @@ const correlations:iCorrelations = {
     engagements:0
 }
 
+
+const getCorrelation = (tweets:iLabeledTweet[]) => tweets.map(({ likes }) => likes)
+
 const getOutputCorrelations = (tweets:iLabeledTweet[]):iOutputCorrelations => ({
     likes: correlations,
     replies: correlations,
