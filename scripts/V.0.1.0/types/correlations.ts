@@ -65,3 +65,8 @@ interface iInputCorrelations {
     lastTweetRetweets: iCorrelations
     lastTweetImpressions: iCorrelations
 }
+
+interface iDatetimeCorrelations {
+    days: { day:string, correlations:iCorrelations }[]
+    hours: { hour:string, correlation:iCorrelations }[]
+}
