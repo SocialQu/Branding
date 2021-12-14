@@ -3,7 +3,7 @@ import { iMetrics  } from './aggregated'
 interface iCorrelations extends iMetrics { engagements:number }
 
 // Stores the correlation coefficient [-1, 1] for each output in a matrix.
-interface iOutputCorrelations {
+export interface iOutputCorrelations {
     likes: iCorrelations
     clicks: iCorrelations
     visits: iCorrelations
@@ -12,7 +12,7 @@ interface iOutputCorrelations {
     impressions: iCorrelations
 }
 
-interface iInputCorrelations {
+export interface iInputCorrelations {
     // Bio
     followers: iCorrelations
     following: iCorrelations
@@ -67,7 +67,7 @@ interface iInputCorrelations {
     lastTweetImpressions: iCorrelations
 }
 
-interface iDatetimeCorrelations {
+export interface iDatetimeCorrelations {
     days: { day:string, correlations:iCorrelations }[]
     hours: { hour:string, correlation:iCorrelations }[]
 }
