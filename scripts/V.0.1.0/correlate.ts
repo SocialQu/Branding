@@ -1,4 +1,4 @@
-import { iCorrelations } from './types/correlations'
+import { iCorrelations, iOutputCorrelations } from './types/correlations'
 import { iLabeledTweet } from './types/labeled'
 
 
@@ -12,4 +12,11 @@ const correlations:iCorrelations = {
     engagements:0
 }
 
-const outputCorrelations = (tweets:iLabeledTweet[]) => {}
+const getOutputCorrelations = (tweets:iLabeledTweet[]):iOutputCorrelations => ({
+    likes: correlations,
+    replies: correlations,
+    retweets: correlations,
+    visits: correlations,
+    clicks: correlations,
+    impressions: correlations
+})
