@@ -1,8 +1,7 @@
-import { iMetrics } from './aggregated'
+import { iMetrics as iOutputs } from './aggregated'
 
 
-interface iOutputs extends iMetrics {} // Stores the correlation coefficient [-1, 1] for each output.
-
+// Stores the correlation coefficient [-1, 1] for each output in a matrix.
 interface iOutputCorrelations {
     likes: iOutputs
     clicks: iOutputs
@@ -12,3 +11,4 @@ interface iOutputCorrelations {
     impressions: iOutputs
 }
 
+interface iCorrelations {}
