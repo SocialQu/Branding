@@ -1,9 +1,9 @@
-import { iMetrics } from './aggregated'
+import { iMetrics as iOutputs } from './aggregated'
 
 
 export type Duple = 1 | 0
 
-export interface iLabeledData extends iMetrics {
+export interface iInputs {
     // Bio
     followers: number
     following: number
@@ -57,3 +57,5 @@ export interface iLabeledData extends iMetrics {
     lastTweetRetweets?: number
     lastTweetImpressions?: number
 }
+
+export interface iLabeledData extends iInputs, iOutputs {}
