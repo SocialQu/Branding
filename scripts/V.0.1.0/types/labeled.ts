@@ -58,4 +58,4 @@ export interface iInputs {
     lastTweetImpressions?: number
 }
 
-export interface iLabeledData extends iInputs, iOutputs {}
+export interface iLabeledTweet extends iInputs, iOutputs {}
