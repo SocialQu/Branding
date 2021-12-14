@@ -1,5 +1,5 @@
 import { iCompositeTweet, iAggregatedTweets } from './types/aggregated'
-import { Duple, iLabeledData } from './types/labeled'
+import { Duple, iLabeledTweet } from './types/labeled'
 import { readFile, writeFile } from 'fs/promises'
 import fileHound  from 'filehound'
 
@@ -10,12 +10,12 @@ const getLastTweet = (tweets:iCompositeTweet[], i:number) => tweets.find((t, idx
 const emojiRegex = /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/gi
 
 
-const labelData = ({ tweets, ...data }: iAggregatedTweets):iLabeledData[] => tweets.map((t, i) => {
+const labelData = ({ tweets, ...data }: iAggregatedTweets):iLabeledTweet[] => tweets.map((t, i) => {
     const date = new Date(t.datetime)
     const hours = date.getHours()
     const day = date.getDay()
 
-    const tweet:iLabeledData = {
+    const tweet:iLabeledTweet = {
         followers: data.followers,
         following: data.following,
 
@@ -68,7 +68,7 @@ const labelData = ({ tweets, ...data }: iAggregatedTweets):iLabeledData[] => twe
     return tweet
 })
 
-const labelFile = async(path:string):Promise<iLabeledData[]> => {
+const labelFile = async(path:string):Promise<iLabeledTweet[]> => {
     const buffer = await readFile(path)
     const str = buffer.toString()
     const data:iAggregatedTweets = await JSON.parse(str)
@@ -77,7 +77,7 @@ const labelFile = async(path:string):Promise<iLabeledData[]> => {
     return tweets
 }
 
-const recurse = async(data:iLabeledData[], files:string[], idx:number):Promise<iLabeledData[]> => {
+const recurse = async(data:iLabeledTweet[], files:string[], idx:number):Promise<iLabeledTweet[]> => {
     if(!files.length) return data
 
     const file = files[idx]
