@@ -33,5 +33,8 @@ const getOutputCorrelations = (tweets:iLabeledTweet[]):iOutputCorrelations => ({
     engagements: getSingleCorrelation({ tweets, X:'engagements' }),
 })
 
-const outputsCorrelationMatrix = getOutputCorrelations(tweets as unknown as iLabeledTweet[])
-console.log(outputsCorrelationMatrix)
+
+const getCorrelations = (tweets:iLabeledTweet[]) => {
+    const outputsCorrelationMatrix = getOutputCorrelations(tweets)
+    console.log(outputsCorrelationMatrix)    
+}
