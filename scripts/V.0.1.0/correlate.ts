@@ -3,16 +3,6 @@ import { iOutputCorrelations } from './types/correlations'
 import { sampleCorrelation } from 'simple-statistics'
 
 
-const correlations:iCorrelations = {
-    likes:0,
-    visits:0,
-    clicks:0,
-    replies:0,
-    retweets:0,
-    impressions:0,
-    engagements:0
-}
-
 type feature = keyof iLabeledTweet
 type label = keyof iCorrelations
 
