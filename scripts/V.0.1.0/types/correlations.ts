@@ -9,6 +9,7 @@ export interface iOutputCorrelations {
     replies: iCorrelations
     retweets: iCorrelations
     impressions: iCorrelations
+    engagements: iCorrelations
 }
 
 export interface iInputCorrelations {
