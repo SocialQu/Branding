@@ -1,7 +1,7 @@
 import { iLabeledTweet, iOutputs as iCorrelations } from './types/labeled'
 import { iOutputCorrelations } from './types/correlations'
 import { sampleCorrelation } from 'simple-statistics'
-
+import tweets from './data/labeledData.json'
 
 type feature = keyof iLabeledTweet
 type label = keyof iCorrelations
