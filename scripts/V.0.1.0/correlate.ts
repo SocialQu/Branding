@@ -23,7 +23,7 @@ const getCorrelation = ({ tweets, X, Y }: iGetCorrelation):number => ~~sampleCor
 
 const getSingleCorrelation = ({ tweets, X }:iGetCorrelation):iCorrelations => ({
     likes: getCorrelation({ tweets, X, Y:'likes' }),
-    visits:0,
+    visits: getCorrelation({ tweets, X, Y:'visits' }),
     clicks:0,
     replies:0,
     retweets:0,
