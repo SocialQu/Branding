@@ -1,6 +1,6 @@
-import { iCorrelations, iOutputCorrelations } from './types/correlations'
+import { iLabeledTweet, iOutputs as iCorrelations } from './types/labeled'
+import { iOutputCorrelations } from './types/correlations'
 import { sampleCorrelation } from 'simple-statistics'
-import { iLabeledTweet } from './types/labeled'
 
 
 const correlations:iCorrelations = {
