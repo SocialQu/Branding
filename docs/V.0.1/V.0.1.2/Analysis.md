@@ -1,7 +1,7 @@
 # Analysis
 
+- [X] Correlation matrix of outputs to outputs.
 - [ ] Correlation matrix of inputs vs outputs.
-- [ ] Correlation matrix of outputs to outputs.
 - [ ] Perform linear regression.
     - [ ] Capture slope and intercept.
 - [ ] Perform quadratic regression.
