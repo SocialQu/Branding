@@ -21,7 +21,15 @@ const getCorrelation = ({ tweets, X, Y }: iGetCorrelation) => sampleCorrelation(
     tweets.map(t => t[X] as number), tweets.map(t => t[Y] as number)
 ).toFixed(3)
 
-const getSingleCorrelation = ({ tweets, X, Y }:iGetCorrelation) => {}
+const getSingleCorrelation = ({ tweets, X }:iGetCorrelation):iCorrelations => ({
+    likes:0,
+    visits:0,
+    clicks:0,
+    replies:0,
+    retweets:0,
+    impressions:0,
+    engagements:0
+})
 
 const getOutputCorrelations = (tweets:iLabeledTweet[]):iOutputCorrelations => ({
     likes: correlations,
