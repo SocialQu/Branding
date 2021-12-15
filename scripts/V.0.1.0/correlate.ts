@@ -35,6 +35,8 @@ const getOutputCorrelations = (tweets:iLabeledTweet[]):iOutputCorrelations => ({
     engagements: getSingleCorrelation({ tweets, X:'engagements' }),
 })
 
+const getFeatureCorrelations = (tweets:iLabeledTweet[]) => {}
+
 
 const getCorrelations = async(tweets:iLabeledTweet[]) => {
     const outputsCorrelationMatrix = getOutputCorrelations(tweets)
