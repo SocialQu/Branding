@@ -1,6 +1,5 @@
-import { iMetrics  } from './aggregated'
+import { iOutputs as iCorrelations } from './labeled'
 
-export interface iCorrelations extends iMetrics { engagements:number }
 
 // Stores the correlation coefficient [-1, 1] for each output in a matrix.
 export interface iOutputCorrelations {
