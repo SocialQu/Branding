@@ -39,7 +39,7 @@ const getOutputCorrelations = (tweets:iLabeledTweet[]):iOutputCorrelations => ({
 const getCorrelations = async(tweets:iLabeledTweet[]) => {
     const outputsCorrelationMatrix = getOutputCorrelations(tweets)
     const outputsMatrixData = JSON.stringify(outputsCorrelationMatrix)
-    await writeFile('./data/correlations/outputsMartix', outputsMatrixData)
+    await writeFile('./data/correlations/outputsMartix.json', outputsMatrixData)
 
     console.log(outputsCorrelationMatrix)    
 }
