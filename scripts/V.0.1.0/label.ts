@@ -15,6 +15,9 @@ const labelData = ({ tweets, ...data }: iAggregatedTweets):iLabeledTweet[] => tw
     const hours = date.getHours()
     const day = date.getDay()
 
+    const { metrics:m } = t
+    const engagements = m.likes + m.clicks + m.visits + m.replies + m.retweets
+
     const tweet:iLabeledTweet = {
         followers: data.followers,
         following: data.following,
@@ -47,7 +50,8 @@ const labelData = ({ tweets, ...data }: iAggregatedTweets):iLabeledTweet[] => tw
         isDaytime: toDuple(hours > 9 && hours < 21),
         isWeekDay: toDuple(day === 0 || day === 6),
 
-        ...t.metrics
+        ...t.metrics,
+        engagements 
     }
 
     const lastStatus = tweets[i + 1]
