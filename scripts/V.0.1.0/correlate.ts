@@ -38,3 +38,6 @@ const getCorrelations = (tweets:iLabeledTweet[]) => {
     const outputsCorrelationMatrix = getOutputCorrelations(tweets)
     console.log(outputsCorrelationMatrix)    
 }
+
+
+getCorrelations(tweets as iLabeledTweet[])
