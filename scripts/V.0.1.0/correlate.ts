@@ -13,8 +13,9 @@ const correlations:iCorrelations = {
     engagements:0
 }
 
-type label = keyof iLabeledTweet
-const getCorrelation = (tweets:iLabeledTweet[], X:label, Y:label) => sampleCorrelation(
+type feature = keyof iLabeledTweet
+type label = keyof iCorrelations
+const getCorrelation = (tweets:iLabeledTweet[], X:feature, Y:label) => sampleCorrelation(
     tweets.map(t => t[X] as number), tweets.map(t => t[Y] as number)
 ).toFixed(3)
 
