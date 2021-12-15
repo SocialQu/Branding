@@ -17,7 +17,7 @@ type feature = keyof iLabeledTweet
 type label = keyof iCorrelations
 
 interface iGetCorrelation { tweets:iLabeledTweet[], X:feature, Y:label }
-const getCorrelation = ({ tweets, X, Y }: iGetCorrelation) => sampleCorrelation(
+const getCorrelation = ({ tweets, X, Y }: iGetCorrelation):number => ~~sampleCorrelation(
     tweets.map(t => t[X] as number), tweets.map(t => t[Y] as number)
 ).toFixed(3)
 
