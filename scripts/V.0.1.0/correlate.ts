@@ -16,12 +16,14 @@ const correlations:iCorrelations = {
 type feature = keyof iLabeledTweet
 type label = keyof iCorrelations
 
-interface iGetCorrelation { tweets:iLabeledTweet[], X:feature, Y:label }
+interface iGetSingleCorrelation { tweets:iLabeledTweet[], X:feature }
+interface iGetCorrelation extends iGetSingleCorrelation { Y:label }
+
 const getCorrelation = ({ tweets, X, Y }: iGetCorrelation):number => ~~sampleCorrelation(
     tweets.map(t => t[X] as number), tweets.map(t => t[Y] as number)
 ).toFixed(3)
 
-const getSingleCorrelation = ({ tweets, X }:iGetCorrelation):iCorrelations => ({
+const getSingleCorrelation = ({ tweets, X }:iGetSingleCorrelation):iCorrelations => ({
     likes: getCorrelation({ tweets, X, Y:'likes' }),
     visits: getCorrelation({ tweets, X, Y:'visits' }),
     clicks: getCorrelation({ tweets, X, Y:'clicks' }),
