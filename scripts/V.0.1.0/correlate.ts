@@ -1,5 +1,5 @@
+import { iInputCorrelations, iOutputCorrelations } from './types/correlations'
 import { iLabeledTweet, iOutputs as iCorrelations } from './types/labeled'
-import { iOutputCorrelations } from './types/correlations'
 import { sampleCorrelation } from 'simple-statistics'
 import tweets from './data/labeledData.json'
 import { writeFile } from 'fs/promises'
@@ -35,7 +35,37 @@ const getOutputCorrelations = (tweets:iLabeledTweet[]):iOutputCorrelations => ({
     engagements: getSingleCorrelation({ tweets, X:'engagements' }),
 })
 
-const getFeatureCorrelations = (tweets:iLabeledTweet[]) => {}
+const getFeatureCorrelations = (tweets:iLabeledTweet[]):iInputCorrelations => ({
+    followers: getSingleCorrelation({ tweets, X:'followers' }),
+    following: getSingleCorrelation({ tweets, X:'following' }),
+    isReply: getSingleCorrelation({ tweets, X:'isReply' }),
+    hasEmojis: getSingleCorrelation({ tweets, X:'hasEmojis' }),
+    emojis: getSingleCorrelation({ tweets, X:'emojis' }),
+    characterLength: getSingleCorrelation({ tweets, X:'characterLength' }),
+    wordLength: getSingleCorrelation({ tweets, X:'wordLength' }),
+    sentenceLength: getSingleCorrelation({ tweets, X:'sentenceLength' }),
+    pargagraphLength: getSingleCorrelation({ tweets, X:'pargagraphLength' }),
+    hasLineBreaks: getSingleCorrelation({ tweets, X:'hasLineBreaks' }),
+    lineBreaks: getSingleCorrelation({ tweets, X:'lineBreaks' }),
+    hasMedia: getSingleCorrelation({ tweets, X:'hasMedia' }),
+    media: getSingleCorrelation({ tweets, X:'media' }),
+    hasLinks: getSingleCorrelation({ tweets, X:'hasLinks' }),
+    links: getSingleCorrelation({ tweets, X:'links' }),
+    hasHashtags: getSingleCorrelation({ tweets, X:'hasHashtags' }),
+    hashtags: getSingleCorrelation({ tweets, X:'hashtags' }),
+    hasMentions: getSingleCorrelation({ tweets, X:'hasMentions' }),
+    mentions: getSingleCorrelation({ tweets, X:'mentions' }),
+    isWeekDay: getSingleCorrelation({ tweets, X:'isWeekDay' }),
+    isDaytime: getSingleCorrelation({ tweets, X:'isDaytime' }),
+    hoursFromLastTweet: getSingleCorrelation({ tweets, X:'hoursFromLastTweet' }),
+    hoursFromLastStatus: getSingleCorrelation({ tweets, X:'hoursFromLastStatus' }),
+    lastTweetLikes: getSingleCorrelation({ tweets, X:'lastTweetLikes' }),
+    lastTweetVisits: getSingleCorrelation({ tweets, X:'lastTweetVisits' }),
+    lastTweetClicks: getSingleCorrelation({ tweets, X:'lastTweetClicks' }),
+    lastTweetReplies: getSingleCorrelation({ tweets, X:'lastTweetReplies' }),
+    lastTweetRetweets: getSingleCorrelation({ tweets, X:'lastTweetRetweets' }),
+    lastTweetImpressions: getSingleCorrelation({ tweets, X:'lastTweetImpressions' }),
+})
 
 
 const getCorrelations = async(tweets:iLabeledTweet[]) => {
