@@ -45,4 +45,4 @@ const getCorrelations = async(tweets:iLabeledTweet[]) => {
 }
 
 
-getCorrelations(tweets as iLabeledTweet[])
+getCorrelations(tweets as iLabeledTweet[]).catch(console.log)
