@@ -58,5 +58,5 @@ export interface iInputs {
     lastTweetImpressions?: number
 }
 
-interface iOutputs extends iMetrics { engagements:number }
+export interface iOutputs extends iMetrics { engagements:number }
 export interface iLabeledTweet extends iInputs, iOutputs {}
