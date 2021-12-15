@@ -9,7 +9,7 @@ type label = keyof iCorrelations
 interface iGetSingleCorrelation { tweets:iLabeledTweet[], X:feature }
 interface iGetCorrelation extends iGetSingleCorrelation { Y:label }
 
-const getCorrelation = ({ tweets, X, Y }: iGetCorrelation):number => ~~sampleCorrelation(
+const getCorrelation = ({ tweets, X, Y }: iGetCorrelation):number => +sampleCorrelation(
     tweets.map(t => t[X] as number), tweets.map(t => t[Y] as number)
 ).toFixed(3)
 
