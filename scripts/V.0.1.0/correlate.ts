@@ -31,3 +31,5 @@ const getOutputCorrelations = (tweets:iLabeledTweet[]):iOutputCorrelations => ({
     clicks: getSingleCorrelation({ tweets, X:'clicks' }),
     impressions: getSingleCorrelation({ tweets, X:'impressions' })
 })
+
+getOutputCorrelations(tweets)
