@@ -1,4 +1,4 @@
-import { iMetrics as iOutputs } from './aggregated'
+import { iMetrics } from './aggregated'
 
 
 export type Duple = 1 | 0
@@ -58,4 +58,5 @@ export interface iInputs {
     lastTweetImpressions?: number
 }
 
+interface iOutputs extends iMetrics { engagements:number }
 export interface iLabeledTweet extends iInputs, iOutputs {}
