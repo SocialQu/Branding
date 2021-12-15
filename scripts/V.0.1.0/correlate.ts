@@ -2,6 +2,8 @@ import { iLabeledTweet, iOutputs as iCorrelations } from './types/labeled'
 import { iOutputCorrelations } from './types/correlations'
 import { sampleCorrelation } from 'simple-statistics'
 import tweets from './data/labeledData.json'
+import { writeFile } from 'fs/promises'
+
 
 type feature = keyof iLabeledTweet
 type label = keyof iCorrelations
@@ -34,8 +36,11 @@ const getOutputCorrelations = (tweets:iLabeledTweet[]):iOutputCorrelations => ({
 })
 
 
-const getCorrelations = (tweets:iLabeledTweet[]) => {
+const getCorrelations = async(tweets:iLabeledTweet[]) => {
     const outputsCorrelationMatrix = getOutputCorrelations(tweets)
+    const outputsMatrixData = JSON.stringify(outputsCorrelationMatrix)
+    await writeFile('./data/correlations/outputsMartix', outputsMatrixData)
+
     console.log(outputsCorrelationMatrix)    
 }
 
