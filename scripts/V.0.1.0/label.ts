@@ -12,7 +12,7 @@ const emojiRegex = /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[
 
 const labelData = ({ tweets, ...data }: iAggregatedTweets):iLabeledTweet[] => tweets.map((t, i) => {
     const date = new Date(t.datetime)
-    const hours = date.getHours()
+    const hour = date.getHours()
     const day = date.getDay()
 
     const { metrics:m } = t
@@ -47,8 +47,11 @@ const labelData = ({ tweets, ...data }: iAggregatedTweets):iLabeledTweet[] => tw
         mentions: t.entities.mentions.length,
         hasMentions: toDuple(!!t.entities.mentions.length),
 
-        isDaytime: toDuple(hours > 9 && hours < 21),
+        isDaytime: toDuple(hour > 9 && hour < 21),
         isWeekDay: toDuple(day === 0 || day === 6),
+
+        hour,
+        day,
 
         ...t.metrics,
         engagements 
