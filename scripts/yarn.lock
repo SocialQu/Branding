@@ -737,6 +737,22 @@ ml-array-rescale@^1.3.5:
     ml-array-max "^1.2.3"
     ml-array-min "^1.2.2"
 
+ml-array-rescale@^1.3.6:
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/ml-array-rescale/-/ml-array-rescale-1.3.6.tgz#060d1c636fbb5f877265f4fcc4e0e157521d615a"
+  integrity sha512-Lzj45T6hvHNdht924JQhHzInIK+ilC55zn98uraZUvLBkOWOJGOztEkRM0xyzAjWvVuhpszLADOnoVwfBSnj8w==
+  dependencies:
+    is-any-array "^1.0.0"
+    ml-array-max "^1.2.3"
+    ml-array-min "^1.2.2"
+
+ml-matrix@^6.4.1:
+  version "6.8.2"
+  resolved "https://registry.yarnpkg.com/ml-matrix/-/ml-matrix-6.8.2.tgz#79849c909afa114f8227c5b52a2040e2e5381daf"
+  integrity sha512-5o2gVLFyieDSgsStEU5mqty4MZqfeytYA/gJqBSw5/Xuob0X2UrFX/k7FDh+YAwjzG/1l8nYa0oDaJ0sGs/RlA==
+  dependencies:
+    ml-array-rescale "^1.3.6"
+
 ml-matrix@^6.7.0:
   version "6.8.0"
   resolved "https://registry.yarnpkg.com/ml-matrix/-/ml-matrix-6.8.0.tgz#55429ea9625def03ba34e7c8e6ca490409127aa6"
@@ -750,6 +766,13 @@ ml-pca@^4.0.2:
   integrity sha512-LNsEmk1yq6chYUdexk/YUkzzGv6auR3ERQlemT3AikGBY+l+76MfSqO7I+ngd23w/mwl8H+tng7aA8SvJOvDLg==
   dependencies:
     ml-matrix "^6.7.0"
+
+ml-regression-multivariate-linear@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/ml-regression-multivariate-linear/-/ml-regression-multivariate-linear-2.0.3.tgz#e1d660ccea46c812a2749af494e2a8d4ac1d68cf"
+  integrity sha512-G8tBqf8bEhowiVP9rUeYjoc6mCSsA7yxo3fCr8hjaVVmLBAZEXoyeHj5zQZJh/eAp6423kSaabP3emWMwRcnbw==
+  dependencies:
+    ml-matrix "^6.4.1"
 
 moment@^2.14.1, moment@^2.29.1:
   version "2.29.1"
