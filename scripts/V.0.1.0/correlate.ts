@@ -1,4 +1,4 @@
-import { iInputCorrelations, iOutputCorrelations } from './types/correlations'
+import { iDatetimeCorrelations, iInputCorrelations, iOutputCorrelations } from './types/correlations'
 import { iLabeledTweet, iOutputs as iCorrelations } from './types/labeled'
 import { sampleCorrelation } from 'simple-statistics'
 import tweets from './data/labeledData.json'
@@ -74,6 +74,11 @@ const getFeatureCorrelations = (tweets:iLabeledTweet[]):iInputCorrelations => ({
     lastTweetImpressions: getSingleCorrelation({ tweets, x:'lastTweetImpressions' }),
 })
 
+const dateTimeMatrix = (tweets:iLabeledTweet[]):iDatetimeCorrelations => ({
+    days:[],
+    hours:[]
+})
+
 
 const getCorrelations = async(tweets:iLabeledTweet[]) => {
     const outputsCorrelationMatrix = getOutputCorrelations(tweets)
@@ -90,7 +95,6 @@ const getCorrelations = async(tweets:iLabeledTweet[]) => {
 
     const inputsData = JSON.stringify(sortedInputs)
     await writeFile('./data/correlations/inputsMatrix.json', inputsData)
-    console.log(sortedInputs)
 }
 
 
