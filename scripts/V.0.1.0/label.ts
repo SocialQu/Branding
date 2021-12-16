@@ -89,7 +89,6 @@ const recurse = async(data:iLabeledTweet[], files:string[], idx:number):Promise<
 
     const file = files[idx]
     const tweets = await labelFile(file)
-    console.log(file, tweets.length)
 
     if(idx + 1 === files.length) return data
     return await recurse([...data, ...tweets], files, idx + 1)
