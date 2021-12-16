@@ -15,7 +15,8 @@ export interface iOutputCorrelations {
 
 export type iInputCorrelations = { [input in keyof iInputs]: iCorrelations }
 
+interface iAverages extends iCorrelations { tweets:number }
 export interface iDatetimeCorrelations {
-    days: { day:number, correlations:iCorrelations }[]
-    hours: { hour:number, correlations:iCorrelations }[]
+    days: { day:number, averages:iAverages }[]
+    hours: { hour:number, averages:iAverages }[]
 }
