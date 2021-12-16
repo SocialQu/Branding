@@ -88,6 +88,8 @@ const getCorrelations = async(tweets:iLabeledTweet[]) => {
         a && b ? a.engagements > b.engagements ? -1 : 1 : -1
     )
 
+    const inputsData = JSON.stringify(sortedInputs)
+    await writeFile('./data/correlations/inputsMatrix.json', inputsData)
     console.log(sortedInputs)
 }
 
