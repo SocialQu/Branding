@@ -82,8 +82,13 @@ const getCorrelations = async(tweets:iLabeledTweet[]) => {
 
     // console.log(outputsCorrelationMatrix)
 
-    const inputCorrelationMatrix = getFeatureCorrelations(tweets)
-    console.log(inputCorrelationMatrix)
+    const inputsMatrix = getFeatureCorrelations(tweets)
+    const inputs = Object.entries(inputsMatrix).map(([feature, correlations]) => ({ feature, correlations }))
+    const sortedInputs = inputs.sort(({ correlations:a }, { correlations:b }) => 
+        a && b ? a.engagements > b.engagements ? -1 : 1 : -1
+    )
+
+    console.log(sortedInputs)
 }
 
 
