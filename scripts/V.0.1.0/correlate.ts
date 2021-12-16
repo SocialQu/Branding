@@ -1,4 +1,4 @@
-import { iDatetimeCorrelations, iInputCorrelations, iOutputCorrelations } from './types/correlations'
+import { iAverages, iDatetimeCorrelations, iInputCorrelations, iOutputCorrelations } from './types/correlations'
 import { iLabeledTweet, iOutputs as iCorrelations } from './types/labeled'
 import { sampleCorrelation } from 'simple-statistics'
 import tweets from './data/labeledData.json'
@@ -75,7 +75,8 @@ const getFeatureCorrelations = (tweets:iLabeledTweet[]):iInputCorrelations => ({
 })
 
 
-const avgOutputs = (tweets:iLabeledTweet[]):iCorrelations => ({
+const avgOutputs = (tweets:iLabeledTweet[]):iAverages => ({
+    tweets: tweets.length,
     likes: tweets.reduce((d, { likes }) => d += likes, 0)/tweets.length,
     clicks: tweets.reduce((d, { clicks }) => d += clicks, 0)/tweets.length,
     visits: tweets.reduce((d, { visits }) => d += visits, 0)/tweets.length,
@@ -86,8 +87,8 @@ const avgOutputs = (tweets:iLabeledTweet[]):iCorrelations => ({
 })
 
 const getDateTimeMatrix = (tweets:iLabeledTweet[]):iDatetimeCorrelations => ({
-    days: [...Array(7)].map((_, i) => ({ day:i, correlations: avgOutputs(tweets.filter(({ day }) => day === i )) })),
-    hours: [...Array(24)].map((_, i) => ({ hour:i, correlations: avgOutputs(tweets.filter(({ hour }) => hour === i )) }))
+    days: [...Array(7)].map((_, i) => ({ day:i, averages: avgOutputs(tweets.filter(({ day }) => day === i )) })),
+    hours: [...Array(24)].map((_, i) => ({ hour:i, averages: avgOutputs(tweets.filter(({ hour }) => hour === i )) }))
 })
 
 
@@ -105,8 +106,9 @@ const getCorrelations = async(tweets:iLabeledTweet[]) => {
     const inputsData = JSON.stringify(sortedInputs)
     await writeFile('./data/correlations/inputsMatrix.json', inputsData)
 
-    const { days, hours } = getDateTimeMatrix(tweets)
-    console.log(days, hours)
+    const dateTimeMatrix = getDateTimeMatrix(tweets)
+    const dateTimeData = JSON.stringify(dateTimeMatrix)
+    await writeFile('./data/correlations/datetimeMatrix.json', dateTimeData)
 }
 
 
