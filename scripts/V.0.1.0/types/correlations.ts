@@ -17,5 +17,5 @@ export type iInputCorrelations = { [input in keyof iInputs]: iCorrelations }
 
 export interface iDatetimeCorrelations {
     days: { day:number, correlations:iCorrelations }[]
-    hours: { hour:number, correlation:iCorrelations }[]
+    hours: { hour:number, correlations:iCorrelations }[]
 }
