@@ -75,7 +75,7 @@ const getFeatureCorrelations = (tweets:iLabeledTweet[]):iInputCorrelations => ({
 })
 
 
-const averageOutputs = (tweets:iLabeledTweet[]):iCorrelations => ({
+const avgOutputs = (tweets:iLabeledTweet[]):iCorrelations => ({
     likes: tweets.reduce((d, { likes }) => d += likes, 0)/tweets.length,
     clicks: tweets.reduce((d, { clicks }) => d += clicks, 0)/tweets.length,
     visits: tweets.reduce((d, { visits }) => d += visits, 0)/tweets.length,
@@ -85,9 +85,9 @@ const averageOutputs = (tweets:iLabeledTweet[]):iCorrelations => ({
     impressions: tweets.reduce((d, { impressions }) => d += impressions, 0)/tweets.length,
 })
 
-const dateTimeMatrix = (tweets:iLabeledTweet[]):iDatetimeCorrelations => ({
-    days: Array(7).map((_, i) => ({ day:i, correlations: averageOutputs(tweets.filter(({ day }) => day === i )) })),
-    hours: Array(24).map((_, i) => ({ hour:i, correlations: averageOutputs(tweets.filter(({ hour }) => hour === i )) }))
+const getDateTimeMatrix = (tweets:iLabeledTweet[]):iDatetimeCorrelations => ({
+    days: [...Array(7)].map((_, i) => ({ day:i, correlations: avgOutputs(tweets.filter(({ day }) => day === i )) })),
+    hours: [...Array(24)].map((_, i) => ({ hour:i, correlations: avgOutputs(tweets.filter(({ hour }) => hour === i )) }))
 })
 
 
@@ -95,8 +95,6 @@ const getCorrelations = async(tweets:iLabeledTweet[]) => {
     const outputsCorrelationMatrix = getOutputCorrelations(tweets)
     const outputsMatrixData = JSON.stringify(outputsCorrelationMatrix)
     await writeFile('./data/correlations/outputsMartix.json', outputsMatrixData)
-
-    // console.log(outputsCorrelationMatrix)
 
     const inputsMatrix = getFeatureCorrelations(tweets)
     const inputs = Object.entries(inputsMatrix).map(([feature, correlations]) => ({ feature, correlations }))
@@ -106,6 +104,9 @@ const getCorrelations = async(tweets:iLabeledTweet[]) => {
 
     const inputsData = JSON.stringify(sortedInputs)
     await writeFile('./data/correlations/inputsMatrix.json', inputsData)
+
+    const { days, hours } = getDateTimeMatrix(tweets)
+    console.log(days, hours)
 }
 
 
