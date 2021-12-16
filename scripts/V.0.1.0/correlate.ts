@@ -74,9 +74,20 @@ const getFeatureCorrelations = (tweets:iLabeledTweet[]):iInputCorrelations => ({
     lastTweetImpressions: getSingleCorrelation({ tweets, x:'lastTweetImpressions' }),
 })
 
+
+const averageOutputs = (tweets:iLabeledTweet[]):iCorrelations => ({
+    likes: tweets.reduce((d, { likes }) => d += likes, 0)/tweets.length,
+    clicks: tweets.reduce((d, { clicks }) => d += clicks, 0)/tweets.length,
+    visits: tweets.reduce((d, { visits }) => d += visits, 0)/tweets.length,
+    replies: tweets.reduce((d, { replies }) => d += replies, 0)/tweets.length,
+    retweets: tweets.reduce((d, { retweets }) => d += retweets, 0)/tweets.length,
+    engagements: tweets.reduce((d, { engagements }) => d += engagements, 0)/tweets.length,
+    impressions: tweets.reduce((d, { impressions }) => d += impressions, 0)/tweets.length,
+})
+
 const dateTimeMatrix = (tweets:iLabeledTweet[]):iDatetimeCorrelations => ({
-    days:[],
-    hours:[]
+    days: Array(7).map((_, i) => ({ day:i, correlations: averageOutputs(tweets.filter(({ day }) => day === i )) })),
+    hours: Array(24).map((_, i) => ({ hour:i, correlations: averageOutputs(tweets.filter(({ hour }) => hour === i )) }))
 })
 
 
