@@ -1,4 +1,4 @@
-import { iOutputs as iCorrelations } from './labeled'
+import { iOutputs as iCorrelations, iInputs } from './labeled'
 
 
 // Stores the correlation coefficient [-1, 1] for each output in a matrix.
@@ -12,62 +12,11 @@ export interface iOutputCorrelations {
     engagements: iCorrelations
 }
 
-export interface iInputCorrelations {
-    // Bio
-    followers: iCorrelations
-    following: iCorrelations
 
-    // Reply
-    isReply: iCorrelations
+export type iInputCorrelations = { [input in keyof iInputs]: iCorrelations }
 
-    // Emojis
-    hasEmojis: iCorrelations
-    emojis: iCorrelations
-
-    // Length
-    characterLength: iCorrelations
-    wordLength: iCorrelations
-    sentenceLength: iCorrelations
-    pargagraphLength: iCorrelations
-
-    // Line breaks
-    hasLineBreaks: iCorrelations
-    lineBreaks: iCorrelations
-
-    // Media
-    hasMedia: iCorrelations
-    media: iCorrelations
-
-    // Links
-    hasLinks: iCorrelations
-    links: iCorrelations
-
-    // Hashtags
-    hasHashtags: iCorrelations
-    hashtags: iCorrelations
-
-    // Mentions
-    hasMentions: iCorrelations
-    mentions: iCorrelations
-
-    // Datetime
-    isWeekDay: iCorrelations
-    isDaytime: iCorrelations
-
-    // Last tweet
-    hoursFromLastTweet: iCorrelations
-    hoursFromLastStatus: iCorrelations
-
-    // Recent metrics
-    lastTweetLikes: iCorrelations
-    lastTweetVisits: iCorrelations
-    lastTweetClicks: iCorrelations
-    lastTweetReplies: iCorrelations
-    lastTweetRetweets: iCorrelations
-    lastTweetImpressions: iCorrelations
-}
-
+export interface iAverages extends iCorrelations { tweets:number }
 export interface iDatetimeCorrelations {
-    days: { day:string, correlations:iCorrelations }[]
-    hours: { hour:string, correlation:iCorrelations }[]
+    days: { day:number, averages:iAverages }[]
+    hours: { hour:number, averages:iAverages }[]
 }

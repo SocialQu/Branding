@@ -251,19 +251,19 @@ const addEditorial = ():iEmailEditorial => ({
 })
 
 const addContent = ():iEmailContent => ({
-    content_title: "Jonathan Barone ",
+    content_title: 'Jonathan Barone ',
     content: 'is working on Bipdash to compile the greatest threads in Twitter. Whether you are looking for inspiration to write better, or find content that helps you grow your business. Take some time to visit and support the ',
-    content_CTA: "project.",
-    content_link: "https://www.bipdash.com/",
+    content_CTA: 'project.',
+    content_link: 'https://www.bipdash.com/',
     content_2: '',
 })
 
 const addFooter = ():iEmailFooter => ({
-    cta_link:"https://twitter.com/intent/tweet?text=Get+your+weekly+Twitter+stats+at+your+inbox+with+branding.gq",
-    Sender_City:"Tepoztlán",
-    Sender_State:"Mexico",
-    Sender_Zip:"",
-    unsubscribe:"https://twitter.com/SocialQui"
+    cta_link:'https://twitter.com/intent/tweet?text=Get+your+weekly+Twitter+stats+at+your+inbox+with+branding.gq',
+    Sender_City:'Tepoztlán',
+    Sender_State:'Mexico',
+    Sender_Zip:'',
+    unsubscribe:'https://twitter.com/SocialQui'
 })
 
 

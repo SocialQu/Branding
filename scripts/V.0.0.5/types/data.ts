@@ -1,4 +1,4 @@
-import { TextColor } from "./fetch";
+import { TextColor } from './fetch'
 
 export type kpiColor = '007500' | 'A31700'
 export interface iKpi {
