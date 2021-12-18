@@ -18,5 +18,10 @@ const labels:(keyof iOutputs)[] = [
 const x = tweets.map((t) => features.map((f) => t[f] as number))
 const y = tweets.map((t) => labels.map((f) => t[f]))
 
-const { weights, stdError, stdErrors, stdErrorMatrix } = new MLR(x, y)
-features.map((f, i) => console.log(f, weights[i][0]))
+const { weights } = new MLR(x, y)
+
+const regression = labels.reduce((d, k, i) => 
+    ({ ...d, [k]: features.reduce((d, _, idx) => ({...d, [features[idx]]: weights[idx][i] }), {}) }), {}
+)
+
+console.log('Engagement Features:', regression)
