@@ -1,7 +1,7 @@
 import MLR from 'ml-regression-multivariate-linear'
 import { iInputs, iOutputs } from './types/labeled'
 import tweets from './data/labeledData.json'
-
+import { writeFile } from 'fs/promises'
 
 const features:(keyof iInputs)[] = [
     'followers', 'following', // Bio
@@ -24,4 +24,5 @@ const regression = labels.reduce((d, k, i) =>
     ({ ...d, [k]: features.reduce((d, _, idx) => ({...d, [features[idx]]: weights[idx][i] }), {}) }), {}
 )
 
-console.log('Engagement Features:', regression)
+const regressionData = JSON.stringify(regression)
+writeFile('./data/regression.json', regressionData)
