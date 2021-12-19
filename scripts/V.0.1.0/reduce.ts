@@ -3,6 +3,7 @@ import { iEmbeddedTweet, iReducedTweet } from './types/embeddings'
 import { iLabeledTweet } from './types/labeled'
 import tweets from './data/labeledData.json'
 import { writeFile } from 'fs/promises'
+import '@tensorflow/tfjs-node'
 import { PCA } from 'ml-pca'
 
 
@@ -40,7 +41,7 @@ const reduceTweets = async(tweets:iEmbeddedTweet[]):Promise<iReducedTweet[]> => 
 
 const index = async(tweets:iLabeledTweet[]) => {
     const embedded = await embedTweets(tweets)
-    const reduced = await reduceTweets(embedded)
+    await reduceTweets(embedded)
 }
 
 index(tweets as iLabeledTweet[]).catch(console.log)
