@@ -8,8 +8,8 @@
 ## Embedding's Correlations
 - [X] Create 5 embeddingh using PCA models: 12, 24, 48, 96 & 512.
 - [X] Linear regression on each embedding's feature.
-- [ ] Output top tweet examples for each feature.
-- [ ] Based on examples name the features for the 12 dimensions model.
+- [X] Output top tweet examples for each feature.
+- [X] Based on examples name the features for the 12 dimensions model.
 
 ## Cluster Analysis
 - [ ] Reuse embeddings models to find 6, 12 & clusters.
