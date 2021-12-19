@@ -44,5 +44,15 @@ const getEngagementClusters = (tweets:iNormalizedTweets[]) => {
     return labels
 }
 
-const getFeatureClusters = () => {}
+const getFeatureClusters = (tweets:iNormalizedTweets[]) => {
+    const points = tweets.map(({ reduced, normalizedMetrics, ...t }) => [
+        ...reduced, 
+        ...normalizedMetrics,
+        t.hour/24,
+        t.day/7,
+
+
+    ])
+
+}
 
