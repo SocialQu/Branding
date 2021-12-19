@@ -11,7 +11,7 @@ const features:(keyof iInputs)[] = [
     'hasHashtags', 'mentions', 'hasMedia', 'hasLinks', // Entities
 ]
 
-const labels:(keyof iOutputs)[] = [ 
+export const labels:(keyof iOutputs)[] = [ 
     'engagements', 'impressions', 'likes', 'retweets', 'replies', 'clicks', 'visits'
 ]
 
