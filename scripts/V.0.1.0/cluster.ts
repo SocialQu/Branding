@@ -46,20 +46,20 @@ const getEngagementClusters = (tweets:iNormalizedTweets[]) => {
 
 const getFeatureClusters = (tweets:iNormalizedTweets[]) => {
     const followerStats = getZScoreParams(tweets, 'followers')
+    const followingStats = getZScoreParams(tweets, 'following')
+    const mentionStats = getZScoreParams(tweets, 'mentions')
+    const emojiStats = getZScoreParams(tweets, 'emojis')
+    const linebreakStats = getZScoreParams(tweets, 'lineBreaks')
+    const characterLengthStats = getZScoreParams(tweets, 'characterLength')
+    const hashtagStats = getZScoreParams(tweets, 'hashtags')
+    const mediaStats = getZScoreParams(tweets, 'media')
+    const linksStats = getZScoreParams(tweets, 'links')
 
     const points = tweets.map(({ reduced, normalizedMetrics, ...t }) => [
         ...reduced, 
         ...normalizedMetrics,
         t.hour/24,
         t.day/7,
-        // following
-        // mentions
-        // emojis
-        // linebreaks
-        // characterLength
-        // hashtags
-        // hasMedia
-        // hasLinks
     ])
 
 }
