@@ -10,3 +10,5 @@ interface iClusteredTweet extends iEmbeddedTweet {
     engagementsCluster: number
     featuresCluster: number
 }
+
+interface iClassifiedTweet extends iClusteredTweet { topic: string }
