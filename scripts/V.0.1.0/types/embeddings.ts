@@ -8,7 +8,7 @@ export interface iClusteredTweet extends iReducedTweet {
     featuresCluster: number
     embeddingsCluster: number
     engagementsCluster: number
-    clsuter: number
+    cluster: number
 }
 
 interface iClassifiedTweet extends iClusteredTweet { topic:string }
