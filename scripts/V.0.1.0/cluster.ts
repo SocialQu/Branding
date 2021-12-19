@@ -15,4 +15,6 @@ const getZScoreParams = (tweets:iLabeledTweet[], metric:keyof iLabeledTweet) => 
     return { mean:mean(values), sd:standardDeviation(values) }
 }
 
-const getEngagementClusters = (tweets:iReducedTweet[]) => {}
+const getEngagementClusters = (tweets:iReducedTweet[]) => {
+    const likeStats = getZScoreParams(tweets, 'likes')    
+}
