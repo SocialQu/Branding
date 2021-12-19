@@ -31,7 +31,7 @@ const reduceTweets = async(tweets:iEmbeddedTweet[]):Promise<iReducedTweet[]> => 
     await writeFile('./data/PCA.json', JSON.stringify(pcaData))
 
     const reductions = pca.predict(embeddings, {nComponents: 12}).to2DArray()
-    const reducedTweets = tweets.map((t, i) => ({...t, reduced: reductions[i] }))
+    const reducedTweets = tweets.map(({ embeddings, ...t }, i) => ({...t, reduced: reductions[i] }))
 
     const reducedData = JSON.stringify(reducedTweets)
     await writeFile('./data/reducedTweets.json', reducedData)
