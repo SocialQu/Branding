@@ -8,8 +8,8 @@ const getZScoreParams = (tweets:iReducedTweet[], metric:keyof iReducedTweet) => 
     return { mean:mean(values), sd:standardDeviation(values) }
 }
 
-interface iNormalizedTweets extends iReducedTweet { normalizedMetrics:number[], normalizedFeatures:number[] }
-const normalizeTweets = (tweets:iReducedTweet[]):iNormalizedTweets[] => {
+interface iNormalizedTweet extends iReducedTweet { normalizedMetrics:number[], normalizedFeatures:number[] }
+const normalizeTweets = (tweets:iReducedTweet[]):iNormalizedTweet[] => {
     // Features
     const mediaStats = getZScoreParams(tweets, 'media')
     const linksStats = getZScoreParams(tweets, 'links')
@@ -59,27 +59,29 @@ const normalizeTweets = (tweets:iReducedTweet[]):iNormalizedTweets[] => {
 }
 
 
-const getEmbeddingsClusters = (tweets:iReducedTweet[]) => {
+const getEmbeddingsClusters = (tweets:iNormalizedTweet[]) => {
     const embeddings = tweets.map(({ reduced }) => reduced)
     const { labels } = kMeansCluster(embeddings, 9)
     return labels    
 }
 
-const getEngagementClusters = (tweets:iNormalizedTweets[]) => {
+const getEngagementClusters = (tweets:iNormalizedTweet[]) => {
     const points = tweets.map(({ reduced, normalizedMetrics }) => [...reduced, ...normalizedMetrics])
     const { labels } = kMeansCluster(points, 12)
     return labels
 }
 
-const getFeatureClusters = (tweets:iNormalizedTweets[]) => {
+const getFeatureClusters = (tweets:iNormalizedTweet[]) => {
     const points = tweets.map(({ reduced, normalizedFeatures }) => [ ...reduced, ...normalizedFeatures ])
     const { labels } = kMeansCluster(points, 15)
     return labels
 }
 
-const getClusters = (tweets:iNormalizedTweets[]) => {
+const getClusters = (tweets:iNormalizedTweet[]) => {
     const points = tweets.map(({ reduced, normalizedFeatures }) => [ ...reduced, ...normalizedFeatures ])
     const { labels } = kMeansCluster(points, 20)
     return labels
 }
 
+
+const clusterTweets = (tweets:iReducedTweet[]) => {}
