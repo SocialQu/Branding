@@ -1,6 +1,7 @@
 import { kMeansCluster, zScore, mean, standardDeviation } from 'simple-statistics'
 import { iClusteredTweet, iReducedTweet } from './types/embeddings'
 import tweets from './data/reducedTweets.json'
+import { writeFile } from 'fs/promises'
 
 
 const getZScoreParams = (tweets:iReducedTweet[], metric:keyof iReducedTweet) => {
@@ -103,5 +104,12 @@ const clusterTweets = (tweets:iReducedTweet[]):iClusteredTweet[] => {
     return clusteredTweets
 }
 
+const clusterAnalysis = async(tweets:iReducedTweet[]) => {
+    const clusteredTweets = clusterTweets(tweets)
+    const clusteredData = JSON.stringify(clusteredTweets)
 
-clusterTweets(tweets as iReducedTweet[])
+    await writeFile('./data/clusteredTweets', clusteredData)
+}
+
+
+clusterAnalysis(tweets as iReducedTweet[])
