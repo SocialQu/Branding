@@ -26,5 +26,6 @@ const reduceTweets = (tweets:iEmbeddedTweet[]):void => {
 }
 
 const reduce = async(tweets:iLabeledTweet[]) => {
-    const embeddedTweets = await embedTweets(tweets)
+    const embedded = await embedTweets(tweets)
+    const reduced = reduceTweets(embedded)
 }
