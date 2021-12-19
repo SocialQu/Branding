@@ -45,12 +45,13 @@ const getEngagementClusters = (tweets:iNormalizedTweets[]) => {
 }
 
 const getFeatureClusters = (tweets:iNormalizedTweets[]) => {
+    const followerStats = getZScoreParams(tweets, 'followers')
+
     const points = tweets.map(({ reduced, normalizedMetrics, ...t }) => [
         ...reduced, 
         ...normalizedMetrics,
         t.hour/24,
         t.day/7,
-        // followers
         // following
         // mentions
         // emojis
