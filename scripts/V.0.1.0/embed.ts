@@ -1,5 +1,6 @@
 import MLR from 'ml-regression-multivariate-linear'
 import { iReducedTweet } from './types/embeddings'
+import { writeFile } from 'fs/promises'
 import { labels } from './regression'
 
 
@@ -12,4 +13,9 @@ const linearRegression = (tweets:iReducedTweet[]) => {
         ...d, 
         [k]: tweets[i].reduced.reduce((d, _, idx) => ({...d, [idx]: weights[idx][i] }), {}) }), {}
     )
+
+    console.log(weights)
+
+    const regressionData = JSON.stringify(results)
+    writeFile('./data/regression.json', regressionData)
 }
