@@ -1,4 +1,4 @@
-import { UniversalSentenceEncoder as iModel, load } from '@tensorflow-models/universal-sentence-encoder'
+import { load } from '@tensorflow-models/universal-sentence-encoder'
 import { iEmbeddedTweet, iReducedTweet } from './types/embeddings'
 import { iLabeledTweet } from './types/labeled'
 import { writeFile } from 'fs/promises'
