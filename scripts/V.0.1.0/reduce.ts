@@ -13,6 +13,10 @@ const embedTweets = async(tweets:iLabeledTweet[]):Promise<iEmbeddedTweet[]> => {
     const embeddings = tensors.arraySync()
 
     const embeddedTweets = tweets.map((t,i) => ({...t, embeddings:embeddings[i] }))
+
+    const embeddedData = JSON.stringify(embedTweets)
+    await writeFile('./data/embeddedTweets.json', embeddedData)
+
     return embeddedTweets
 }
 
