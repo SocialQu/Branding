@@ -3,6 +3,7 @@
 ## Preprocessing
 - [ ] Compute embeddings for tweets.
 - [ ] Extend labeled tweets interface with embeddings.
+- [ ] Fetch topics from Cortazar DB.
 
 ## Embedding's Correlations
 - [ ] Create 5 embeddingh using PCA models: 12, 24, 48, 96 & 512.
@@ -18,4 +19,7 @@
 - [ ] Analyze insights and document results.
 
 ## Topic Classifications
-
+- [ ] Label tweets by topics.
+- [ ] Compute averages by topics.
+- [ ] Correlate embeddings to topics.
+- [ ] Prepare insights for feature engineering and strategy evalutation.
