@@ -58,8 +58,19 @@ const getFeatureClusters = (tweets:iNormalizedTweets[]) => {
     const points = tweets.map(({ reduced, normalizedMetrics, ...t }) => [
         ...reduced, 
         ...normalizedMetrics,
-        t.hour/24,
-        t.day/7,
+        ...[
+            t.hour/24,
+            t.day/7,
+            zScore(t.followers, followerStats.mean, followerStats.sd),
+            zScore(t.following, followingStats.mean, followingStats.sd),
+            zScore(t.mentions, mentionStats.mean, mentionStats.sd),
+            zScore(t.emojis, emojiStats.mean, emojiStats.sd),
+            zScore(t.lineBreaks, linebreakStats.mean, linebreakStats.sd),
+            zScore(t.characterLength, characterLengthStats.mean, characterLengthStats.sd),
+            zScore(t.hashtags, hashtagStats.mean, hashtagStats.sd),
+            zScore(t.media, mediaStats.mean, mediaStats.sd),
+            zScore(t.links, linksStats.mean, linksStats.sd),
+        ],
     ])
 
 }
