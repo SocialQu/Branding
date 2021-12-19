@@ -26,4 +26,4 @@ const regression = labels.reduce((d, k, i) => ({
 , {})
 
 const regressionData = JSON.stringify(regression)
-writeFile('./data/regression.json', regressionData)
+writeFile('./data/regression/features.json', regressionData)
