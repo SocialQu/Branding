@@ -27,10 +27,12 @@ const dimensionNames = [
     'Sports', 'Work', 'Money & Crypto', 'Affitmations', 'Questions & Curiosity', 'Informative'
 ]
 
+
 interface iFindTweets { tweets:iReducedTweet[], weights:number[][] }
+
 interface iWeight { label: keyof iOutputs, value: number }
 interface iTopTweet { text:string, engagements:number, value:number }
-interface iTopTweets { dimension:number, weight:iWeight[], topTweets:iTopTweet[] } // Top tweets by dimension
+interface iTopTweets { name:string, dimension:number, weight:iWeight[], topTweets:iTopTweet[] }
 const findTweets = ({ tweets, weights }:iFindTweets):iTopTweets[] => tweets[0].reduced.map(( _, i) => i).map((i) => {
     const sorted = tweets.sort(({ reduced:a }, { reduced:b }) => a[i] > b[i] ? -1 : 1)
     const topTweets = sorted.filter((_, i) => i < 10).map(({ text, engagements, reduced }) => ({
@@ -38,7 +40,7 @@ const findTweets = ({ tweets, weights }:iFindTweets):iTopTweets[] => tweets[0].r
     }))
 
     const weight = labels.map((label, idx) => ({label, value:weights[i][idx]}))
-    return { dimension:i, weight, topTweets }
+    return { name:dimensionNames[i], dimension:i, weight, topTweets }
 })
 
 const analyzeEmbeddings = (tweets:iReducedTweet[]) => {
