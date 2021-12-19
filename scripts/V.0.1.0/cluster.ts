@@ -50,8 +50,15 @@ const getFeatureClusters = (tweets:iNormalizedTweets[]) => {
         ...normalizedMetrics,
         t.hour/24,
         t.day/7,
-
-
+        // followers
+        // following
+        // mentions
+        // emojis
+        // linebreaks
+        // characterLength
+        // hashtags
+        // hasMedia
+        // hasLinks
     ])
 
 }
