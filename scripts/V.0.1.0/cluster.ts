@@ -85,7 +85,7 @@ const getClusters = (tweets:iNormalizedTweet[]) => {
 }
 
 
-const clusterTweets = (tweets:iReducedTweet[]):iClusteredTweet[] => {
+const clusterTweets = (tweets:iReducedTweet[]) => {
     const normalizedTweets = normalizeTweets(tweets)
 
     const embeddingsClusters = getEmbeddingsClusters(normalizedTweets)
@@ -93,7 +93,7 @@ const clusterTweets = (tweets:iReducedTweet[]):iClusteredTweet[] => {
     const featureClusters = getFeatureClusters(normalizedTweets)
     const clusters = getClusters(normalizedTweets)
 
-    const clusteredTweets = tweets.map((t, i) => ({
+    const clusteredTweets:iClusteredTweet[] = tweets.map((t, i) => ({
         ...t,
         cluster: clusters[i],
         featuresCluster: featureClusters[i],
@@ -101,11 +101,19 @@ const clusterTweets = (tweets:iReducedTweet[]):iClusteredTweet[] => {
         engagementsCluster: engagementsClusters[i]
     }))
 
-    return clusteredTweets
+    return {
+        clusteredTweets,
+        clusters:{
+            embeddingsClusters,
+            engagementsClusters,
+            featureClusters,
+            clusters
+        }
+    }
 }
 
 const clusterAnalysis = async(tweets:iReducedTweet[]) => {
-    const clusteredTweets = clusterTweets(tweets)
+    const { clusteredTweets, clusters } = clusterTweets(tweets)
     const clusteredData = JSON.stringify(clusteredTweets)
 
     await writeFile('./data/clusteredTweets', clusteredData)
