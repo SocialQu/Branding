@@ -1,6 +1,7 @@
 import { UniversalSentenceEncoder as iModel } from '@tensorflow-models/universal-sentence-encoder'
 import { iEmbeddedTweet } from './types/embeddings'
 import { iLabeledTweet } from './types/labeled'
+import { writeFile } from 'fs/promises'
 import { PCA } from 'ml-pca'
 
 
@@ -18,4 +19,7 @@ const embedTweets = async(tweets:iLabeledTweet[], model:iModel):Promise<iEmbedde
 const reduceTweets = (tweets:iEmbeddedTweet[]):void => {
     const embeddings = tweets.map(({ embeddings }) => embeddings)
     const pca = new PCA(embeddings)
+
+    const pcaData = pca.toJSON()
+    writeFile('./data/PCA.json', JSON.stringify(pcaData))
 }
