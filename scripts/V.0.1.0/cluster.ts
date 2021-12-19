@@ -92,7 +92,7 @@ const clusterTweets = (tweets:iReducedTweet[]):iClusteredTweet[] => {
     const featureClusters = getFeatureClusters(normalizedTweets)
     const clusters = getClusters(normalizedTweets)
 
-    const clusteredTweets = normalizedTweets.map((t, i) => ({
+    const clusteredTweets = tweets.map((t, i) => ({
         ...t,
         cluster: clusters[i],
         featuresCluster: featureClusters[i],
