@@ -1,9 +1,10 @@
-import { zScore, mean, standardDeviation } from 'simple-statistics'
-import { kMeansCluster } from 'simple-statistics'
-import tweets from './data/reducedTweets.json'
+import { kMeansCluster, zScore, mean, standardDeviation } from 'simple-statistics'
+import { iReducedTweet } from './types/embeddings'
 import { iLabeledTweet } from './types/labeled'
+import tweets from './data/reducedTweets.json'
 
-const getEmbeddingsClusters = () => {
+
+const getEmbeddingsClusters = (tweets:iReducedTweet[]) => {
     const embeddings = tweets.map(({ reduced }) => reduced)
     const { labels, centroids } = kMeansCluster(embeddings, 9)
     return labels    
@@ -14,4 +15,4 @@ const getZScoreParams = (tweets:iLabeledTweet[], metric:keyof iLabeledTweet) => 
     return { mean:mean(values), sd:standardDeviation(values) }
 }
 
-const getEngagementClusters = () => {}
+const getEngagementClusters = (tweets:iReducedTweet[]) => {}
