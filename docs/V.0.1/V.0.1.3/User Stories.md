@@ -2,6 +2,6 @@
 
 - [ ] Correlate different embedding dimensions to engagement metrics.
 - [ ] Identify Clusters based on tweet meaning, engagement metrics & tweet labeled features.
-- [ ] Topics
+- [ ] Map distribution of topics, and it's average correlation, prepare for strategy analysis.
 - [ ] Research
 - [ ] Insights
