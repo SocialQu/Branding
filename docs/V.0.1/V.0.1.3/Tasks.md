@@ -1,13 +1,13 @@
 # Tasks
 
 ## Preprocessing
-- [ ] Compute embeddings for tweets.
-- [ ] Extend labeled tweets interface with embeddings.
+- [X] Compute embeddings for tweets.
+- [X] Extend labeled tweets interface with embeddings.
 - [ ] Fetch topics from Cortazar DB.
 
 ## Embedding's Correlations
-- [ ] Create 5 embeddingh using PCA models: 12, 24, 48, 96 & 512.
-- [ ] Linear regression on each embedding's feature.
+- [X] Create 5 embeddingh using PCA models: 12, 24, 48, 96 & 512.
+- [X] Linear regression on each embedding's feature.
 - [ ] Output top tweet examples for each feature.
 - [ ] Based on examples name the features for the 12 dimensions model.
 

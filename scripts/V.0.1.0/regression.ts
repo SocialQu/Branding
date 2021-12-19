@@ -11,7 +11,7 @@ const features:(keyof iInputs)[] = [
     'hasHashtags', 'mentions', 'hasMedia', 'hasLinks', // Entities
 ]
 
-const labels:(keyof iOutputs)[] = [ 
+export const labels:(keyof iOutputs)[] = [ 
     'engagements', 'impressions', 'likes', 'retweets', 'replies', 'clicks', 'visits'
 ]
 
@@ -20,9 +20,10 @@ const y = tweets.map((t) => labels.map((f) => t[f]))
 
 const { weights } = new MLR(x, y)
 
-const regression = labels.reduce((d, k, i) => 
-    ({ ...d, [k]: features.reduce((d, _, idx) => ({...d, [features[idx]]: weights[idx][i] }), {}) }), {}
-)
+const regression = labels.reduce((d, k, i) => ({ 
+    ...d, 
+    [k]: features.reduce((d, _, idx) => ({...d, [features[idx]]: weights[idx][i] }), {}) })
+, {})
 
 const regressionData = JSON.stringify(regression)
-writeFile('./data/regression.json', regressionData)
+writeFile('./data/regression/features.json', regressionData)
