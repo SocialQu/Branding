@@ -14,8 +14,20 @@ const getZScoreParams = (tweets:iReducedTweet[], metric:keyof iReducedTweet) => 
     return { mean:mean(values), sd:standardDeviation(values) }
 }
 
-interface iNormalizedTweets extends iReducedTweet { normalizedMetrics:number[] }
-const normalizeMetrics = (tweets:iReducedTweet[]):iNormalizedTweets[] => {
+interface iNormalizedTweets extends iReducedTweet { normalizedMetrics:number[], normalizedFeatures:number[] }
+const normalizeTweets = (tweets:iReducedTweet[]):iNormalizedTweets[] => {
+    // Features
+    const mediaStats = getZScoreParams(tweets, 'media')
+    const linksStats = getZScoreParams(tweets, 'links')
+    const emojiStats = getZScoreParams(tweets, 'emojis')
+    const hashtagStats = getZScoreParams(tweets, 'hashtags')
+    const mentionStats = getZScoreParams(tweets, 'mentions')
+    const followerStats = getZScoreParams(tweets, 'followers')
+    const followingStats = getZScoreParams(tweets, 'following')
+    const linebreakStats = getZScoreParams(tweets, 'lineBreaks')
+    const characterLengthStats = getZScoreParams(tweets, 'characterLength')
+
+    // Metrics
     const likeStats = getZScoreParams(tweets, 'likes')
     const visitStats = getZScoreParams(tweets, 'visits')
     const clickStats = getZScoreParams(tweets, 'clicks')
@@ -25,6 +37,20 @@ const normalizeMetrics = (tweets:iReducedTweet[]):iNormalizedTweets[] => {
 
     const normalizedTweets = tweets.map(t => ({
         ...t,
+        normalizedFeatures: [
+            t.hour/24,
+            t.day/7,
+            zScore(t.media, mediaStats.mean, mediaStats.sd),
+            zScore(t.links, linksStats.mean, linksStats.sd),
+            zScore(t.emojis, emojiStats.mean, emojiStats.sd),
+            zScore(t.hashtags, hashtagStats.mean, hashtagStats.sd),
+            zScore(t.mentions, mentionStats.mean, mentionStats.sd),
+            zScore(t.followers, followerStats.mean, followerStats.sd),
+            zScore(t.following, followingStats.mean, followingStats.sd),
+            zScore(t.lineBreaks, linebreakStats.mean, linebreakStats.sd),
+            zScore(t.characterLength, characterLengthStats.mean, characterLengthStats.sd)
+        ],
+
         normalizedMetrics: [
             zScore(t.likes, likeStats.mean, likeStats.sd),
             zScore(t.likes, visitStats.mean, visitStats.sd),
@@ -45,32 +71,8 @@ const getEngagementClusters = (tweets:iNormalizedTweets[]) => {
 }
 
 const getFeatureClusters = (tweets:iNormalizedTweets[]) => {
-    const mediaStats = getZScoreParams(tweets, 'media')
-    const linksStats = getZScoreParams(tweets, 'links')
-    const emojiStats = getZScoreParams(tweets, 'emojis')
-    const hashtagStats = getZScoreParams(tweets, 'hashtags')
-    const mentionStats = getZScoreParams(tweets, 'mentions')
-    const followerStats = getZScoreParams(tweets, 'followers')
-    const followingStats = getZScoreParams(tweets, 'following')
-    const linebreakStats = getZScoreParams(tweets, 'lineBreaks')
-    const characterLengthStats = getZScoreParams(tweets, 'characterLength')
-
-    const points = tweets.map(({ reduced, normalizedMetrics, ...t }) => [
-        ...reduced, 
-        ...normalizedMetrics,
-        ...[
-            t.hour/24,
-            t.day/7,
-            zScore(t.media, mediaStats.mean, mediaStats.sd),
-            zScore(t.links, linksStats.mean, linksStats.sd),
-            zScore(t.emojis, emojiStats.mean, emojiStats.sd),
-            zScore(t.hashtags, hashtagStats.mean, hashtagStats.sd),
-            zScore(t.mentions, mentionStats.mean, mentionStats.sd),
-            zScore(t.followers, followerStats.mean, followerStats.sd),
-            zScore(t.following, followingStats.mean, followingStats.sd),
-            zScore(t.lineBreaks, linebreakStats.mean, linebreakStats.sd),
-            zScore(t.characterLength, characterLengthStats.mean, characterLengthStats.sd)
-        ],
-    ])
+    const points = tweets.map(({ reduced, normalizedFeatures }) => [ ...reduced, ...normalizedFeatures ])
+    const { labels } = kMeansCluster(points, 12)
+    return labels
 }
 
