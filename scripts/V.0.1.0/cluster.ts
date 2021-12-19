@@ -102,3 +102,6 @@ const clusterTweets = (tweets:iReducedTweet[]):iClusteredTweet[] => {
 
     return clusteredTweets
 }
+
+
+clusterTweets(tweets as iReducedTweet[])
