@@ -60,4 +60,4 @@ export interface iInputs {
 
 export interface iOutputs extends iMetrics { engagements:number }
 
-export interface iLabeledTweet extends iInputs, iOutputs { hour:number, day:number }
+export interface iLabeledTweet extends iInputs, iOutputs { hour:number, day:number, text:string }
