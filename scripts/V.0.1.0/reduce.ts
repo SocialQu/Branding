@@ -1,4 +1,4 @@
-import { UniversalSentenceEncoder as iModel } from '@tensorflow-models/universal-sentence-encoder'
+import { UniversalSentenceEncoder as iModel, load } from '@tensorflow-models/universal-sentence-encoder'
 import { iEmbeddedTweet } from './types/embeddings'
 import { iLabeledTweet } from './types/labeled'
 import { writeFile } from 'fs/promises'
@@ -22,4 +22,9 @@ const reduceTweets = (tweets:iEmbeddedTweet[]):void => {
 
     const pcaData = pca.toJSON()
     writeFile('./data/PCA.json', JSON.stringify(pcaData))
+}
+
+const reduce = async(tweets:iLabeledTweet[]) => {
+    const model = await load()
+    const embeddedTweets = await embedTweets(tweets, model)
 }
