@@ -3,12 +3,6 @@ import { iReducedTweet } from './types/embeddings'
 import tweets from './data/reducedTweets.json'
 
 
-const getEmbeddingsClusters = (tweets:iReducedTweet[]) => {
-    const embeddings = tweets.map(({ reduced }) => reduced)
-    const { labels } = kMeansCluster(embeddings, 9)
-    return labels    
-}
-
 const getZScoreParams = (tweets:iReducedTweet[], metric:keyof iReducedTweet) => {
     const values = tweets.map(t => t[metric] as number)
     return { mean:mean(values), sd:standardDeviation(values) }
@@ -64,6 +58,13 @@ const normalizeTweets = (tweets:iReducedTweet[]):iNormalizedTweets[] => {
     return normalizedTweets
 }
 
+
+const getEmbeddingsClusters = (tweets:iReducedTweet[]) => {
+    const embeddings = tweets.map(({ reduced }) => reduced)
+    const { labels } = kMeansCluster(embeddings, 9)
+    return labels    
+}
+
 const getEngagementClusters = (tweets:iNormalizedTweets[]) => {
     const points = tweets.map(({ reduced, normalizedMetrics }) => [...reduced, ...normalizedMetrics])
     const { labels } = kMeansCluster(points, 12)
@@ -72,7 +73,7 @@ const getEngagementClusters = (tweets:iNormalizedTweets[]) => {
 
 const getFeatureClusters = (tweets:iNormalizedTweets[]) => {
     const points = tweets.map(({ reduced, normalizedFeatures }) => [ ...reduced, ...normalizedFeatures ])
-    const { labels } = kMeansCluster(points, 12)
+    const { labels } = kMeansCluster(points, 15)
     return labels
 }
 
