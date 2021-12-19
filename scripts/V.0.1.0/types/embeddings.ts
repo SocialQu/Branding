@@ -1,6 +1,6 @@
 import { iLabeledTweet } from './labeled'
 
-interface iEmbeddedTweet extends iLabeledTweet {
+export interface iEmbeddedTweet extends iLabeledTweet {
     embeddings: number[]
     reducedEmbeddings: number[] // 12 dimmensions
 }
