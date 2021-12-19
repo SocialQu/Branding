@@ -20,4 +20,5 @@ const getEngagementClusters = (tweets:iReducedTweet[]) => {
     const retweetStats = getZScoreParams(tweets, 'retweets')
     const replyStats = getZScoreParams(tweets, 'replies')
     const visitStats = getZScoreParams(tweets, 'visits')
+    const clickStats = getZScoreParams(tweets, 'clicks')
 }
