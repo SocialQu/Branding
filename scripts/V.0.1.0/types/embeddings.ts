@@ -5,9 +5,10 @@ export interface iEmbeddedTweet extends iLabeledTweet { embeddings:number[] }
 export interface iReducedTweet extends iLabeledTweet { reduced:number[] }
 
 export interface iClusteredTweet extends iReducedTweet {
+    featuresCluster: number
     embeddingsCluster: number
     engagementsCluster: number
-    featuresCluster: number
+    clsuter: number
 }
 
 interface iClassifiedTweet extends iClusteredTweet { topic:string }
