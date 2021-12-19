@@ -25,15 +25,17 @@ const getEngagementClusters = (tweets:iReducedTweet[]) => {
 
     const normalizedTweets = tweets.map(t => ({
         ...t,
-        normalizedMetrics:{
-            likes: zScore(t.likes, likeStats.mean, likeStats.sd),
-            visits: zScore(t.likes, visitStats.mean, visitStats.sd),
-            clicks: zScore(t.likes, clickStats.mean, clickStats.sd),
-            replies: zScore(t.likes, replyStats.mean, replyStats.sd),
-            retweets: zScore(t.likes, retweetStats.mean, retweetStats.sd),
-            impressions: zScore(t.likes, impressionStats.mean, impressionStats.sd),
-        }
+        normalizedMetrics: [
+            zScore(t.likes, likeStats.mean, likeStats.sd),
+            zScore(t.likes, visitStats.mean, visitStats.sd),
+            zScore(t.likes, clickStats.mean, clickStats.sd),
+            zScore(t.likes, replyStats.mean, replyStats.sd),
+            zScore(t.likes, retweetStats.mean, retweetStats.sd),
+            zScore(t.likes, impressionStats.mean, impressionStats.sd),
+        ]
     }))
 
-    const points = normalizedTweets.map(({ reduced, normalizedMetrics }) => [...reduced, normalizedMetrics])
+    const points = normalizedTweets.map(({ reduced, normalizedMetrics }) => [...reduced, ...normalizedMetrics])
+    const { labels } = kMeansCluster(points, 12)
+    return labels
 }
