@@ -22,6 +22,11 @@ const linearRegression = (tweets:iReducedTweet[]):number[][] => {
     return weights
 }
 
+const dimensionNames = [
+    'Short Reply', 'Lonely Link', 'Stats & Numbers', 'Spanish News', 'Grateful Replies', 'Positive Tweets', 
+    'Sports', 'Work', 'Money & Crypto', 'Affitmations', 'Questions & Curiosity', 'Informative'
+]
+
 interface iFindTweets { tweets:iReducedTweet[], weights:number[][] }
 interface iWeight { label: keyof iOutputs, value: number }
 interface iTopTweet { text:string, engagements:number, value:number }
