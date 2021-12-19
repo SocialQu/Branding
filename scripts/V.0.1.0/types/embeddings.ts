@@ -4,10 +4,11 @@ import { iLabeledTweet } from './labeled'
 export interface iEmbeddedTweet extends iLabeledTweet { embeddings:number[] }
 export interface iReducedTweet extends iLabeledTweet { reduced:number[] }
 
-interface iClusteredTweet extends iReducedTweet {
+export interface iClusteredTweet extends iReducedTweet {
+    featuresCluster: number
     embeddingsCluster: number
     engagementsCluster: number
-    featuresCluster: number
+    cluster: number
 }
 
 interface iClassifiedTweet extends iClusteredTweet { topic:string }
