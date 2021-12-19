@@ -14,7 +14,7 @@ const embedTweets = async(tweets:iLabeledTweet[]):Promise<iEmbeddedTweet[]> => {
 
     const embeddedTweets = tweets.map((t,i) => ({...t, embeddings:embeddings[i] }))
 
-    const embeddedData = JSON.stringify(embedTweets)
+    const embeddedData = JSON.stringify(embeddedTweets)
     await writeFile('./data/embeddedTweets.json', embeddedData)
 
     return embeddedTweets
