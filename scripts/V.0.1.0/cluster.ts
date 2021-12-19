@@ -77,3 +77,9 @@ const getFeatureClusters = (tweets:iNormalizedTweets[]) => {
     return labels
 }
 
+const getClusters = (tweets:iNormalizedTweets[]) => {
+    const points = tweets.map(({ reduced, normalizedFeatures }) => [ ...reduced, ...normalizedFeatures ])
+    const { labels } = kMeansCluster(points, 20)
+    return labels
+}
+
