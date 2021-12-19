@@ -6,7 +6,7 @@ import tweets from './data/reducedTweets.json'
 
 const getEmbeddingsClusters = (tweets:iReducedTweet[]) => {
     const embeddings = tweets.map(({ reduced }) => reduced)
-    const { labels, centroids } = kMeansCluster(embeddings, 9)
+    const { labels } = kMeansCluster(embeddings, 9)
     return labels    
 }
 
@@ -25,7 +25,7 @@ const getEngagementClusters = (tweets:iReducedTweet[]) => {
 
     const normalizedTweets = tweets.map(t => ({
         ...t,
-        normalizedStats:{
+        normalizedMetrics:{
             likes: zScore(t.likes, likeStats.mean, likeStats.sd),
             visits: zScore(t.likes, visitStats.mean, visitStats.sd),
             clicks: zScore(t.likes, clickStats.mean, clickStats.sd),
@@ -34,4 +34,6 @@ const getEngagementClusters = (tweets:iReducedTweet[]) => {
             impressions: zScore(t.likes, impressionStats.mean, impressionStats.sd),
         }
     }))
+
+    const points = normalizedTweets.map(({ reduced, normalizedMetrics }) => [...reduced, normalizedMetrics])
 }
