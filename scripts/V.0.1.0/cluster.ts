@@ -45,15 +45,15 @@ const getEngagementClusters = (tweets:iNormalizedTweets[]) => {
 }
 
 const getFeatureClusters = (tweets:iNormalizedTweets[]) => {
-    const followerStats = getZScoreParams(tweets, 'followers')
-    const followingStats = getZScoreParams(tweets, 'following')
-    const mentionStats = getZScoreParams(tweets, 'mentions')
-    const emojiStats = getZScoreParams(tweets, 'emojis')
-    const linebreakStats = getZScoreParams(tweets, 'lineBreaks')
-    const characterLengthStats = getZScoreParams(tweets, 'characterLength')
-    const hashtagStats = getZScoreParams(tweets, 'hashtags')
     const mediaStats = getZScoreParams(tweets, 'media')
     const linksStats = getZScoreParams(tweets, 'links')
+    const emojiStats = getZScoreParams(tweets, 'emojis')
+    const hashtagStats = getZScoreParams(tweets, 'hashtags')
+    const mentionStats = getZScoreParams(tweets, 'mentions')
+    const followerStats = getZScoreParams(tweets, 'followers')
+    const followingStats = getZScoreParams(tweets, 'following')
+    const linebreakStats = getZScoreParams(tweets, 'lineBreaks')
+    const characterLengthStats = getZScoreParams(tweets, 'characterLength')
 
     const points = tweets.map(({ reduced, normalizedMetrics, ...t }) => [
         ...reduced, 
@@ -61,17 +61,16 @@ const getFeatureClusters = (tweets:iNormalizedTweets[]) => {
         ...[
             t.hour/24,
             t.day/7,
-            zScore(t.followers, followerStats.mean, followerStats.sd),
-            zScore(t.following, followingStats.mean, followingStats.sd),
-            zScore(t.mentions, mentionStats.mean, mentionStats.sd),
-            zScore(t.emojis, emojiStats.mean, emojiStats.sd),
-            zScore(t.lineBreaks, linebreakStats.mean, linebreakStats.sd),
-            zScore(t.characterLength, characterLengthStats.mean, characterLengthStats.sd),
-            zScore(t.hashtags, hashtagStats.mean, hashtagStats.sd),
             zScore(t.media, mediaStats.mean, mediaStats.sd),
             zScore(t.links, linksStats.mean, linksStats.sd),
+            zScore(t.emojis, emojiStats.mean, emojiStats.sd),
+            zScore(t.hashtags, hashtagStats.mean, hashtagStats.sd),
+            zScore(t.mentions, mentionStats.mean, mentionStats.sd),
+            zScore(t.followers, followerStats.mean, followerStats.sd),
+            zScore(t.following, followingStats.mean, followingStats.sd),
+            zScore(t.lineBreaks, linebreakStats.mean, linebreakStats.sd),
+            zScore(t.characterLength, characterLengthStats.mean, characterLengthStats.sd)
         ],
     ])
-
 }
 
