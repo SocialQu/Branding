@@ -15,10 +15,8 @@ const linearRegression = (tweets:iReducedTweet[]) => {
         [k]: tweets[i].reduced.reduce((e, _, idx) => ({...e, [idx]: weights[idx][i] }), {}) 
     }), {})
 
-    console.log(results)
-
     const regressionData = JSON.stringify(results)
-    writeFile('./data/regression.json', regressionData)
+    writeFile('./data/regression/embeddings.json', regressionData)
 }
 
 linearRegression(tweets as iReducedTweet[])
