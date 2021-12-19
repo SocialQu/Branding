@@ -2,6 +2,7 @@
 
 ## Preprocessing
 - [ ] Compute embeddings for tweets.
+- [ ] Extend labeled tweets interface with embeddings.
 
 ## Embedding's Correlations
 - [ ] Create 5 embeddingh using PCA models: 12, 24, 48, 96 & 512.
@@ -10,6 +11,11 @@
 - [ ] Based on examples name the features for the 12 dimensions model.
 
 ## Cluster Analysis
+- [ ] Reuse embeddings models to find 6, 12 & clusters.
+- [ ] Correlate clusters with engagement and name each cluster.
+- [ ] Create additional 6 dimmension model and use it to cluster tweet with engagement metrics.
+- [ ] Third cluster analysis merging embedded tweets & features.
+- [ ] Analyze insights and document results.
 
 ## Topic Classifications
 
