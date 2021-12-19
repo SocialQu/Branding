@@ -31,7 +31,8 @@ const findTweets = ({ tweets, weights }:iFindTweets):iTopTweets[] => tweets[0].r
 
 const analyzeEmbeddings = (tweets:iReducedTweet[]) => {
     const weights = linearRegression(tweets)
-
+    const results = findTweets({ tweets, weights })
+    console.log('results', results)
 }
 
 analyzeEmbeddings(tweets as iReducedTweet[])
