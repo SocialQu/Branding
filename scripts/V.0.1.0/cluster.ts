@@ -84,4 +84,11 @@ const getClusters = (tweets:iNormalizedTweet[]) => {
 }
 
 
-const clusterTweets = (tweets:iReducedTweet[]) => {}
+const clusterTweets = (tweets:iReducedTweet[]) => {
+    const normalizedTweets = normalizeTweets(tweets)
+
+    const embeddingsClusters = getEmbeddingsClusters(normalizedTweets)
+    const engagementsClusters = getEngagementClusters(normalizedTweets)
+    const featureClusters = getFeatureClusters(normalizedTweets)
+    const clusters = getClusters(normalizedTweets)
+}
