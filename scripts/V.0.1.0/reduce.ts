@@ -25,7 +25,7 @@ const reduceTweets = (tweets:iEmbeddedTweet[]):void => {
     writeFile('./data/PCA.json', JSON.stringify(pcaData))
 }
 
-const reduce = async(tweets:iLabeledTweet[]) => {
+const index = async(tweets:iLabeledTweet[]) => {
     const embedded = await embedTweets(tweets)
     const reduced = reduceTweets(embedded)
 }
