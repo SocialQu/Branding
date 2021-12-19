@@ -17,9 +17,21 @@ const getZScoreParams = (tweets:iLabeledTweet[], metric:keyof iLabeledTweet) => 
 
 const getEngagementClusters = (tweets:iReducedTweet[]) => {
     const likeStats = getZScoreParams(tweets, 'likes')
-    const retweetStats = getZScoreParams(tweets, 'retweets')
-    const replyStats = getZScoreParams(tweets, 'replies')
     const visitStats = getZScoreParams(tweets, 'visits')
     const clickStats = getZScoreParams(tweets, 'clicks')
+    const replyStats = getZScoreParams(tweets, 'replies')
+    const retweetStats = getZScoreParams(tweets, 'retweets')
     const impressionStats = getZScoreParams(tweets, 'impressions')
+
+    const normalizedTweets = tweets.map(t => ({
+        ...t,
+        normalizedStats:{
+            likes: zScore(t.likes, likeStats.mean, likeStats.sd),
+            visits: zScore(t.likes, visitStats.mean, visitStats.sd),
+            clicks: zScore(t.likes, clickStats.mean, clickStats.sd),
+            replies: zScore(t.likes, replyStats.mean, replyStats.sd),
+            retweets: zScore(t.likes, retweetStats.mean, retweetStats.sd),
+            impressions: zScore(t.likes, impressionStats.mean, impressionStats.sd),
+        }
+    }))
 }
