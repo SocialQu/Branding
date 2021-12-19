@@ -43,10 +43,12 @@ const findTweets = ({ tweets, weights }:iFindTweets):iTopTweets[] => tweets[0].r
     return { name:dimensionNames[i], dimension:i, weight, topTweets }
 })
 
-const analyzeEmbeddings = (tweets:iReducedTweet[]) => {
+const analyzeEmbeddings = async(tweets:iReducedTweet[]) => {
     const weights = linearRegression(tweets)
     const results = findTweets({ tweets, weights })
-    results.map(r => console.log(r))
+
+    const resultsData = JSON.stringify(results)
+    await writeFile('./data/embeddings/dimensions.json', resultsData)
 }
 
 analyzeEmbeddings(tweets as iReducedTweet[])
