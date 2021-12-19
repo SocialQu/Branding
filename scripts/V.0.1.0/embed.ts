@@ -19,4 +19,13 @@ const linearRegression = (tweets:iReducedTweet[]) => {
     writeFile('./data/regression/embeddings.json', regressionData)
 }
 
+interface iFindTweets { tweets:iReducedTweet[], weights:number[][] }
+interface iTopTweets { dimension:number, weight:number[], texts:string[] } // Top tweets by dimension
+const findTweets = ({ tweets, weights }:iFindTweets):iTopTweets[] => tweets[0].reduced.map(( _, i) => i).map((i) => {
+    const sorted = tweets.sort(({ reduced:a }, { reduced:b }) => a[i] > b[i] ? 1 : -1)
+    const texts = sorted.filter((_, i) => i < 10).map(({ text }) => text)
+    return { dimension:i, weight: weights[i], texts }
+})
+
+
 linearRegression(tweets as iReducedTweet[])
