@@ -52,6 +52,7 @@ const labelData = ({ tweets, ...data }: iAggregatedTweets):iLabeledTweet[] => tw
 
         hour,
         day,
+        text:t.text,
 
         ...t.metrics,
         engagements 

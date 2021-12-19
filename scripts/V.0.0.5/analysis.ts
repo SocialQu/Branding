@@ -6,7 +6,6 @@ import '@tensorflow/tfjs-node'
 import { PCA } from 'ml-pca'
 
 
-
 interface iEmbeddedTweet extends iTweet { embeddings:number[] }
 const embedTweets = async(tweets:iTweet[], model:iModel):Promise<iEmbeddedTweet[]> => {
     const texts = tweets.map(({ text }) => text)
@@ -17,7 +16,6 @@ const embedTweets = async(tweets:iTweet[], model:iModel):Promise<iEmbeddedTweet[
     const embeddedTweets = tweets.map((t,i) => ({...t, embeddings:embeddings[i] }))
     return embeddedTweets
 }
-
 
 
 interface iEmbeddedFollower extends iFollower { embeddings:number[] }
@@ -87,4 +85,3 @@ export const analyzeData = async(data:iFetchedData):Promise<iAggregateData>  => 
     // const reducedTweets = reduceTweets(labeledTweets)
     return { ...data, tweets:labeledTweets, followers:labeledFollowers }
 }
-
