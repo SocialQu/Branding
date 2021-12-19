@@ -5,7 +5,7 @@ import { writeFile } from 'fs/promises'
 import { labels } from './regression'
 
 
-const linearRegression = (tweets:iReducedTweet[]) => {
+const linearRegression = (tweets:iReducedTweet[]):number[][] => {
     const x = tweets.map(({ reduced }) => reduced)
     const y = tweets.map((t) => labels.map((f) => t[f]))
 
@@ -17,6 +17,8 @@ const linearRegression = (tweets:iReducedTweet[]) => {
 
     const regressionData = JSON.stringify(results)
     writeFile('./data/regression/embeddings.json', regressionData)
+
+    return weights
 }
 
 interface iFindTweets { tweets:iReducedTweet[], weights:number[][] }
@@ -27,5 +29,9 @@ const findTweets = ({ tweets, weights }:iFindTweets):iTopTweets[] => tweets[0].r
     return { dimension:i, weight: weights[i], texts }
 })
 
+const analyzeEmbeddings = (tweets:iReducedTweet[]) => {
+    const weights = linearRegression(tweets)
 
-linearRegression(tweets as iReducedTweet[])
+}
+
+analyzeEmbeddings(tweets as iReducedTweet[])
