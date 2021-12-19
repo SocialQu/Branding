@@ -17,15 +17,15 @@ const embedTweets = async(tweets:iLabeledTweet[]):Promise<iEmbeddedTweet[]> => {
 }
 
 
-const reduceTweets = (tweets:iEmbeddedTweet[]):void => {
+const reduceTweets = async(tweets:iEmbeddedTweet[]):Promise<void> => {
     const embeddings = tweets.map(({ embeddings }) => embeddings)
     const pca = new PCA(embeddings)
 
     const pcaData = pca.toJSON()
-    writeFile('./data/PCA.json', JSON.stringify(pcaData))
+    await writeFile('./data/PCA.json', JSON.stringify(pcaData))
 }
 
 const index = async(tweets:iLabeledTweet[]) => {
     const embedded = await embedTweets(tweets)
-    const reduced = reduceTweets(embedded)
+    const reduced = await reduceTweets(embedded)
 }
