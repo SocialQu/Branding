@@ -5,7 +5,8 @@ import { writeFile } from 'fs/promises'
 import { PCA } from 'ml-pca'
 
 
-const embedTweets = async(tweets:iLabeledTweet[], model:iModel):Promise<iEmbeddedTweet[]> => {
+const embedTweets = async(tweets:iLabeledTweet[]):Promise<iEmbeddedTweet[]> => {
+    const model = await load()
     const texts = tweets.map(({ text }) => text)
 
     const tensors = await model.embed(texts)
@@ -25,6 +26,5 @@ const reduceTweets = (tweets:iEmbeddedTweet[]):void => {
 }
 
 const reduce = async(tweets:iLabeledTweet[]) => {
-    const model = await load()
-    const embeddedTweets = await embedTweets(tweets, model)
+    const embeddedTweets = await embedTweets(tweets)
 }
