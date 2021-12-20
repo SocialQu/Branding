@@ -104,14 +104,11 @@ const clusterTweets = (tweets:iReducedTweet[]):iClusteredTweet[] => {
     return clusteredTweets
 }
 
-const clusterAnalysis = async(tweets:iReducedTweet[]) => {
-    const clusteredTweets = clusterTweets(tweets)
-    const clusteredData = JSON.stringify(clusteredTweets)
 
-    await writeFile('./data/clusteredTweets.json', clusteredData)
-
+type Cluster = 'cluster' | 'featuresCluster' | 'embeddingsCluster' | 'engagementsCluster'
+const analyzeCluster = (clusteredTweets:iClusteredTweet[], cluster:Cluster) => {
     const clusters = clusteredTweets.reduce((d, i) => 
-        d[i.cluster] ? {...d, [i.cluster]:[...d[i.cluster], i]} : { ...d,[i.cluster]:[i] }
+        d[i[cluster]] ? {...d, [i[cluster]]:[...d[i[cluster]], i]} : { ...d,[i[cluster]]:[i] }
     , {} as { [cluster:number]: iClusteredTweet[] })
 
     const avgEngagement = Object.entries(clusters).map(([cluster, tweets]) => ({ 
@@ -125,6 +122,16 @@ const clusterAnalysis = async(tweets:iReducedTweet[]) => {
     clusteredTweets.filter(({ cluster }) => cluster.toString() === avgEngagement[0].cluster)
     .sort(({ engagements:a }, { engagements:b }) => a > b ? -1 : 1)
     .map(({ followers, text, engagements }) => console.log(engagements, followers, text))
+
+    return avgEngagement
+}
+
+const clusterAnalysis = async(tweets:iReducedTweet[]) => {
+    const clusteredTweets = clusterTweets(tweets)
+    const clusteredData = JSON.stringify(clusteredTweets)
+
+    await writeFile('./data/clusteredTweets.json', clusteredData)
+
 }
 
 
