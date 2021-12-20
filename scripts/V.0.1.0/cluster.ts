@@ -126,7 +126,6 @@ const analyzeCluster = async(tweets:iClusteredTweet[], cluster:Cluster) => {
     const data = JSON.stringify({ avgEngagement, grouppedTweets })
     await writeFile(`./data/clusters/${cluster}.json`, data)
 
-    console.log(avgEngagement)
     return avgEngagement
 }
 
@@ -136,10 +135,15 @@ const clusterAnalysis = async(tweets:iReducedTweet[]) => {
 
     await writeFile('./data/clusteredTweets.json', clusteredData)
 
-    await analyzeCluster(clusteredTweets, 'embeddingsCluster')
-    await analyzeCluster(clusteredTweets, 'featuresCluster')
-    await analyzeCluster(clusteredTweets, 'engagementsCluster')
-    await analyzeCluster(clusteredTweets, 'cluster')
+    const embeddingsClusters = await analyzeCluster(clusteredTweets, 'embeddingsCluster')
+    const featuresClusters = await analyzeCluster(clusteredTweets, 'featuresCluster')
+    const engagementsClusters = await analyzeCluster(clusteredTweets, 'engagementsCluster')
+    const clusters = await analyzeCluster(clusteredTweets, 'cluster')
+
+    const clustersSummary = { embeddingsClusters, featuresClusters, engagementsClusters, clusters }
+
+    const clustersData = JSON.stringify(clustersSummary)
+    await writeFile(`./data/clusters.json`, clustersData)
 }
 
 
