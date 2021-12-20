@@ -1,6 +1,7 @@
 import { kMeansCluster, zScore, mean, standardDeviation } from 'simple-statistics'
 import { iClusteredTweet, iReducedTweet } from './types/embeddings'
 import tweets from './data/reducedTweets.json'
+import { writeFile } from 'fs/promises'
 
 
 const getZScoreParams = (tweets:iReducedTweet[], metric:keyof iReducedTweet) => {
@@ -92,7 +93,7 @@ const clusterTweets = (tweets:iReducedTweet[]):iClusteredTweet[] => {
     const featureClusters = getFeatureClusters(normalizedTweets)
     const clusters = getClusters(normalizedTweets)
 
-    const clusteredTweets = normalizedTweets.map((t, i) => ({
+    const clusteredTweets = tweets.map((t, i) => ({
         ...t,
         cluster: clusters[i],
         featuresCluster: featureClusters[i],
@@ -104,4 +105,46 @@ const clusterTweets = (tweets:iReducedTweet[]):iClusteredTweet[] => {
 }
 
 
-clusterTweets(tweets as iReducedTweet[])
+type Cluster = 'embeddingsCluster' | 'featuresCluster' | 'engagementsCluster' | 'cluster'
+const analyzeCluster = async(tweets:iClusteredTweet[], cluster:Cluster) => {
+    const clusters = tweets.reduce((d, i) => 
+        d[i[cluster]] ? {...d, [i[cluster]]:[...d[i[cluster]], i]} : { ...d,[i[cluster]]:[i] }
+    , {} as { [cluster:number]: iClusteredTweet[] })
+
+    const avgEngagement = Object.entries(clusters).map(([cluster, tweets]) => ({ 
+        cluster, 
+        tweets:tweets.length,
+        engagement: tweets.reduce((d, { engagements }) => d += engagements , 0)/tweets.length })
+    ).sort(({ engagement:a }, { engagement:b }) => a > b ? -1 : 1 )
+
+    const groupTweets = (idx:number) => tweets.filter(t => t[cluster].toString() === avgEngagement[idx].cluster)
+        .sort(({ engagements:a }, { engagements:b }) => a > b ? -1 : 1)
+        .map(({ followers, text, engagements, ...t }) => ({ cluster:t[cluster], engagements, followers, text }) )
+
+    const grouppedTweets = Object.keys(clusters).map(i => groupTweets(Number(i)))
+
+    const data = JSON.stringify({ avgEngagement, grouppedTweets })
+    await writeFile(`./data/clusters/${cluster}.json`, data)
+
+    return avgEngagement
+}
+
+const clusterAnalysis = async(tweets:iReducedTweet[]) => {
+    const clusteredTweets = clusterTweets(tweets)
+    const clusteredData = JSON.stringify(clusteredTweets)
+
+    await writeFile('./data/clusteredTweets.json', clusteredData)
+
+    const embeddingsClusters = await analyzeCluster(clusteredTweets, 'embeddingsCluster')
+    const featuresClusters = await analyzeCluster(clusteredTweets, 'featuresCluster')
+    const engagementsClusters = await analyzeCluster(clusteredTweets, 'engagementsCluster')
+    const clusters = await analyzeCluster(clusteredTweets, 'cluster')
+
+    const clustersSummary = { embeddingsClusters, featuresClusters, engagementsClusters, clusters }
+
+    const clustersData = JSON.stringify(clustersSummary)
+    await writeFile(`./data/clusters.json`, clustersData)
+}
+
+
+clusterAnalysis(tweets as iReducedTweet[]).catch(console.log)
