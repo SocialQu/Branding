@@ -13,9 +13,9 @@
 
 ## Cluster Analysis
 - [X] Reuse embeddings models to find 6, 12 & clusters.
-- [ ] Correlate clusters with engagement.
-- [ ] Cluster tweet with engagement metrics.
-- [ ] Third cluster analysis merging embedded tweets & features.
+- [X] Correlate clusters with engagement.
+- [X] Cluster tweet with engagement metrics.
+- [X] Third cluster analysis merging embedded tweets & features.
 - [ ] Analyze insights and document results.
 
 ## Topic Classifications
