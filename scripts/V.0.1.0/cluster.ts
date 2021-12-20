@@ -85,7 +85,7 @@ const getClusters = (tweets:iNormalizedTweet[]) => {
 }
 
 
-const clusterTweets = (tweets:iReducedTweet[]) => {
+const clusterTweets = (tweets:iReducedTweet[]):iClusteredTweet[] => {
     const normalizedTweets = normalizeTweets(tweets)
 
     const embeddingsClusters = getEmbeddingsClusters(normalizedTweets)
@@ -93,7 +93,7 @@ const clusterTweets = (tweets:iReducedTweet[]) => {
     const featureClusters = getFeatureClusters(normalizedTweets)
     const clusters = getClusters(normalizedTweets)
 
-    const clusteredTweets:iClusteredTweet[] = tweets.map((t, i) => ({
+    const clusteredTweets = tweets.map((t, i) => ({
         ...t,
         cluster: clusters[i],
         featuresCluster: featureClusters[i],
@@ -101,22 +101,30 @@ const clusterTweets = (tweets:iReducedTweet[]) => {
         engagementsCluster: engagementsClusters[i]
     }))
 
-    return {
-        clusteredTweets,
-        clusters:{
-            embeddingsClusters,
-            engagementsClusters,
-            featureClusters,
-            clusters
-        }
-    }
+    return clusteredTweets
 }
 
 const clusterAnalysis = async(tweets:iReducedTweet[]) => {
-    const { clusteredTweets, clusters } = clusterTweets(tweets)
+    const clusteredTweets = clusterTweets(tweets)
     const clusteredData = JSON.stringify(clusteredTweets)
 
-    await writeFile('./data/clusteredTweets', clusteredData)
+    await writeFile('./data/clusteredTweets.json', clusteredData)
+
+    const clusters = clusteredTweets.reduce((d, i) => 
+        d[i.cluster] ? {...d, [i.cluster]:[...d[i.cluster], i]} : { ...d,[i.cluster]:[i] }
+    , {} as { [cluster:number]: iClusteredTweet[] })
+
+    const avgEngagement = Object.entries(clusters).map(([cluster, tweets]) => ({ 
+        cluster, 
+        tweets:tweets.length,
+        engagement: tweets.reduce((d, { engagements }) => d += engagements , 0)/tweets.length })
+    ).sort(({ engagement:a }, { engagement:b }) => a > b ? -1 : 1 )
+
+    console.log(avgEngagement)
+
+    clusteredTweets.filter(({ cluster }) => cluster.toString() === avgEngagement[0].cluster)
+    .sort(({ engagements:a }, { engagements:b }) => a > b ? -1 : 1)
+    .map(({ followers, text, engagements }) => console.log(engagements, followers, text))
 }
 
 
