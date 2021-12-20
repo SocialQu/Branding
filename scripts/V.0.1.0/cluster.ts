@@ -106,8 +106,8 @@ const clusterTweets = (tweets:iReducedTweet[]):iClusteredTweet[] => {
 
 
 type Cluster = 'embeddingsCluster' | 'featuresCluster' | 'engagementsCluster' | 'cluster'
-const analyzeCluster = (clusteredTweets:iClusteredTweet[], cluster:Cluster) => {
-    const clusters = clusteredTweets.reduce((d, i) => 
+const analyzeCluster = async(tweets:iClusteredTweet[], cluster:Cluster) => {
+    const clusters = tweets.reduce((d, i) => 
         d[i[cluster]] ? {...d, [i[cluster]]:[...d[i[cluster]], i]} : { ...d,[i[cluster]]:[i] }
     , {} as { [cluster:number]: iClusteredTweet[] })
 
@@ -117,12 +117,15 @@ const analyzeCluster = (clusteredTweets:iClusteredTweet[], cluster:Cluster) => {
         engagement: tweets.reduce((d, { engagements }) => d += engagements , 0)/tweets.length })
     ).sort(({ engagement:a }, { engagement:b }) => a > b ? -1 : 1 )
 
-    console.log(cluster, avgEngagement)
 
-    clusteredTweets.filter(t => t[cluster].toString() === avgEngagement[0].cluster)
+    const clusteredTweets = tweets.filter(t => t[cluster].toString() === avgEngagement[0].cluster)
     .sort(({ engagements:a }, { engagements:b }) => a > b ? -1 : 1)
-    .map(({ followers, text, engagements, ...t }) => console.log(t[cluster], engagements, followers, text))
+    .map(({ followers, text, engagements, ...t }) => ({ cluster:t[cluster], engagements, followers, text }) )
 
+    const data = JSON.stringify({ avgEngagement, clusteredTweets })
+    await writeFile(`./data/clusters/${cluster}.json`, data)
+
+    console.log(avgEngagement)
     return avgEngagement
 }
 
@@ -132,10 +135,10 @@ const clusterAnalysis = async(tweets:iReducedTweet[]) => {
 
     await writeFile('./data/clusteredTweets.json', clusteredData)
 
-    const embeddingsCluster = analyzeCluster(clusteredTweets, 'embeddingsCluster')
-    const featuresCluster = analyzeCluster(clusteredTweets, 'featuresCluster')
-    const engagementsCluster = analyzeCluster(clusteredTweets, 'engagementsCluster')
-    const cluster = analyzeCluster(clusteredTweets, 'cluster')
+    await analyzeCluster(clusteredTweets, 'embeddingsCluster')
+    await analyzeCluster(clusteredTweets, 'featuresCluster')
+    await analyzeCluster(clusteredTweets, 'engagementsCluster')
+    await analyzeCluster(clusteredTweets, 'cluster')
 }
 
 
