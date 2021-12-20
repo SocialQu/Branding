@@ -117,12 +117,13 @@ const analyzeCluster = async(tweets:iClusteredTweet[], cluster:Cluster) => {
         engagement: tweets.reduce((d, { engagements }) => d += engagements , 0)/tweets.length })
     ).sort(({ engagement:a }, { engagement:b }) => a > b ? -1 : 1 )
 
+    const groupTweets = (idx:number) => tweets.filter(t => t[cluster].toString() === avgEngagement[idx].cluster)
+        .sort(({ engagements:a }, { engagements:b }) => a > b ? -1 : 1)
+        .map(({ followers, text, engagements, ...t }) => ({ cluster:t[cluster], engagements, followers, text }) )
 
-    const clusteredTweets = tweets.filter(t => t[cluster].toString() === avgEngagement[0].cluster)
-    .sort(({ engagements:a }, { engagements:b }) => a > b ? -1 : 1)
-    .map(({ followers, text, engagements, ...t }) => ({ cluster:t[cluster], engagements, followers, text }) )
+    const grouppedTweets = Object.keys(clusters).map(i => groupTweets(Number(i)))
 
-    const data = JSON.stringify({ avgEngagement, clusteredTweets })
+    const data = JSON.stringify({ avgEngagement, grouppedTweets })
     await writeFile(`./data/clusters/${cluster}.json`, data)
 
     console.log(avgEngagement)
@@ -142,4 +143,4 @@ const clusterAnalysis = async(tweets:iReducedTweet[]) => {
 }
 
 
-clusterAnalysis(tweets as iReducedTweet[])
+clusterAnalysis(tweets as iReducedTweet[]).catch(console.log)
