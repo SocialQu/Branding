@@ -53,7 +53,7 @@ const minDistance = (A:number[], M:number[][]) => M.reduce((d, i, idx) => {
     return distance < d.min ? { key:idx, min:distance } : d
 }, { key:0, min:Infinity } as { key:number, min:number }).key
 
-const classifyTopics = (tweets:iClusteredTweet[], topics:iTopic[]):iClassifiedTweet[] => {
+const classifyTopics = async(tweets:iClusteredTweet[], topics:iTopic[]):Promise<iClassifiedTweet[]> => {
     const topicEmbeddings = topics.map(({ reduced }) => reduced)
     const classifiedTweets = tweets.map(t => {
         const idx = minDistance(t.reduced, topicEmbeddings) 
@@ -61,6 +61,8 @@ const classifyTopics = (tweets:iClusteredTweet[], topics:iTopic[]):iClassifiedTw
         return { ...t, topic, color }
     })
 
+    const data = JSON.stringify(classifiedTweets)
+    await writeFile('./data/classifiedTweets.json', data)
     return classifiedTweets
 }
 
