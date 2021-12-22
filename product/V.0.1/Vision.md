@@ -25,11 +25,11 @@ Give technical founders an edge marketing their products.
 
 ## Product Tactics
 
-1. **Extraordinary writing:** Text editor highlighting word and token's engagement.
-2. **Novel analytics:** Engagement bubble, map clustered tweets by location.
+1. **Extraordinary writing:** Text editor focusing a word's or token's expected engagement.
+2. **Novel analytics:** Engagement bubble, mapping clustered tweets by location.
 3. **State of the art research:** Predict likes, replies, visits, impressions & clicks.
-4. **Data driven:** 
-5. **Marketing strategy:**
+4. **Data driven content:** Highlight the words that contribute the most to engagement.
+5. **Marketing strategy:** Describe content's topic distribution.
 6. **Accelerate growth:** 
 7. **Targeted communication:** 
 8. **Build a moat:** 
