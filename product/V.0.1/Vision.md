@@ -25,14 +25,14 @@ Give technical founders an edge marketing their products.
 
 ## Product Tactics
 
-1. **Data driven:** 
-2. **Marketing strategy:**
-3. **State of the art research:**
-4. **Novel analytics:** 
-5. **Accelerate growth:** 
-6. **Targeted communication:** 
-7. **Build a moat:** 
-8. **Extraordinary writing:** 
+1. **Extraordinary writing:** Text editor highlighting word and token's engagement.
+2. **Data driven:** 
+3. **Marketing strategy:**
+4. **State of the art research:**
+5. **Novel analytics:**
+6. **Accelerate growth:** 
+7. **Targeted communication:** 
+8. **Build a moat:** 
 9. **Liberate time:**
 10. **Create wealth:**
 11. **Level the playing field:**
