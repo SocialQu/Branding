@@ -67,17 +67,26 @@ const classifyTopics = async(tweets:iClusteredTweet[], topics:iTopic[]):Promise<
     return classifiedTweets
 }
 
-const topicAnalysis = (classifiedTweets:iClassifiedTweet[]) => {
+const topicAnalysis = async(classifiedTweets:iClassifiedTweet[]) => {
     const mappedTopics = topics.map(({ topic }) => {
         const tweets = classifiedTweets.filter(({ topic:t }) => topic === t)
+        const engagement = tweets.reduce((d, { engagements }) => d += engagements, 0)/tweets.length
         return {
             topic,
             tweets: tweets.length,
-            avgEngagement: tweets.reduce((d, { engagements }) => d += engagements, 0)
+            avgEngagement: Math.round(engagement*100)/100
         }
-    })
+    }).sort(({ avgEngagement:a }, { avgEngagement:b }) => a > b ? -1 : 1)
+
+    console.log(mappedTopics)
+
+    const data = JSON.stringify(mappedTopics)
+    await writeFile('./data/topics/analysis.json', data)
+
+    return mappedTopics
 }
 
 
 // fetchTopics().catch(console.log)
 // classifyTopics(tweets as iClusteredTweet[], topics)
+topicAnalysis(classifiedTweets as iClassifiedTweet[]).catch(console.log)
