@@ -7,6 +7,8 @@ import { writeFile } from 'fs/promises'
 import { MongoClient } from 'mongodb'
 import pcaModel from './data/PCA.json'
 
+require('dotenv').config()
+
 
 interface iTopic {
     _id: string
@@ -60,3 +62,6 @@ const classifyTopics = (tweets:iClusteredTweet[], topics:iTopic[]):iClassifiedTw
 
     return classifiedTweets
 }
+
+
+// fetchTopics().catch(console.log)
