@@ -3,6 +3,7 @@
 ## BHAG
 Reinvent communication
 
+
 ## Product Mission
 Give technical founders an edge marketing their products.
 
@@ -17,6 +18,8 @@ Give technical founders an edge marketing their products.
 * Build trustful moats for our customers around extraordinary writing.
 
 ### Purpose
+* Liberate time & space by creating wealth.
+* Level the playing field between big and indie brands.
 
 
 ## Product Tactics
