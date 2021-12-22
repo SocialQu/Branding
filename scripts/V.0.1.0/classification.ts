@@ -1,3 +1,4 @@
+import { iClusteredTweet } from './types/embeddings'
 import colors from '../V.0.0.5/data/colors.json'
 import tweets from './data/clusteredTweets.json'
 import { writeFile } from 'fs/promises'
@@ -31,3 +32,7 @@ export const fetchTopics = async():Promise<iTopic[]> => {
 
     return coloredTopics
 }
+
+
+const euclideanDistance = (A:number[], B:number[]) => A.reduce((d, i, idx) => d + (i - B[idx])**2, 0)**(1/2)
+const classifyTopics = (tweets:iClusteredTweet[], topics:iTopic[]) => {}
