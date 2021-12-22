@@ -27,9 +27,9 @@ Give technical founders an edge marketing their products.
 
 1. **Extraordinary writing:** Text editor highlighting word and token's engagement.
 2. **Novel analytics:** Engagement bubble, map clustered tweets by location.
-3. **Data driven:** 
-4. **Marketing strategy:**
-5. **State of the art research:**
+3. **State of the art research:** Predict likes, replies, visits, impressions & clicks.
+4. **Data driven:** 
+5. **Marketing strategy:**
 6. **Accelerate growth:** 
 7. **Targeted communication:** 
 8. **Build a moat:** 
