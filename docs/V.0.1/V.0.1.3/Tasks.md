@@ -3,7 +3,7 @@
 ## Preprocessing
 - [X] Compute embeddings for tweets.
 - [X] Extend labeled tweets interface with embeddings.
-- [ ] Fetch topics from Cortazar DB.
+- [X] Fetch topics from Cortazar DB.
 
 ## Embedding's Correlations
 - [X] Create 5 embeddingh using PCA models: 12, 24, 48, 96 & 512.
@@ -16,7 +16,7 @@
 - [X] Correlate clusters with engagement.
 - [X] Cluster tweet with engagement metrics.
 - [X] Third cluster analysis merging embedded tweets & features.
-- [ ] Analyze insights and document results.
+- [X] Analyze insights and document results.
 
 ## Topic Classifications
 - [ ] Label tweets by topics.
