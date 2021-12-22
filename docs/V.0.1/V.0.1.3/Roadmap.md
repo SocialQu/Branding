@@ -2,5 +2,5 @@
 
 - [X] Map tasks and analysis procedural logic.
 - [X] Define interfaces and declare typed functions.
-- [ ] Develop & run analysis.
-- [ ] Analyze & docuemnt results.
+- [X] Develop & run analysis.
+- [X] Analyze & docuemnt results.
