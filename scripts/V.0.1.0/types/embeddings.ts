@@ -11,4 +11,7 @@ export interface iClusteredTweet extends iReducedTweet {
     cluster: number
 }
 
-interface iClassifiedTweet extends iClusteredTweet { topic:string }
+export interface iClassifiedTweet extends iClusteredTweet { 
+    topic: string 
+    color: string
+}
