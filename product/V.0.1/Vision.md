@@ -30,10 +30,10 @@ Give technical founders an edge marketing their products.
  3. **State of the art research:** Predict likes, replies, visits, impressions & clicks.
  4. **Data driven content:** Highlight the words that contribute the most to engagement.
  5. **Marketing strategy:** Describe content's topic distribution.
- 6. **Accelerate growth:** Media heatmaps.
- 7. **Targeted communication:** Analysis of replies performance.
- 8. **Create wealth:** Envision rewards of current effort.
- 9. **Build a moat:** 
-10. **Liberate time:**
-11. **Level the playing field:**
-12. **Empower innovative brands:**
+ 6. **Targeted communication:** Suggested promotion of tweets.
+ 7. **Empower innovative brands:** Media heatmaps to encourage quality visual content.
+ 8. **Level the playing field:** Analysis of replies performance.
+ 9. **Create wealth:** Envision rewards of current effort.
+10. **Accelerate growth:** 
+11. **Build a moat:** 
+12. **Liberate time:**
