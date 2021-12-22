@@ -32,7 +32,7 @@ Give technical founders an edge marketing their products.
  5. **Marketing strategy:** Describe content's topic distribution.
  6. **Accelerate growth:** Media heatmaps.
  7. **Targeted communication:** Analysis of replies performance.
- 8. **Create wealth:**
+ 8. **Create wealth:** Envision rewards of current effort.
  9. **Build a moat:** 
 10. **Liberate time:**
 11. **Level the playing field:**
