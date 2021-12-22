@@ -12,7 +12,9 @@ Give technical founders an edge marketing their products.
 * Create data-driven content & marketing strategies.
 * Leverage state of the art research to deliver novel analytics.
 
-### Economy
+### Economics
+* Accelerate growth & product development with precise, targeted communication.
+* Build trustful moats for our customers around extraordinary writing.
 
 ### Purpose
 
