@@ -34,6 +34,6 @@ Give technical founders an edge marketing their products.
  7. **Empower innovative brands:** Media heatmaps to encourage quality visual content.
  8. **Level the playing field:** Analysis of replies performance.
  9. **Create wealth:** Envision rewards of current effort.
-10. **Accelerate growth:** 
-11. **Build a moat:** 
-12. **Liberate time:**
+10. **Liberate time:** Ideal publish time.
+11. **Accelerate growth:** 
+12. **Build a moat:** 
