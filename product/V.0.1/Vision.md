@@ -31,7 +31,7 @@ Give technical founders an edge marketing their products.
 4. **Data driven content:** Highlight the words that contribute the most to engagement.
 5. **Marketing strategy:** Describe content's topic distribution.
 6. **Accelerate growth:** Media heatmaps.
-7. **Targeted communication:** 
+7. **Targeted communication:** Analysis of replies performance.
 8. **Build a moat:** 
 9. **Liberate time:**
 10. **Create wealth:**
