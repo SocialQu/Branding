@@ -1,6 +1,7 @@
 import { iClassifiedTweet, iClusteredTweet } from './types/embeddings'
 import colors from '../V.0.0.5/data/colors.json'
 import tweets from './data/clusteredTweets.json'
+import topics from './data/topics.json'
 
 import { PCA, IPCAModel } from 'ml-pca' 
 import { writeFile } from 'fs/promises'
@@ -65,3 +66,4 @@ const classifyTopics = (tweets:iClusteredTweet[], topics:iTopic[]):iClassifiedTw
 
 
 // fetchTopics().catch(console.log)
+classifyTopics(tweets as iClusteredTweet[], topics)
