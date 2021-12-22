@@ -35,5 +35,5 @@ Give technical founders an edge marketing their products.
  8. **Level the playing field:** Analysis of replies performance.
  9. **Create wealth:** Envision rewards of current effort.
 10. **Liberate time:** Ideal publish time.
-11. **Accelerate growth:** 
-12. **Build a moat:** 
+11. **Build a moat:** Impressive 3D chart.
+12. **Accelerate growth:** Time series analysis.
