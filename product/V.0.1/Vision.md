@@ -1,6 +1,7 @@
 # Vision
 
 ## BHAG
+Reinvent communication
 
 ## Product Mission
 
