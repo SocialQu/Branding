@@ -35,4 +35,9 @@ export const fetchTopics = async():Promise<iTopic[]> => {
 
 
 const euclideanDistance = (A:number[], B:number[]) => A.reduce((d, i, idx) => d + (i - B[idx])**2, 0)**(1/2)
+const minDistance = (A:number[], M:number[][]) => M.reduce((d, i, idx) => {
+    const distance = euclideanDistance(A, i)
+    return distance < d.min ? { key:idx, min:distance } : d
+}, { key:0, min:Infinity } as { key:number, min:number }).key
+
 const classifyTopics = (tweets:iClusteredTweet[], topics:iTopic[]) => {}
