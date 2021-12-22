@@ -1,16 +1,20 @@
-import { iClusteredTweet } from './types/embeddings'
+import { iClassifiedTweet, iClusteredTweet } from './types/embeddings'
 import colors from '../V.0.0.5/data/colors.json'
 import tweets from './data/clusteredTweets.json'
+
+import { PCA, IPCAModel } from 'ml-pca' 
 import { writeFile } from 'fs/promises'
 import { MongoClient } from 'mongodb'
+import pcaModel from './data/PCA.json'
 
 
 interface iTopic {
     _id: string
     topic: string
     color?: string
-    embeddings: number[]
     center: number[]
+    reduced: number[]
+    embeddings: number[]
 }
 
 export const fetchTopics = async():Promise<iTopic[]> => {
@@ -27,6 +31,8 @@ export const fetchTopics = async():Promise<iTopic[]> => {
     const findColor = ({topic}:iTopic) => colors.find(({ topic:t }) => topic === t)?.color || ''
     const coloredTopics = topics.map(topic => ({...topic, color:findColor(topic) })) as iTopic[]
 
+    const pca = PCA.load(pcaModel as IPCAModel)
+
     const colorsData = JSON.stringify(coloredTopics.map(({ color, topic }) => ({ color, topic })))
     await writeFile('./data/topics.json', colorsData)
 
@@ -40,4 +46,6 @@ const minDistance = (A:number[], M:number[][]) => M.reduce((d, i, idx) => {
     return distance < d.min ? { key:idx, min:distance } : d
 }, { key:0, min:Infinity } as { key:number, min:number }).key
 
-const classifyTopics = (tweets:iClusteredTweet[], topics:iTopic[]) => {}
+const classifyTopics = (tweets:iClusteredTweet[], topics:iTopic[]) => {
+    // const classifiedTopics:iClassifiedTweet[] = tweets.map(t => ({...t, topic:minDistance(t.e, topics)}))
+}
