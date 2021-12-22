@@ -32,11 +32,15 @@ export const fetchTopics = async():Promise<iTopic[]> => {
     const coloredTopics = topics.map(topic => ({...topic, color:findColor(topic) })) as iTopic[]
 
     const pca = PCA.load(pcaModel as IPCAModel)
+    const topicEmbeddings = topics.map(({ embeddings }) => embeddings)
+    const reducedEmbeddings = pca.predict(topicEmbeddings, { nComponents:12 }).to2DArray()
 
-    const colorsData = JSON.stringify(coloredTopics.map(({ color, topic }) => ({ color, topic })))
-    await writeFile('./data/topics.json', colorsData)
+    const reducedTopics = coloredTopics.map((t, i) => ({ ...t, reduced:reducedEmbeddings[i] }))
 
-    return coloredTopics
+    const topicsData = JSON.stringify(reducedTopics)
+    await writeFile('./data/topics.json', topicsData)
+
+    return reducedTopics
 }
 
 
