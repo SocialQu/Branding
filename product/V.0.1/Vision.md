@@ -30,7 +30,7 @@ Give technical founders an edge marketing their products.
 3. **State of the art research:** Predict likes, replies, visits, impressions & clicks.
 4. **Data driven content:** Highlight the words that contribute the most to engagement.
 5. **Marketing strategy:** Describe content's topic distribution.
-6. **Accelerate growth:** 
+6. **Accelerate growth:** Media heatmaps.
 7. **Targeted communication:** 
 8. **Build a moat:** 
 9. **Liberate time:**
