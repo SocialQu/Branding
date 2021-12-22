@@ -11,7 +11,7 @@ import pcaModel from './data/PCA.json'
 interface iTopic {
     _id: string
     topic: string
-    color?: string
+    color: string
     center: number[]
     reduced: number[]
     embeddings: number[]
@@ -50,6 +50,13 @@ const minDistance = (A:number[], M:number[][]) => M.reduce((d, i, idx) => {
     return distance < d.min ? { key:idx, min:distance } : d
 }, { key:0, min:Infinity } as { key:number, min:number }).key
 
-const classifyTopics = (tweets:iClusteredTweet[], topics:iTopic[]) => {
-    // const classifiedTopics:iClassifiedTweet[] = tweets.map(t => ({...t, topic:minDistance(t.e, topics)}))
+const classifyTopics = (tweets:iClusteredTweet[], topics:iTopic[]):iClassifiedTweet[] => {
+    const topicEmbeddings = topics.map(({ reduced }) => reduced)
+    const classifiedTweets = tweets.map(t => {
+        const idx = minDistance(t.reduced, topicEmbeddings) 
+        const { topic, color } = topics[idx]
+        return { ...t, topic, color }
+    })
+
+    return classifiedTweets
 }
