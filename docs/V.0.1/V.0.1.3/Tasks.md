@@ -19,7 +19,7 @@
 - [X] Analyze insights and document results.
 
 ## Topic Classifications
-- [ ] Label tweets by topics.
-- [ ] Compute averages by topics.
-- [ ] Correlate embeddings to topics.
-- [ ] Prepare insights for feature engineering and strategy evalutation.
+- [X] Label tweets by topics.
+- [X] Compute averages by topics.
+- [X] Correlate embeddings to topics.
+- [X] Prepare insights for feature engineering and strategy evalutation.
