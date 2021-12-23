@@ -61,12 +61,20 @@ interface iRecords {
     we10: number
     we11: number
     we12: number
+
+    likes: number
+    visits: number
+    clicks: number
+    replies: number
+    retweets: number
+    impressions: number
+    engagements: number
 }
 
 const createRecords = (tweets:iReducedTweet[]) => {
     const normalized = normalizeTweets(tweets)
 
-    const records:iRecords[] = normalized.map(({ normalizedFeatures, reduced }) => ({
+    const records:iRecords[] = normalized.map(({ normalizedFeatures, reduced, ...t }) => ({
         day: normalizedFeatures[1],
         hour: normalizedFeatures[0],
         media: normalizedFeatures[2],
@@ -91,6 +99,14 @@ const createRecords = (tweets:iReducedTweet[]) => {
         we10: reduced[9],
         we11: reduced[10],
         we12: reduced[11],
+
+        likes:t.likes,
+        clicks:t.clicks,
+        visits:t.visits,
+        replies:t.replies,
+        retweets:t.retweets,
+        impressions:t.impressions,
+        engagements:t.engagements
     }))
 
     return records
