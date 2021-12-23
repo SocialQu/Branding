@@ -33,7 +33,34 @@ const header:ObjectHeaderItem[] = [
 ]
 
 
+interface iRecords {
+    day: number
+    hour: number
+    media: number
+    links: number
+    emojis: number
+    lenght: number
+    hashtags: number
+    mentions: number
+    followers: number
+    following: number
+    linebreaks: number
+
+    we1: number
+    we2: number
+    we3: number
+    we4: number
+    we5: number
+    we6: number
+    we7: number
+    we8: number
+    we9: number
+    we10: number
+    we11: number
+    we12: number
+}
+
+const records:iRecords[] = []
+
 const csv = csvWriter({ path, header })
- 
-// const records = []
-// csv.writeRecords(records).then(console.log)
+csv.writeRecords(records).then(console.log)
