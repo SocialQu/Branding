@@ -31,9 +31,9 @@ const logError = (X:number[][], Y:number[][]) => X.reduce((d, x, i) => d += logD
 
 
 const linearRegressionError = {
-    linear: linearError(X, predictions)/X.length,
-    quadratic: quadraticError(X, predictions)/X.length,
-    logarithmic: logError(X, predictions)/X.length
+    linear: linearError(Y, predictions)/X.length,
+    quadratic: quadraticError(Y, predictions)/X.length,
+    logarithmic: logError(Y, predictions)/X.length
 }
 
 console.log('Linear Regression Error:', linearRegressionError)
