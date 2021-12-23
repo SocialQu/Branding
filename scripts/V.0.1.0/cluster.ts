@@ -10,7 +10,7 @@ const getZScoreParams = (tweets:iReducedTweet[], metric:keyof iReducedTweet) => 
 }
 
 interface iNormalizedTweet extends iReducedTweet { normalizedMetrics:number[], normalizedFeatures:number[] }
-const normalizeTweets = (tweets:iReducedTweet[]):iNormalizedTweet[] => {
+export const normalizeTweets = (tweets:iReducedTweet[]):iNormalizedTweet[] => {
     // Features
     const mediaStats = getZScoreParams(tweets, 'media')
     const linksStats = getZScoreParams(tweets, 'links')
