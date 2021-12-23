@@ -1,5 +1,8 @@
 import { createObjectCsvWriter as csvWriter } from 'csv-writer'
 import { ObjectHeaderItem } from 'csv-writer/src/lib/record'
+import { iReducedTweet } from './types/embeddings'
+import tweets from './data/reducedTweets.json'
+import { normalizeTweets } from './cluster'
 
 
 const path = './data/tweets.csv'
@@ -60,7 +63,40 @@ interface iRecords {
     we12: number
 }
 
-const records:iRecords[] = []
+const createRecords = (tweets:iReducedTweet[]) => {
+    const normalized = normalizeTweets(tweets)
+
+    const records:iRecords[] = normalized.map(({ normalizedFeatures, reduced }) => ({
+        day: normalizedFeatures[1],
+        hour: normalizedFeatures[0],
+        media: normalizedFeatures[2],
+        links: normalizedFeatures[3],
+        emojis: normalizedFeatures[4],
+        lenght: normalizedFeatures[10],
+        hashtags: normalizedFeatures[5],
+        mentions: normalizedFeatures[6],
+        followers: normalizedFeatures[7],
+        following: normalizedFeatures[8],
+        linebreaks: normalizedFeatures[9],
+
+        we1: reduced[0],
+        we2: reduced[1],
+        we3: reduced[2],
+        we4: reduced[3],
+        we5: reduced[4],
+        we6: reduced[5],
+        we7: reduced[6],
+        we8: reduced[7],
+        we9: reduced[8],
+        we10: reduced[9],
+        we11: reduced[10],
+        we12: reduced[11],
+    }))
+
+    return records
+}
+
+const records = createRecords(tweets as iReducedTweet[])
 
 const csv = csvWriter({ path, header })
-csv.writeRecords(records).then(console.log)
+csv.writeRecords(records).catch(console.log)
