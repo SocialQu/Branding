@@ -48,11 +48,11 @@ export const normalizeTweets = (tweets:iReducedTweet[]):iNormalizedTweet[] => {
 
         normalizedMetrics: [
             zScore(t.likes, likeStats.mean, likeStats.sd),
-            zScore(t.likes, visitStats.mean, visitStats.sd),
-            zScore(t.likes, clickStats.mean, clickStats.sd),
-            zScore(t.likes, replyStats.mean, replyStats.sd),
-            zScore(t.likes, retweetStats.mean, retweetStats.sd),
-            zScore(t.likes, impressionStats.mean, impressionStats.sd),
+            zScore(t.visits, visitStats.mean, visitStats.sd),
+            zScore(t.clicks, clickStats.mean, clickStats.sd),
+            zScore(t.replies, replyStats.mean, replyStats.sd),
+            zScore(t.retweets, retweetStats.mean, retweetStats.sd),
+            zScore(t.impressions, impressionStats.mean, impressionStats.sd),
         ]
     }))
 
