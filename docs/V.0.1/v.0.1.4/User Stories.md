@@ -1,6 +1,6 @@
 # User Stories
 
-- [ ] Measure performance of linear regression model.
+- [X] Measure performance of linear regression model.
 - [ ] Build decision trees with Tensorflow.
 - [ ] Train the data using TabNet.
 - [ ] Develop a neural network using TensorflowJS.
