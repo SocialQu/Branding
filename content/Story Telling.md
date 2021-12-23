@@ -23,3 +23,15 @@
     * Small details to prelude importance:
         * Two cups of water before sighting the T-Rex for the first time.
 
+* Metaphors is how we understand abstract concepts.
+    * Small metaphors create gorgeous scences.
+    * A metaphor can force us to imagine a scene.
+        * By relecting: *How a plastic bag can be similar to a jellifish?*
+    * Metaphors can be used to make a coneptual point, not only visuals.
+        * A door without a lock or key.
+    * Methaphor enable a ton of meaning:
+        * *Dead men are heavier than broken hearts*
+    * Also used for romantic scences.
+        * *She could feel herself through him, the way her body existed only where he touched her. The rest was smoke*
+    * Can be enhanced by contrasts
+        * *Libertines are hideous spiders that often catch pretty butterflies.*
