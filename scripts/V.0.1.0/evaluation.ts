@@ -28,3 +28,12 @@ const quadraticError = (X:number[][], Y:number[][]) => Math.sqrt(X.reduce((d, x,
 
 const logDelta = (x:number, y:number) => Math.abs(Math.log(x+1) - Math.log(y+1))
 const logError = (X:number[][], Y:number[][]) => X.reduce((d, x, i) => d += logDelta(x[0], Y[i][0]), 0)
+
+
+const linearRegressionError = {
+    linear: linearError(X, predictions),
+    quadratic: quadraticError(X, predictions),
+    logarithmic: logError(X, predictions)
+}
+
+console.log('Linear Regression Error:', linearRegressionError)
