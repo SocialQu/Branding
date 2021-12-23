@@ -33,6 +33,15 @@ const header:ObjectHeaderItem[] = [
     { id:'we10', title:'WE_10' },
     { id:'we11', title:'WE_11' },
     { id:'we12', title:'WE_12' },
+
+    // Labels
+    { id:'likes', title:'LIKES' },
+    { id:'visits', title:'VISITS' },
+    { id:'clicks', title:'CLICKS' },
+    { id:'replies', title:'REPLIES' },
+    { id:'retweets', title:'RETWEETS' },
+    { id:'impressions', title:'IMPRESSIONS' },
+    { id:'engagements', title:'ENGAGEMENTS' }
 ]
 
 
