@@ -24,3 +24,6 @@ const predictions = X.map((x, i) => mlr.predict(x))
 
 const linearError = (X:number[][], Y:number[][]) => X.reduce((d, x, i) => d += Math.abs(x[0] - Y[i][0]), 0)
 const quadraticError = (X:number[][], Y:number[][]) => Math.sqrt(X.reduce((d, x, i) => d += (x[0] - Y[i][0])**2, 0))
+const logError = (X:number[][], Y:number[][]) => X.reduce((d, x, i) => 
+    d += Math.abs(Math.log(x[0]+1) - Math.log(Y[i][0]+1))
+, 0)
