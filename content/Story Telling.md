@@ -35,3 +35,5 @@
         * *She could feel herself through him, the way her body existed only where he touched her. The rest was smoke*
     * Can be enhanced by contrasts
         * *Libertines are hideous spiders that often catch pretty butterflies.*
+
+* Cause & effect micro-narratives, i.e. beliefs, are the building blocks of our neural realm.
