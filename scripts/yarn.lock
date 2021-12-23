@@ -377,6 +377,11 @@ cross-fetch@^3.0.0:
   dependencies:
     node-fetch "2.6.1"
 
+csv-writer@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/csv-writer/-/csv-writer-1.6.0.tgz#d0cea44b6b4d7d3baa2ecc6f3f7209233514bcf9"
+  integrity sha512-NOx7YDFWEsM/fTRAJjRpPp8t+MKRVvniAg9wQlUKx20MFrPs73WLJhFf5iteqrxNYnsy924K3Iroh3yNHeYd2g==
+
 debug@4:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.2.tgz#f0a49c18ac8779e31d4a0c6029dfb76873c7428b"
