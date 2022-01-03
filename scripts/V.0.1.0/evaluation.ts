@@ -3,6 +3,12 @@ import { iInputs, iOutputs } from './types/labeled'
 import tweets from './data/labeledData.json'
 import { writeFile } from 'fs/promises'
 
+import regression from './data/predictions_regression.json'
+import tabNet from './data/predictions_tabnet.json'
+import randomForest from './data/predictions.json'
+import targets from './data/tweets.json'
+import { linearRegression } from 'simple-statistics'
+
 
 export const labels:(keyof iOutputs)[] = [ 
     'engagements', 'impressions', 'likes', 'retweets', 'replies', 'clicks', 'visits'
@@ -31,11 +37,12 @@ const writeRegressionPredictions = () => {
 
 
 const printPredctions = (predictions:number[], scores:number[]) => {
-
+    console.log('Length:', predictions.length, scores.length)
+    
     const linearError = (X:number[], Y:number[]) => X.reduce((d, x, i) => d += Math.abs(x - Y[i]), 0)
     const quadraticError = (X:number[], Y:number[]) => Math.sqrt(X.reduce((d, x, i) => d += (x - Y[i])**2, 0))
     
-    const logDelta = (x:number, y:number) => Math.abs(Math.log(x+1) - Math.log(Math.max(y, 1)))
+    const logDelta = (x:number, y:number) => Math.abs(Math.log(Math.max(x+1,1)) - Math.log(Math.max(y, 1)))
     const logError = (X:number[], Y:number[]) => X.reduce((d, x, i) => d += logDelta(x, Y[i]), 0)
     
     
@@ -43,8 +50,12 @@ const printPredctions = (predictions:number[], scores:number[]) => {
         linear: linearError(predictions, scores)/scores.length,
         quadratic: quadraticError(predictions, scores)/scores.length,
         logarithmic: logError(predictions, scores)/scores.length
-    }    
+    }
 
-    console.log('Linear Regression Error:', linearRegressionError)
+    return linearRegressionError
 }
 
+
+console.log('Linear Regression', printPredctions(regression, targets))
+console.log('Tab Net', printPredctions(tabNet, targets))
+console.log('Random Forest', printPredctions(randomForest, targets))
