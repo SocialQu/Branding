@@ -30,24 +30,21 @@ const writeRegressionPredictions = () => {
 }
 
 
-const printPredctions = (predictions:number[][]) => {
-    const Y = tweets.map((t) => labels.map((f) => t[f]))
+const printPredctions = (predictions:number[], scores:number[]) => {
 
-    const linearError = (X:number[][], Y:number[][]) => X.reduce((d, x, i) => d += Math.abs(x[0] - Y[i][0]), 0)
-    const quadraticError = (X:number[][], Y:number[][]) => Math.sqrt(X.reduce((d, x, i) => d += (x[0] - Y[i][0])**2, 0))
+    const linearError = (X:number[], Y:number[]) => X.reduce((d, x, i) => d += Math.abs(x - Y[i]), 0)
+    const quadraticError = (X:number[], Y:number[]) => Math.sqrt(X.reduce((d, x, i) => d += (x - Y[i])**2, 0))
     
     const logDelta = (x:number, y:number) => Math.abs(Math.log(x+1) - Math.log(Math.max(y, 1)))
-    const logError = (X:number[][], Y:number[][]) => X.reduce((d, x, i) => d += logDelta(x[0], Y[i][0]), 0)
+    const logError = (X:number[], Y:number[]) => X.reduce((d, x, i) => d += logDelta(x, Y[i]), 0)
     
     
     const linearRegressionError = {
-        linear: linearError(Y, predictions)/Y.length,
-        quadratic: quadraticError(Y, predictions)/Y.length,
-        logarithmic: logError(Y, predictions)/Y.length
+        linear: linearError(predictions, scores)/scores.length,
+        quadratic: quadraticError(predictions, scores)/scores.length,
+        logarithmic: logError(predictions, scores)/scores.length
     }    
 
     console.log('Linear Regression Error:', linearRegressionError)
 }
 
-const predictions = writeRegressionPredictions()
-printPredctions(predictions)
