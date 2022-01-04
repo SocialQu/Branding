@@ -1,9 +1,9 @@
 # User Stories
 
 - [X] Measure performance of linear regression model.
-- [ ] Build decision trees with Tensorflow.
-- [ ] Train the data using TabNet.
+- [X] Build decision trees with Tensorflow.
+- [X] Train the data using TabNet.
 - [ ] Evaluate data using XGBoost.
 - [ ] Develop a neural network using TensorflowJS.
-- [ ] Benchmark insights & results.
+- [X] Benchmark insights & results.
 - [ ] Document missing steps towards Product Vision.
