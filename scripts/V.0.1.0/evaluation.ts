@@ -7,7 +7,6 @@ import regression from './data/predictions_regression.json'
 import tabNet from './data/predictions_tabnet.json'
 import randomForest from './data/predictions.json'
 import targets from './data/tweets.json'
-import { linearRegression } from 'simple-statistics'
 
 
 export const labels:(keyof iOutputs)[] = [ 
